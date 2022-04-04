@@ -47,6 +47,7 @@
             // 
             // tb_chat
             // 
+            this.tb_chat.Enabled = false;
             this.tb_chat.Location = new System.Drawing.Point(164, 52);
             this.tb_chat.Multiline = true;
             this.tb_chat.Name = "tb_chat";
@@ -63,6 +64,7 @@
             // 
             // bt_send
             // 
+            this.bt_send.Enabled = false;
             this.bt_send.Location = new System.Drawing.Point(713, 413);
             this.bt_send.Name = "bt_send";
             this.bt_send.Size = new System.Drawing.Size(75, 23);
@@ -104,6 +106,7 @@
             this.Controls.Add(this.chats_list);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -33,6 +33,7 @@
             this.tb_message = new System.Windows.Forms.TextBox();
             this.bt_send = new System.Windows.Forms.Button();
             this.lb_chat = new System.Windows.Forms.Label();
+            this.bt_connect = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // chats_list
@@ -76,15 +77,26 @@
             this.lb_chat.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lb_chat.Location = new System.Drawing.Point(164, 12);
             this.lb_chat.Name = "lb_chat";
-            this.lb_chat.Size = new System.Drawing.Size(93, 37);
+            this.lb_chat.Size = new System.Drawing.Size(155, 37);
             this.lb_chat.TabIndex = 4;
-            this.lb_chat.Text = "Name";
+            this.lb_chat.Text = "Test_Client";
+            // 
+            // bt_connect
+            // 
+            this.bt_connect.Location = new System.Drawing.Point(666, 12);
+            this.bt_connect.Name = "bt_connect";
+            this.bt_connect.Size = new System.Drawing.Size(122, 23);
+            this.bt_connect.TabIndex = 5;
+            this.bt_connect.Text = "Connect to Chat";
+            this.bt_connect.UseVisualStyleBackColor = true;
+            this.bt_connect.Click += new System.EventHandler(this.bt_connect_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bt_connect);
             this.Controls.Add(this.lb_chat);
             this.Controls.Add(this.bt_send);
             this.Controls.Add(this.tb_message);
@@ -104,5 +116,6 @@
         private TextBox tb_message;
         private Button bt_send;
         private Label lb_chat;
+        private Button bt_connect;
     }
 }

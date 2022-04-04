@@ -14,11 +14,6 @@ namespace TS_Projeto_Chat
         public Form1()
         {
             InitializeComponent();
-            IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, port);
-            client = new TcpClient();
-            client.Connect(endPoint);
-            networkStream = client.GetStream();
-            protocolSI = new ProtocolSI();
             name = lb_chat.Text;
         }
 
@@ -30,7 +25,19 @@ namespace TS_Projeto_Chat
         private void newMessage(string msg)
         {
             string owner = msg.Split("$")[0];
-            tb_chat.AppendText("\r\n(" + owner + "): " + msg);
+            string text = msg.Split("$")[1];
+            tb_chat.AppendText("\r\n(" + owner + "): " + text);
+        }
+
+        private void bt_connect_Click(object sender, EventArgs e)
+        {
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, port);
+            client = new TcpClient();
+            client.Connect(endPoint);
+            networkStream = client.GetStream();
+            protocolSI = new ProtocolSI();
+            byte[] packet = protocolSI.Make(ProtocolSICmdType.DATA, name + "$");
+            networkStream.Write(packet, 0, packet.Length);
         }
 
         private void bt_send_Click(object sender, EventArgs e)
@@ -53,9 +60,10 @@ namespace TS_Projeto_Chat
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao comunicar com o servidor");
-                MessageBox.Show(ex.Message);
+                consoleLog("Erro ao comunicar com o servidor.\r\n" + ex.Message);
             }
         }
+
+        
     }
 }

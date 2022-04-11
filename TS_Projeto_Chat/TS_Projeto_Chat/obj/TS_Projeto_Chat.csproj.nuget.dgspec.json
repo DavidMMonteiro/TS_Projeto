@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\david\\OneDrive - IPLeiria\\Documents\\GitHub\\TS_Projeto\\TS_Projeto_Chat\\TS_Projeto_Chat\\TS_Projeto_Chat.csproj": {}
+    "C:\\Users\\carla\\OneDrive\\Documentos\\GitHub\\TS_Projeto\\TS_Projeto_Chat\\TS_Projeto_Chat\\TS_Projeto_Chat.csproj": {}
   },
   "projects": {
-    "C:\\Users\\david\\OneDrive - IPLeiria\\Documents\\GitHub\\TS_Projeto\\TS_Projeto_Chat\\TS_Projeto_Chat\\TS_Projeto_Chat.csproj": {
+    "C:\\Users\\carla\\OneDrive\\Documentos\\GitHub\\TS_Projeto\\TS_Projeto_Chat\\TS_Projeto_Chat\\TS_Projeto_Chat.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\david\\OneDrive - IPLeiria\\Documents\\GitHub\\TS_Projeto\\TS_Projeto_Chat\\TS_Projeto_Chat\\TS_Projeto_Chat.csproj",
+        "projectUniqueName": "C:\\Users\\carla\\OneDrive\\Documentos\\GitHub\\TS_Projeto\\TS_Projeto_Chat\\TS_Projeto_Chat\\TS_Projeto_Chat.csproj",
         "projectName": "TS_Projeto_Chat",
-        "projectPath": "C:\\Users\\david\\OneDrive - IPLeiria\\Documents\\GitHub\\TS_Projeto\\TS_Projeto_Chat\\TS_Projeto_Chat\\TS_Projeto_Chat.csproj",
-        "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\david\\OneDrive - IPLeiria\\Documents\\GitHub\\TS_Projeto\\TS_Projeto_Chat\\TS_Projeto_Chat\\obj\\",
+        "projectPath": "C:\\Users\\carla\\OneDrive\\Documentos\\GitHub\\TS_Projeto\\TS_Projeto_Chat\\TS_Projeto_Chat\\TS_Projeto_Chat.csproj",
+        "packagesPath": "C:\\Users\\carla\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\carla\\OneDrive\\Documentos\\GitHub\\TS_Projeto\\TS_Projeto_Chat\\TS_Projeto_Chat\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\carla\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -57,7 +61,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -6,15 +6,28 @@ namespace TS_Projeto_Chat
 {
     public partial class Form1 : Form
     {
-        private const int port = 10000;
+        private int port;
         private NetworkStream networkStream;
         private ProtocolSI protocolSI;
         private TcpClient client;
         private string name;
-        public Form1()
+
+        enum MessageType{
+            Connection = 0,
+            Login = 1,
+            Message = 2,
+            Error = 3
+        }
+
+        public Form1(int port, NetworkStream network, ProtocolSI protocol, TcpClient client, string name)
         {
             InitializeComponent();
-            name = lb_chat.Text;
+            this.port = port;
+            this.networkStream = network;
+            this.protocolSI = protocol;
+            this.client = client;  
+            this.name = name;
+            lb_chat.Text = name;
         }
 
         private void consoleLog(string msg)

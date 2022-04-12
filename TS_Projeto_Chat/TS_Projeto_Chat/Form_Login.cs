@@ -1,15 +1,6 @@
 ﻿using EI.SI;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace TS_Projeto_Chat
 {
@@ -29,6 +20,11 @@ namespace TS_Projeto_Chat
             protocolSI = new ProtocolSI();
         }
 
+        private void consoleLog(string msg)
+        {
+            Console.WriteLine(DateTime.Now.ToString("(dd/MM/yyyy HH:mm:ss)") + "Login: " + msg);
+        }
+
         private bool login_Server(string username, string password)
         {
             try
@@ -45,6 +41,7 @@ namespace TS_Projeto_Chat
             catch (Exception ex)
             {
                 MessageBox.Show("Connection to server fail... Try later...");
+                consoleLog(ex.Message);
                 return false;
             }
 
@@ -57,6 +54,11 @@ namespace TS_Projeto_Chat
             Form1 chat = new Form1(port, networkStream, protocolSI, client, tb_user.Text);
             chat.Show();
             this.Hide();
+        }
+
+        private void Form_Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

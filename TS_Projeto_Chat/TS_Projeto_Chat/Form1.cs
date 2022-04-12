@@ -24,7 +24,7 @@ namespace TS_Projeto_Chat
 
         private void consoleLog(string msg)
         {
-            Console.WriteLine(DateTime.Now.ToString("(dd/MM/yyyy HH:mm:ss)") + name +": " + msg);
+            Console.WriteLine(DateTime.Now.ToString("(dd/MM/yyyy HH:mm:ss)") + this.name +": " + msg);
         }
 
         private void newMessage(string owner, string msg)
@@ -46,6 +46,7 @@ namespace TS_Projeto_Chat
             }
             catch (Exception ex)
             {
+                consoleLog(ex.Message);
                 //newMessage(this.name , "Error ao sair do servidor\r\n\t" + ex.Message);
             }
         }
@@ -62,18 +63,12 @@ namespace TS_Projeto_Chat
             catch (Exception ex)
             {
                 newMessage(this.name , "Connection to server fail... Try later...");
+                consoleLog(ex.Message);
                 bt_send.Enabled = false;
             }
         }
-
-        private void bt_connect_Click(object sender, EventArgs e)
+        private void send_message()
         {
-            connect_server();
-        }
-
-        private void bt_send_Click(object sender, EventArgs e)
-        {
-            // Construir mensagem
             string msg = tb_message.Text;
             try
             {
@@ -83,21 +78,45 @@ namespace TS_Projeto_Chat
                 byte[] packet = protocolSI.Make(ProtocolSICmdType.DATA, msg);
                 networkStream.Write(packet, 0, packet.Length);
                 // Espera informação do servidor
-                while (protocolSI.GetCmdType() != ProtocolSICmdType.ACK)                
+                while (protocolSI.GetCmdType() != ProtocolSICmdType.ACK)
                     networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
-                
+
             }
             catch (Exception ex)
             {
-                newMessage(this.name ,"Erro ao comunicar com o servidor.\r\n" + ex.Message);
+                newMessage(this.name, "Erro ao comunicar com o servidor.\r\n" + ex.Message);
                 bt_send.Enabled = false;
             }
         }
+        private void bt_connect_Click(object sender, EventArgs e)
+        {
+            connect_server();
+        }
 
+        private void bt_send_Click(object sender, EventArgs e)
+        {
+            send_message();
+        }
+
+        private void tb_message_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                send_message();
+            }
+        }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             CloseClient();
             Application.Exit();
+        }
+
+        private void bt_logout_Click(object sender, EventArgs e)
+        {
+            CloseClient();
+            Form_Login form_login = new Form_Login();
+            form_login.Show();
+            this.Hide();
         }
     }
 }

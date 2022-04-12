@@ -34,6 +34,7 @@
             this.bt_send = new System.Windows.Forms.Button();
             this.lb_chat = new System.Windows.Forms.Label();
             this.bt_connect = new System.Windows.Forms.Button();
+            this.bt_logout = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // chats_list
@@ -64,6 +65,7 @@
             this.tb_message.PlaceholderText = "Escrever...";
             this.tb_message.Size = new System.Drawing.Size(620, 27);
             this.tb_message.TabIndex = 2;
+            this.tb_message.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_message_KeyPress);
             // 
             // bt_send
             // 
@@ -98,11 +100,23 @@
             this.bt_connect.UseVisualStyleBackColor = true;
             this.bt_connect.Click += new System.EventHandler(this.bt_connect_Click);
             // 
+            // bt_logout
+            // 
+            this.bt_logout.Location = new System.Drawing.Point(616, 16);
+            this.bt_logout.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.bt_logout.Name = "bt_logout";
+            this.bt_logout.Size = new System.Drawing.Size(139, 31);
+            this.bt_logout.TabIndex = 5;
+            this.bt_logout.Text = "Logout";
+            this.bt_logout.UseVisualStyleBackColor = true;
+            this.bt_logout.Click += new System.EventHandler(this.bt_logout_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 600);
+            this.Controls.Add(this.bt_logout);
             this.Controls.Add(this.bt_connect);
             this.Controls.Add(this.lb_chat);
             this.Controls.Add(this.bt_send);
@@ -111,7 +125,7 @@
             this.Controls.Add(this.chats_list);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Chats";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -126,5 +140,6 @@
         private Button bt_send;
         private Label lb_chat;
         private Button bt_connect;
+        private Button bt_logout;
     }
 }

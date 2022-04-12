@@ -56,7 +56,6 @@ namespace TS_Projeto_Chat
             Form1 chat = new Form1(port, networkStream, protocolSI, client, tb_user.Text);
             chat.Show();
             this.Hide();
-
         }
     }
 }

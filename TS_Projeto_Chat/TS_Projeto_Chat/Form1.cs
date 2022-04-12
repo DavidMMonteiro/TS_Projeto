@@ -99,6 +99,7 @@ namespace TS_Projeto_Chat
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             CloseClient();
+            Application.Exit();
         }
     }
 }

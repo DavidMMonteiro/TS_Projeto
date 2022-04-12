@@ -59,7 +59,7 @@ namespace Server
             }
         
         }
-        //Validação do utilizador
+
         private static bool checkUser(string user_info)
         {
             //Get the user data list
@@ -75,7 +75,7 @@ namespace Server
 
             return false;
         }
-        //Load users data
+
         private static List<User> LoadUsersFiles()
         {
             List<User> users = new List<User>();
@@ -122,7 +122,7 @@ namespace Server
                     {
                         case ProtocolSICmdType.DATA:
                             output = protocolSI.GetStringFromData();
-                            helper.consoleLog(output, this.clientName);
+                            helper.consoleLog(output.Split('$')[1], this.clientName);
                             ack = protocolSI.Make(ProtocolSICmdType.ACK);
                             networkStream.Write(ack, 0, ack.Length);
                             break;

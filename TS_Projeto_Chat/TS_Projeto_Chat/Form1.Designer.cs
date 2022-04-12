@@ -39,35 +39,38 @@
             // chats_list
             // 
             this.chats_list.FormattingEnabled = true;
-            this.chats_list.ItemHeight = 15;
-            this.chats_list.Location = new System.Drawing.Point(12, 12);
+            this.chats_list.ItemHeight = 20;
+            this.chats_list.Location = new System.Drawing.Point(14, 16);
+            this.chats_list.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chats_list.Name = "chats_list";
-            this.chats_list.Size = new System.Drawing.Size(146, 424);
+            this.chats_list.Size = new System.Drawing.Size(166, 564);
             this.chats_list.TabIndex = 0;
             // 
             // tb_chat
             // 
             this.tb_chat.Enabled = false;
-            this.tb_chat.Location = new System.Drawing.Point(164, 52);
+            this.tb_chat.Location = new System.Drawing.Point(187, 69);
+            this.tb_chat.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tb_chat.Multiline = true;
             this.tb_chat.Name = "tb_chat";
-            this.tb_chat.Size = new System.Drawing.Size(624, 355);
+            this.tb_chat.Size = new System.Drawing.Size(713, 472);
             this.tb_chat.TabIndex = 1;
             // 
             // tb_message
             // 
-            this.tb_message.Location = new System.Drawing.Point(164, 413);
+            this.tb_message.Location = new System.Drawing.Point(187, 551);
+            this.tb_message.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tb_message.Name = "tb_message";
             this.tb_message.PlaceholderText = "Escrever...";
-            this.tb_message.Size = new System.Drawing.Size(543, 23);
+            this.tb_message.Size = new System.Drawing.Size(620, 27);
             this.tb_message.TabIndex = 2;
             // 
             // bt_send
             // 
-            this.bt_send.Enabled = false;
-            this.bt_send.Location = new System.Drawing.Point(713, 413);
+            this.bt_send.Location = new System.Drawing.Point(815, 551);
+            this.bt_send.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bt_send.Name = "bt_send";
-            this.bt_send.Size = new System.Drawing.Size(75, 23);
+            this.bt_send.Size = new System.Drawing.Size(86, 31);
             this.bt_send.TabIndex = 3;
             this.bt_send.Text = "Enviar";
             this.bt_send.UseVisualStyleBackColor = true;
@@ -77,17 +80,19 @@
             // 
             this.lb_chat.AutoSize = true;
             this.lb_chat.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lb_chat.Location = new System.Drawing.Point(164, 12);
+            this.lb_chat.Location = new System.Drawing.Point(187, 16);
             this.lb_chat.Name = "lb_chat";
-            this.lb_chat.Size = new System.Drawing.Size(155, 37);
+            this.lb_chat.Size = new System.Drawing.Size(190, 46);
             this.lb_chat.TabIndex = 4;
             this.lb_chat.Text = "Test_Client";
             // 
             // bt_connect
             // 
-            this.bt_connect.Location = new System.Drawing.Point(666, 12);
+            this.bt_connect.Enabled = false;
+            this.bt_connect.Location = new System.Drawing.Point(761, 16);
+            this.bt_connect.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bt_connect.Name = "bt_connect";
-            this.bt_connect.Size = new System.Drawing.Size(122, 23);
+            this.bt_connect.Size = new System.Drawing.Size(139, 31);
             this.bt_connect.TabIndex = 5;
             this.bt_connect.Text = "Connect to Chat";
             this.bt_connect.UseVisualStyleBackColor = true;
@@ -95,15 +100,16 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(914, 600);
             this.Controls.Add(this.bt_connect);
             this.Controls.Add(this.lb_chat);
             this.Controls.Add(this.bt_send);
             this.Controls.Add(this.tb_message);
             this.Controls.Add(this.tb_chat);
             this.Controls.Add(this.chats_list);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);

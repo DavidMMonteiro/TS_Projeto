@@ -12,13 +12,6 @@ namespace TS_Projeto_Chat
         private TcpClient client;
         private string name;
 
-        enum MessageType{
-            Connection = 0,
-            Login = 1,
-            Message = 2,
-            Error = 3
-        }
-
         public Form1(int port, NetworkStream network, ProtocolSI protocol, TcpClient client, string name)
         {
             InitializeComponent();
@@ -28,6 +21,7 @@ namespace TS_Projeto_Chat
             this.client = client;  
             this.name = name;
             lb_chat.Text = name;
+            //connect_server();
         }
 
         private void consoleLog(string msg)
@@ -35,12 +29,10 @@ namespace TS_Projeto_Chat
             Console.WriteLine(DateTime.Now.ToString("(dd/MM/yyyy HH:mm:ss)") + name +": " + msg);
         }
 
-        private void newMessage(string msg)
+        private void newMessage(string owner, string msg)
         {
-            string owner = msg.Split("$")[0];
-            string text = msg.Split("$")[1];
-            tb_chat.AppendText("\r\n(" + owner + "): " + text);
-            consoleLog(text);
+            tb_chat.AppendText("\r\n(" + owner + "): " + msg);
+            consoleLog(msg);
         }
 
         private void CloseClient()
@@ -51,50 +43,47 @@ namespace TS_Projeto_Chat
                 networkStream.Write(eot, 0, eot.Length);
                 networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
                 networkStream.Close();
-                string msg = this.name + "$" + "Fechar client... bye :-)";
-                newMessage(msg);
+                newMessage(this.name, "Fechar client... bye :-)");
                 client.Close();
             }
             catch (Exception ex)
             {
-                newMessage(this.name + "$" + "Error ao sair do servidor\r\n\t" + ex.Message);
+                newMessage(this.name , "Error ao sair do servidor\r\n\t" + ex.Message);
+            }
+        }
+
+        private void connect_server()
+        {
+            try
+            {
+                byte[] packet = protocolSI.Make(ProtocolSICmdType.DATA, this.name + "$");
+                networkStream.Write(packet, 0, packet.Length);
+                newMessage(this.name , "Connected to server");
+                bt_send.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                newMessage(this.name , "Connection to server fail... Try later...");
+                bt_send.Enabled = false;
             }
         }
 
         private void bt_connect_Click(object sender, EventArgs e)
         {
-            try
-            {
-                IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, port);
-                client = new TcpClient();
-                client.Connect(endPoint);
-                networkStream = client.GetStream();
-                protocolSI = new ProtocolSI();
-                byte[] packet = protocolSI.Make(ProtocolSICmdType.DATA, name + "$");
-                networkStream.Write(packet, 0, packet.Length);
-                newMessage(this.name + "$" + "Connected to server");
-                bt_send.Enabled = true;
-            }
-            catch (Exception ex)
-            {
-                newMessage(this.name + "$" + "Connection to server fail... Try later...");
-                bt_send.Enabled = false;
-            }
-            
+            connect_server();
         }
 
         private void bt_send_Click(object sender, EventArgs e)
         {
-            // Leer mensagem
-            string msg = name + "$" + tb_message.Text;
-            tb_message.Clear();
+            // Construir mensagem
+            string msg = this.name + "$" + tb_message.Text;
             try
             {
                 // Preparar mensagem para o servidor
-                newMessage(msg);
+                newMessage(this.name, tb_message.Text);
+                tb_message.Clear();
                 byte[] packet = protocolSI.Make(ProtocolSICmdType.DATA, msg);
                 networkStream.Write(packet, 0, packet.Length);
-                consoleLog("Mensagem enviada ao servidor...");
                 // Espera informação do servidor
                 while (protocolSI.GetCmdType() != ProtocolSICmdType.ACK)                
                     networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
@@ -102,7 +91,7 @@ namespace TS_Projeto_Chat
             }
             catch (Exception ex)
             {
-                newMessage(this.name + "$" + "Erro ao comunicar com o servidor.\r\n" + ex.Message);
+                newMessage(this.name ,"Erro ao comunicar com o servidor.\r\n" + ex.Message);
                 bt_send.Enabled = false;
             }
         }

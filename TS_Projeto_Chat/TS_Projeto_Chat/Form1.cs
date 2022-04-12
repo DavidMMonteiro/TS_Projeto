@@ -1,4 +1,3 @@
-using System.Net;
 using System.Net.Sockets;
 using EI.SI;
 
@@ -21,7 +20,6 @@ namespace TS_Projeto_Chat
             this.client = client;  
             this.name = name;
             lb_chat.Text = name;
-            //connect_server();
         }
 
         private void consoleLog(string msg)

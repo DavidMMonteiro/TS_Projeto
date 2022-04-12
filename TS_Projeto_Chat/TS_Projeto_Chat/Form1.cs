@@ -48,7 +48,7 @@ namespace TS_Projeto_Chat
             }
             catch (Exception ex)
             {
-                newMessage(this.name , "Error ao sair do servidor\r\n\t" + ex.Message);
+                //newMessage(this.name , "Error ao sair do servidor\r\n\t" + ex.Message);
             }
         }
 
@@ -76,7 +76,7 @@ namespace TS_Projeto_Chat
         private void bt_send_Click(object sender, EventArgs e)
         {
             // Construir mensagem
-            string msg = this.name + "$" + tb_message.Text;
+            string msg = tb_message.Text;
             try
             {
                 // Preparar mensagem para o servidor

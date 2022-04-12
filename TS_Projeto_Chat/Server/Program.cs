@@ -122,7 +122,7 @@ namespace Server
                     {
                         case ProtocolSICmdType.DATA:
                             output = protocolSI.GetStringFromData();
-                            helper.consoleLog(output.Split('$')[1], this.clientName);
+                            helper.consoleLog(output, this.clientName);
                             ack = protocolSI.Make(ProtocolSICmdType.ACK);
                             networkStream.Write(ack, 0, ack.Length);
                             break;

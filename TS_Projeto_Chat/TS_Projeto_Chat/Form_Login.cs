@@ -22,17 +22,18 @@ namespace TS_Projeto_Chat
         public Form_Login()
         {
             InitializeComponent();
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, port);
+            client = new TcpClient();
+            client.Connect(endPoint);
+            networkStream = client.GetStream();
+            protocolSI = new ProtocolSI();
         }
 
         private bool login_Server(string username, string password)
         {
             try
             {
-                IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, port);
-                client = new TcpClient();
-                client.Connect(endPoint);
-                networkStream = client.GetStream();
-                protocolSI = new ProtocolSI();
+                
                 string msg = username + "$" + password;
                 byte[] packet = protocolSI.Make(ProtocolSICmdType.DATA, msg);
                 networkStream.Write(packet, 0, packet.Length);
@@ -55,7 +56,7 @@ namespace TS_Projeto_Chat
 
             Form1 chat = new Form1(port, networkStream, protocolSI, client, tb_user.Text);
             chat.Show();
-            this.Hide();
+            this.Close();
 
         }
     }

@@ -61,7 +61,7 @@ namespace TS_Projeto_Chat
                 newMessage(this.name , "Connected to server");
                 bt_send.Enabled = true;
             }
-            catch (Exception ex)
+            catch
             {
                 newMessage(this.name , "Connection to server fail... Try later...");
                 bt_send.Enabled = false;
@@ -75,14 +75,12 @@ namespace TS_Projeto_Chat
 
         private void bt_send_Click(object sender, EventArgs e)
         {
-            // Construir mensagem
-            string msg = this.name + "$" + tb_message.Text;
             try
             {
                 // Preparar mensagem para o servidor
                 newMessage(this.name, tb_message.Text);
                 tb_message.Clear();
-                byte[] packet = protocolSI.Make(ProtocolSICmdType.DATA, msg);
+                byte[] packet = protocolSI.Make(ProtocolSICmdType.DATA, tb_message.Text);
                 networkStream.Write(packet, 0, packet.Length);
                 // Espera informação do servidor
                 while (protocolSI.GetCmdType() != ProtocolSICmdType.ACK)                

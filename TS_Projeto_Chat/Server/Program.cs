@@ -1,4 +1,16 @@
-﻿using System;
+﻿/*
+    INFO
+    Servidor para criar um chat cliente - servidor
+    Este sistema irá permitir dois ou mais clientes acceder as suas contas no servirdor y 
+    iniciar um chat com um ou varios clientes do servidor.
+
+    OWNER INFO
+    Class: 4515 Curso Tecnico Superior Profissional de Programacao de Sistemas de Informacao
+    UC: Tópicos de Segurança
+    Student(s) number: 2211849
+    Creator(s): David Machado Monteiro
+*/
+using System;
 using System.Net;
 using System.Net.Sockets;
 using EI.SI;

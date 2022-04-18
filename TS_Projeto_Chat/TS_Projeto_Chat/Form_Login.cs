@@ -14,25 +14,35 @@ namespace TS_Projeto_Chat
         public Form_Login()
         {
             InitializeComponent();
-            try {
-                IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, port);
-                client = new TcpClient();
-                client.Connect(endPoint);
-                networkStream = client.GetStream();
-                protocolSI = new ProtocolSI();
-            } catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            }
+        }
 
         private void consoleLog(string msg)
         {
             Console.WriteLine(DateTime.Now.ToString("(dd/MM/yyyy HH:mm:ss)") + "Login: " + msg);
         }
+        
+        private bool open_connection()
+        {
+            try
+            {
+                IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, port);
+                client = new TcpClient();
+                client.Connect(endPoint);
+                networkStream = client.GetStream();
+                protocolSI = new ProtocolSI();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
 
         private bool login_Server(string username, string password)
         {
+            if(!open_connection())
+                return false;
             try
             {
                 
@@ -41,8 +51,10 @@ namespace TS_Projeto_Chat
                 byte[] packet = protocolSI.Make(ProtocolSICmdType.DATA, msg);
                 networkStream.Write(packet, 0, packet.Length);
                 // Espera informação do servidor
-                while (protocolSI.GetCmdType() != ProtocolSICmdType.ACK)
+                do { 
                     networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
+                } while (protocolSI.GetCmdType() != ProtocolSICmdType.ACK);
+                    
                 string serermsg = protocolSI.GetStringFromData();
                 return bool.Parse(serermsg);
             }

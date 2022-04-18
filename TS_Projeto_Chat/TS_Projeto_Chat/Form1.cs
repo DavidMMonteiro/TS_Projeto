@@ -69,6 +69,8 @@ namespace TS_Projeto_Chat
         }
         private void send_message()
         {
+            if (tb_message.Text == "")
+                return;
             string msg = tb_message.Text;
             try
             {

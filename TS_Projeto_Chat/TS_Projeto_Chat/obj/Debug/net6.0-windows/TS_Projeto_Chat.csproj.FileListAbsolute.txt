@@ -37,3 +37,4 @@ C:\Users\carla\OneDrive\Documentos\GitHub\TS_Projeto\TS_Projeto_Chat\TS_Projeto_
 C:\Users\carla\OneDrive\Documentos\GitHub\TS_Projeto\TS_Projeto_Chat\TS_Projeto_Chat\obj\Debug\net6.0-windows\TS_Projeto_Chat.csproj.CopyComplete
 C:\Users\carla\OneDrive\Documentos\GitHub\TS_Projeto\TS_Projeto_Chat\TS_Projeto_Chat\obj\Debug\net6.0-windows\TS_Projeto_Chat.genruntimeconfig.cache
 C:\Users\carla\OneDrive\Documentos\GitHub\TS_Projeto\TS_Projeto_Chat\TS_Projeto_Chat\obj\Debug\net6.0-windows\ref\TS_Projeto_Chat.dll
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\TS_Projeto_Chat\obj\Debug\net6.0-windows\TS_Projeto_Chat.Form_Login.resources

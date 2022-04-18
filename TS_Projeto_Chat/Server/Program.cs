@@ -49,21 +49,24 @@ namespace Server
                     networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
                     //Get the client data from the protocol
                     string dataFromClient = protocolSI.GetStringFromData();
-                    byte[] ack = protocolSI.Make(ProtocolSICmdType.ACK);
-                    networkStream.Write(ack, 0, ack.Length);
+                    byte[] ack;
                     helper.consoleLog("Connection try!", name);
                     if (!checkUser(dataFromClient))
                     {
                         helper.consoleLog("User not accepted", "Server");
                         ack = protocolSI.Make(ProtocolSICmdType.ACK, "False");
                         networkStream.Write(ack, 0, ack.Length);
-                        return;
                     }
-                    //Console info
-                    helper.consoleLog(dataFromClient.Split('$')[0] + " connected", name);
-                    //Create Cliente Handler
-                    ClientHandler clientHandler = new ClientHandler(client, dataFromClient.Split('$')[0]);
-                    clientHandler.Handle();
+                    else
+                    {
+                        //Console info
+                        helper.consoleLog(dataFromClient.Split('$')[0] + " connected", name);
+                        ack = protocolSI.Make(ProtocolSICmdType.ACK, "True");
+                        networkStream.Write(ack, 0, ack.Length);
+                        //Create Cliente Handler
+                        ClientHandler clientHandler = new ClientHandler(client, dataFromClient.Split('$')[0]);
+                        clientHandler.Handle();
+                    }
                 }catch (Exception ex){
                     helper.consoleLog(ex.Message, name);
                 }

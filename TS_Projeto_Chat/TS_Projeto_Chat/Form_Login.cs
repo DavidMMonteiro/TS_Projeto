@@ -1,6 +1,7 @@
 ﻿using EI.SI;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 
 namespace TS_Projeto_Chat
 {
@@ -13,12 +14,17 @@ namespace TS_Projeto_Chat
         public Form_Login()
         {
             InitializeComponent();
-            IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, port);
-            client = new TcpClient();
-            client.Connect(endPoint);
-            networkStream = client.GetStream();
-            protocolSI = new ProtocolSI();
-        }
+            try {
+                IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, port);
+                client = new TcpClient();
+                client.Connect(endPoint);
+                networkStream = client.GetStream();
+                protocolSI = new ProtocolSI();
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            }
 
         private void consoleLog(string msg)
         {
@@ -31,12 +37,14 @@ namespace TS_Projeto_Chat
             {
                 
                 string msg = username + "$" + password;
+                protocolSI = new ProtocolSI();
                 byte[] packet = protocolSI.Make(ProtocolSICmdType.DATA, msg);
                 networkStream.Write(packet, 0, packet.Length);
                 // Espera informação do servidor
                 while (protocolSI.GetCmdType() != ProtocolSICmdType.ACK)
                     networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
-                return true;
+                string serermsg = protocolSI.GetStringFromData();
+                return bool.Parse(serermsg);
             }
             catch (Exception ex)
             {
@@ -48,8 +56,10 @@ namespace TS_Projeto_Chat
         }
         private void bt_login_Click(object sender, EventArgs e)
         {
-            if (!login_Server(tb_user.Text, tb_password.Text))
-                return;
+            if (!login_Server(tb_user.Text, tb_password.Text)) {
+                MessageBox.Show("Check user name or Password", "Login fail");
+                return; 
+            }
 
             Form1 chat = new Form1(port, networkStream, protocolSI, client, tb_user.Text);
             chat.Show();

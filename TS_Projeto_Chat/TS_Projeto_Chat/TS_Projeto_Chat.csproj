@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <Reference Include="ProtocolSI">
-      <HintPath>..\..\..\..\..\..\Downloads\ProtocolSI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Downloads\ProtocolSI_alunos\ProtocolSI.dll</HintPath>
     </Reference>
   </ItemGroup>
 

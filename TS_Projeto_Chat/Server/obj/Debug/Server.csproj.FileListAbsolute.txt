@@ -1,35 +1,10 @@
-C:\Users\2211849\Documents\GitHub\TS_Ficha_3\ProtocoloISI_test\Server\bin\Debug\Server.exe.config
-C:\Users\2211849\Documents\GitHub\TS_Ficha_3\ProtocoloISI_test\Server\bin\Debug\Server.exe
-C:\Users\2211849\Documents\GitHub\TS_Ficha_3\ProtocoloISI_test\Server\bin\Debug\Server.pdb
-C:\Users\2211849\Documents\GitHub\TS_Ficha_3\ProtocoloISI_test\Server\obj\Debug\Server.csproj.AssemblyReference.cache
-C:\Users\2211849\Documents\GitHub\TS_Ficha_3\ProtocoloISI_test\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
-C:\Users\2211849\Documents\GitHub\TS_Ficha_3\ProtocoloISI_test\Server\obj\Debug\Server.csproj.CopyComplete
-C:\Users\2211849\Documents\GitHub\TS_Ficha_3\ProtocoloISI_test\Server\obj\Debug\Server.exe
-C:\Users\2211849\Documents\GitHub\TS_Ficha_3\ProtocoloISI_test\Server\obj\Debug\Server.pdb
-C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Ficha_3\ProtocoloISI_test\Server\bin\Debug\Server.exe.config
-C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Ficha_3\ProtocoloISI_test\Server\bin\Debug\Server.exe
-C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Ficha_3\ProtocoloISI_test\Server\bin\Debug\Server.pdb
-C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Ficha_3\ProtocoloISI_test\Server\obj\Debug\Server.csproj.AssemblyReference.cache
-C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Ficha_3\ProtocoloISI_test\Server\obj\Debug\Server.csproj.SuggestedBindingRedirects.cache
-C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Ficha_3\ProtocoloISI_test\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
-C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Ficha_3\ProtocoloISI_test\Server\obj\Debug\Server.csproj.CopyComplete
-C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Ficha_3\ProtocoloISI_test\Server\obj\Debug\Server.exe
-C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Ficha_3\ProtocoloISI_test\Server\obj\Debug\Server.pdb
-C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\Server.exe.config
-C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\Server.exe
-C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\Server.pdb
-C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.csproj.AssemblyReference.cache
-C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.csproj.SuggestedBindingRedirects.cache
-C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
-C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.csproj.CopyComplete
-C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.exe
-C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.pdb
-C:\Users\carla\OneDrive\Documentos\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\Server.exe.config
-C:\Users\carla\OneDrive\Documentos\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\Server.exe
-C:\Users\carla\OneDrive\Documentos\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\Server.pdb
-C:\Users\carla\OneDrive\Documentos\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.csproj.AssemblyReference.cache
-C:\Users\carla\OneDrive\Documentos\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.csproj.SuggestedBindingRedirects.cache
-C:\Users\carla\OneDrive\Documentos\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
-C:\Users\carla\OneDrive\Documentos\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.csproj.CopyComplete
-C:\Users\carla\OneDrive\Documentos\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.exe
-C:\Users\carla\OneDrive\Documentos\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.pdb
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\Server\bin\Debug\Server.exe.config
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\Server\bin\Debug\Server.exe
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\Server\bin\Debug\Server.pdb
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\Server\bin\Debug\ProtocolSI.dll
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\Server\obj\Debug\Server.csproj.AssemblyReference.cache
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\Server\obj\Debug\Server.csproj.SuggestedBindingRedirects.cache
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\Server\obj\Debug\Server.csproj.CopyComplete
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\Server\obj\Debug\Server.exe
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\Server\obj\Debug\Server.pdb

@@ -1,0 +1,14 @@
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\TS_Chat\obj\Debug\TS_Chat.csproj.AssemblyReference.cache
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\TS_Chat\obj\Debug\TS_Chat.csproj.SuggestedBindingRedirects.cache
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\TS_Chat\obj\Debug\TS_Projeto_Chat.Form1.resources
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\TS_Chat\obj\Debug\TS_Projeto_Chat.Form_Login.resources
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\TS_Chat\obj\Debug\TS_Chat.Properties.Resources.resources
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\TS_Chat\obj\Debug\TS_Chat.csproj.GenerateResource.cache
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\TS_Chat\obj\Debug\TS_Chat.csproj.CoreCompileInputs.cache
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\TS_Chat\bin\Debug\TS_Chat.exe.config
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\TS_Chat\bin\Debug\TS_Chat.exe
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\TS_Chat\bin\Debug\TS_Chat.pdb
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\TS_Chat\bin\Debug\ProtocolSI.dll
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\TS_Chat\obj\Debug\TS_Chat.csproj.CopyComplete
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\TS_Chat\obj\Debug\TS_Chat.exe
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\TS_Chat\obj\Debug\TS_Chat.pdb

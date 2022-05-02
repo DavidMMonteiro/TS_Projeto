@@ -95,7 +95,7 @@ namespace TS_Projeto_Chat
             this.bt_connect.Location = new System.Drawing.Point(571, 10);
             this.bt_connect.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.bt_connect.Name = "bt_connect";
-            this.bt_connect.Size = new System.Drawing.Size(104, 20);
+            this.bt_connect.Size = new System.Drawing.Size(104, 29);
             this.bt_connect.TabIndex = 5;
             this.bt_connect.Text = "Connect to Chat";
             this.bt_connect.UseVisualStyleBackColor = true;
@@ -106,7 +106,7 @@ namespace TS_Projeto_Chat
             this.bt_logout.Location = new System.Drawing.Point(462, 10);
             this.bt_logout.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.bt_logout.Name = "bt_logout";
-            this.bt_logout.Size = new System.Drawing.Size(104, 20);
+            this.bt_logout.Size = new System.Drawing.Size(104, 29);
             this.bt_logout.TabIndex = 5;
             this.bt_logout.Text = "Logout";
             this.bt_logout.UseVisualStyleBackColor = true;

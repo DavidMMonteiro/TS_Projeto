@@ -61,7 +61,8 @@ namespace TS_Projeto_Chat
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Connection to server fail... Try later...");
+                //MessageBox.Show("Login fail", "Check user name or Password");
+                MessageBox.Show("Connection fail", "Connection to server fail... Try later...");
                 consoleLog(ex.Message);
                 return false;
             }
@@ -70,7 +71,7 @@ namespace TS_Projeto_Chat
         private void bt_login_Click(object sender, EventArgs e)
         {
             if (!login_Server(tb_user.Text, tb_password.Text)) {
-                MessageBox.Show("Check user name or Password", "Login fail");
+                tb_password.Text = null;
                 return; 
             }
 

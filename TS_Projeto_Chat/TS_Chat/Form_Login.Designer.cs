@@ -54,7 +54,7 @@ namespace TS_Projeto_Chat
             // 
             this.tb_user.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tb_user.Location = new System.Drawing.Point(160, 98);
-            this.tb_user.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_user.Margin = new System.Windows.Forms.Padding(2);
             this.tb_user.Name = "tb_user";
             this.tb_user.Size = new System.Drawing.Size(119, 20);
             this.tb_user.TabIndex = 1;
@@ -75,8 +75,9 @@ namespace TS_Projeto_Chat
             // 
             this.tb_password.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tb_password.Location = new System.Drawing.Point(160, 123);
-            this.tb_password.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_password.Margin = new System.Windows.Forms.Padding(2);
             this.tb_password.Name = "tb_password";
+            this.tb_password.PasswordChar = '*';
             this.tb_password.Size = new System.Drawing.Size(119, 20);
             this.tb_password.TabIndex = 3;
             // 
@@ -85,7 +86,7 @@ namespace TS_Projeto_Chat
             this.bt_login.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.bt_login.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.bt_login.Location = new System.Drawing.Point(80, 150);
-            this.bt_login.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bt_login.Margin = new System.Windows.Forms.Padding(2);
             this.bt_login.Name = "bt_login";
             this.bt_login.Size = new System.Drawing.Size(199, 26);
             this.bt_login.TabIndex = 4;
@@ -103,7 +104,7 @@ namespace TS_Projeto_Chat
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tb_user);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form_Login";
             this.Text = "Login";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Login_FormClosing);

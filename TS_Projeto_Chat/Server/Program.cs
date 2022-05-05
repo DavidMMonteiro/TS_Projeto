@@ -142,7 +142,7 @@ namespace Server
                             networkStream.Write(ack, 0, ack.Length);
                             break;
                         case ProtocolSICmdType.EOT:
-                            output = "Ending Threading from " + this.clientName;
+                            output = this.clientName + " exit chat";
                             helper.consoleLog(output, this.clientName);
                             ack = protocolSI.Make(ProtocolSICmdType.ACK);
                             networkStream.Write(ack, 0, ack.Length);

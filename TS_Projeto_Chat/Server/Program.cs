@@ -138,13 +138,13 @@ namespace Server
                         case ProtocolSICmdType.DATA:
                             output = protocolSI.GetStringFromData();
                             helper.consoleLog(output, this.clientName);
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK);
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, $"({this.clientName}) {output}");
                             networkStream.Write(ack, 0, ack.Length);
                             break;
                         case ProtocolSICmdType.EOT:
                             output = this.clientName + " exit chat";
                             helper.consoleLog(output, this.clientName);
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK);
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, output);
                             networkStream.Write(ack, 0, ack.Length);
                             break;
                         default:
@@ -202,6 +202,7 @@ namespace Server
         {
             Console.WriteLine(DateTime.Now.ToString("(dd/MM/yyyy HH:mm:ss)") + owner + ": " + msg);
         }
+
     }
 }
 

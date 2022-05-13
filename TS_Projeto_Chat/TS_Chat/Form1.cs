@@ -7,12 +7,17 @@ namespace TS_Projeto_Chat
 {
     public partial class Form1 : Form
     {
+        // Atributos para conneção com  o Servidor 
         private int port;
         private NetworkStream networkStream;
         private ProtocolSI protocolSI;
         private TcpClient client;
         private string name;
 
+    	/* 
+        Quando e construido o form, recebe a informação da ligaçã establecida 
+        com o servidor no form anterior
+        */ 
         public Form1(int port, NetworkStream network, ProtocolSI protocol, TcpClient client, string name)
         {
             InitializeComponent();
@@ -24,17 +29,20 @@ namespace TS_Projeto_Chat
             lb_chat.Text = name;
         }
 
+        // Escreve na consola a mensagem recebida com a data de emissão
         private void consoleLog(string msg)
         {
             Console.WriteLine(DateTime.Now.ToString("(dd/MM/yyyy HH:mm:ss)") + this.name +": " + msg);
         }
 
+        // Constroe uma nova mensagem para o chat e envia para a consola
         private void newMessage(string owner, string msg)
         {
             tb_chat.AppendText("\r\n(" + owner + "): " + msg);
             consoleLog(msg);
         }
 
+        // Fecha o ligação do cliente com o servidor-
         private void CloseClient()
         {
             try
@@ -69,6 +77,7 @@ namespace TS_Projeto_Chat
                 bt_send.Enabled = false;
             }
         }
+
         private void send_message()
         {
             if (tb_message.Text == "")
@@ -81,7 +90,7 @@ namespace TS_Projeto_Chat
                 tb_message.Clear();
                 byte[] packet = protocolSI.Make(ProtocolSICmdType.DATA, msg);
                 networkStream.Write(packet, 0, packet.Length);
-                // Espera informa��o do servidor
+                // Espera informa��o do servidor
                 while (protocolSI.GetCmdType() != ProtocolSICmdType.ACK)
                     networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
 

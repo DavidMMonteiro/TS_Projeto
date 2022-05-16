@@ -22,7 +22,7 @@ namespace Server
 {
     class Program
     {
-
+        
         static void Main(string[] args)
         {
             Helper helper = new Helper();
@@ -32,6 +32,8 @@ namespace Server
             //
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, PORT);
             TcpListener listener = new TcpListener(endPoint);
+            List<TcpClient> clientsList = new List<TcpClient>();
+            //
             listener.Start();
             //
             helper.consoleLog("Server Start", name);
@@ -60,11 +62,11 @@ namespace Server
                     else
                     {
                         //Console info
-                        helper.consoleLog(dataFromClient.Split('$')[0] + " connected", name);
                         ack = protocolSI.Make(ProtocolSICmdType.ACK, "True");
                         networkStream.Write(ack, 0, ack.Length);
                         //Create Cliente Handler
-                        ClientHandler clientHandler = new ClientHandler(client, dataFromClient.Split('$')[0]);
+                        clientsList.Add(client);
+                        ClientHandler clientHandler = new ClientHandler(client, dataFromClient.Split('$')[0], clientsList);
                         clientHandler.Handle();
                     }
                 }catch (Exception ex){
@@ -107,18 +109,28 @@ namespace Server
         Helper helper = new Helper();
         private TcpClient client;
         private string clientName;
+        private List<TcpClient> clientsList;
+        private Thread thread;
 
-        public ClientHandler(TcpClient client, string clientName)
+
+        public ClientHandler(TcpClient client, string clientName, List<TcpClient> clientsList)
         {
             this.client = client;
             this.clientName = clientName;
+            this.clientsList = clientsList;
+            ProtocolSI protocol = new ProtocolSI();
+            string msg = $"{this.clientName} join the chat";
+            byte[] ack = protocol.Make(ProtocolSICmdType.DATA, msg);
+            helper.consoleLog(msg);
+            this.broadCast(ack, this.client.GetStream());
         }
 
 
         public void Handle()
         {
-            Thread thread = new Thread(threadHandler);
+            thread = new Thread(threadHandler);
             thread.Start();
+            clientsList.Remove(client);
         }
 
         private void threadHandler()
@@ -138,20 +150,14 @@ namespace Server
                         case ProtocolSICmdType.DATA:
                             output = protocolSI.GetStringFromData();
                             helper.consoleLog(output, this.clientName);
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, $"({this.clientName}) {output}");
-                            networkStream.Write(ack, 0, ack.Length);
+                            ack = protocolSI.Make(ProtocolSICmdType.DATA, $"({this.clientName}): {output}");
+                            broadCast(ack, networkStream);
                             break;
                         case ProtocolSICmdType.EOT:
-                            output = this.clientName + " exit chat";
-                            helper.consoleLog(output, this.clientName);
+                            output = this.clientName + " left the chat";
+                            helper.consoleLog(output);
                             ack = protocolSI.Make(ProtocolSICmdType.ACK, output);
-                            networkStream.Write(ack, 0, ack.Length);
-                            break;
-                        default:
-                            output = "Protocol Type not know";
-                            helper.consoleLog(output, this.clientName);
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK);
-                            networkStream.Write(ack, 0, ack.Length);
+                            broadCast(ack, networkStream);
                             break;
                     }
                 }
@@ -174,6 +180,12 @@ namespace Server
 
             networkStream.Close();
             client.Close();
+        }
+
+        private void broadCast(byte[] data, NetworkStream networkStream)
+        {
+            foreach (TcpClient clientList in this.clientsList)
+                networkStream.Write(data, 0, data.Length);
         }
     }
 
@@ -198,6 +210,10 @@ namespace Server
 
     class Helper
     {
+        public void consoleLog(string msg)
+        {
+            Console.WriteLine(DateTime.Now.ToString("[dd/MM/yyyy HH:mm:ss]") + msg);
+        }
         public void consoleLog(string msg, string owner)
         {
             Console.WriteLine(DateTime.Now.ToString("[dd/MM/yyyy HH:mm:ss]") + "(" + owner + ")" + ": " + msg);

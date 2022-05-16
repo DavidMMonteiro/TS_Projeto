@@ -15,6 +15,7 @@ namespace TS_Projeto_Chat
         private TcpClient client;
         private string name;
         private ChatController chatController;
+        private MessageHandler messageHandler;
 
         public Form1(int port, NetworkStream network, ProtocolSI protocol, TcpClient client, string name)
         {
@@ -27,13 +28,9 @@ namespace TS_Projeto_Chat
             this.Text = "Chatting as: " + name;
             lb_chat.Text = name;
             this.chatController = new ChatController(tb_chat);
-            MessageHandler server = new MessageHandler(this.client, chatController);
+            this.messageHandler = new MessageHandler(this.client, this.chatController);
         }
 
-        private void consoleLog(string msg)
-        {
-            Console.WriteLine(DateTime.Now.ToString("[dd/MM/yyyy HH:mm:ss]") + "(" + this.name + ")" + ": " + msg);
-        }
 
         private void CloseClient()
         {
@@ -48,8 +45,8 @@ namespace TS_Projeto_Chat
             }
             catch (Exception ex)
             {
-                consoleLog(ex.Message);
-                //newMessage(this.name , "Error ao sair do servidor\r\n\t" + ex.Message);
+                string msg = "(error): " + ex.Message;
+                chatController.consoleLog(msg);
             }
         }
 
@@ -65,7 +62,6 @@ namespace TS_Projeto_Chat
             catch (Exception ex)
             {
                 chatController.newMessage(this.name, "Connection to server fail... Try later...");
-                consoleLog(ex.Message);
                 bt_send.Enabled = true;
             }
         }
@@ -117,6 +113,7 @@ namespace TS_Projeto_Chat
 
         private void bt_logout_Click(object sender, EventArgs e)
         {
+            this.messageHandler.CloseThread();
             CloseClient();
             Form_Login form_login = new Form_Login();
             form_login.Show();
@@ -134,6 +131,7 @@ namespace TS_Projeto_Chat
         }
         public void newMessage(string msg)
         {
+            consoleLog(msg);
             if (textBox.InvokeRequired)          
                 textBox.Invoke((MethodInvoker)delegate { textBox.AppendText($"\r\n{msg}"); });
             else           
@@ -141,11 +139,29 @@ namespace TS_Projeto_Chat
         }
         public void newMessage(string owner, string msg)
         {
+            string data = $"({owner}): {msg}";
+            consoleLog(data);
             if (textBox.InvokeRequired)
-                textBox.Invoke((MethodInvoker)delegate { textBox.AppendText($"\r\n({owner}): {msg}"); });
+                textBox.Invoke((MethodInvoker)delegate { textBox.AppendText("\r\n"+data); });
             else
-                textBox.AppendText($"\r\n({owner}): {msg}");
+                textBox.AppendText("\r\n"+data);
 
+        }
+        public void consoleLog(string msg)
+        {
+            msg = DateTime.Now.ToString("[dd/MM/yyyy HH:mm:ss]") + msg;
+            logFile(msg);
+            Console.WriteLine(msg);
+        }
+
+        private void logFile(string msg)
+        {
+            string pathFile = "chat_" + DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + ".txt";
+            if (!File.Exists(pathFile))            
+                File.Create(pathFile);
+
+            File.AppendAllText(pathFile, "\r\n" + msg);
+                
         }
 
 
@@ -154,19 +170,26 @@ namespace TS_Projeto_Chat
     {
         private TcpClient client;
         private ChatController chatController;
+        private Thread messageThread;
 
         public MessageHandler(TcpClient client, ChatController chatController)
         {
             this.client = client;
             this.chatController = chatController;
-            Handle();
+            this.messageThread = Handle();
         }
 
 
-        public void Handle()
+        public Thread Handle()
         {
             Thread thread = new Thread(threadHandler);
             thread.Start();
+            return thread;
+        }
+
+        public void CloseThread()
+        {
+            this.messageThread.Interrupt();
         }
 
         private void threadHandler()
@@ -179,17 +202,12 @@ namespace TS_Projeto_Chat
                 try
                 {
                     int bytesRead = networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
-                    byte[] ack;
                     string output;
                     switch (protocolSI.GetCmdType())
                     {
-                        case ProtocolSICmdType.ACK:
+                        case ProtocolSICmdType.DATA:
                             output = protocolSI.GetStringFromData();
                             chatController.newMessage(output);
-                            break;
-                        default:
-                            output = "Protocol Type not know";
-                            MessageBox.Show("Erro Desconhecido", output, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                     }
                 }
@@ -200,7 +218,11 @@ namespace TS_Projeto_Chat
                 }
                 catch (IOException ex)
                 {
-                    MessageBox.Show(ex.Message, "Error IOException",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Error IOException", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                }
+                catch (ObjectDisposedException)
+                { 
                     break;
                 }
                 catch (Exception ex)

@@ -25,7 +25,7 @@ namespace Server
         
         static void Main(string[] args)
         {
-            Helper helper = new Helper();
+            LogController logger = new LogController();
             string name = "Server";
 
             int PORT = 10000;
@@ -36,7 +36,7 @@ namespace Server
             //
             listener.Start();
             //
-            helper.consoleLog("Server Start", name);
+            logger.consoleLog("Server Start", name);
             //
             while (true)
             {
@@ -52,10 +52,10 @@ namespace Server
                     //Get the client data from the protocol
                     string dataFromClient = protocolSI.GetStringFromData();
                     byte[] ack;
-                    helper.consoleLog("Connection try!", name);
+                    logger.consoleLog("Connection try!", name);
                     if (!checkUser(dataFromClient))
                     {
-                        helper.consoleLog("User not accepted", "Server");
+                        logger.consoleLog("User not accepted", "Server");
                         ack = protocolSI.Make(ProtocolSICmdType.ACK, "False");
                         networkStream.Write(ack, 0, ack.Length);
                     }
@@ -70,7 +70,7 @@ namespace Server
                         clientHandler.Handle();
                     }
                 }catch (Exception ex){
-                    helper.consoleLog(ex.Message, name);
+                    logger.consoleLog(ex.Message, name);
                 }
                 
             }
@@ -106,7 +106,7 @@ namespace Server
     
     class ClientHandler
     {
-        Helper helper = new Helper();
+        LogController logger = new LogController();
         private TcpClient client;
         private string clientName;
         private List<TcpClient> clientsList;
@@ -121,8 +121,8 @@ namespace Server
             ProtocolSI protocol = new ProtocolSI();
             string msg = $"{this.clientName} join the chat";
             byte[] ack = protocol.Make(ProtocolSICmdType.DATA, msg);
-            helper.consoleLog(msg);
-            this.broadCast(ack, this.client.GetStream());
+            logger.consoleLog(msg);
+            this.broadCast(ack);
         }
 
 
@@ -130,7 +130,6 @@ namespace Server
         {
             thread = new Thread(threadHandler);
             thread.Start();
-            clientsList.Remove(client);
         }
 
         private void threadHandler()
@@ -149,43 +148,46 @@ namespace Server
                     {
                         case ProtocolSICmdType.DATA:
                             output = protocolSI.GetStringFromData();
-                            helper.consoleLog(output, this.clientName);
+                            logger.consoleLog(output, this.clientName);
                             ack = protocolSI.Make(ProtocolSICmdType.DATA, $"({this.clientName}): {output}");
-                            broadCast(ack, networkStream);
+                            broadCast(ack);
                             break;
                         case ProtocolSICmdType.EOT:
                             output = this.clientName + " left the chat";
-                            helper.consoleLog(output);
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, output);
-                            broadCast(ack, networkStream);
+                            logger.consoleLog(output);
+                            ack = protocolSI.Make(ProtocolSICmdType.DATA, output);
+                            broadCast(ack);
                             break;
                     }
+                    if (protocolSI.GetCmdType() == ProtocolSICmdType.EOT)
+                        break;
                 }
                 catch (SocketException ex)
                 {
-                    helper.consoleLog(ex.Message, this.clientName);
+                    logger.consoleLog(ex.Message, this.clientName);
                     break;
                 }
                 catch (IOException ex)
                 {
-                    helper.consoleLog("Socket error: \r\n\t" + ex.Message, this.clientName);
+                    logger.consoleLog("Socket error: \r\n\t" + ex.Message, this.clientName);
                     break;
                 }
                 catch (Exception ex)
                 {
-                    helper.consoleLog("Uncommon error\r\n" + ex.Message, this.clientName);
+                    logger.consoleLog("Uncommon error\r\n" + ex.Message, this.clientName);
                     break;
                 }
             }
 
             networkStream.Close();
             client.Close();
+            clientsList.Remove(client);
         }
 
-        private void broadCast(byte[] data, NetworkStream networkStream)
+        private void broadCast(byte[] data)
         {
-            foreach (TcpClient clientList in this.clientsList)
-                networkStream.Write(data, 0, data.Length);
+            foreach(TcpClient client in clientsList) 
+                client.GetStream().Write(data, 0, data.Length);   
         }
     }
 
@@ -208,15 +210,28 @@ namespace Server
         }
     }
 
-    class Helper
+    class LogController
     {
         public void consoleLog(string msg)
         {
-            Console.WriteLine(DateTime.Now.ToString("[dd/MM/yyyy HH:mm:ss]") + msg);
+            msg = DateTime.Now.ToString("[dd/MM/yyyy HH:mm:ss]") + msg;
+            this.logFile(msg);
+            Console.WriteLine(msg);
         }
         public void consoleLog(string msg, string owner)
         {
-            Console.WriteLine(DateTime.Now.ToString("[dd/MM/yyyy HH:mm:ss]") + "(" + owner + ")" + ": " + msg);
+            msg = DateTime.Now.ToString("[dd/MM/yyyy HH:mm:ss]") + "(" + owner + ")" + ": " + msg;
+            this.logFile(msg);
+            Console.WriteLine(msg);
+        }
+        private void logFile(string msg)
+        {
+            string pathFile = "chat_" + DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + ".txt";
+            if (!File.Exists(pathFile))
+                File.Create(pathFile);
+
+            File.AppendAllText(pathFile, "\r\n" + msg);
+
         }
 
     }

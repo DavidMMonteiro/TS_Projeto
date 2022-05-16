@@ -156,11 +156,17 @@ namespace TS_Projeto_Chat
 
         private void logFile(string msg)
         {
-            string pathFile = "chat_" + DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + ".txt";
-            if (!File.Exists(pathFile))            
-                File.Create(pathFile);
+            try { 
+                string pathFile = "chat_" + DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + ".txt";
+                if (!File.Exists(pathFile))
+                    File.Create(pathFile);
 
-            File.AppendAllText(pathFile, "\r\n" + msg);
+                File.AppendAllText(pathFile, "\r\n" + msg);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
                 
         }
 

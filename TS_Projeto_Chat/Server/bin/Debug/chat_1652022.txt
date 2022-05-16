@@ -1,0 +1,109 @@
+
+[16/05/2022 21:54:14](Server): Server Start
+[16/05/2022 21:54:18](Server): Connection try!
+[16/05/2022 21:54:18]admin join the chat
+[16/05/2022 21:55:53](admin): Hello server, how is the log going?
+[16/05/2022 22:05:42](Server): Server Start
+[16/05/2022 22:05:46](Server): Connection try!
+[16/05/2022 22:05:46]admin join the chat
+[16/05/2022 22:05:49](admin): hello
+[16/05/2022 22:06:30](Server): Server Start
+[16/05/2022 22:06:34](Server): Connection try!
+[16/05/2022 22:06:34]admin join the chat
+[16/05/2022 22:06:41](admin): hello
+[16/05/2022 22:06:49](Server): Server Start
+[16/05/2022 22:07:03](Server): Connection try!
+[16/05/2022 22:07:03]admin join the chat
+[16/05/2022 22:08:33](Server): Server Start
+[16/05/2022 22:08:36](Server): Connection try!
+[16/05/2022 22:08:36]admin join the chat
+[16/05/2022 22:08:46](admin): hello
+[16/05/2022 22:13:01](Server): Server Start
+[16/05/2022 22:13:05](Server): Connection try!
+[16/05/2022 22:13:05]admin join the chat
+[16/05/2022 22:14:07](Server): Server Start
+[16/05/2022 22:14:11](Server): Connection try!
+[16/05/2022 22:14:11]admin join the chat
+[16/05/2022 22:14:18]admin left the chat
+[16/05/2022 22:14:28](Server): Server Start
+[16/05/2022 22:14:32](Server): Connection try!
+[16/05/2022 22:14:32]admin join the chat
+[16/05/2022 22:14:41](admin): hello
+[16/05/2022 22:15:18](admin): Hello
+[16/05/2022 22:15:35](admin): Hello again
+[16/05/2022 22:16:12](Server): Server Start
+[16/05/2022 22:16:20](Server): Connection try!
+[16/05/2022 22:16:20]admin join the chat
+[16/05/2022 22:16:31](admin): hello
+[16/05/2022 22:16:44](admin): Hello again
+[16/05/2022 22:16:52](admin): I think i fix the problem
+[16/05/2022 22:17:42](admin): hello
+[16/05/2022 22:18:19](Server): Connection try!
+[16/05/2022 22:18:19]user1 join the chat
+[16/05/2022 22:18:31](admin): hello user1
+[16/05/2022 22:18:50](user1): hi everyone
+[16/05/2022 22:20:16](Server): Server Start
+[16/05/2022 22:20:20](Server): Connection try!
+[16/05/2022 22:20:20]admin join the chat
+[16/05/2022 22:20:54](Server): Server Start
+[16/05/2022 22:20:58](Server): Connection try!
+[16/05/2022 22:20:58]admin join the chat
+[16/05/2022 22:21:17](Server): Connection try!
+[16/05/2022 22:21:17]user1 join the chat
+[16/05/2022 22:23:17](Server): Server Start
+[16/05/2022 22:23:21](Server): Connection try!
+[16/05/2022 22:23:21]admin join the chat
+[16/05/2022 22:23:24]admin left the chat
+[16/05/2022 22:23:30](Server): Connection try!
+[16/05/2022 22:23:30]admin join the chat
+[16/05/2022 22:24:55](Server): Server Start
+[16/05/2022 22:25:00](Server): Connection try!
+[16/05/2022 22:25:00]admin join the chat
+[16/05/2022 22:25:02]admin left the chat
+[16/05/2022 22:25:32](Server): Connection try!
+[16/05/2022 22:25:32]admin join the chat
+[16/05/2022 22:25:34]admin left the chat
+[16/05/2022 22:25:57](Server): Connection try!
+[16/05/2022 22:25:57]admin join the chat
+[16/05/2022 22:26:06](Server): Connection try!
+[16/05/2022 22:26:06]user1 join the chat
+[16/05/2022 22:26:12]admin left the chat
+[16/05/2022 22:27:20](Server): Connection try!
+[16/05/2022 22:27:20]admin join the chat
+[16/05/2022 22:27:29](admin): hello
+[16/05/2022 22:30:09](Server): Server Start
+[16/05/2022 22:30:12](Server): Connection try!
+[16/05/2022 22:30:12]admin join the chat
+[16/05/2022 22:30:18](admin): hello
+[16/05/2022 22:31:25]admin left the chat
+[16/05/2022 22:31:30](Server): Server Start
+[16/05/2022 22:31:37](Server): Connection try!
+[16/05/2022 22:31:37]admin join the chat
+[16/05/2022 22:31:44](Server): Connection try!
+[16/05/2022 22:31:44]user1 join the chat
+[16/05/2022 22:31:49](admin): hello
+[16/05/2022 22:32:22]admin left the chat
+[16/05/2022 22:32:22](user1): Socket error: 
+	Não é possível ler dados a partir da ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[16/05/2022 22:35:33](Server): Server Start
+[16/05/2022 22:35:37](Server): Connection try!
+[16/05/2022 22:35:37]admin join the chat
+[16/05/2022 22:35:41](Server): Server Start
+[16/05/2022 22:35:50](Server): Connection try!
+[16/05/2022 22:35:50]admin join the chat
+[16/05/2022 22:35:59](Server): Connection try!
+[16/05/2022 22:35:59](Server): User not accepted
+[16/05/2022 22:36:04](Server): Connection try!
+[16/05/2022 22:36:04]user1 join the chat
+[16/05/2022 22:36:10](user1): hello
+[16/05/2022 22:36:37](admin): Hello user1!
+[16/05/2022 22:36:51](user1): Hi!!!!!!
+[16/05/2022 22:37:17]user1 left the chat
+[16/05/2022 22:38:55](Server): Server Start
+[16/05/2022 22:38:59](Server): Connection try!
+[16/05/2022 22:38:59]admin join the chat
+[16/05/2022 22:39:02](admin): Hello
+[16/05/2022 22:39:12](Server): Connection try!
+[16/05/2022 22:39:12]user1 join the chat
+[16/05/2022 22:39:32]user1 left the chat
+[16/05/2022 22:39:42]admin left the chat

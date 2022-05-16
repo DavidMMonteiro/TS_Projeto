@@ -11,7 +11,7 @@
 #### Descrição:
 - Este software ira recriar uma ligação cliente - servidor e de um o varios chat's em vivo com multiplos clientes.
 
-* Funcionalidades básicas:
+#### Funcionalidades básicas:
   * Cliente:
     - [x] Comunicação cliente - servidor
     - [x] Cliente Login

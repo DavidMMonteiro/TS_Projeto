@@ -200,7 +200,7 @@ namespace Server
     {
         public void consoleLog(string msg, string owner)
         {
-            Console.WriteLine(DateTime.Now.ToString("(dd/MM/yyyy HH:mm:ss)") + owner + ": " + msg);
+            Console.WriteLine(DateTime.Now.ToString("[dd/MM/yyyy HH:mm:ss]") + "(" + owner + ")" + ": " + msg);
         }
 
     }

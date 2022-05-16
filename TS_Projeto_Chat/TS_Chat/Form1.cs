@@ -27,12 +27,12 @@ namespace TS_Projeto_Chat
             this.Text = "Chatting as: " + name;
             lb_chat.Text = name;
             this.chatController = new ChatController(tb_chat);
-            ServerHandler server = new ServerHandler(this.client, chatController);
+            MessageHandler server = new MessageHandler(this.client, chatController);
         }
 
         private void consoleLog(string msg)
         {
-            Console.WriteLine(DateTime.Now.ToString("(dd/MM/yyyy HH:mm:ss)") + this.name + ": " + msg);
+            Console.WriteLine(DateTime.Now.ToString("[dd/MM/yyyy HH:mm:ss]") + "(" + this.name + ")" + ": " + msg);
         }
 
         private void CloseClient()
@@ -150,12 +150,12 @@ namespace TS_Projeto_Chat
 
 
     }
-    class ServerHandler
+    class MessageHandler
     {
         private TcpClient client;
         private ChatController chatController;
 
-        public ServerHandler(TcpClient client, ChatController chatController)
+        public MessageHandler(TcpClient client, ChatController chatController)
         {
             this.client = client;
             this.chatController = chatController;

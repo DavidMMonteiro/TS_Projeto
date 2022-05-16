@@ -93,17 +93,22 @@ namespace Server
             return false;
         }
 
+        // Carrega a informação dos utilizadores a partir de ficheiros txt
+        // (sustituir por base de dados)
         private static List<User> LoadUsersFiles()
         {
+            // Cria a lista de utilizadores
             List<User> users = new List<User>();
-            string user_info = File.ReadAllText("users.txt");
-            foreach(string user in user_info.Split(';'))
+            // Lee a informação do ficheiro e divide
+            foreach(string user in File.ReadAllText("users.txt").Split(';'))
+                // Cria um novo utilizador por linha
                 users.Add(new User(user.Split('$')[0], user.Split('$')[1]));
-
+            //Retorna a lista de utilizadores
             return users;
         }
     } 
     
+    // Thread para do client
     class ClientHandler
     {
         LogController logger = new LogController();
@@ -112,8 +117,8 @@ namespace Server
         private List<TcpClient> clientsList;
         private Thread thread;
 
-
-        public ClientHandler(TcpClient client, string clientName, List<TcpClient> clientsList)
+		// Construtor do ClientHandler
+        public ClientHandler(TcpClient client, string clientName, List<TcpClient> clientsList)     
         {
             this.client = client;
             this.clientName = clientName;
@@ -125,27 +130,38 @@ namespace Server
             this.broadCast(ack);
         }
 
-
+        // Inizializa a nova Therad
         public void Handle()
         {
             thread = new Thread(threadHandler);
             thread.Start();
         }
 
+        // Função que vai comprir a nova thread
         private void threadHandler()
         {
+            // Vai establecer a ligação do cliente
             NetworkStream networkStream = this.client.GetStream();
             ProtocolSI protocolSI = new ProtocolSI();
-            //
+            // Enquando a mensagem do cliente não for EOT
             while(protocolSI.GetCmdType() != ProtocolSICmdType.EOT)
             {
                 try
                 {
+                    // Vai ler a mensagem do cliente
                     int bytesRead = networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
                     byte[] ack;
                     string output;
+                    /* 
+                    Filtra o tipo de mensagem recebida
+                    A estrutura básica de cada mensagem consiste em:
+                    - Lee a mensagem
+                    - Escreve na consola do servidor
+                    - Envia mensagem ao cliente a confirmar que recebeu a mensagem
+                    */
                     switch (protocolSI.GetCmdType())
                     {
+                        // Se for do tipo DATA
                         case ProtocolSICmdType.DATA:
                             output = protocolSI.GetStringFromData();
                             logger.consoleLog(output, this.clientName);
@@ -167,12 +183,12 @@ namespace Server
                     logger.consoleLog(ex.Message, this.clientName);
                     break;
                 }
-                catch (IOException ex)
+                catch (IOException ex) // Excepção de Socket
                 {
                     logger.consoleLog("Socket error: \r\n\t" + ex.Message, this.clientName);
                     break;
                 }
-                catch (Exception ex)
+                catch (Exception ex) // Excepção desconhecida 
                 {
                     logger.consoleLog("Uncommon error\r\n" + ex.Message, this.clientName);
                     break;
@@ -191,18 +207,21 @@ namespace Server
         }
     }
 
+    // Class User para guardar a informação do utilizador
     class User
     {
 
         public String Username { get; set; }
         private String Password;
 
+        //User constructor
         public User(String user, String password)
         {
             this.Username = user;
             this.Password = password;
         }
 
+        //Valida a password do utilizador
         public bool checkPassword(string tmpPassword)
         {
             return (tmpPassword != null && tmpPassword == this.Password);
@@ -210,7 +229,8 @@ namespace Server
         }
     }
 
-    class LogController
+	// Class helper para enviar mensagens a consola
+    class LogController    
     {
         public void consoleLog(string msg)
         {

@@ -111,7 +111,7 @@ namespace Server
     // Thread para do client
     class ClientHandler
     {
-        LogController logger = new LogController();
+        private LogController logger = new LogController();
         private TcpClient client;
         private string clientName;
         private List<TcpClient> clientsList;
@@ -194,15 +194,20 @@ namespace Server
                     break;
                 }
             }
-
+            //Termina a stream do client
             networkStream.Close();
+            //Termina o TcpClient
             client.Close();
+            //Remove a ligação com o cliente da lista
             clientsList.Remove(client);
         }
 
+        // Envia mensagem a todas a ligações
         private void broadCast(byte[] data)
         {
+            // Loop por cada cliente
             foreach(TcpClient client in clientsList) 
+                // Envia a mensagem ao cliente
                 client.GetStream().Write(data, 0, data.Length);   
         }
     }
@@ -224,32 +229,44 @@ namespace Server
         //Valida a password do utilizador
         public bool checkPassword(string tmpPassword)
         {
-            return (tmpPassword != null && tmpPassword == this.Password);
-            
+            return (tmpPassword != null && tmpPassword == this.Password);            
         }
     }
 
-	// Class helper para enviar mensagens a consola
+	// Class LogController para enviar mensagens a consola
     class LogController    
     {
+        //Mensagem simple para a consola
         public void consoleLog(string msg)
         {
+            // Constroe a mensagem
             msg = DateTime.Now.ToString("[dd/MM/yyyy HH:mm:ss]") + msg;
+            // Guarda a msg no ficheiro
             this.logFile(msg);
+            // Escreve a msg na consola
             Console.WriteLine(msg);
         }
+
+        //Mensagem composta para a consola
         public void consoleLog(string msg, string owner)
         {
+            // Constroe a mensagem
             msg = DateTime.Now.ToString("[dd/MM/yyyy HH:mm:ss]") + "(" + owner + ")" + ": " + msg;
+            // Guarda a msg no ficheiro
             this.logFile(msg);
+            // Escreve a msg na consola
             Console.WriteLine(msg);
         }
+        
+        //Cria e guarda os logs do servidor
         private void logFile(string msg)
         {
+            // Constroe o nome do ficheiro
             string pathFile = "chat_" + DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + ".txt";
+            // Valida se o ficheiro existe
             if (!File.Exists(pathFile))
                 File.Create(pathFile);
-
+            // Guarda a informação no ficheiro
             File.AppendAllText(pathFile, "\r\n" + msg);
 
         }

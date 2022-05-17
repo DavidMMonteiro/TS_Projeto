@@ -1,0 +1,26 @@
+
+[17/05/2022 16:51:19](Server): Server Start
+[17/05/2022 16:51:50](Server): Server Start
+[17/05/2022 16:51:54](Server): Connection try!
+[17/05/2022 16:51:54]admin join the chat
+[17/05/2022 16:51:58](admin): hello
+[17/05/2022 16:52:10](Server): Connection try!
+[17/05/2022 16:52:10]user1 join the chat
+[17/05/2022 16:52:17](admin): Hello user1
+[17/05/2022 16:52:22](user1): Hello admin!
+[17/05/2022 16:52:27]admin left the chat
+[17/05/2022 16:52:27](user1): Hello admin!
+[17/05/2022 16:52:27](user1): Socket error: 
+	Não é possível ler dados a partir da ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[17/05/2022 16:52:58](Server): Server Start
+[17/05/2022 16:53:01](Server): Connection try!
+[17/05/2022 16:53:01]admin join the chat
+[17/05/2022 16:53:02]admin left the chat
+[17/05/2022 16:55:09](Server): Server Start
+[17/05/2022 16:55:13](Server): Connection try!
+[17/05/2022 16:55:13]admin join the chat
+[17/05/2022 16:55:14]admin left the chat
+[17/05/2022 16:55:41](Server): Server Start
+[17/05/2022 16:55:47](Server): Connection try!
+[17/05/2022 16:55:47]admin join the chat
+[17/05/2022 16:55:50]admin left the chat

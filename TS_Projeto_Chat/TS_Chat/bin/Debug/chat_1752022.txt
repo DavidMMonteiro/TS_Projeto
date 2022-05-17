@@ -1,0 +1,18 @@
+
+[17/05/2022 16:52:57](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[17/05/2022 16:52:57](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[17/05/2022 16:53:01]admin join the chat
+[17/05/2022 16:53:02]admin left the chat
+[17/05/2022 16:53:02](admin): Fechar client... bye :-)
+[17/05/2022 16:55:13]admin join the chat
+[17/05/2022 16:55:14]admin left the chat
+[17/05/2022 16:55:14](admin): Fechar client... bye :-)
+[17/05/2022 16:55:19](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[17/05/2022 16:55:47]admin join the chat
+[17/05/2022 16:55:50]admin left the chat
+[17/05/2022 16:55:50](admin): Fechar client... bye :-)
+[17/05/2022 16:55:50](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.

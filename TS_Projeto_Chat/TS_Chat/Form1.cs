@@ -137,9 +137,8 @@ namespace TS_Projeto_Chat
 
         // Efetua o logout do cliente, fechado a ligação já establecido 
         // e abre o form de login para o utilizador 
-        private void bt_logout_Click(object sender, EventArgs e)
-        {
-            this.messageHandler.CloseThread();
+        private void bt_logout_Click(object sender, EventArgs e) 
+        { 
             CloseClient();
             Form_Login form_login = new Form_Login();
             form_login.Show();
@@ -147,22 +146,28 @@ namespace TS_Projeto_Chat
         }
     }
 
+    // Class que controla a caixa das mensagem
     class ChatController
     {
         private TextBox textBox;
 
+        //ChatController constructor
         public ChatController(TextBox textBox)
         {
             this.textBox = textBox;
         }
+
+        //Escreve nova mensagem simples
         public void newMessage(string msg)
         {
             consoleLog(msg);
-            if (textBox.InvokeRequired)          
+            if (textBox.InvokeRequired)
                 textBox.Invoke((MethodInvoker)delegate { textBox.AppendText($"\r\n{msg}"); });
-            else           
+            else
                 textBox.AppendText($"\r\n{msg}");
         }
+
+        //Escreve nova mensagem composta 
         public void newMessage(string owner, string msg)
         {
             string data = $"({owner}): {msg}";
@@ -173,6 +178,8 @@ namespace TS_Projeto_Chat
                 textBox.AppendText("\r\n"+data);
 
         }
+
+        //Envia mensagem para a consola
         public void consoleLog(string msg)
         {
             msg = DateTime.Now.ToString("[dd/MM/yyyy HH:mm:ss]") + msg;
@@ -180,13 +187,17 @@ namespace TS_Projeto_Chat
             Console.WriteLine(msg);
         }
 
+        //Cria e guarda os logs do servidor
         private void logFile(string msg)
         {
-            try { 
+            try 
+            {
+                // Constroe o nome do ficheiro
                 string pathFile = "chat_" + DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + ".txt";
+                // Valida se o ficheiro existe
                 if (!File.Exists(pathFile))
                     File.Create(pathFile);
-
+                // Guarda a informação no ficheiro
                 File.AppendAllText(pathFile, "\r\n" + msg);
             }
             catch (Exception ex)
@@ -198,12 +209,14 @@ namespace TS_Projeto_Chat
 
 
     }
+    // Clase para controlar a leitura de mensagens
     class MessageHandler
     {
         private TcpClient client;
         private ChatController chatController;
         private Thread messageThread;
 
+        // MessageHandler constructor
         public MessageHandler(TcpClient client, ChatController chatController)
         {
             this.client = client;
@@ -211,7 +224,7 @@ namespace TS_Projeto_Chat
             this.messageThread = Handle();
         }
 
-
+        // Handler para iniciar a nova Thread
         public Thread Handle()
         {
             Thread thread = new Thread(threadHandler);
@@ -219,26 +232,40 @@ namespace TS_Projeto_Chat
             return thread;
         }
 
-        public void CloseThread()
+        // Função para fechar a thread
+        /*public void CloseThread()
         {
             this.messageThread.Interrupt();
-        }
+        }*/
 
+        // Função que vai desenvolver a thread
         private void threadHandler()
         {
+            // Guarda a networkStream no cliente
             NetworkStream networkStream = this.client.GetStream();
+
             ProtocolSI protocolSI = new ProtocolSI();
-            //
+            // Loop ate receber mensagem do servidor a fechar o ligação
             while (protocolSI.GetCmdType() != ProtocolSICmdType.EOT)
             {
                 try
                 {
+                    // Lee a mensagem envia pelo servidor
                     int bytesRead = networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
                     string output;
+                    // Filtra o tipo de mensagem
                     switch (protocolSI.GetCmdType())
                     {
                         case ProtocolSICmdType.DATA:
+                            // Lee a mensagem 
                             output = protocolSI.GetStringFromData();
+                            // Escreve a mensagem para o cliente
+                            chatController.newMessage(output);
+                            break;
+                        case ProtocolSICmdType.EOT:
+                            // Lee a mensagem 
+                            output = protocolSI.GetStringFromData();
+                            // Escreve a mensagem para o cliente
                             chatController.newMessage(output);
                             break;
                     }
@@ -253,17 +280,18 @@ namespace TS_Projeto_Chat
                     MessageBox.Show(ex.Message, "Error IOException", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 }
-                catch (ObjectDisposedException)
-                { 
+                catch (ObjectDisposedException ex)
+                {
+                    MessageBox.Show(ex.Message, "Error ObjectDisposed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 }
-                catch (Exception ex)
+                /*catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Unknow Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
-                }
+                }*/
             }
-
+            // Fecha a ligação
             networkStream.Close();
             client.Close();
         }

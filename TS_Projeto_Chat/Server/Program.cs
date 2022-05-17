@@ -171,7 +171,7 @@ namespace Server
                         case ProtocolSICmdType.EOT:
                             output = this.clientName + " left the chat";
                             logger.consoleLog(output);
-                            ack = protocolSI.Make(ProtocolSICmdType.DATA, output);
+                            ack = protocolSI.Make(ProtocolSICmdType.EOT, output);
                             broadCast(ack);
                             break;
                     }
@@ -261,13 +261,19 @@ namespace Server
         //Cria e guarda os logs do servidor
         private void logFile(string msg)
         {
-            // Constroe o nome do ficheiro
-            string pathFile = "chat_" + DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + ".txt";
-            // Valida se o ficheiro existe
-            if (!File.Exists(pathFile))
-                File.Create(pathFile);
-            // Guarda a informação no ficheiro
-            File.AppendAllText(pathFile, "\r\n" + msg);
+            try
+            {
+                // Constroe o nome do ficheiro
+                string pathFile = "chat_" + DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + ".txt";
+                // Valida se o ficheiro existe
+                if (!File.Exists(pathFile))
+                    File.Create(pathFile);
+                // Guarda a informação no ficheiro
+                File.AppendAllText(pathFile, "\r\n" + msg);
+            }catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
         }
 

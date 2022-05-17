@@ -29,3 +29,8 @@ Nome do objecto: 'System.Net.Sockets.NetworkStream'.
 Nome do objecto: 'System.Net.Sockets.NetworkStream'.
 [17/05/2022 17:07:55](error): Não é possível aceder a um objecto eliminado.
 Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[17/05/2022 20:12:23]admin join the chat
+[17/05/2022 20:12:28]admin left the chat
+[17/05/2022 20:12:28](admin): Fechar client... bye :-)
+[17/05/2022 20:12:29](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.

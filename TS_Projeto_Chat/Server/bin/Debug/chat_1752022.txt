@@ -35,3 +35,7 @@
 [17/05/2022 17:07:50](user1): hello everyone
 [17/05/2022 17:07:50](user1): Socket error: 
 	Não é possível ler dados a partir da ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[17/05/2022 20:12:18](Server): Server Start
+[17/05/2022 20:12:23](Server): Connection try!
+[17/05/2022 20:12:23]admin join the chat
+[17/05/2022 20:12:28]admin left the chat

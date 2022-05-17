@@ -253,50 +253,6 @@ namespace Server
         }
     }
 
-	// Class LogController para enviar mensagens a consola
-    class LogController    
-    {
-        //Mensagem simple para a consola
-        public void consoleLog(string msg)
-        {
-            // Constroe a mensagem
-            msg = DateTime.Now.ToString("[dd/MM/yyyy HH:mm:ss]") + msg;
-            // Guarda a msg no ficheiro
-            this.logFile(msg);
-            // Escreve a msg na consola
-            Console.WriteLine(msg);
-        }
-
-        //Mensagem composta para a consola
-        public void consoleLog(string msg, string owner)
-        {
-            // Constroe a mensagem
-            msg = DateTime.Now.ToString("[dd/MM/yyyy HH:mm:ss]") + "(" + owner + ")" + ": " + msg;
-            // Guarda a msg no ficheiro
-            this.logFile(msg);
-            // Escreve a msg na consola
-            Console.WriteLine(msg);
-        }
-        
-        //Cria e guarda os logs do servidor
-        private void logFile(string msg)
-        {
-            try
-            {
-                // Constroe o nome do ficheiro
-                string pathFile = "chat_" + DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + ".txt";
-                // Valida se o ficheiro existe
-                if (!File.Exists(pathFile))
-                    File.Create(pathFile);
-                // Guarda a informação no ficheiro
-                File.AppendAllText(pathFile, "\r\n" + msg);
-            }catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-        }
-
-    }
+	
 }
 

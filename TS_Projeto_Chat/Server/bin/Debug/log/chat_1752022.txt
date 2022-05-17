@@ -1,0 +1,29 @@
+[17/05/2022 21:24:26]admin join the chat
+
+[17/05/2022 21:24:55](Server): Server Start
+[17/05/2022 21:25:12](Server): Connection try!
+[17/05/2022 21:25:12]admin join the chat
+[17/05/2022 21:25:33](admin): Hello
+[17/05/2022 21:25:54](Server): Server Start
+[17/05/2022 21:26:02](Server): Connection try!
+[17/05/2022 21:26:02]admin join the chat
+[17/05/2022 21:26:05](admin): hello
+[17/05/2022 21:26:20](admin): hello again
+[17/05/2022 21:26:36](admin): Hello one more time
+[17/05/2022 21:27:10](admin): Do i keep working?
+[17/05/2022 21:27:42](Server): Server Start
+[17/05/2022 21:27:46](Server): Connection try!
+[17/05/2022 21:27:46]admin join the chat
+[17/05/2022 21:27:49](admin): hello
+[17/05/2022 21:28:00](admin): hello again
+[17/05/2022 21:28:14](admin): hello one more time 
+[17/05/2022 21:28:28](admin): don't get why it bug
+[17/05/2022 21:28:49](admin): Do i keep working?
+[17/05/2022 21:44:54](Server): Server Start
+[17/05/2022 21:44:59](Server): Connection try!
+[17/05/2022 21:44:59]admin join the chat
+[17/05/2022 21:45:14](admin): hello
+[17/05/2022 21:45:15]admin left the chat
+[17/05/2022 21:45:24](Server): Connection try!
+[17/05/2022 21:45:24]user1 join the chat
+[17/05/2022 21:45:30](user1): hello again

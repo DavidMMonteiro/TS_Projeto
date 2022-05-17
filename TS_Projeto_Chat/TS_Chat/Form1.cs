@@ -147,7 +147,7 @@ namespace TS_Projeto_Chat
     }
 
     // Class que controla a caixa das mensagem
-    class ChatController
+    class ChatController : LogController
     {
         private TextBox textBox;
 
@@ -169,44 +169,15 @@ namespace TS_Projeto_Chat
 
         //Escreve nova mensagem composta 
         public void newMessage(string owner, string msg)
-        {
+        {            
+            consoleLog(msg, owner);
             string data = $"({owner}): {msg}";
-            consoleLog(data);
             if (textBox.InvokeRequired)
-                textBox.Invoke((MethodInvoker)delegate { textBox.AppendText("\r\n"+data); });
+                textBox.Invoke((MethodInvoker)delegate { textBox.AppendText("\r\n" + data); });
             else
-                textBox.AppendText("\r\n"+data);
+                textBox.AppendText("\r\n" + data);
 
         }
-
-        //Envia mensagem para a consola
-        public void consoleLog(string msg)
-        {
-            msg = DateTime.Now.ToString("[dd/MM/yyyy HH:mm:ss]") + msg;
-            logFile(msg);
-            Console.WriteLine(msg);
-        }
-
-        //Cria e guarda os logs do servidor
-        private void logFile(string msg)
-        {
-            try 
-            {
-                // Constroe o nome do ficheiro
-                string pathFile = "chat_" + DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + ".txt";
-                // Valida se o ficheiro existe
-                if (!File.Exists(pathFile))
-                    File.Create(pathFile);
-                // Guarda a informação no ficheiro
-                File.AppendAllText(pathFile, "\r\n" + msg);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-                
-        }
-
 
     }
     // Clase para controlar a leitura de mensagens
@@ -231,12 +202,6 @@ namespace TS_Projeto_Chat
             thread.Start();
             return thread;
         }
-
-        // Função para fechar a thread
-        /*public void CloseThread()
-        {
-            this.messageThread.Interrupt();
-        }*/
 
         // Função que vai desenvolver a thread
         private void threadHandler()

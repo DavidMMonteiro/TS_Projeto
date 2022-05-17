@@ -32,7 +32,7 @@ namespace Server
             //
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, PORT);
             TcpListener listener = new TcpListener(endPoint);
-            List<TcpClient> clientsList = new List<TcpClient>();
+            Dictionary<string, TcpClient> clientsDictionary = new Dictionary<string, TcpClient>();
             //
             listener.Start();
             //
@@ -65,8 +65,8 @@ namespace Server
                         ack = protocolSI.Make(ProtocolSICmdType.ACK, "True");
                         networkStream.Write(ack, 0, ack.Length);
                         //Create Cliente Handler
-                        clientsList.Add(client);
-                        ClientHandler clientHandler = new ClientHandler(client, dataFromClient.Split('$')[0], clientsList);
+                        clientsDictionary.Add(dataFromClient.Split('$')[0], client);
+                        ClientHandler clientHandler = new ClientHandler(client, dataFromClient.Split('$')[0], clientsDictionary);
                         clientHandler.Handle();
                     }
                 }catch (Exception ex){
@@ -114,15 +114,15 @@ namespace Server
         private LogController logger = new LogController();
         private TcpClient client;
         private string clientName;
-        private List<TcpClient> clientsList;
+        private Dictionary<string, TcpClient> ClientsDictionary;
         private Thread thread;
 
 		// Construtor do ClientHandler
-        public ClientHandler(TcpClient client, string clientName, List<TcpClient> clientsList)     
+        public ClientHandler(TcpClient client, string clientName, Dictionary<string, TcpClient> clientsDictionary)     
         {
             this.client = client;
             this.clientName = clientName;
-            this.clientsList = clientsList;
+            this.ClientsDictionary = clientsDictionary;
             ProtocolSI protocol = new ProtocolSI();
             string msg = $"{this.clientName} join the chat";
             byte[] ack = protocol.Make(ProtocolSICmdType.DATA, msg);
@@ -199,16 +199,16 @@ namespace Server
             //Termina o TcpClient
             client.Close();
             //Remove a ligação com o cliente da lista
-            clientsList.Remove(client);
+            ClientsDictionary.Remove(this.clientName);
         }
 
         // Envia mensagem a todas a ligações
         private void broadCast(byte[] data)
         {
             // Loop por cada cliente
-            foreach(TcpClient client in clientsList) 
+            foreach(KeyValuePair<string,TcpClient> client in ClientsDictionary) 
                 // Envia a mensagem ao cliente
-                client.GetStream().Write(data, 0, data.Length);   
+                client.Value.GetStream().Write(data, 0, data.Length);   
         }
     }
 

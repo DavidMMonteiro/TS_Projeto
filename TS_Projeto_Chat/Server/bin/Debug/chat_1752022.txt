@@ -24,3 +24,14 @@
 [17/05/2022 16:55:47](Server): Connection try!
 [17/05/2022 16:55:47]admin join the chat
 [17/05/2022 16:55:50]admin left the chat
+[17/05/2022 17:07:27](Server): Server Start
+[17/05/2022 17:07:31](Server): Connection try!
+[17/05/2022 17:07:31]admin join the chat
+[17/05/2022 17:07:33](admin): hello
+[17/05/2022 17:07:41](Server): Connection try!
+[17/05/2022 17:07:41]user1 join the chat
+[17/05/2022 17:07:48](user1): hello everyone
+[17/05/2022 17:07:50]admin left the chat
+[17/05/2022 17:07:50](user1): hello everyone
+[17/05/2022 17:07:50](user1): Socket error: 
+	Não é possível ler dados a partir da ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.

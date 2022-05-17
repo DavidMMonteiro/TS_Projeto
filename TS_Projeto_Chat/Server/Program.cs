@@ -185,12 +185,12 @@ namespace Server
                 }
                 catch (IOException ex) // Excepção de Socket
                 {
-                    logger.consoleLog("Socket error: \r\n\t" + ex.Message, this.clientName);
+                    logger.consoleLog("Socket error: " + ex.Message, this.clientName);
                     break;
                 }
                 catch (Exception ex) // Excepção desconhecida 
                 {
-                    logger.consoleLog("Uncommon error\r\n" + ex.Message, this.clientName);
+                    logger.consoleLog("Uncommon error: " + ex.Message, this.clientName);
                     break;
                 }
             }
@@ -209,6 +209,26 @@ namespace Server
             foreach(KeyValuePair<string,TcpClient> client in ClientsDictionary) 
                 // Envia a mensagem ao cliente
                 client.Value.GetStream().Write(data, 0, data.Length);   
+        }
+
+        // Envia mensagem a uma lista de clientes
+        private void multiCast(byte[] data, List<string> destenies)
+        {
+            // Itenera pelos nomes destino
+            foreach(string desteny in destenies)
+                // Valida se o nome destino existe no dicionario
+                if(ClientsDictionary.TryGetValue(desteny, out TcpClient client))
+                    // Envia a mensagem ao cliente especifico
+                    client.GetStream().Write(data, 0, data.Length);
+        }
+
+        // Envia mensagem a so um client
+        private void unicast(byte[] data, string desteny)
+        {
+            // Valida se o destino existe no dictionario
+            if(ClientsDictionary.TryGetValue(desteny, out TcpClient client))
+                // Envia ao destino se existir
+                client.GetStream().Write(data, 0, data.Length);
         }
     }
 

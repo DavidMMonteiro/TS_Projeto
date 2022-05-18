@@ -61,7 +61,7 @@ namespace TS_Chat
                             chatController.newMessage(output);
                             break;
                     }
-                }
+                }// Change Exception to show on Console on last version
                 catch (SocketException ex)
                 {
                     MessageBox.Show(ex.Message, "Error SocketExcpetion", MessageBoxButtons.OK, MessageBoxIcon.Error);

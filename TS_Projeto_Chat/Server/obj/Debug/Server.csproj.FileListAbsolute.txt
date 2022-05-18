@@ -27,3 +27,6 @@ C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Se
 C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.csproj.CopyComplete
 C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.exe
 C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.pdb
+C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\TS_Chat.exe
+C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\TS_Chat.pdb
+C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\TS_Chat.exe.config

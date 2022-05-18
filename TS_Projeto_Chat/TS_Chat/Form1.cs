@@ -1,7 +1,5 @@
 using System;
-using System.IO;
 using System.Net.Sockets;
-using System.Threading;
 using System.Windows.Forms;
 using EI.SI;
 using TS_Chat;
@@ -105,6 +103,7 @@ namespace TS_Projeto_Chat
 				// Caso a mensagem sofrer erro ao ser enviada
                 chatController.newMessage(this.name, "Erro ao comunicar com o servidor.\r\n" + ex.Message);
                 bt_send.Enabled = false;
+                logout();
             }
         }
 
@@ -136,10 +135,16 @@ namespace TS_Projeto_Chat
             Application.Exit();
         }
 
+        // Chama a funçºão de logout
+        private void bt_logout_Click(object sender, EventArgs e) 
+        {
+            logout();
+        }
+
         // Efetua o logout do cliente, fechado a ligação já establecido 
         // e abre o form de login para o utilizador 
-        private void bt_logout_Click(object sender, EventArgs e) 
-        { 
+        private void logout()
+        {
             CloseClient();
             Form_Login form_login = new Form_Login();
             form_login.Show();

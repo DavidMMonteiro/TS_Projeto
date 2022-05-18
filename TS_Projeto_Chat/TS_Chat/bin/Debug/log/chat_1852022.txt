@@ -1,0 +1,31 @@
+
+[18/05/2022 08:38:27]admin join the chat
+[18/05/2022 08:39:40](admin): hello chat
+[18/05/2022 08:39:51](admin): I'm chatting a lot 
+[18/05/2022 08:40:39]user1 join the chat
+[18/05/2022 08:40:39]user1 join the chat
+[18/05/2022 08:40:44](user1): Hello chat
+[18/05/2022 08:40:44](user1): Hello chat
+[18/05/2022 08:41:07]user1 left the chat
+[18/05/2022 08:41:07](user1): Fechar client... bye :-)
+[18/05/2022 08:41:07]user1 left the chat
+[18/05/2022 08:41:07](error): Cannot access a disposed object.
+Object name: 'System.Net.Sockets.NetworkStream'.
+[18/05/2022 08:41:07](error): Cannot access a disposed object.
+Object name: 'System.Net.Sockets.NetworkStream'.
+[18/05/2022 08:41:07](error): Cannot access a disposed object.
+Object name: 'System.Net.Sockets.NetworkStream'.
+[18/05/2022 08:44:19]admin join the chat
+[18/05/2022 08:44:32](admin): hello everyone
+[18/05/2022 08:45:04]user1 join the chat
+[18/05/2022 08:45:04]user1 join the chat
+[18/05/2022 08:45:08](user1): hello there
+[18/05/2022 08:45:08](user1): hello there
+[18/05/2022 08:46:03](user1): Erro ao comunicar com o servidor.
+Cannot access a disposed object.
+Object name: 'System.Net.Sockets.NetworkStream'.
+[18/05/2022 08:48:30](error): Cannot access a disposed object.
+Object name: 'System.Net.Sockets.NetworkStream'.
+[18/05/2022 08:48:30](error): Cannot access a disposed object.
+Object name: 'System.Net.Sockets.NetworkStream'.
+[18/05/2022 08:48:41]admin join the chat

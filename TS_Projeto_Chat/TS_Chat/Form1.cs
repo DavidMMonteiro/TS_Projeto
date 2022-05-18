@@ -4,6 +4,7 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Windows.Forms;
 using EI.SI;
+using TS_Chat;
 
 namespace TS_Projeto_Chat
 {
@@ -146,119 +147,4 @@ namespace TS_Projeto_Chat
         }
     }
 
-    // Class que controla a caixa das mensagem
-    class ChatController : LogController
-    {
-        private TextBox textBox;
-
-        //ChatController constructor
-        public ChatController(TextBox textBox)
-        {
-            this.textBox = textBox;
-        }
-
-        //Escreve nova mensagem simples
-        public void newMessage(string msg)
-        {
-            consoleLog(msg);
-            if (textBox.InvokeRequired)
-                textBox.Invoke((MethodInvoker)delegate { textBox.AppendText($"\r\n{msg}"); });
-            else
-                textBox.AppendText($"\r\n{msg}");
-        }
-
-        //Escreve nova mensagem composta 
-        public void newMessage(string owner, string msg)
-        {            
-            consoleLog(msg, owner);
-            string data = $"({owner}): {msg}";
-            if (textBox.InvokeRequired)
-                textBox.Invoke((MethodInvoker)delegate { textBox.AppendText("\r\n" + data); });
-            else
-                textBox.AppendText("\r\n" + data);
-
-        }
-
-    }
-    // Clase para controlar a leitura de mensagens
-    class MessageHandler
-    {
-        private TcpClient client;
-        private ChatController chatController;
-        private Thread messageThread;
-
-        // MessageHandler constructor
-        public MessageHandler(TcpClient client, ChatController chatController)
-        {
-            this.client = client;
-            this.chatController = chatController;
-            this.messageThread = Handle();
-        }
-
-        // Handler para iniciar a nova Thread
-        public Thread Handle()
-        {
-            Thread thread = new Thread(threadHandler);
-            thread.Start();
-            return thread;
-        }
-
-        // Função que vai desenvolver a thread
-        private void threadHandler()
-        {
-            // Guarda a networkStream no cliente
-            NetworkStream networkStream = this.client.GetStream();
-
-            ProtocolSI protocolSI = new ProtocolSI();
-            // Loop ate receber mensagem do servidor a fechar o ligação
-            while (protocolSI.GetCmdType() != ProtocolSICmdType.EOT)
-            {
-                try
-                {
-                    // Lee a mensagem envia pelo servidor
-                    int bytesRead = networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
-                    string output;
-                    // Filtra o tipo de mensagem
-                    switch (protocolSI.GetCmdType())
-                    {
-                        case ProtocolSICmdType.DATA:
-                            // Lee a mensagem 
-                            output = protocolSI.GetStringFromData();
-                            // Escreve a mensagem para o cliente
-                            chatController.newMessage(output);
-                            break;
-                        case ProtocolSICmdType.EOT:
-                            // Lee a mensagem 
-                            output = protocolSI.GetStringFromData();
-                            // Escreve a mensagem para o cliente
-                            chatController.newMessage(output);
-                            break;
-                    }
-                }
-                catch (SocketException ex)
-                {
-                    MessageBox.Show(ex.Message, "Error SocketExcpetion", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                }
-                catch (IOException ex)
-                {
-                    MessageBox.Show(ex.Message, "Error IOException", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                }
-                catch (ObjectDisposedException ex)
-                {
-                    MessageBox.Show(ex.Message, "Error ObjectDisposed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                }
-                /*catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Unknow Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                }*/
-            }
-            // Fecha a ligação
-            networkStream.Close();
-            client.Close();
-        }
-    }
 }

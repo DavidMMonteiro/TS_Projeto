@@ -18,6 +18,7 @@ namespace Server
         public Users()
         {
             this.Mensagens = new HashSet<Mensagens>();
+            this.dtCreation = DateTime.Now;
         }
 
         public Users(string username, byte [] salt, byte[] saltedPasswordHash)
@@ -26,6 +27,7 @@ namespace Server
             this.Salt = salt;   
             this.SaltedPasswordHash = saltedPasswordHash;
             this.Mensagens = new HashSet<Mensagens>();
+            this.dtCreation = DateTime.Now;
         }
 
         public int IdUser { get; set; }

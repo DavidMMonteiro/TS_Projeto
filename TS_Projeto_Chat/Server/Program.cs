@@ -56,8 +56,10 @@ namespace Server
                     string dataFromClient = protocolSI.GetStringFromData();
                     byte[] ack;
                     logger.consoleLog("Connection try!", name);
+                    //Check if new user it's being created
                     if (protocolSI.GetCmdType() == ProtocolSICmdType.USER_OPTION_1)
                     {
+                        //Create new user
                         if (CreateUser(dataFromClient))
                         {
                             ack = protocolSI.Make(ProtocolSICmdType.ACK, "True");
@@ -69,13 +71,8 @@ namespace Server
                             networkStream.Write(ack, 0, ack.Length);
                         }
                     }
-                    else if(!checkUser(dataFromClient))
-                    {
-                        logger.consoleLog("User not accepted", "Server");
-                        ack = protocolSI.Make(ProtocolSICmdType.ACK, "False");
-                        networkStream.Write(ack, 0, ack.Length);
-                    }
-                    else
+                    //Check User loggin
+                    else if(checkUser(dataFromClient))
                     {
                         //Console info
                         ack = protocolSI.Make(ProtocolSICmdType.ACK, "True");
@@ -85,6 +82,12 @@ namespace Server
                         ClientHandler clientHandler = new ClientHandler(client, dataFromClient.Split('$')[0], clientsDictionary);
                         clientHandler.Handle();
                     }
+                    else
+                    {
+                        logger.consoleLog("User not accepted", "Server");
+                        ack = protocolSI.Make(ProtocolSICmdType.ACK, "False");
+                        networkStream.Write(ack, 0, ack.Length);
+                    }
                 }catch (Exception ex){
                     logger.consoleLog(ex.Message, name);
                 }
@@ -92,19 +95,24 @@ namespace Server
             }
         
         }
-
+        //Create new user
         private static bool CreateUser(string dataFromClient)
         {
             LogController logController = new LogController();
+            //Get username from string
             string username = dataFromClient.Split('$')[0];
+            //Get salt size
             int saltSize = Convert.ToInt32(dataFromClient.Split('$')[1]);
+            //Get Salt from string 
             byte[] salt = Encoding.UTF8.GetBytes(dataFromClient.Split('$')[2].Substring(0, saltSize));
+            //Get Hash from string
             byte[] hash = Encoding.UTF8.GetBytes(dataFromClient.Split('$')[2]);
-
+            //Create new user
             Users user = new Users(username, hash, salt);
             try
             {
                 ChatBDContainer chatBDContainer = new ChatBDContainer();
+                //Add new user to DataBase
                 chatBDContainer.UsersSet.Add(user);
                 chatBDContainer.SaveChanges();
                 logController.consoleLog($"New user {user.Username} created", "Server");

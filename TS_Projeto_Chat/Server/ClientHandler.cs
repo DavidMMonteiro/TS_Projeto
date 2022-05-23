@@ -1,4 +1,5 @@
 ﻿using EI.SI;
+using Server;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,6 +8,13 @@ using System.Threading;
 
 namespace TS_Chat
 {
+    //TODO Make enum generic
+    public enum TransmisionType{
+        unicast, 
+        multicast, 
+        broadcast
+    }
+    
     // Thread para do client
     public class ClientHandler
     {
@@ -71,6 +79,7 @@ namespace TS_Chat
                             output = this.clientName + " left the chat";
                             logger.consoleLog(output);
                             ack = protocolSI.Make(ProtocolSICmdType.EOT, output);
+                            //Make Switch kind of TransmisionType
                             broadCast(ack);
                             break;
                     }
@@ -128,6 +137,20 @@ namespace TS_Chat
             if (ClientsDictionary.TryGetValue(desteny, out TcpClient client))
                 // Envia ao destino se existir
                 client.GetStream().Write(data, 0, data.Length);
+        }
+        //TODO Get chat by ID
+        private Chats getChat(int idChat)
+        {
+            ChatBDContainer container = new ChatBDContainer();
+            Chats chat = container.ChatsSet.Find(idChat);
+            return chat; 
+        }
+
+        //TODO Get List users from chat
+        private List<Users> getUsers(Chats chat)
+        {
+            //TODO Get Users from Chat
+            return null;
         }
     }
 

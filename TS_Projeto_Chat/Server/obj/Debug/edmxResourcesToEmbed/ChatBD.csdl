@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ChatBD" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="ChatBDContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="UsersSet" EntityType="ChatBD.Users" />
+    <EntitySet Name="ChatsSet" EntityType="ChatBD.Chats" />
+    <EntitySet Name="MensagensSet" EntityType="ChatBD.Mensagens" />
+    <AssociationSet Name="MensagensChats" Association="ChatBD.MensagensChats">
+      <End Role="Mensagens" EntitySet="MensagensSet" />
+      <End Role="Chats" EntitySet="ChatsSet" />
+    </AssociationSet>
+    <AssociationSet Name="MensagensUsers" Association="ChatBD.MensagensUsers">
+      <End Role="Mensagens" EntitySet="MensagensSet" />
+      <End Role="Users" EntitySet="UsersSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" />
+    <Property Name="SaltedPasswordHash" Type="Binary" Nullable="false" MaxLength="32" />
+    <Property Name="Salt" Type="Binary" Nullable="false" MaxLength="9" />
+    <Property Name="dtCreation" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Mensagens" Relationship="ChatBD.MensagensUsers" FromRole="Users" ToRole="Mensagens" />
+  </EntityType>
+  <EntityType Name="Chats">
+    <Key>
+      <PropertyRef Name="IdChat" />
+    </Key>
+    <Property Name="IdChat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dtCreation" Type="DateTime" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" />
+    <NavigationProperty Name="Mensagens" Relationship="ChatBD.MensagensChats" FromRole="Chats" ToRole="Mensagens" />
+  </EntityType>
+  <EntityType Name="Mensagens">
+    <Key>
+      <PropertyRef Name="IdMensagem" />
+    </Key>
+    <Property Name="IdMensagem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Chats" Relationship="ChatBD.MensagensChats" FromRole="Mensagens" ToRole="Chats" />
+    <NavigationProperty Name="Users" Relationship="ChatBD.MensagensUsers" FromRole="Mensagens" ToRole="Users" />
+    <Property Name="dtCreation" Type="DateTime" Nullable="false" />
+    <Property Name="Text" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="MensagensChats">
+    <End Type="ChatBD.Mensagens" Role="Mensagens" Multiplicity="*" />
+    <End Type="ChatBD.Chats" Role="Chats" Multiplicity="1" />
+  </Association>
+  <Association Name="MensagensUsers">
+    <End Type="ChatBD.Mensagens" Role="Mensagens" Multiplicity="*" />
+    <End Type="ChatBD.Users" Role="Users" Multiplicity="1" />
+  </Association>
+</Schema>

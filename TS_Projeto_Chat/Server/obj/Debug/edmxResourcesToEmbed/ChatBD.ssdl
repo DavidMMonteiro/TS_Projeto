@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ChatBD.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ChatBDStoreContainer">
+    <EntitySet Name="UsersSet" EntityType="ChatBD.Store.UsersSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ChatsSet" EntityType="ChatBD.Store.ChatsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MensagensSet" EntityType="ChatBD.Store.MensagensSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="MensagensChats" Association="ChatBD.Store.MensagensChats">
+      <End Role="Mensagens" EntitySet="MensagensSet" />
+      <End Role="Chats" EntitySet="ChatsSet" />
+    </AssociationSet>
+    <AssociationSet Name="MensagensUsers" Association="ChatBD.Store.MensagensUsers">
+      <End Role="Mensagens" EntitySet="MensagensSet" />
+      <End Role="Users" EntitySet="UsersSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UsersSet">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="SaltedPasswordHash" Type="varbinary" Nullable="false" MaxLength="32" />
+    <Property Name="Salt" Type="varbinary" Nullable="false" MaxLength="9" />
+    <Property Name="dtCreation" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChatsSet">
+    <Key>
+      <PropertyRef Name="IdChat" />
+    </Key>
+    <Property Name="IdChat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dtCreation" Type="datetime" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MensagensSet">
+    <Key>
+      <PropertyRef Name="IdMensagem" />
+    </Key>
+    <Property Name="IdMensagem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dtCreation" Type="datetime" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Chats_IdChat" Type="int" Nullable="false" />
+    <Property Name="Users_IdUser" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="MensagensChats">
+    <End Role="Mensagens" Type="ChatBD.Store.MensagensSet" Multiplicity="*" />
+    <End Role="Chats" Type="ChatBD.Store.ChatsSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Chats">
+        <PropertyRef Name="IdChat" />
+      </Principal>
+      <Dependent Role="Mensagens">
+        <PropertyRef Name="Chats_IdChat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MensagensUsers">
+    <End Role="Mensagens" Type="ChatBD.Store.MensagensSet" Multiplicity="*" />
+    <End Role="Users" Type="ChatBD.Store.UsersSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Mensagens">
+        <PropertyRef Name="Users_IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

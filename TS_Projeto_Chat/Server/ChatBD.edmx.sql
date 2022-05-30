@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/23/2022 20:21:29
--- Generated from EDMX file: C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\ChatBD.edmx
+-- Date Created: 05/30/2022 16:51:48
+-- Generated from EDMX file: C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\ChatBD.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,11 +17,26 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_MensagensChats]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MensagensSet] DROP CONSTRAINT [FK_MensagensChats];
+GO
+IF OBJECT_ID(N'[dbo].[FK_MensagensUsers]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MensagensSet] DROP CONSTRAINT [FK_MensagensUsers];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[UsersSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UsersSet];
+GO
+IF OBJECT_ID(N'[dbo].[ChatsSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ChatsSet];
+GO
+IF OBJECT_ID(N'[dbo].[MensagensSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[MensagensSet];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables

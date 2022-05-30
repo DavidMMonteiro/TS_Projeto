@@ -14,11 +14,9 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using EI.SI;
-using System.IO;
 using TS_Chat;
-using System.Data;
+using System.Linq;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using System.Text;
 
 namespace Server
@@ -107,29 +105,35 @@ namespace Server
             byte[] salt = Encoding.UTF8.GetBytes(dataFromClient.Split('$')[2].Substring(0, saltSize));
             //Get Hash from string
             byte[] hash = Encoding.UTF8.GetBytes(dataFromClient.Split('$')[2]);
-            //Create new user
-            Users user = new Users(username, hash, salt);
-            try
+
+            using (ChatBDContainer chatBDContainer = new ChatBDContainer())
             {
-                ChatBDContainer chatBDContainer = new ChatBDContainer();
-                //Add new user to DataBase
-                chatBDContainer.UsersSet.Add(user);
-                chatBDContainer.SaveChanges();
-                logController.consoleLog($"New user {user.Username} created", "Server");
-                return true;
-            }
-            catch (Exception ex) 
-            {
-                logController.consoleLog(ex.Message, "Server");
-                return false;
-            }
+                // Validate it doesn't exist
+                if (chatBDContainer.UsersSet.ToList().FindAll(u => u.Username == username).Count > 0)
+                    return false;
+
+                //Create new user
+                Users user = new Users(username, hash, salt);
+                try
+                {
+                    //Add new user to DataBase
+                    chatBDContainer.UsersSet.Add(user);
+                    chatBDContainer.SaveChanges();
+                    logController.consoleLog($"New user {user.Username} created", "Server");
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    logController.consoleLog(ex.Message, "Server");
+                    return false;
+                }
+            }            
         }
 
         private static bool checkUser(string user_info)
         {
-            Users tmp_user = new Users();
-            tmp_user.Username = user_info.Split('$')[0];
-            tmp_user.SaltedPasswordHash = Encoding.UTF8.GetBytes(user_info.Split('$')[1]);
+            string check_Username = user_info.Split('$')[0];
+            byte[] check_SaltedPasswordHash = Encoding.UTF8.GetBytes(user_info.Split('$')[1]);
 
             //Get the user data list
             List<Users> user_list = LoadUsers();
@@ -139,7 +143,7 @@ namespace Server
                 return false; 
 
             //Get the user and check the salted hash
-            return user_list.Find(u => u.Username.Equals(tmp_user.Username)).SaltedPasswordHash == tmp_user.SaltedPasswordHash;
+            return user_list.Find(u => u.Username.Equals(check_Username)).checkedSaltPassword(check_SaltedPasswordHash);
         }
 
         // Carrega a informação dos utilizadores

@@ -91,6 +91,7 @@ namespace TS_Projeto_Chat
             // Valida que existe uma mensagem
             if (tb_message.Text == "")
                 return;
+            //TODO Encrypte message
             string msg = tb_message.Text;
             try
             {

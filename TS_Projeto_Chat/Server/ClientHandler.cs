@@ -146,12 +146,6 @@ namespace TS_Chat
             return chat; 
         }
 
-        //TODO Get List users from chat
-        private List<Users> getUsers(Chats chat)
-        {
-            //TODO Get Users from Chat
-            return null;
-        }
     }
 
 }

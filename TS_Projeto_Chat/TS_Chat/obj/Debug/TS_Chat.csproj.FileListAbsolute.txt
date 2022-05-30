@@ -39,3 +39,4 @@ C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\TS_Chat\obj\Debug\T
 C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\TS_Chat\obj\Debug\TS_Chat.csproj.CopyComplete
 C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\TS_Chat\obj\Debug\TS_Chat.exe
 C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\TS_Chat\obj\Debug\TS_Chat.pdb
+C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\TS_Chat\obj\Debug\TS_Chat.FormSignUp.resources

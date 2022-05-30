@@ -3,6 +3,7 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Windows.Forms;
+using TS_Chat;
 
 namespace TS_Projeto_Chat
 {
@@ -66,6 +67,7 @@ namespace TS_Projeto_Chat
             try
             {
                 //Constroe a mensagem do cliente
+                //TODO  Encrypte password & message to server
                 string msg = username + "$" + password;
                 protocolSI = new ProtocolSI();
                 // Converte a mensagem para bytes para poder ser enviada
@@ -93,9 +95,22 @@ namespace TS_Projeto_Chat
         // Acção do butão login
         private void bt_login_Click(object sender, EventArgs e)
         {
+            //Validação que os dados foram inseridos
+            if (string.IsNullOrEmpty(tb_user.Text))
+            {
+                MessageBox.Show("Preencha o cambo do username!", "Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (string.IsNullOrEmpty(tb_password.Text))
+            {
+                MessageBox.Show("Preencha o cambo da password!", "Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             // Valida os dados do cliente e se consegue efetuar o login com po servidor
             if (!login_Server(tb_user.Text, tb_password.Text)) {
                 tb_password.Text = null;
+                MessageBox.Show("Erro no login...\nExpirimente novamente!", "Login fail", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return; 
             }
 
@@ -108,6 +123,11 @@ namespace TS_Projeto_Chat
         private void Form_Login_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void bt_singup_Click(object sender, EventArgs e)
+        {
+            new FormSignUp(this).ShowDialog();
         }
     }
 }

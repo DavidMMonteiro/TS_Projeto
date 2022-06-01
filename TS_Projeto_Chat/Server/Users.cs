@@ -12,6 +12,8 @@ namespace Server
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Security.Cryptography;
+    using System.Linq;
 
     public partial class Users
     {
@@ -39,7 +41,7 @@ namespace Server
 
         public bool checkedSaltPassword(byte[] SaltedPassword)
         {
-            return false;
+            return this.SaltedPasswordHash.SequenceEqual(SaltedPassword);
         }
     }
 }

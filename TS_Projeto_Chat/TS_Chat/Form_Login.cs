@@ -71,7 +71,7 @@ namespace TS_Projeto_Chat
                 string msg = username + "$" + password;
                 protocolSI = new ProtocolSI();
                 // Converte a mensagem para bytes para poder ser enviada
-                byte[] packet = protocolSI.Make(ProtocolSICmdType.DATA, msg);
+                byte[] packet = protocolSI.Make(ProtocolSICmdType.ACK, msg);
                 // Faz a transmição da mensagem
                 networkStream.Write(packet, 0, packet.Length);
                 // Espera pela informação do servidor
@@ -119,15 +119,16 @@ namespace TS_Projeto_Chat
             chat.Show();
             this.Hide();
         }
-        
+
+        private void bt_singup_Click(object sender, EventArgs e)
+        {
+            new FormSignUp(this, port, networkStream, protocolSI, client).ShowDialog();
+        }
+
         private void Form_Login_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
 
-        private void bt_singup_Click(object sender, EventArgs e)
-        {
-            new FormSignUp(this).ShowDialog();
-        }
     }
 }

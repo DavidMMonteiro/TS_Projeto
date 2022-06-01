@@ -1,0 +1,44 @@
+
+[01/06/2022 19:12:36](Server): Server Start
+[01/06/2022 19:13:16](Server): Server Start
+[01/06/2022 19:15:47](Server): Server Start
+[01/06/2022 19:17:10](Server): Server Start
+[01/06/2022 19:18:15](Server): Server Start
+[01/06/2022 19:18:44](Server): Server Start
+[01/06/2022 19:19:12](Server): Server Start
+[01/06/2022 19:19:25](Server): Server Start
+[01/06/2022 19:20:08](Server): Server Start
+[01/06/2022 19:20:34](Server): Server Start
+[01/06/2022 19:24:38](Server): Server Start
+[01/06/2022 19:40:47](Server): Server Start
+[01/06/2022 19:41:02](Server): Server Start
+[01/06/2022 19:41:57](Server): Server Start
+[01/06/2022 19:42:40](Server): Server Start
+[01/06/2022 19:47:59](Server): Server Start
+[01/06/2022 19:48:26](Server): Connection try!
+[01/06/2022 19:50:05](Server): An error occurred while updating the entries. See the inner exception for details.
+[01/06/2022 19:50:33](Server): Connection try!
+[01/06/2022 19:50:36](Server): An error occurred while updating the entries. See the inner exception for details.
+[01/06/2022 19:51:14](Server): Server Start
+[01/06/2022 19:51:20](Server): Connection try!
+[01/06/2022 19:51:24](Server): Connection try!
+[01/06/2022 20:03:17](Server): Server Start
+[01/06/2022 20:03:25](Server): Connection try!
+[01/06/2022 20:04:07](Server): Server Start
+[01/06/2022 20:04:12](Server): Connection try!
+[01/06/2022 20:04:40](Server): Server Start
+[01/06/2022 20:04:44](Server): Connection try!
+[01/06/2022 20:05:06](Server): Server Start
+[01/06/2022 20:05:10](Server): Connection try!
+[01/06/2022 20:05:58](Server): Server Start
+[01/06/2022 20:06:01](Server): Connection try!
+[01/06/2022 20:08:24](Server): Server Start
+[01/06/2022 20:08:32](Server): Connection try!
+[01/06/2022 20:09:36](Server): Server Start
+[01/06/2022 20:09:39](Server): Connection try!
+[01/06/2022 20:10:27](Server): Server Start
+[01/06/2022 20:10:31](Server): Connection try!
+[01/06/2022 20:10:54](Server): Server Start
+[01/06/2022 20:10:58](Server): Connection try!
+[01/06/2022 20:11:36]admin join the chat
+[01/06/2022 20:11:56](admin): hello

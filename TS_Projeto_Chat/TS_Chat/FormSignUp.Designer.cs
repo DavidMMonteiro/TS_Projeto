@@ -63,7 +63,7 @@ namespace TS_Chat
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(46, 87);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 16);
+            this.label2.Size = new System.Drawing.Size(73, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Username:";
             // 
@@ -73,7 +73,7 @@ namespace TS_Chat
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(46, 113);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 16);
+            this.label3.Size = new System.Drawing.Size(70, 16);
             this.label3.TabIndex = 1;
             this.label3.Text = "Password:";
             // 
@@ -83,7 +83,7 @@ namespace TS_Chat
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(46, 139);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 16);
+            this.label4.Size = new System.Drawing.Size(92, 16);
             this.label4.TabIndex = 1;
             this.label4.Text = "Re-Password:";
             // 
@@ -93,7 +93,7 @@ namespace TS_Chat
             this.tb_password.Name = "tb_password";
             this.tb_password.PasswordChar = '*';
             this.tb_password.Size = new System.Drawing.Size(134, 20);
-            this.tb_password.TabIndex = 2;
+            this.tb_password.TabIndex = 1;
             // 
             // tb_re_password
             // 
@@ -119,7 +119,7 @@ namespace TS_Chat
             this.bt_cancel.Location = new System.Drawing.Point(155, 181);
             this.bt_cancel.Name = "bt_cancel";
             this.bt_cancel.Size = new System.Drawing.Size(119, 23);
-            this.bt_cancel.TabIndex = 3;
+            this.bt_cancel.TabIndex = 4;
             this.bt_cancel.Text = "Cancelar";
             this.bt_cancel.UseVisualStyleBackColor = true;
             this.bt_cancel.Click += new System.EventHandler(this.bt_cancel_Click);

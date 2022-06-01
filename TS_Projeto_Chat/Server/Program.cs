@@ -41,8 +41,7 @@ namespace Server
             //
             while (true)
             {
-                try
-                {
+                
                     //Open client conexión
                     TcpClient client = listener.AcceptTcpClient();
                     //Get client data send
@@ -54,6 +53,8 @@ namespace Server
                     string dataFromClient = protocolSI.GetStringFromData();
                     byte[] ack;
                     logger.consoleLog("Connection try!", name);
+                try
+                {
                     //Check if new user it's being created
                     if (protocolSI.GetCmdType() == ProtocolSICmdType.USER_OPTION_1)
                     {
@@ -67,27 +68,33 @@ namespace Server
                         {
                             ack = protocolSI.Make(ProtocolSICmdType.ACK, "False");
                             networkStream.Write(ack, 0, ack.Length);
+                        } 
+                    }
+                    else if(protocolSI.GetCmdType() == ProtocolSICmdType.ACK) 
+                    { 
+                        if (checkUser(dataFromClient))
+                        {
+                            //Console info
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, "True");
+                            networkStream.Write(ack, 0, ack.Length);
+                            //Create Cliente Handler
+                            clientsDictionary.Add(dataFromClient.Split('$')[0], client);
+                            ClientHandler clientHandler = new ClientHandler(client, dataFromClient.Split('$')[0], clientsDictionary);
+                            clientHandler.Handle();
+
                         }
-                    }
-                    //Check User loggin
-                    else if(checkUser(dataFromClient))
-                    {
-                        //Console info
-                        ack = protocolSI.Make(ProtocolSICmdType.ACK, "True");
-                        networkStream.Write(ack, 0, ack.Length);
-                        //Create Cliente Handler
-                        clientsDictionary.Add(dataFromClient.Split('$')[0], client);
-                        ClientHandler clientHandler = new ClientHandler(client, dataFromClient.Split('$')[0], clientsDictionary);
-                        clientHandler.Handle();
-                    }
-                    else
-                    {
-                        logger.consoleLog("User not accepted", "Server");
-                        ack = protocolSI.Make(ProtocolSICmdType.ACK, "False");
-                        networkStream.Write(ack, 0, ack.Length);
+                        else
+                        {
+                            //Console info
+                            logger.consoleLog("User not accepted", "Server");
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, "False");
+                            networkStream.Write(ack, 0, ack.Length);
+                        }
                     }
                 }catch (Exception ex){
                     logger.consoleLog(ex.Message, name);
+                    ack = protocolSI.Make(ProtocolSICmdType.ACK, "False");
+                    networkStream.Write(ack, 0, ack.Length);
                 }
                 
             }
@@ -96,6 +103,9 @@ namespace Server
         //Create new user
         private static bool CreateUser(string dataFromClient)
         {
+            if (dataFromClient.Split('$').Length != 3)
+                return false;
+
             LogController logController = new LogController();
             //Get username from string
             string username = dataFromClient.Split('$')[0];
@@ -135,15 +145,22 @@ namespace Server
             string check_Username = user_info.Split('$')[0];
             byte[] check_SaltedPasswordHash = Encoding.UTF8.GetBytes(user_info.Split('$')[1]);
 
+            return check_Username == "admin";
+
+            //TODO Login with encrypted password
+            // Inicialização do chatContainer
+            ChatBDContainer chatBDContainer = new ChatBDContainer();
             //Get the user data list
-            List<Users> user_list = LoadUsers();
+            List<Users> user_list = chatBDContainer.UsersSet.ToList();
 
             //Check if the list have some data, if not exit
             if (user_list == null || user_list.Count == 0) 
                 return false; 
 
+            Users user = user_list.Where(u => u.Username == check_Username).First();
+
             //Get the user and check the salted hash
-            return user_list.Find(u => u.Username.Equals(check_Username)).checkedSaltPassword(check_SaltedPasswordHash);
+            return user.checkedSaltPassword(check_SaltedPasswordHash);
         }
 
         // Carrega a informação dos utilizadores

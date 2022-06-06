@@ -20,11 +20,12 @@ namespace Server
         {
             this.Mensagens = new HashSet<Mensagens>();
         }
-        public Users(string username, byte[] saltedPasswordHash, byte[] salt)
+        public Users(string username, byte[] salt, byte[] saltedPasswordHash)
         {
             this.Username = username;
             this.SaltedPasswordHash = saltedPasswordHash;
             this.Salt = salt;
+            this.dtCreation = DateTime.Now;
             this.Mensagens = new HashSet<Mensagens>();
         }
         public int IdUser { get; set; }

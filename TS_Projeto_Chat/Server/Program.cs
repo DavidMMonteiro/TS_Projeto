@@ -118,6 +118,7 @@ namespace Server
                 // Validate it doesn't exist
                 if (chatBDContainer.UsersSet.Any(x => x.Username == username))
                     return false;
+
                 Cryptor cryptor = new Cryptor();
                 //
                 byte[] salt = cryptor.GenerateSalt();
@@ -135,6 +136,7 @@ namespace Server
                     logController.consoleLog($"User Salt: {Encoding.UTF8.GetString(user.Salt)} ", "Server");
                     logController.consoleLog($"User SaltHash: {Encoding.UTF8.GetString(user.SaltedPasswordHash)} ", "Server");
                     */
+                    logController.consoleLog($"New account {user.Username} created with success!","Server");
                     return true;
                 }
                 catch (Exception ex)
@@ -147,6 +149,7 @@ namespace Server
 
         private static Users CheckUser(string user_info)
         {
+            LogController logController = new LogController();
             string check_Username = user_info.Split('$')[0];
             //TODO Encrypte before coming to server
             string password = user_info.Split('$')[1];

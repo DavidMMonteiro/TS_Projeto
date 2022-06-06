@@ -73,10 +73,8 @@ namespace TS_Chat
                         // Se for do tipo DATA
                         case ProtocolSICmdType.DATA:
                             output = protocolSI.GetStringFromData();
-                            chatDestiny = int.Parse(output.Split('$')[0]);
-                            msg = output.Split('$')[1];
-                            logger.consoleLog(msg, this.client.Username);
-                            ack = protocolSI.Make(ProtocolSICmdType.DATA, $"({this.client.Username}): {msg}");
+                            logger.consoleLog(output, this.client.Username);
+                            ack = protocolSI.Make(ProtocolSICmdType.DATA, $"({this.client.Username}): {output}");
                             broadCast(ack);
                             break;
                         case ProtocolSICmdType.EOT:

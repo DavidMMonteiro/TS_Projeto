@@ -19,3 +19,11 @@ An error occurred invoking the method.  The destination thread no longer exists.
 Object name: 'System.Net.Sockets.NetworkStream'.
 [06/06/2022 18:01:07](error): Cannot access a disposed object.
 Object name: 'System.Net.Sockets.NetworkStream'.
+[06/06/2022 20:25:15](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[06/06/2022 20:25:16](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[06/06/2022 20:25:16](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[06/06/2022 20:25:17]Unexpected error:
+Ocorreu um erro ao invocar o método. O thread de destino já não existe.

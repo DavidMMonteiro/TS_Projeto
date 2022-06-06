@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Entities;
+using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace TS_Chat
@@ -13,6 +15,8 @@ namespace TS_Chat
         {
             this.textBox = textBox;
         }
+
+       
 
         //Escreve nova mensagem simples
         public void newMessage(string msg)

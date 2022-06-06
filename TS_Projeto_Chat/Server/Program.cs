@@ -18,6 +18,7 @@ using TS_Chat;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace Server
 {
@@ -90,7 +91,8 @@ namespace Server
                             networkStream.Write(ack, 0, ack.Length);
                         }
                     }
-                }catch (Exception ex){
+                }
+                catch (Exception ex){
                     logger.consoleLog(ex.Message, name);
                     ack = protocolSI.Make(ProtocolSICmdType.ACK, "False");
                     networkStream.Write(ack, 0, ack.Length);

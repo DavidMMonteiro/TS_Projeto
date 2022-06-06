@@ -41,3 +41,5 @@ C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\En
 C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\EntityFramework.xml
 C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\Newtonsoft.Json.dll
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\Newtonsoft.Json.xml

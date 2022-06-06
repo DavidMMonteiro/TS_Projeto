@@ -41,3 +41,5 @@ C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\TS_Chat\obj\Debug\T
 C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\TS_Chat\obj\Debug\TS_Chat.pdb
 C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\TS_Chat\obj\Debug\TS_Chat.FormSignUp.resources
 C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\TS_Chat\obj\Debug\TS_Chat.FormSignUp.resources
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\TS_Chat\bin\Debug\Newtonsoft.Json.dll
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\TS_Chat\bin\Debug\Newtonsoft.Json.xml

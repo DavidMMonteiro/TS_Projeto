@@ -1,8 +1,10 @@
 ﻿using EI.SI;
+using Newtonsoft.Json;
 using Server;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Sockets;
 using System.Threading;
 
@@ -83,6 +85,12 @@ namespace TS_Chat
                             ack = protocolSI.Make(ProtocolSICmdType.EOT, output);
                             broadCast(ack);
                             break;
+                        case ProtocolSICmdType.USER_OPTION_2:
+                            string chat = LoadChat();
+                            logger.consoleLog("Sending chat to request", "Server");
+                            ack = protocolSI.Make(ProtocolSICmdType.USER_OPTION_2, chat);
+                            networkStream.Write(ack, 0, ack.Length);
+                            break;
                     }
                     if (protocolSI.GetCmdType() == ProtocolSICmdType.EOT)
                         break;
@@ -114,6 +122,19 @@ namespace TS_Chat
             tcpClient.Close();
             //Remove a ligação com o cliente da lista
             ClientsDictionary.Remove(this.client);
+        }
+
+        private static string LoadChat()
+        {
+            LogController logger = new LogController();
+            logger.consoleLog("Loading chat", "Server");
+            ChatBDContainer chatBDContainer = new ChatBDContainer();
+            logger.consoleLog("Sorting chat by date time", "Server");
+            List<Mensagens> mensagens = chatBDContainer.MensagensSet.ToList();
+            mensagens.Sort((x, y) => x.dtCreation.CompareTo(y.dtCreation));
+            mensagens.ForEach(x => x.LoadClient());
+            logger.consoleLog("Serializing chat to JSON", "Server");
+            return JsonConvert.SerializeObject(mensagens);
         }
 
         private void saveMessage(string msg)

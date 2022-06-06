@@ -694,3 +694,168 @@ EL
 [06/06/2022 21:53:47](Server): Connection try!
 [06/06/2022 21:53:48]admin join the chat
 [06/06/2022 21:53:51](admin): hello
+[06/06/2022 22:23:23](Server): Server Start
+[06/06/2022 22:23:30](Server): Connection try!
+[06/06/2022 22:23:32]admin join the chat
+[06/06/2022 22:23:40](admin): hello everyone
+[06/06/2022 22:36:59](Server): Server Start
+[06/06/2022 22:37:02](Server): Connection try!
+[06/06/2022 22:37:04]admin join the chat
+[06/06/2022 22:37:10]admin left the chat
+[06/06/2022 22:37:29](Server): Server Start
+[06/06/2022 22:37:33](Server): Connection try!
+[06/06/2022 22:37:34]admin join the chat
+[06/06/2022 22:38:07]admin left the chat
+[06/06/2022 22:38:10](Server): Connection try!
+[06/06/2022 22:38:10]admin join the chat
+[06/06/2022 22:39:48](Server): Server Start
+[06/06/2022 22:39:51](Server): Connection try!
+[06/06/2022 22:39:53]admin join the chat
+[06/06/2022 22:40:00](Server): Server Start
+[06/06/2022 22:40:03](Server): Connection try!
+[06/06/2022 22:40:04]admin join the chat
+[06/06/2022 22:41:51]admin left the chat
+[06/06/2022 22:43:48](Server): Server Start
+[06/06/2022 22:43:52](Server): Connection try!
+[06/06/2022 22:43:53]admin join the chat
+[06/06/2022 22:46:28](Server): Server Start
+[06/06/2022 22:46:33](Server): Connection try!
+[06/06/2022 22:46:34]admin join the chat
+[06/06/2022 22:49:36](Server): Server Start
+[06/06/2022 22:49:39](Server): Connection try!
+[06/06/2022 22:49:41]admin join the chat
+[06/06/2022 22:50:13](Server): Server Start
+[06/06/2022 22:50:16](Server): Connection try!
+[06/06/2022 22:50:17]admin join the chat
+[06/06/2022 22:50:30](Server): Server Start
+[06/06/2022 22:50:35](Server): Server Start
+[06/06/2022 22:50:40](Server): Connection try!
+[06/06/2022 22:50:41]admin join the chat
+[06/06/2022 22:51:26](Server): Server Start
+[06/06/2022 22:51:29](Server): Connection try!
+[06/06/2022 22:51:30]admin join the chat
+[06/06/2022 22:55:09](Server): Server Start
+[06/06/2022 22:55:12](Server): Connection try!
+[06/06/2022 22:55:14]admin join the chat
+[06/06/2022 22:55:14](Server): Loading chat
+[06/06/2022 22:55:14](Server): Sorting chat by date time
+[06/06/2022 22:55:14](Server): Serializing chat to JSON
+[06/06/2022 22:55:14](Server): Sending chat to request
+[06/06/2022 22:56:42](Server): Server Start
+[06/06/2022 22:56:45](Server): Connection try!
+[06/06/2022 22:56:46]admin join the chat
+[06/06/2022 22:56:46](Server): Loading chat
+[06/06/2022 22:56:46](Server): Sorting chat by date time
+[06/06/2022 22:56:46](Server): Serializing chat to JSON
+[06/06/2022 22:56:46](Server): Sending chat to request
+[06/06/2022 22:57:57](Server): Server Start
+[06/06/2022 22:58:01](Server): Connection try!
+[06/06/2022 22:58:02]admin join the chat
+[06/06/2022 22:58:02](Server): Loading chat
+[06/06/2022 22:58:02](Server): Sorting chat by date time
+[06/06/2022 22:58:02](Server): Serializing chat to JSON
+[06/06/2022 22:58:02](Server): Sending chat to request
+[06/06/2022 23:00:33](Server): Server Start
+[06/06/2022 23:00:39](Server): Connection try!
+[06/06/2022 23:00:40]admin join the chat
+[06/06/2022 23:00:40](Server): Loading chat
+[06/06/2022 23:00:40](Server): Sorting chat by date time
+[06/06/2022 23:00:40](Server): Serializing chat to JSON
+[06/06/2022 23:00:41](Server): Sending chat to request
+[06/06/2022 23:01:17](Server): Server Start
+[06/06/2022 23:01:21](Server): Connection try!
+[06/06/2022 23:01:22]admin join the chat
+[06/06/2022 23:01:22](Server): Loading chat
+[06/06/2022 23:01:22](Server): Sorting chat by date time
+[06/06/2022 23:01:22](Server): Serializing chat to JSON
+[06/06/2022 23:01:22](Server): Sending chat to request
+[06/06/2022 23:01:54]admin left the chat
+[06/06/2022 23:02:44](Server): Server Start
+[06/06/2022 23:02:47](Server): Connection try!
+[06/06/2022 23:02:48]admin join the chat
+[06/06/2022 23:02:48](Server): Loading chat
+[06/06/2022 23:02:48](Server): Sorting chat by date time
+[06/06/2022 23:02:48](Server): Serializing chat to JSON
+[06/06/2022 23:02:49](Server): Sending chat to request
+[06/06/2022 23:06:36](Server): Server Start
+[06/06/2022 23:06:43](Server): Connection try!
+[06/06/2022 23:06:44]admin join the chat
+[06/06/2022 23:06:44](Server): Loading chat
+[06/06/2022 23:06:44](Server): Sorting chat by date time
+[06/06/2022 23:07:47](Server): Server Start
+[06/06/2022 23:07:54](Server): Connection try!
+[06/06/2022 23:07:55]admin join the chat
+[06/06/2022 23:07:55](Server): Loading chat
+[06/06/2022 23:07:55](Server): Sorting chat by date time
+[06/06/2022 23:23:46](Server): Server Start
+[06/06/2022 23:23:53](Server): Connection try!
+[06/06/2022 23:23:55]admin join the chat
+[06/06/2022 23:23:55](Server): Loading chat
+[06/06/2022 23:23:55](Server): Sorting chat by date time
+[06/06/2022 23:24:39](Server): Server Start
+[06/06/2022 23:24:44](Server): Connection try!
+[06/06/2022 23:24:45]admin join the chat
+[06/06/2022 23:24:45](Server): Loading chat
+[06/06/2022 23:24:45](Server): Sorting chat by date time
+[06/06/2022 23:27:34](Server): Server Start
+[06/06/2022 23:27:37](Server): Connection try!
+[06/06/2022 23:27:39]admin join the chat
+[06/06/2022 23:27:39](Server): Loading chat
+[06/06/2022 23:27:39](Server): Sorting chat by date time
+[06/06/2022 23:28:40](Server): Server Start
+[06/06/2022 23:28:44](Server): Connection try!
+[06/06/2022 23:28:45]admin join the chat
+[06/06/2022 23:28:45](Server): Loading chat
+[06/06/2022 23:28:45](Server): Sorting chat by date time
+[06/06/2022 23:29:49](Server): Serializing chat to JSON
+[06/06/2022 23:29:49](admin): Uncommon error: Self referencing loop detected for property 'Users' with type 'System.Data.Entity.DynamicProxies.Users_FF0F0E7B948EE974C83DDED73B42D9812432A92F83CD060A38E21F9A6066F461'. Path '[0].Users.Mensagens[0]'.
+[06/06/2022 23:30:22](Server): Server Start
+[06/06/2022 23:30:25](Server): Connection try!
+[06/06/2022 23:30:26]admin join the chat
+[06/06/2022 23:30:26](Server): Loading chat
+[06/06/2022 23:30:26](Server): Sorting chat by date time
+[06/06/2022 23:30:46](Server): Serializing chat to JSON
+[06/06/2022 23:30:52](admin): Uncommon error: Self referencing loop detected for property 'Users' with type 'System.Data.Entity.DynamicProxies.Users_FF0F0E7B948EE974C83DDED73B42D9812432A92F83CD060A38E21F9A6066F461'. Path '[0].Users.Mensagens[0]'.
+[06/06/2022 23:30:54](Server): Server Start
+[06/06/2022 23:31:00](Server): Connection try!
+[06/06/2022 23:31:01]admin join the chat
+[06/06/2022 23:31:01](Server): Loading chat
+[06/06/2022 23:31:01](Server): Sorting chat by date time
+[06/06/2022 23:35:59](Server): Server Start
+[06/06/2022 23:36:03](Server): Connection try!
+[06/06/2022 23:36:04]admin join the chat
+[06/06/2022 23:36:04](Server): Loading chat
+[06/06/2022 23:36:04](Server): Sorting chat by date time
+[06/06/2022 23:37:18](Server): Server Start
+[06/06/2022 23:37:21](Server): Connection try!
+[06/06/2022 23:37:22]admin join the chat
+[06/06/2022 23:37:22](Server): Loading chat
+[06/06/2022 23:37:22](Server): Sorting chat by date time
+[06/06/2022 23:37:42](Server): Serializing chat to JSON
+[06/06/2022 23:38:31](Server): Server Start
+[06/06/2022 23:38:34](Server): Connection try!
+[06/06/2022 23:38:35]admin join the chat
+[06/06/2022 23:38:35](Server): Loading chat
+[06/06/2022 23:38:35](Server): Sorting chat by date time
+[06/06/2022 23:38:45](Server): Serializing chat to JSON
+[06/06/2022 23:38:47](Server): Sending chat to request
+[06/06/2022 23:39:08](admin): Hello again fuckerrrrs
+[06/06/2022 23:39:15](admin): I did it!
+[06/06/2022 23:39:16]admin left the chat
+[06/06/2022 23:39:29](Server): Connection try!
+[06/06/2022 23:39:29]user1 join the chat
+[06/06/2022 23:39:30](Server): Loading chat
+[06/06/2022 23:39:30](Server): Sorting chat by date time
+[06/06/2022 23:39:34](Server): Serializing chat to JSON
+[06/06/2022 23:39:34](Server): Sending chat to request
+[06/06/2022 23:40:09](user1): Hi admin
+[06/06/2022 23:40:10]user1 left the chat
+[06/06/2022 23:40:14](Server): Connection try!
+[06/06/2022 23:40:14]admin join the chat
+[06/06/2022 23:40:14](Server): Loading chat
+[06/06/2022 23:40:14](Server): Sorting chat by date time
+[06/06/2022 23:40:14](Server): Serializing chat to JSON
+[06/06/2022 23:40:14](Server): Sending chat to request
+[06/06/2022 23:40:31](admin): hello server
+[06/06/2022 23:40:52](admin): hello server
+[06/06/2022 23:41:02](admin): hello server

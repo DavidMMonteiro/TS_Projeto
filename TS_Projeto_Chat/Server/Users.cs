@@ -12,7 +12,8 @@ namespace Server
     using System;
     using System.Linq;
     using System.Collections.Generic;
-    
+
+    [Serializable]
     public partial class Users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

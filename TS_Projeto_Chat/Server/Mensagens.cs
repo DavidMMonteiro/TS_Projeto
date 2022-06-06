@@ -10,8 +10,10 @@
 namespace Server
 {
     using System;
+    using System.Linq;
     using System.Collections.Generic;
-    
+
+    [Serializable]
     public partial class Mensagens
     {
         public Mensagens()
@@ -31,5 +33,14 @@ namespace Server
         public System.DateTime dtCreation { get; set; }
         public string Text { get; set; }    
         public virtual Users Users { get; set; }
+
+        internal void LoadClient()
+        {
+            ChatBDContainer chatBDContainer = new ChatBDContainer();
+            List<Users> clients = chatBDContainer.UsersSet.ToList();
+            foreach (Users client in clients)
+                if(client.Mensagens.Any(m => m.IdMensagem == this.IdMensagem))
+                    this.Users.Username = client.Username;
+        }
     }
 }

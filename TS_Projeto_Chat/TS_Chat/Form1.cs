@@ -158,6 +158,13 @@ namespace TS_Projeto_Chat
             form_login.Show();
             this.Hide();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //Envia um pedido de chat recoverd 
+            byte[] packet = this.protocolSI.Make(ProtocolSICmdType.USER_OPTION_2, "Load Chat");
+            this.networkStream.Write(packet, 0, packet.Length);
+        }
     }
 
 }

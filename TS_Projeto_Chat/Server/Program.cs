@@ -10,15 +10,13 @@
     Student(s) number: 2211849
     Creator(s): David Machado Monteiro
 */
+using EI.SI;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using EI.SI;
 using TS_Chat;
-using System.Linq;
-using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
 
 namespace Server
 {
@@ -41,18 +39,18 @@ namespace Server
             //
             while (true)
             {
-                
-                    //Open client conexión
-                    TcpClient client = listener.AcceptTcpClient();
-                    //Get client data send
-                    NetworkStream networkStream = client.GetStream();
-                    ProtocolSI protocolSI = new ProtocolSI();
-                    //Gets the client data
-                    networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
-                    //Get the client data from the protocol
-                    string dataFromClient = protocolSI.GetStringFromData();
-                    byte[] ack;
-                    logger.consoleLog("Connection try!", name);
+
+                //Open client conexión
+                TcpClient client = listener.AcceptTcpClient();
+                //Get client data send
+                NetworkStream networkStream = client.GetStream();
+                ProtocolSI protocolSI = new ProtocolSI();
+                //Gets the client data
+                networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
+                //Get the client data from the protocol
+                string dataFromClient = protocolSI.GetStringFromData();
+                byte[] ack;
+                logger.consoleLog("Connection try!", name);
                 try
                 {
                     //Check if new user it's being created
@@ -68,9 +66,9 @@ namespace Server
                         {
                             ack = protocolSI.Make(ProtocolSICmdType.ACK, "False");
                             networkStream.Write(ack, 0, ack.Length);
-                        } 
+                        }
                     }
-                    else if(protocolSI.GetCmdType() == ProtocolSICmdType.ACK) 
+                    else if (protocolSI.GetCmdType() == ProtocolSICmdType.ACK)
                     {
                         Users new_user = CheckUser(dataFromClient);
                         if (new_user != null)
@@ -92,14 +90,15 @@ namespace Server
                         }
                     }
                 }
-                catch (Exception ex){
+                catch (Exception ex)
+                {
                     logger.consoleLog(ex.Message, name);
                     ack = protocolSI.Make(ProtocolSICmdType.ACK, "False");
                     networkStream.Write(ack, 0, ack.Length);
                 }
-                
+
             }
-        
+
         }
 
         //Create new user
@@ -138,7 +137,7 @@ namespace Server
                     logController.consoleLog($"User Salt: {Encoding.UTF8.GetString(user.Salt)} ", "Server");
                     logController.consoleLog($"User SaltHash: {Encoding.UTF8.GetString(user.SaltedPasswordHash)} ", "Server");
                     */
-                    logController.consoleLog($"New account {user.Username} created with success!","Server");
+                    logController.consoleLog($"New account {user.Username} created with success!", "Server");
                     return true;
                 }
                 catch (Exception ex)
@@ -146,7 +145,7 @@ namespace Server
                     logController.consoleLog(ex.ToString(), "Server");
                     return false;
                 }
-            }            
+            }
         }
 
         private static Users CheckUser(string user_info)
@@ -156,7 +155,6 @@ namespace Server
             //TODO Encrypte before coming to server
             string password = user_info.Split('$')[1];
 
-            //TODO Login with encrypted password
             // Inicialização do chatContainer
             ChatBDContainer chatBDContainer = new ChatBDContainer();
             //Get the user data 
@@ -179,9 +177,9 @@ namespace Server
             //Valida que as hash seijam iguais
             if (user.checkedSaltPassword(chech_hash))
                 return user;
-            else 
+            else
                 return null;
         }
-    } 	
+    }
 }
 

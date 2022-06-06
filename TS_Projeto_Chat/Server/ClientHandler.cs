@@ -10,13 +10,6 @@ using System.Threading;
 
 namespace TS_Chat
 {
-    //TODO Make enum generic
-    public enum TransmisionType{
-        unicast, 
-        multicast, 
-        broadcast
-    }
-    
     // Thread para do client
     public class ClientHandler
     {
@@ -88,8 +81,11 @@ namespace TS_Chat
                         case ProtocolSICmdType.USER_OPTION_2:
                             string chat = LoadChat();
                             logger.consoleLog("Sending chat to request", "Server");
-                            ack = protocolSI.Make(ProtocolSICmdType.USER_OPTION_2, chat);
-                            networkStream.Write(ack, 0, ack.Length);
+                            if (!string.IsNullOrEmpty(chat)) 
+                            { 
+                                ack = protocolSI.Make(ProtocolSICmdType.USER_OPTION_2, chat);
+                                networkStream.Write(ack, 0, ack.Length);
+                            }
                             break;
                     }
                     if (protocolSI.GetCmdType() == ProtocolSICmdType.EOT)
@@ -99,22 +95,24 @@ namespace TS_Chat
                 {
                     error = $"(Server): Error processing message.\n - Socket error\nGet in contact with administration";
                     logger.consoleLog(ex.Message, this.client.Username);
-                    break;
+
                 }
                 catch (IOException ex) // Excepção de Socket
                 {
                     error = $"(Server): Error processing message.\n - IOException\nGet in contact with administration";
                     logger.consoleLog("Socket error: " + ex.Message, this.client.Username);
-                    break;
                 }
                 catch (Exception ex) // Excepção desconhecida 
                 {
                     error = $"(Server): Error processing message.\n - Unknow error catch\nGet in contact with administration";
                     logger.consoleLog("Uncommon error: " + ex.Message, this.client.Username);
-                    break;
                 }
                 if (!string.IsNullOrEmpty(error))
-                    broadCast(protocolSI.Make(ProtocolSICmdType.DATA, error));
+                {
+                    broadCast(protocolSI.Make(ProtocolSICmdType.EOT, error));
+                    break;
+                }
+                
             }
             //Termina a stream do client
             networkStream.Close();
@@ -132,9 +130,18 @@ namespace TS_Chat
             logger.consoleLog("Sorting chat by date time", "Server");
             List<Mensagens> mensagens = chatBDContainer.MensagensSet.ToList();
             mensagens.Sort((x, y) => x.dtCreation.CompareTo(y.dtCreation));
-            mensagens.ForEach(x => x.LoadClient());
+            //TODO Upgrade this horrible way to fix a loop serialization
+            mensagens.ForEach(m => m.SetUser());
             logger.consoleLog("Serializing chat to JSON", "Server");
-            return JsonConvert.SerializeObject(mensagens);
+            try
+            {
+                return JsonConvert.SerializeObject(mensagens);
+            }
+            catch (Exception ex)
+            {
+                logger.consoleLog("Serializing error: \n" + ex.Message, "Server");
+                return null;
+            }
         }
 
         private void saveMessage(string msg)
@@ -145,14 +152,17 @@ namespace TS_Chat
                 {
                     //Instancia uma nova mensagem
                     Mensagens new_mensagen = new Mensagens(msg, this.client);
-                    //
-                    this.client.Mensagens.Add(new_mensagen);
-                    //Guarda a mensagem
-                    //chatBDContainer.UsersSet.Add(new_mensagen);
+                    //Guarda aparit do cliente
+                    chatBDContainer.UsersSet.Find(this.client.IdUser).Mensagens.Add(new_mensagen);
+                    //this.client.Mensagens.Add(new_mensagen);
+                    //Guarda diretamente a mensagem mensagem
+                    //WHY THE FUCK DON't YOU WORK
+                    // chatBDContainer.MensagensSet.Add(new_mensagen);
                     //Guarda as alterações efetuadas
                     chatBDContainer.SaveChanges();
                 }
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 LogController logController = new LogController();
                 logController.consoleLog(ex.Message, "Server");
@@ -167,7 +177,7 @@ namespace TS_Chat
                 // Envia a mensagem ao cliente
                 client.Value.GetStream().Write(data, 0, data.Length);
         }
-        
+
     }
 
 }

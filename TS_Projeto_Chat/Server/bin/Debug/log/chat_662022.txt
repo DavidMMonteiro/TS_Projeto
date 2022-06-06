@@ -859,3 +859,63 @@ EL
 [06/06/2022 23:40:31](admin): hello server
 [06/06/2022 23:40:52](admin): hello server
 [06/06/2022 23:41:02](admin): hello server
+[06/06/2022 23:45:05](Server): Server Start
+[06/06/2022 23:45:08](Server): Connection try!
+[06/06/2022 23:45:09]admin join the chat
+[06/06/2022 23:45:09](Server): Loading chat
+[06/06/2022 23:45:09](Server): Sorting chat by date time
+[06/06/2022 23:47:36](Server): Server Start
+[06/06/2022 23:47:41](Server): Connection try!
+[06/06/2022 23:47:42]admin join the chat
+[06/06/2022 23:47:42](Server): Loading chat
+[06/06/2022 23:47:42](Server): Sorting chat by date time
+[06/06/2022 23:47:54](Server): Serializing chat to JSON
+[06/06/2022 23:47:54](Server): Sending chat to request
+[06/06/2022 23:48:11](admin): hello im admin
+[06/06/2022 23:49:14](Server): Server Start
+[06/06/2022 23:49:18](Server): Connection try!
+[06/06/2022 23:49:19]admin join the chat
+[06/06/2022 23:49:19](Server): Loading chat
+[06/06/2022 23:49:19](Server): Sorting chat by date time
+[06/06/2022 23:49:43](Server): Serializing chat to JSON
+[06/06/2022 23:49:43](Server): Sending chat to request
+[06/06/2022 23:49:51](admin): hello again
+[06/06/2022 23:50:30](Server): Server Start
+[06/06/2022 23:50:35](Server): Connection try!
+[06/06/2022 23:50:36]admin join the chat
+[06/06/2022 23:50:36](Server): Loading chat
+[06/06/2022 23:50:36](Server): Sorting chat by date time
+[06/06/2022 23:50:37](Server): Serializing chat to JSON
+[06/06/2022 23:50:37](Server): Sending chat to request
+[06/06/2022 23:50:40](admin): hello
+[06/06/2022 23:50:48](Server): Server Start
+[06/06/2022 23:50:51](Server): Connection try!
+[06/06/2022 23:50:52]admin join the chat
+[06/06/2022 23:50:52](Server): Loading chat
+[06/06/2022 23:50:52](Server): Sorting chat by date time
+[06/06/2022 23:50:52](Server): Serializing chat to JSON
+[06/06/2022 23:50:52](Server): Sending chat to request
+[06/06/2022 23:50:56](admin): 1546
+[06/06/2022 23:51:44](Server): A referência de objecto não foi definida como uma instância de um objecto.
+[06/06/2022 23:51:51](admin): 1542
+[06/06/2022 23:57:21](Server): Server Start
+[06/06/2022 23:57:24](Server): Connection try!
+[06/06/2022 23:57:26]admin join the chat
+[06/06/2022 23:57:26](Server): Loading chat
+[06/06/2022 23:57:26](Server): Sorting chat by date time
+[06/06/2022 23:57:26](Server): Serializing chat to JSON
+[06/06/2022 23:57:27](admin): Uncommon error: Self referencing loop detected with type 'System.Data.Entity.DynamicProxies.Mensagens_4F70EFFD53EB340144F6017770B1CE8C241D310DD30CBA92FB1FDD46018D1A63'. Path '[0].Users.Mensagens'.
+[06/06/2022 23:57:48](Server): Server Start
+[06/06/2022 23:57:51](Server): Connection try!
+[06/06/2022 23:57:52]admin join the chat
+[06/06/2022 23:57:52](Server): Loading chat
+[06/06/2022 23:57:52](Server): Sorting chat by date time
+[06/06/2022 23:57:53](Server): Serializing chat to JSON
+[06/06/2022 23:57:53](admin): Uncommon error: Self referencing loop detected with type 'System.Data.Entity.DynamicProxies.Mensagens_4F70EFFD53EB340144F6017770B1CE8C241D310DD30CBA92FB1FDD46018D1A63'. Path '[0].Users.Mensagens'.
+[06/06/2022 23:58:44](Server): Server Start
+[06/06/2022 23:58:47](Server): Connection try!
+[06/06/2022 23:58:48]admin join the chat
+[06/06/2022 23:58:48](Server): Loading chat
+[06/06/2022 23:58:48](Server): Sorting chat by date time
+[06/06/2022 23:58:48](Server): Serializing chat to JSON
+[06/06/2022 23:58:48](admin): Uncommon error: Self referencing loop detected with type 'System.Data.Entity.DynamicProxies.Mensagens_4F70EFFD53EB340144F6017770B1CE8C241D310DD30CBA92FB1FDD46018D1A63'. Path '[0].Users.Mensagens'.

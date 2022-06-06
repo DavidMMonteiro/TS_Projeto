@@ -13,20 +13,13 @@ namespace Server
     using System.Linq;
     using System.Collections.Generic;
 
+
     [Serializable]
     public partial class Mensagens
     {
         public Mensagens()
         {
-            this.Users = new Users();
-            this.dtCreation = DateTime.Now;
-        }
 
-        public Mensagens(string text, Users user) : base()
-        {           
-            this.Text = text;
-            this.Users = user;
-            this.dtCreation = DateTime.Now;
         }
 
         public int IdMensagem { get; set; }
@@ -34,13 +27,5 @@ namespace Server
         public string Text { get; set; }    
         public virtual Users Users { get; set; }
 
-        internal void LoadClient()
-        {
-            ChatBDContainer chatBDContainer = new ChatBDContainer();
-            List<Users> clients = chatBDContainer.UsersSet.ToList();
-            foreach (Users client in clients)
-                if(client.Mensagens.Any(m => m.IdMensagem == this.IdMensagem))
-                    this.Users.Username = client.Username;
-        }
     }
 }

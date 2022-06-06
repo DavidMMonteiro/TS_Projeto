@@ -1,0 +1,126 @@
+
+[07/06/2022 00:00:21]admin join the chat
+[07/06/2022 00:00:21](Server): Loading chat
+[07/06/2022 00:00:21](Server): Sorting chat by date time
+[07/06/2022 00:00:21](Server): Serializing chat to JSON
+[07/06/2022 00:00:22](admin): Uncommon error: Self referencing loop detected with type 'System.Data.Entity.DynamicProxies.Mensagens_4F70EFFD53EB340144F6017770B1CE8C241D310DD30CBA92FB1FDD46018D1A63'. Path '[0].Users.Mensagens'.
+[07/06/2022 00:00:30](Server): Server Start
+[07/06/2022 00:00:34](Server): Connection try!
+[07/06/2022 00:00:35]admin join the chat
+[07/06/2022 00:00:35](Server): Loading chat
+[07/06/2022 00:00:35](Server): Sorting chat by date time
+[07/06/2022 00:00:35](Server): Serializing chat to JSON
+[07/06/2022 00:00:36](admin): Uncommon error: Self referencing loop detected with type 'System.Data.Entity.DynamicProxies.Mensagens_4F70EFFD53EB340144F6017770B1CE8C241D310DD30CBA92FB1FDD46018D1A63'. Path '[0].Users.Mensagens'.
+[07/06/2022 00:01:28](Server): Server Start
+[07/06/2022 00:01:33](Server): Connection try!
+[07/06/2022 00:01:35]admin join the chat
+[07/06/2022 00:01:35](Server): Loading chat
+[07/06/2022 00:01:35](Server): Sorting chat by date time
+[07/06/2022 00:01:35](Server): Serializing chat to JSON
+[07/06/2022 00:01:35](admin): Uncommon error: Self referencing loop detected with type 'System.Data.Entity.DynamicProxies.Mensagens_4F70EFFD53EB340144F6017770B1CE8C241D310DD30CBA92FB1FDD46018D1A63'. Path '[0].Users.Mensagens'.
+[07/06/2022 00:03:01](Server): Server Start
+[07/06/2022 00:03:05](Server): Connection try!
+[07/06/2022 00:03:06]admin join the chat
+[07/06/2022 00:03:06](Server): Loading chat
+[07/06/2022 00:03:06](Server): Sorting chat by date time
+[07/06/2022 00:03:06](Server): Serializing chat to JSON
+[07/06/2022 00:03:06](admin): Uncommon error: Self referencing loop detected with type 'System.Data.Entity.DynamicProxies.Mensagens_4F70EFFD53EB340144F6017770B1CE8C241D310DD30CBA92FB1FDD46018D1A63'. Path '[0].Users.Mensagens'.
+[07/06/2022 00:04:15](Server): Server Start
+[07/06/2022 00:04:24](Server): Connection try!
+[07/06/2022 00:04:25]admin join the chat
+[07/06/2022 00:04:25](Server): Loading chat
+[07/06/2022 00:04:25](Server): Sorting chat by date time
+[07/06/2022 00:04:25](Server): Serializing chat to JSON
+[07/06/2022 00:04:26](admin): Uncommon error: Self referencing loop detected with type 'System.Data.Entity.DynamicProxies.Mensagens_4F70EFFD53EB340144F6017770B1CE8C241D310DD30CBA92FB1FDD46018D1A63'. Path '[0].Users.Mensagens'.
+[07/06/2022 00:05:38](Server): Server Start
+[07/06/2022 00:05:42](Server): Connection try!
+[07/06/2022 00:05:43]admin join the chat
+[07/06/2022 00:05:46](Server): Loading chat
+[07/06/2022 00:05:47](Server): Sorting chat by date time
+[07/06/2022 00:05:48](Server): Serializing chat to JSON
+[07/06/2022 00:06:08](admin): Uncommon error: Self referencing loop detected with type 'System.Data.Entity.DynamicProxies.Mensagens_4F70EFFD53EB340144F6017770B1CE8C241D310DD30CBA92FB1FDD46018D1A63'. Path '[0].Users.Mensagens'.
+[07/06/2022 00:06:57](Server): Server Start
+[07/06/2022 00:07:03](Server): Connection try!
+[07/06/2022 00:07:04]admin join the chat
+[07/06/2022 00:07:08](Server): Loading chat
+[07/06/2022 00:07:08](Server): Sorting chat by date time
+[07/06/2022 00:07:09](Server): Serializing chat to JSON
+[07/06/2022 00:07:49](Server): Sending chat to request
+[07/06/2022 00:08:30](Server): Server Start
+[07/06/2022 00:08:38](Server): Connection try!
+[07/06/2022 00:08:40]admin join the chat
+[07/06/2022 00:08:44](Server): Loading chat
+[07/06/2022 00:08:45](Server): Sorting chat by date time
+[07/06/2022 00:08:45](Server): Serializing chat to JSON
+[07/06/2022 00:09:08](Server): Serializing error: 
+Self referencing loop detected with type 'System.Data.Entity.DynamicProxies.Mensagens_4F70EFFD53EB340144F6017770B1CE8C241D310DD30CBA92FB1FDD46018D1A63'. Path '[0].Users.Mensagens'.
+[07/06/2022 00:09:10](Server): Sending chat to request
+[07/06/2022 00:09:31](admin): hello
+[07/06/2022 00:09:53](admin): hi server
+[07/06/2022 00:11:13](Server): Server Start
+[07/06/2022 00:11:16](Server): Connection try!
+[07/06/2022 00:11:17]admin join the chat
+[07/06/2022 00:11:27](Server): Loading chat
+[07/06/2022 00:11:27](Server): Sorting chat by date time
+[07/06/2022 00:11:27](Server): Serializing chat to JSON
+[07/06/2022 00:11:35](Server): Serializing error: 
+Self referencing loop detected with type 'System.Data.Entity.DynamicProxies.Mensagens_4F70EFFD53EB340144F6017770B1CE8C241D310DD30CBA92FB1FDD46018D1A63'. Path '[0].Users.Mensagens'.
+[07/06/2022 00:11:35](Server): Sending chat to request
+[07/06/2022 00:11:45](admin): hello
+[07/06/2022 00:21:01](Server): Server Start
+[07/06/2022 00:21:05](Server): Connection try!
+[07/06/2022 00:21:07]admin join the chat
+[07/06/2022 00:21:07](Server): Loading chat
+[07/06/2022 00:21:07](Server): Sorting chat by date time
+[07/06/2022 00:21:07](Server): Serializing chat to JSON
+[07/06/2022 00:21:07](Server): Serializing error: 
+Self referencing loop detected with type 'System.Data.Entity.DynamicProxies.Mensagens_4F70EFFD53EB340144F6017770B1CE8C241D310DD30CBA92FB1FDD46018D1A63'. Path '[0].Users.Mensagens'.
+[07/06/2022 00:21:07](Server): Sending chat to request
+[07/06/2022 00:22:07](Server): Server Start
+[07/06/2022 00:22:15](Server): Connection try!
+[07/06/2022 00:22:17]admin join the chat
+[07/06/2022 00:22:17](Server): Loading chat
+[07/06/2022 00:22:17](Server): Sorting chat by date time
+[07/06/2022 00:22:37](Server): Server Start
+[07/06/2022 00:22:39](Server): Connection try!
+[07/06/2022 00:22:41]admin join the chat
+[07/06/2022 00:22:41](Server): Loading chat
+[07/06/2022 00:22:41](Server): Sorting chat by date time
+[07/06/2022 00:23:08](Server): Serializing chat to JSON
+[07/06/2022 00:23:08](Server): Serializing error: 
+Self referencing loop detected with type 'System.Data.Entity.DynamicProxies.Mensagens_4F70EFFD53EB340144F6017770B1CE8C241D310DD30CBA92FB1FDD46018D1A63'. Path '[0].Users.Mensagens'.
+[07/06/2022 00:23:08](Server): Sending chat to request
+[07/06/2022 00:24:12](Server): Server Start
+[07/06/2022 00:24:16](Server): Connection try!
+[07/06/2022 00:24:17]admin join the chat
+[07/06/2022 00:24:17](Server): Loading chat
+[07/06/2022 00:24:17](Server): Sorting chat by date time
+[07/06/2022 00:25:01](Server): Server Start
+[07/06/2022 00:25:05](Server): Connection try!
+[07/06/2022 00:25:06]admin join the chat
+[07/06/2022 00:25:06](Server): Loading chat
+[07/06/2022 00:25:06](Server): Sorting chat by date time
+[07/06/2022 00:27:09](Server): Server Start
+[07/06/2022 00:27:13](Server): Connection try!
+[07/06/2022 00:27:15]admin join the chat
+[07/06/2022 00:27:15](Server): Loading chat
+[07/06/2022 00:27:15](Server): Sorting chat by date time
+[07/06/2022 00:27:27](Server): Serializing chat to JSON
+[07/06/2022 00:27:31](Server): Sending chat to request
+[07/06/2022 00:28:35](Server): Server Start
+[07/06/2022 00:28:39](Server): Connection try!
+[07/06/2022 00:28:40]admin join the chat
+[07/06/2022 00:28:40](Server): Loading chat
+[07/06/2022 00:28:40](Server): Sorting chat by date time
+[07/06/2022 00:28:40](Server): Serializing chat to JSON
+[07/06/2022 00:28:40](Server): Sending chat to request
+[07/06/2022 00:28:47](admin): hi everyone
+[07/06/2022 00:29:37](admin): hello?
+[07/06/2022 00:31:04](Server): Server Start
+[07/06/2022 00:31:08](Server): Connection try!
+[07/06/2022 00:31:09]admin join the chat
+[07/06/2022 00:31:09](Server): Loading chat
+[07/06/2022 00:31:09](Server): Sorting chat by date time
+[07/06/2022 00:31:09](Server): Serializing chat to JSON
+[07/06/2022 00:31:09](Server): Sending chat to request
+[07/06/2022 00:31:12](admin): hello

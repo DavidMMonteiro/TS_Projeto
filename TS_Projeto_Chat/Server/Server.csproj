@@ -86,10 +86,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ChatBD.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Chats.cs">
-      <DependentUpon>ChatBD.tt</DependentUpon>
-    </Compile>
     <Compile Include="ClientHandler.cs" />
+    <Compile Include="Cryptor.cs" />
     <Compile Include="LogController.cs" />
     <Compile Include="Mensagens.cs">
       <DependentUpon>ChatBD.tt</DependentUpon>
@@ -109,6 +107,7 @@
     <None Include="ChatBD.edmx.diagram">
       <DependentUpon>ChatBD.edmx</DependentUpon>
     </None>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

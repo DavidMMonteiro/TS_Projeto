@@ -18,7 +18,6 @@ namespace Server
         public System.DateTime dtCreation { get; set; }
         public string Text { get; set; }
     
-        public virtual Chats Chats { get; set; }
         public virtual Users Users { get; set; }
     }
 }

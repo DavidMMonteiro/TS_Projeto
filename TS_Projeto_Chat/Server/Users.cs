@@ -10,11 +10,9 @@
 namespace Server
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Security.Cryptography;
     using System.Linq;
-
+    using System.Collections.Generic;
+    
     public partial class Users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,8 +20,7 @@ namespace Server
         {
             this.Mensagens = new HashSet<Mensagens>();
         }
-
-        public Users(string  username, byte[] saltedPasswordHash, byte[] salt)
+        public Users(string username, byte[] saltedPasswordHash, byte[] salt)
         {
             this.Username = username;
             this.SaltedPasswordHash = saltedPasswordHash;
@@ -32,13 +29,12 @@ namespace Server
         }
         public int IdUser { get; set; }
         public string Username { get; set; }
-        private byte[] SaltedPasswordHash { get; set; }
-        private byte[] Salt { get; set; }
+        public byte[] SaltedPasswordHash { get; set; }
+        public byte[] Salt { get; set; }
         public System.DateTime dtCreation { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Mensagens> Mensagens { get; set; }
-
         public bool checkedSaltPassword(byte[] SaltedPassword)
         {
             return this.SaltedPasswordHash.SequenceEqual(SaltedPassword);

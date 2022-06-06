@@ -6,9 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="bd2758eb26fc4db8b433bdcb46850fdb" Name="Diagram1" >
         <EntityTypeShape EntityType="ChatBD.Users" Width="1.5" PointX="3.125" PointY="1.375" />
-        <EntityTypeShape EntityType="ChatBD.Chats" Width="1.5" PointX="7.875" PointY="1.375" />
         <EntityTypeShape EntityType="ChatBD.Mensagens" Width="1.5" PointX="5.5" PointY="1.375" />
-        <AssociationConnector Association="ChatBD.MensagensChats" />
         <AssociationConnector Association="ChatBD.MensagensUsers" />
       </Diagram>
     </edmx:Diagrams>

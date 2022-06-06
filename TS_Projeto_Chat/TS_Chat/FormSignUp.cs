@@ -10,7 +10,6 @@ namespace TS_Chat
     public partial class FormSignUp : Form
     {
         private Form FormBack;
-        private Cryptor Cryptofer;
         private int port;
         private NetworkStream networkStream;
         private ProtocolSI protocolSI;
@@ -25,7 +24,6 @@ namespace TS_Chat
             this.networkStream = networkStream;
             this.protocolSI = protocolSI;
             this.client = client;
-            this.Cryptofer = new Cryptor();
         }
         private void consoleLog(string msg)
         {
@@ -85,16 +83,7 @@ namespace TS_Chat
                 return;
             }
 
-
-            //Encryptar password
-            //Instancia um randomizer para criar um salt size random
-            Random random = new Random();
-            //Lee o salt size
-            //Cria o salt
-            byte[] salt = Cryptofer.GenerateSalt();
-            //Cria o hash
-            byte[] hash = Cryptofer.GenerateSaltedHash(tb_password.Text, salt);
-            //
+            
             //TODO Encryptar mensagem para o servidor
 
             if (!open_connection())
@@ -104,7 +93,7 @@ namespace TS_Chat
             {
                 //Constroe a mensagem do cliente
                 //TODO  Encrypte password & message to server
-                string msg = tb_username.Text + "$" + salt.Length + "$" + Encoding.UTF8.GetString(hash);
+                string msg = tb_username.Text + "$" + tb_password.Text;
                 protocolSI = new ProtocolSI();
                 // Converte a mensagem para bytes para poder ser enviada
                 byte[] packet = protocolSI.Make(ProtocolSICmdType.USER_OPTION_1, msg);
@@ -119,9 +108,14 @@ namespace TS_Chat
                 string servermsg = protocolSI.GetStringFromData();
                 // Converte para bool
                 if (bool.Parse(servermsg))
+                {
                     MessageBox.Show("Conta criada com sucesso!", "Criar conta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.FormBack.Show();
+                    this.Close();
+                }
                 else
                     MessageBox.Show("Não se conseguio criar a conta!", "Criar conta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             }
             catch (Exception ex)
             {

@@ -12,15 +12,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ChatsSet">
-      <EntityTypeMapping TypeName="IsTypeOf(ChatBD.Chats)">
-        <MappingFragment StoreEntitySet="ChatsSet">
-          <ScalarProperty Name="IdChat" ColumnName="IdChat" />
-          <ScalarProperty Name="dtCreation" ColumnName="dtCreation" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="MensagensSet">
       <EntityTypeMapping TypeName="IsTypeOf(ChatBD.Mensagens)">
         <MappingFragment StoreEntitySet="MensagensSet">
@@ -30,14 +21,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="MensagensChats" TypeName="ChatBD.MensagensChats" StoreEntitySet="MensagensSet">
-      <EndProperty Name="Chats">
-        <ScalarProperty Name="IdChat" ColumnName="Chats_IdChat" />
-      </EndProperty>
-      <EndProperty Name="Mensagens">
-        <ScalarProperty Name="IdMensagem" ColumnName="IdMensagem" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="MensagensUsers" TypeName="ChatBD.MensagensUsers" StoreEntitySet="MensagensSet">
       <EndProperty Name="Users">
         <ScalarProperty Name="IdUser" ColumnName="Users_IdUser" />

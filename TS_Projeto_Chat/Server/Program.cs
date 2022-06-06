@@ -174,7 +174,7 @@ namespace Server
             logController.consoleLog("Login User HashSalt: " + Convert.ToBase64String(chech_hash), "Server");
             */
 
-            //Valida que as hash forem iguais
+            //Valida que as hash seijam iguais
             if (user.checkedSaltPassword(chech_hash))
                 return user;
             else 

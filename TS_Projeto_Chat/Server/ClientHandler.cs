@@ -53,14 +53,13 @@ namespace TS_Chat
             // Enquando a mensagem do cliente não for EOT
             while (protocolSI.GetCmdType() != ProtocolSICmdType.EOT)
             {
+                string error = null;
                 try
                 {
                     // Vai ler a mensagem do cliente
                     int bytesRead = networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
                     byte[] ack;
                     string output;
-                    int chatDestiny;
-                    string msg;
                     /* 
                     Filtra o tipo de mensagem recebida
                     A estrutura básica de cada mensagem consiste em:
@@ -74,6 +73,7 @@ namespace TS_Chat
                         case ProtocolSICmdType.DATA:
                             output = protocolSI.GetStringFromData();
                             logger.consoleLog(output, this.client.Username);
+                            saveMessage(output);
                             ack = protocolSI.Make(ProtocolSICmdType.DATA, $"({this.client.Username}): {output}");
                             broadCast(ack);
                             break;
@@ -81,15 +81,7 @@ namespace TS_Chat
                             output = this.client.Username + " left the chat";
                             logger.consoleLog(output);
                             ack = protocolSI.Make(ProtocolSICmdType.EOT, output);
-                            //Make Switch kind of TransmisionType
-                            //Get chat from database
-                            //
-                            if (true /*Chat id = 1*/)
-                                broadCast(ack);
-                            else if (true/*Chat have multiple destinations*/)
-                                multiCast(ack, new List<int>());
-                            else
-                                unicast(ack, 0);
+                            broadCast(ack);
                             break;
                     }
                     if (protocolSI.GetCmdType() == ProtocolSICmdType.EOT)
@@ -97,19 +89,24 @@ namespace TS_Chat
                 }
                 catch (SocketException ex)
                 {
+                    error = $"(Server): Error processing message.\n - Socket error\nGet in contact with administration";
                     logger.consoleLog(ex.Message, this.client.Username);
                     break;
                 }
                 catch (IOException ex) // Excepção de Socket
                 {
+                    error = $"(Server): Error processing message.\n - IOException\nGet in contact with administration";
                     logger.consoleLog("Socket error: " + ex.Message, this.client.Username);
                     break;
                 }
                 catch (Exception ex) // Excepção desconhecida 
                 {
+                    error = $"(Server): Error processing message.\n - Unknow error catch\nGet in contact with administration";
                     logger.consoleLog("Uncommon error: " + ex.Message, this.client.Username);
                     break;
                 }
+                if (!string.IsNullOrEmpty(error))
+                    broadCast(protocolSI.Make(ProtocolSICmdType.DATA, error));
             }
             //Termina a stream do client
             networkStream.Close();
@@ -119,6 +116,28 @@ namespace TS_Chat
             ClientsDictionary.Remove(this.client);
         }
 
+        private void saveMessage(string msg)
+        {
+            try
+            {
+                using (ChatBDContainer chatBDContainer = new ChatBDContainer())
+                {
+                    //Instancia uma nova mensagem
+                    Mensagens new_mensagen = new Mensagens(msg, this.client);
+                    //
+                    this.client.Mensagens.Add(new_mensagen);
+                    //Guarda a mensagem
+                    //chatBDContainer.UsersSet.Add(new_mensagen);
+                    //Guarda as alterações efetuadas
+                    chatBDContainer.SaveChanges();
+                }
+            }catch (Exception ex)
+            {
+                LogController logController = new LogController();
+                logController.consoleLog(ex.Message, "Server");
+            }
+        }
+
         // Envia mensagem a todas a ligações
         private void broadCast(byte[] data)
         {
@@ -126,27 +145,6 @@ namespace TS_Chat
             foreach (KeyValuePair<Users, TcpClient> client in ClientsDictionary)
                 // Envia a mensagem ao cliente
                 client.Value.GetStream().Write(data, 0, data.Length);
-        }
-
-        // Envia mensagem a uma lista de clientes
-        private void multiCast(byte[] data, List<int> destenies)
-        {
-            foreach (int destiny in destenies)
-            {
-                Users find_user = new Users();
-                find_user.IdUser = destiny;
-            }
-                /*TcpClient tcpClient = this.ClientsDictionary.ContainsKey(destiny) ? ClientsDictionary[destiny] : null;
-                    client.GetStream().Write(data, 0, data.Length);*/
-        }
-
-        // Envia mensagem a so um client
-        private void unicast(byte[] data, int desteny)
-        {
-            // Valida se o destino existe no dictionario
-           /* if (ClientsDictionary.TryGetValue(desteny, out TcpClient client))
-                // Envia ao destino se existir
-                client.GetStream().Write(data, 0, data.Length);*/
         }
         
     }

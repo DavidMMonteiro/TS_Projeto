@@ -629,3 +629,68 @@ EL
 [06/06/2022 20:25:15]admin left the chat
 [06/06/2022 20:25:15](user1): Hello admin
 [06/06/2022 20:25:15](user1): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[06/06/2022 20:40:41](Server): Server Start
+[06/06/2022 20:40:45](Server): Connection try!
+[06/06/2022 20:40:46]admin join the chat
+[06/06/2022 20:41:03](Server): Connection try!
+[06/06/2022 20:41:03]user1 join the chat
+[06/06/2022 20:41:13](Server): Connection try!
+[06/06/2022 20:41:13](Server): New account user2 created with success!
+[06/06/2022 20:41:25](Server): Connection try!
+[06/06/2022 20:41:25]user2 join the chat
+[06/06/2022 20:41:34](admin): Hello all
+[06/06/2022 20:41:41](user1): hello admin
+[06/06/2022 20:41:48](user2): How are you
+[06/06/2022 20:42:52](admin): I'm tired of this project
+[06/06/2022 20:43:04](user2): Yeah, me to
+[06/06/2022 20:43:13](user1): Same
+[06/06/2022 20:43:18](user1): bye
+[06/06/2022 20:43:21]user1 left the chat
+[06/06/2022 20:43:21](user2): Yeah, me to
+[06/06/2022 20:43:21](admin): I'm tired of this project
+[06/06/2022 20:43:21](admin): Socket error: Não é possível escrever dados na ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[06/06/2022 20:43:40](Server): Connection try!
+[06/06/2022 20:43:40]user2 join the chat
+[06/06/2022 20:44:26](user2): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação existente foi forçada a fechar pelo anfitrião remoto.
+[06/06/2022 21:33:24](Server): Server Start
+[06/06/2022 21:33:28](Server): Connection try!
+[06/06/2022 21:33:29]admin join the chat
+[06/06/2022 21:33:32](admin): hello
+[06/06/2022 21:33:32](Server): An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+[06/06/2022 21:33:46](admin): hello again
+[06/06/2022 21:34:49](Server): Server Start
+[06/06/2022 21:34:52](Server): Connection try!
+[06/06/2022 21:34:53]admin join the chat
+[06/06/2022 21:34:59](admin): hello
+[06/06/2022 21:35:43](Server): Server Start
+[06/06/2022 21:35:48](Server): Connection try!
+[06/06/2022 21:35:49]admin join the chat
+[06/06/2022 21:35:52](admin): hello
+[06/06/2022 21:36:15](Server): An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+[06/06/2022 21:39:06](admin): hello
+[06/06/2022 21:39:46](Server): Server Start
+[06/06/2022 21:39:50](Server): Connection try!
+[06/06/2022 21:39:51](Server): User not accepted
+[06/06/2022 21:39:56](Server): Connection try!
+[06/06/2022 21:39:56]admin join the chat
+[06/06/2022 21:39:58](admin): hello
+[06/06/2022 21:46:55](Server): Server Start
+[06/06/2022 21:46:58](Server): Connection try!
+[06/06/2022 21:46:59]admin join the chat
+[06/06/2022 21:47:03](admin): hello
+[06/06/2022 21:47:32](Server): Server Start
+[06/06/2022 21:47:35](Server): Connection try!
+[06/06/2022 21:47:36]admin join the chat
+[06/06/2022 21:47:39](admin): hello
+[06/06/2022 21:48:31](Server): Server Start
+[06/06/2022 21:48:34](Server): Connection try!
+[06/06/2022 21:48:35]admin join the chat
+[06/06/2022 21:48:38](admin): hello
+[06/06/2022 21:50:04](Server): Server Start
+[06/06/2022 21:50:08](Server): Connection try!
+[06/06/2022 21:50:09]admin join the chat
+[06/06/2022 21:50:12](admin): hello
+[06/06/2022 21:53:43](Server): Server Start
+[06/06/2022 21:53:47](Server): Connection try!
+[06/06/2022 21:53:48]admin join the chat
+[06/06/2022 21:53:51](admin): hello

@@ -1,14 +1,1 @@
 
-[30/05/2022 16:11:15](Server): Server Start
-[30/05/2022 16:11:19](Server): Connection try!
-[30/05/2022 16:11:19]admin join the chat
-[30/05/2022 16:11:49]admin left the chat
-[30/05/2022 16:12:48](Server): Server Start
-[30/05/2022 16:12:55](Server): Server Start
-[30/05/2022 16:12:58](Server): Connection try!
-[30/05/2022 16:12:58]admin join the chat
-[30/05/2022 16:13:01]admin left the chat
-[30/05/2022 16:14:31](Server): Server Start
-[30/05/2022 16:14:35](Server): Connection try!
-[30/05/2022 16:14:35]admin join the chat
-[30/05/2022 16:14:37]admin left the chat

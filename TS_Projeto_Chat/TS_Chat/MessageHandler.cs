@@ -66,6 +66,10 @@ namespace TS_Chat
                             output = protocolSI.GetStringFromData();
                             LoadChat(output);
                             break;
+                        case ProtocolSICmdType.USER_OPTION_9:
+                            output = protocolSI.GetStringFromData();
+                            chatController.consoleLog(output);
+                            break;
                     }
                 }// Change Exception to show on Console on last version
                 catch (SocketException ex)

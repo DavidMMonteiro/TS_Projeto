@@ -67,7 +67,7 @@ namespace TS_Chat
                         // Se for do tipo DATA
                         case ProtocolSICmdType.DATA:
                             output = protocolSI.GetStringFromData();
-                            logger.consoleLog(output, this.client.Username);
+                            logger.consoleLog("Saving message", this.client.Username);
                             saveMessage(output);
                             ack = protocolSI.Make(ProtocolSICmdType.DATA, $"({this.client.Username}): {output}");
                             broadCast(ack);
@@ -88,8 +88,6 @@ namespace TS_Chat
                             }
                             break;
                     }
-                    if (protocolSI.GetCmdType() == ProtocolSICmdType.EOT)
-                        break;
                 }
                 catch (SocketException ex)
                 {
@@ -107,6 +105,7 @@ namespace TS_Chat
                     error = $"(Server): Error processing message.\n - Unknow error catch\nGet in contact with administration";
                     logger.consoleLog("Uncommon error: " + ex.Message, this.client.Username);
                 }
+                //
                 if (!string.IsNullOrEmpty(error))
                 {
                     broadCast(protocolSI.Make(ProtocolSICmdType.EOT, error));
@@ -126,22 +125,33 @@ namespace TS_Chat
         {
             LogController logger = new LogController();
             logger.consoleLog("Loading chat", "Server");
-            ChatBDContainer chatBDContainer = new ChatBDContainer();
-            logger.consoleLog("Sorting chat by date time", "Server");
-            List<Mensagens> mensagens = chatBDContainer.MensagensSet.ToList();
-            mensagens.Sort((x, y) => x.dtCreation.CompareTo(y.dtCreation));
-            //TODO Upgrade this horrible way to fix a loop serialization
-            mensagens.ForEach(m => m.SetUser());
-            logger.consoleLog("Serializing chat to JSON", "Server");
-            try
+            using (ChatBDContainer chatBDContainer = new ChatBDContainer())
             {
-                return JsonConvert.SerializeObject(mensagens);
-            }
-            catch (Exception ex)
-            {
-                logger.consoleLog("Serializing error: \n" + ex.Message, "Server");
-                return null;
-            }
+                logger.consoleLog("Sorting chat by date time", "Server");
+                List<Mensagens> mensagens = chatBDContainer.MensagensSet.ToList();
+                mensagens.Sort((x, y) => x.dtCreation.CompareTo(y.dtCreation));
+                //TODO Upgrade this horrible way to fix a loop serialization
+                mensagens.ForEach(m => m.SetUser());
+                /*
+                 * NOTE: 
+                 * - Find way to compress or reduce the string
+                 * Temporal fix:
+                 * - Only load last 5 messages
+                 * */
+                mensagens = mensagens.Take(5).Reverse().ToList();
+                //
+                logger.consoleLog("Serializing chat to JSON", "Server");
+                try
+                {
+                    return JsonConvert.SerializeObject(mensagens);
+                }
+                catch (Exception ex)
+                {
+                    logger.consoleLog("Serializing error: \n" + ex.Message, "Server");
+                    return null;
+                }
+            } 
+            
         }
 
         private void saveMessage(string msg)
@@ -151,13 +161,16 @@ namespace TS_Chat
                 using (ChatBDContainer chatBDContainer = new ChatBDContainer())
                 {
                     //Instancia uma nova mensagem
-                    Mensagens new_mensagen = new Mensagens(msg, this.client);
+                    Mensagens new_mensagen = new Mensagens();
+                    //Add the necessary info
+                    new_mensagen.IdUser = client.IdUser;
+                    new_mensagen.Text = msg;
                     //Guarda aparit do cliente
-                    chatBDContainer.UsersSet.Find(this.client.IdUser).Mensagens.Add(new_mensagen);
+                    //chatBDContainer.UsersSet.Find(this.client.IdUser).Mensagens.Add(new_mensagen);
                     //this.client.Mensagens.Add(new_mensagen);
                     //Guarda diretamente a mensagem mensagem
                     //WHY THE FUCK DON't YOU WORK
-                    // chatBDContainer.MensagensSet.Add(new_mensagen);
+                    chatBDContainer.MensagensSet.Add(new_mensagen);
                     //Guarda as alterações efetuadas
                     chatBDContainer.SaveChanges();
                 }
@@ -172,10 +185,20 @@ namespace TS_Chat
         // Envia mensagem a todas a ligações
         private void broadCast(byte[] data)
         {
+            logger.consoleLog("Sending message", this.client.Username);
             // Loop por cada cliente
-            foreach (KeyValuePair<Users, TcpClient> client in ClientsDictionary)
+            foreach (KeyValuePair<Users, TcpClient> client in ClientsDictionary) 
+            {
                 // Envia a mensagem ao cliente
-                client.Value.GetStream().Write(data, 0, data.Length);
+                try
+                {
+                    client.Value.GetStream().Write(data, 0, data.Length);
+                }
+                catch (Exception ex)
+                {
+                    logger.consoleLog("Error sending message to " + client.Key.Username, this.client.Username);
+                }
+            }
         }
 
     }

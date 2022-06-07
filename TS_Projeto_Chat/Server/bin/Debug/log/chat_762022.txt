@@ -124,3 +124,243 @@ Self referencing loop detected with type 'System.Data.Entity.DynamicProxies.Mens
 [07/06/2022 00:31:09](Server): Serializing chat to JSON
 [07/06/2022 00:31:09](Server): Sending chat to request
 [07/06/2022 00:31:12](admin): hello
+[07/06/2022 00:44:49](Server): Server Start
+[07/06/2022 00:45:01](Server): Connection try!
+[07/06/2022 00:45:02]admin join the chat
+[07/06/2022 00:45:02](Server): Loading chat
+[07/06/2022 00:45:02](Server): Sorting chat by date time
+[07/06/2022 00:45:02](Server): Serializing chat to JSON
+[07/06/2022 00:45:02](Server): Sending chat to request
+[07/06/2022 00:45:05](admin): hello
+[07/06/2022 00:45:06](Server): Multiplicity constraint violated. The role 'Users' of the relationship 'ChatBD.MensagensUsers' has multiplicity 1 or 0..1.
+[07/06/2022 00:45:26](Server): Connection try!
+[07/06/2022 00:45:26]user1 join the chat
+[07/06/2022 00:45:26](Server): Loading chat
+[07/06/2022 00:45:26](Server): Sorting chat by date time
+[07/06/2022 00:45:26](Server): Serializing chat to JSON
+[07/06/2022 00:45:26](Server): Sending chat to request
+[07/06/2022 00:45:36](admin): Hi user 1
+[07/06/2022 00:45:36](Server): Multiplicity constraint violated. The role 'Users' of the relationship 'ChatBD.MensagensUsers' has multiplicity 1 or 0..1.
+[07/06/2022 00:45:42](user1): hey how it's going 
+[07/06/2022 00:45:42](Server): Multiplicity constraint violated. The role 'Users' of the relationship 'ChatBD.MensagensUsers' has multiplicity 1 or 0..1.
+[07/06/2022 00:45:55](admin): Not okey bro, i'm tired of this shit 
+[07/06/2022 00:45:55](Server): Multiplicity constraint violated. The role 'Users' of the relationship 'ChatBD.MensagensUsers' has multiplicity 1 or 0..1.
+[07/06/2022 00:46:04](admin): and i can't event save the messages 
+[07/06/2022 00:46:04](Server): Multiplicity constraint violated. The role 'Users' of the relationship 'ChatBD.MensagensUsers' has multiplicity 1 or 0..1.
+[07/06/2022 00:46:11](user1): That sucks bro
+[07/06/2022 00:46:11](Server): Multiplicity constraint violated. The role 'Users' of the relationship 'ChatBD.MensagensUsers' has multiplicity 1 or 0..1.
+[07/06/2022 00:46:18](user1): You will find a way 
+[07/06/2022 00:46:18](Server): Multiplicity constraint violated. The role 'Users' of the relationship 'ChatBD.MensagensUsers' has multiplicity 1 or 0..1.
+[07/06/2022 00:46:23](user1): Just keep trying 
+[07/06/2022 00:46:23](Server): Multiplicity constraint violated. The role 'Users' of the relationship 'ChatBD.MensagensUsers' has multiplicity 1 or 0..1.
+[07/06/2022 00:46:42](user1): But you should do the encrypt first
+[07/06/2022 00:46:42](Server): Multiplicity constraint violated. The role 'Users' of the relationship 'ChatBD.MensagensUsers' has multiplicity 1 or 0..1.
+[07/06/2022 00:46:47](user1): And then the extras bro
+[07/06/2022 00:46:47](Server): Multiplicity constraint violated. The role 'Users' of the relationship 'ChatBD.MensagensUsers' has multiplicity 1 or 0..1.
+[07/06/2022 00:47:15](admin): Yeah, you are right :¨-)
+[07/06/2022 00:47:15](Server): Multiplicity constraint violated. The role 'Users' of the relationship 'ChatBD.MensagensUsers' has multiplicity 1 or 0..1.
+[07/06/2022 00:47:22](user1): Well, good night
+[07/06/2022 00:47:22](Server): Multiplicity constraint violated. The role 'Users' of the relationship 'ChatBD.MensagensUsers' has multiplicity 1 or 0..1.
+[07/06/2022 00:47:29](admin): Good night bro
+[07/06/2022 00:47:29](Server): Multiplicity constraint violated. The role 'Users' of the relationship 'ChatBD.MensagensUsers' has multiplicity 1 or 0..1.
+[07/06/2022 00:47:31]user1 left the chat
+[07/06/2022 00:47:31](admin): Good night bro
+[07/06/2022 00:47:31](Server): Multiplicity constraint violated. The role 'Users' of the relationship 'ChatBD.MensagensUsers' has multiplicity 1 or 0..1.
+[07/06/2022 00:47:31](admin): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[07/06/2022 15:53:43](Server): Server Start
+[07/06/2022 15:53:45](Server): Connection try!
+[07/06/2022 15:53:48]admin join the chat
+[07/06/2022 15:53:48](Server): Loading chat
+[07/06/2022 15:53:48](Server): Sorting chat by date time
+[07/06/2022 15:53:48](Server): Serializing chat to JSON
+[07/06/2022 15:53:48](Server): Sending chat to request
+[07/06/2022 15:53:52](admin): hello
+[07/06/2022 15:55:09](Server): Server Start
+[07/06/2022 15:55:25](Server): Server Start
+[07/06/2022 15:55:29](Server): Connection try!
+[07/06/2022 15:55:30]admin join the chat
+[07/06/2022 15:55:30](Server): Loading chat
+[07/06/2022 15:55:30](Server): Sorting chat by date time
+[07/06/2022 15:55:30](Server): Serializing chat to JSON
+[07/06/2022 15:55:30](Server): Sending chat to request
+[07/06/2022 15:55:32](admin): hello
+[07/06/2022 15:58:11](Server): Server Start
+[07/06/2022 15:58:15](Server): Connection try!
+[07/06/2022 15:58:16]admin join the chat
+[07/06/2022 15:58:16](Server): Loading chat
+[07/06/2022 15:58:16](Server): Sorting chat by date time
+[07/06/2022 15:58:16](Server): Serializing chat to JSON
+[07/06/2022 15:58:16](Server): Sending chat to request
+[07/06/2022 15:58:18](admin): hello
+[07/06/2022 16:00:08](Server): Server Start
+[07/06/2022 16:00:11](Server): Connection try!
+[07/06/2022 16:00:12]admin join the chat
+[07/06/2022 16:00:12](Server): Loading chat
+[07/06/2022 16:00:12](Server): Sorting chat by date time
+[07/06/2022 16:00:12](Server): Serializing chat to JSON
+[07/06/2022 16:00:12](Server): Sending chat to request
+[07/06/2022 16:00:16](admin): hello
+[07/06/2022 16:01:06](Server): Server Start
+[07/06/2022 16:01:11](Server): Connection try!
+[07/06/2022 16:01:13]admin join the chat
+[07/06/2022 16:01:13](Server): Loading chat
+[07/06/2022 16:01:13](Server): Sorting chat by date time
+[07/06/2022 16:01:13](Server): Serializing chat to JSON
+[07/06/2022 16:01:13](Server): Sending chat to request
+[07/06/2022 16:01:15](admin): hello
+[07/06/2022 16:02:34](Server): An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+[07/06/2022 16:02:39](admin): hello
+[07/06/2022 16:02:47](Server): Server Start
+[07/06/2022 16:02:50](Server): Connection try!
+[07/06/2022 16:02:52]admin join the chat
+[07/06/2022 16:02:52](Server): Loading chat
+[07/06/2022 16:02:52](Server): Sorting chat by date time
+[07/06/2022 16:02:52](Server): Serializing chat to JSON
+[07/06/2022 16:02:52](Server): Sending chat to request
+[07/06/2022 16:02:56](admin): hello
+[07/06/2022 16:03:38](Server): An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+[07/06/2022 16:03:43](admin): hello
+[07/06/2022 16:22:20](Server): Server Start
+[07/06/2022 16:22:24](Server): Connection try!
+[07/06/2022 16:22:25](Server): A sequência não contém elementos
+[07/06/2022 16:22:33](Server): Connection try!
+[07/06/2022 16:22:34](Server): New account admin created with success!
+[07/06/2022 16:22:39](Server): Connection try!
+[07/06/2022 16:22:39]admin join the chat
+[07/06/2022 16:22:39](Server): Loading chat
+[07/06/2022 16:22:39](Server): Sorting chat by date time
+[07/06/2022 16:22:39](Server): Serializing chat to JSON
+[07/06/2022 16:22:39](Server): Sending chat to request
+[07/06/2022 16:22:41](admin): hello
+[07/06/2022 16:24:12](Server): Server Start
+[07/06/2022 16:24:23](Server): Connection try!
+[07/06/2022 16:24:25]admin join the chat
+[07/06/2022 16:24:25](Server): Loading chat
+[07/06/2022 16:24:25](Server): Sorting chat by date time
+[07/06/2022 16:24:25](Server): Serializing chat to JSON
+[07/06/2022 16:24:25](Server): Sending chat to request
+[07/06/2022 16:24:28](admin): hello
+[07/06/2022 16:24:54]admin left the chat
+[07/06/2022 16:24:58](Server): Connection try!
+[07/06/2022 16:24:58]admin join the chat
+[07/06/2022 16:24:58](Server): Loading chat
+[07/06/2022 16:24:58](Server): Sorting chat by date time
+[07/06/2022 16:24:58](Server): Serializing chat to JSON
+[07/06/2022 16:24:58](Server): Sending chat to request
+[07/06/2022 16:25:04](admin): hello again!
+[07/06/2022 16:25:26](admin): Is this working? For real?
+[07/06/2022 16:25:30]admin left the chat
+[07/06/2022 16:25:33](Server): Connection try!
+[07/06/2022 16:25:33]admin join the chat
+[07/06/2022 16:25:33](Server): Loading chat
+[07/06/2022 16:25:33](Server): Sorting chat by date time
+[07/06/2022 16:25:33](Server): Serializing chat to JSON
+[07/06/2022 16:25:33](Server): Sending chat to request
+[07/06/2022 16:25:39]admin left the chat
+[07/06/2022 16:26:52](Server): Server Start
+[07/06/2022 16:27:01](Server): Connection try!
+[07/06/2022 16:27:03](Server): New account user1 created with success!
+[07/06/2022 16:27:07](Server): Connection try!
+[07/06/2022 16:27:07]user1 join the chat
+[07/06/2022 16:27:07](Server): Loading chat
+[07/06/2022 16:27:07](Server): Sorting chat by date time
+[07/06/2022 16:27:07](Server): Serializing chat to JSON
+[07/06/2022 16:27:07](Server): Sending chat to request
+[07/06/2022 16:27:14](user1): Hello admin!
+[07/06/2022 16:27:34](Server): Connection try!
+[07/06/2022 16:27:34]admin join the chat
+[07/06/2022 16:27:34](Server): Loading chat
+[07/06/2022 16:27:34](Server): Sorting chat by date time
+[07/06/2022 16:27:34](Server): Serializing chat to JSON
+[07/06/2022 16:27:34](Server): Sending chat to request
+[07/06/2022 16:27:46](admin): Hi everyone!
+[07/06/2022 16:27:59](user1): I think it's finally workin!
+[07/06/2022 16:28:03](admin): I think to !
+[07/06/2022 16:28:09](admin): Let me try something
+[07/06/2022 16:28:10]admin left the chat
+[07/06/2022 16:28:10](user1): I think it's finally workin!
+[07/06/2022 16:28:10](user1): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[07/06/2022 16:31:03](Server): Server Start
+[07/06/2022 16:31:15](Server): Server Start
+[07/06/2022 16:31:19](Server): Connection try!
+[07/06/2022 16:31:20]admin join the chat
+[07/06/2022 16:31:20](Server): Loading chat
+[07/06/2022 16:31:20](Server): Sorting chat by date time
+[07/06/2022 16:31:20](Server): Serializing chat to JSON
+[07/06/2022 16:31:20](Server): Sending chat to request
+[07/06/2022 16:31:20](admin): Uncommon error: O tamanho dos dados é maior que MAX_DATA_LENGTH (1400)
+[07/06/2022 16:31:59](Server): Connection try!
+[07/06/2022 16:31:59]admin join the chat
+[07/06/2022 16:31:59](Server): Loading chat
+[07/06/2022 16:31:59](Server): Sorting chat by date time
+[07/06/2022 16:31:59](Server): Serializing chat to JSON
+[07/06/2022 16:31:59](Server): Sending chat to request
+[07/06/2022 16:31:59](admin): Uncommon error: O tamanho dos dados é maior que MAX_DATA_LENGTH (1400)
+[07/06/2022 16:37:26](Server): Server Start
+[07/06/2022 16:37:30](Server): Connection try!
+[07/06/2022 16:37:31]admin join the chat
+[07/06/2022 16:37:31](Server): Loading chat
+[07/06/2022 16:37:31](Server): Sorting chat by date time
+[07/06/2022 16:37:31](Server): Serializing chat to JSON
+[07/06/2022 16:37:31](Server): Sending chat to request
+[07/06/2022 16:37:31](admin): Uncommon error: O tamanho dos dados é maior que MAX_DATA_LENGTH (1400)
+[07/06/2022 16:41:08](Server): Server Start
+[07/06/2022 16:41:15](Server): Connection try!
+[07/06/2022 16:41:16]admin join the chat
+[07/06/2022 16:41:16](admin): Sending message
+[07/06/2022 16:41:16](Server): Loading chat
+[07/06/2022 16:41:16](Server): Sorting chat by date time
+[07/06/2022 16:41:16](Server): Serializing chat to JSON
+[07/06/2022 16:41:16](Server): Sending chat to request
+[07/06/2022 16:41:16](admin): Uncommon error: O tamanho dos dados é maior que MAX_DATA_LENGTH (1400)
+[07/06/2022 16:41:16](admin): Sending message
+[07/06/2022 16:41:28](Server): Connection try!
+[07/06/2022 16:41:28]admin join the chat
+[07/06/2022 16:41:28](admin): Sending message
+[07/06/2022 16:41:28](Server): Loading chat
+[07/06/2022 16:41:28](Server): Sorting chat by date time
+[07/06/2022 16:41:28](Server): Serializing chat to JSON
+[07/06/2022 16:41:28](Server): Sending chat to request
+[07/06/2022 16:41:28](admin): Uncommon error: O tamanho dos dados é maior que MAX_DATA_LENGTH (1400)
+[07/06/2022 16:41:28](admin): Sending message
+[07/06/2022 16:41:40](Server): Connection try!
+[07/06/2022 16:41:40]admin join the chat
+[07/06/2022 16:41:40](admin): Sending message
+[07/06/2022 16:41:40](Server): Loading chat
+[07/06/2022 16:41:40](Server): Sorting chat by date time
+[07/06/2022 16:41:40](Server): Serializing chat to JSON
+[07/06/2022 16:41:40](Server): Sending chat to request
+[07/06/2022 16:41:40](admin): Uncommon error: O tamanho dos dados é maior que MAX_DATA_LENGTH (1400)
+[07/06/2022 16:41:40](admin): Sending message
+[07/06/2022 16:42:43](Server): Connection try!
+[07/06/2022 16:43:08]admin join the chat
+[07/06/2022 16:43:09](admin): Sending message
+[07/06/2022 16:43:37](Server): Loading chat
+[07/06/2022 16:43:40](Server): Sorting chat by date time
+[07/06/2022 16:43:41](Server): Serializing chat to JSON
+[07/06/2022 16:43:41](Server): Sending chat to request
+[07/06/2022 16:43:41](admin): Uncommon error: O tamanho dos dados é maior que MAX_DATA_LENGTH (1400)
+[07/06/2022 16:43:41](admin): Sending message
+[07/06/2022 16:45:34](Server): Connection try!
+[07/06/2022 16:45:38]admin join the chat
+[07/06/2022 16:45:38](admin): Sending message
+[07/06/2022 16:45:38](Server): Loading chat
+[07/06/2022 16:45:38](Server): Sorting chat by date time
+[07/06/2022 16:45:38](Server): Serializing chat to JSON
+[07/06/2022 16:45:38](Server): Sending chat to request
+[07/06/2022 16:50:04](Server): Server Start
+[07/06/2022 16:50:07](Server): Connection try!
+[07/06/2022 16:50:09]admin join the chat
+[07/06/2022 16:50:09](admin): Sending message
+[07/06/2022 16:50:09](Server): Loading chat
+[07/06/2022 16:50:09](Server): Sorting chat by date time
+[07/06/2022 16:50:09](Server): Serializing chat to JSON
+[07/06/2022 16:50:09](Server): Sending chat to request
+[07/06/2022 16:54:58](Server): Server Start
+[07/06/2022 16:55:01](Server): Connection try!
+[07/06/2022 16:55:02]admin join the chat
+[07/06/2022 16:55:02](admin): Sending message
+[07/06/2022 16:55:02](Server): Loading chat
+[07/06/2022 16:55:02](Server): Sorting chat by date time
+[07/06/2022 16:55:03](Server): Serializing chat to JSON
+[07/06/2022 16:55:03](Server): Sending chat to request

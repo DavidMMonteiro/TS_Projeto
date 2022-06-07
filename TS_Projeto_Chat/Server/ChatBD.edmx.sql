@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/06/2022 20:16:29
+-- Date Created: 06/07/2022 16:19:59
 -- Generated from EDMX file: C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\ChatBD.edmx
 -- --------------------------------------------------
 
@@ -51,7 +51,7 @@ CREATE TABLE [dbo].[MensagensSet] (
     [IdMensagem] int IDENTITY(1,1) NOT NULL,
     [dtCreation] datetime  NOT NULL,
     [Text] nvarchar(max)  NOT NULL,
-    [Users_IdUser] int  NOT NULL
+    [IdUser] int  NOT NULL
 );
 GO
 
@@ -75,19 +75,19 @@ GO
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [Users_IdUser] in table 'MensagensSet'
+-- Creating foreign key on [IdUser] in table 'MensagensSet'
 ALTER TABLE [dbo].[MensagensSet]
-ADD CONSTRAINT [FK_MensagensUsers]
-    FOREIGN KEY ([Users_IdUser])
+ADD CONSTRAINT [FK_UsersMensagens]
+    FOREIGN KEY ([IdUser])
     REFERENCES [dbo].[UsersSet]
         ([IdUser])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_MensagensUsers'
-CREATE INDEX [IX_FK_MensagensUsers]
+-- Creating non-clustered index for FOREIGN KEY 'FK_UsersMensagens'
+CREATE INDEX [IX_FK_UsersMensagens]
 ON [dbo].[MensagensSet]
-    ([Users_IdUser]);
+    ([IdUser]);
 GO
 
 -- --------------------------------------------------

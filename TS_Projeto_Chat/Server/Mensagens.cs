@@ -10,22 +10,15 @@
 namespace Server
 {
     using System;
-    using System.Linq;
     using System.Collections.Generic;
-
-
-    [Serializable]
+    
     public partial class Mensagens
     {
-        public Mensagens()
-        {
-
-        }
-
         public int IdMensagem { get; set; }
         public System.DateTime dtCreation { get; set; }
-        public string Text { get; set; }    
+        public string Text { get; set; }
+        public int IdUser { get; set; }
+    
         public virtual Users Users { get; set; }
-
     }
 }

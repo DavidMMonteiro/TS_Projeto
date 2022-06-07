@@ -11,6 +11,7 @@ namespace Server
 {
     using System;
     using System.Collections.Generic;
+    
     public partial class Users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -18,7 +19,7 @@ namespace Server
         {
             this.Mensagens = new HashSet<Mensagens>();
         }
-        
+    
         public int IdUser { get; set; }
         public string Username { get; set; }
         public byte[] SaltedPasswordHash { get; set; }

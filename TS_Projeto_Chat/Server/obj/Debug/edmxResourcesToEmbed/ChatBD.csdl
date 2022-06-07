@@ -3,9 +3,9 @@
   <EntityContainer Name="ChatBDContainer" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="UsersSet" EntityType="ChatBD.Users" />
     <EntitySet Name="MensagensSet" EntityType="ChatBD.Mensagens" />
-    <AssociationSet Name="MensagensUsers" Association="ChatBD.MensagensUsers">
-      <End Role="Mensagens" EntitySet="MensagensSet" />
+    <AssociationSet Name="UsersMensagens" Association="ChatBD.UsersMensagens">
       <End Role="Users" EntitySet="UsersSet" />
+      <End Role="Mensagens" EntitySet="MensagensSet" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Users">
@@ -17,19 +17,28 @@
     <Property Name="SaltedPasswordHash" Type="Binary" Nullable="false" MaxLength="Max" />
     <Property Name="Salt" Type="Binary" Nullable="false" MaxLength="Max" />
     <Property Name="dtCreation" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Mensagens" Relationship="ChatBD.MensagensUsers" FromRole="Users" ToRole="Mensagens" />
+    <NavigationProperty Name="Mensagens" Relationship="ChatBD.UsersMensagens" FromRole="Users" ToRole="Mensagens" />
   </EntityType>
   <EntityType Name="Mensagens">
     <Key>
       <PropertyRef Name="IdMensagem" />
     </Key>
     <Property Name="IdMensagem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <NavigationProperty Name="Users" Relationship="ChatBD.MensagensUsers" FromRole="Mensagens" ToRole="Users" />
     <Property Name="dtCreation" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Users" Relationship="ChatBD.UsersMensagens" FromRole="Mensagens" ToRole="Users" />
+    <Property Name="IdUser" Type="Int32" Nullable="false" />
   </EntityType>
-  <Association Name="MensagensUsers">
-    <End Type="ChatBD.Mensagens" Role="Mensagens" Multiplicity="*" />
+  <Association Name="UsersMensagens">
     <End Type="ChatBD.Users" Role="Users" Multiplicity="1" />
+    <End Type="ChatBD.Mensagens" Role="Mensagens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="Mensagens">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
 </Schema>

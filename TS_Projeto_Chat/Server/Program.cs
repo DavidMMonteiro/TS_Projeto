@@ -159,6 +159,7 @@ namespace Server
             ChatBDContainer chatBDContainer = new ChatBDContainer();
             //Get the user data 
             Users user = chatBDContainer.UsersSet.ToList().Where(u => u.Username == check_Username).First();
+            //
             //Valida se o utilizador esta no sistema
             if (user == null)
                 return null;

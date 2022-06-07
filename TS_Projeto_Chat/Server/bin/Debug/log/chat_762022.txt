@@ -364,3 +364,20 @@ Self referencing loop detected with type 'System.Data.Entity.DynamicProxies.Mens
 [07/06/2022 16:55:02](Server): Sorting chat by date time
 [07/06/2022 16:55:03](Server): Serializing chat to JSON
 [07/06/2022 16:55:03](Server): Sending chat to request
+[07/06/2022 18:07:17](Server): Server Start
+[07/06/2022 18:07:20](Server): Connection try!
+[07/06/2022 18:07:21]admin join the chat
+[07/06/2022 18:07:21](admin): Sending message
+[07/06/2022 18:07:21](Server): Loading chat
+[07/06/2022 18:07:21](Server): Sorting chat by date time
+[07/06/2022 18:07:21](Server): Serializing chat to JSON
+[07/06/2022 18:07:22](Server): Sending chat to request
+[07/06/2022 18:07:52]admin left the chat
+[07/06/2022 18:07:52](admin): Sending message
+[07/06/2022 18:07:59](Server): Connection try!
+[07/06/2022 18:07:59]admin join the chat
+[07/06/2022 18:07:59](admin): Sending message
+[07/06/2022 18:07:59](Server): Loading chat
+[07/06/2022 18:07:59](Server): Sorting chat by date time
+[07/06/2022 18:07:59](Server): Serializing chat to JSON
+[07/06/2022 18:07:59](Server): Sending chat to request

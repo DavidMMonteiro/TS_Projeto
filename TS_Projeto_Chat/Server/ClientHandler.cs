@@ -1,37 +1,32 @@
 ﻿using EI.SI;
+using Newtonsoft.Json;
 using Server;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Sockets;
 using System.Threading;
 
 namespace TS_Chat
 {
-    //TODO Make enum generic
-    public enum TransmisionType{
-        unicast, 
-        multicast, 
-        broadcast
-    }
-    
     // Thread para do client
     public class ClientHandler
     {
         private LogController logger = new LogController();
-        private TcpClient client;
-        private string clientName;
-        private Dictionary<string, TcpClient> ClientsDictionary;
+        private TcpClient tcpClient;
+        private Users client;
+        private Dictionary<Users, TcpClient> ClientsDictionary;
         private Thread thread;
 
         // Construtor do ClientHandler
-        public ClientHandler(TcpClient client, string clientName, Dictionary<string, TcpClient> clientsDictionary)
+        public ClientHandler(TcpClient tcpClient, Users client, Dictionary<Users, TcpClient> clientsDictionary)
         {
+            this.tcpClient = tcpClient;
             this.client = client;
-            this.clientName = clientName;
             this.ClientsDictionary = clientsDictionary;
             ProtocolSI protocol = new ProtocolSI();
-            string msg = $"{this.clientName} join the chat";
+            string msg = $"{this.client.Username} join the chat";
             byte[] ack = protocol.Make(ProtocolSICmdType.DATA, msg);
             logger.consoleLog(msg);
             this.broadCast(ack);
@@ -48,11 +43,12 @@ namespace TS_Chat
         private void threadHandler()
         {
             // Vai establecer a ligação do cliente
-            NetworkStream networkStream = this.client.GetStream();
+            NetworkStream networkStream = this.tcpClient.GetStream();
             ProtocolSI protocolSI = new ProtocolSI();
             // Enquando a mensagem do cliente não for EOT
             while (protocolSI.GetCmdType() != ProtocolSICmdType.EOT)
             {
+                string error = null;
                 try
                 {
                     // Vai ler a mensagem do cliente
@@ -71,79 +67,138 @@ namespace TS_Chat
                         // Se for do tipo DATA
                         case ProtocolSICmdType.DATA:
                             output = protocolSI.GetStringFromData();
-                            logger.consoleLog(output, this.clientName);
-                            ack = protocolSI.Make(ProtocolSICmdType.DATA, $"({this.clientName}): {output}");
+                            logger.consoleLog("Saving message", this.client.Username);
+                            saveMessage(output);
+                            ack = protocolSI.Make(ProtocolSICmdType.DATA, $"({this.client.Username}): {output}");
                             broadCast(ack);
                             break;
                         case ProtocolSICmdType.EOT:
-                            output = this.clientName + " left the chat";
+                            output = this.client.Username + " left the chat";
                             logger.consoleLog(output);
                             ack = protocolSI.Make(ProtocolSICmdType.EOT, output);
-                            //Make Switch kind of TransmisionType
                             broadCast(ack);
                             break;
+                        case ProtocolSICmdType.USER_OPTION_2:
+                            string chat = LoadChat();
+                            logger.consoleLog("Sending chat to request", "Server");
+                            if (!string.IsNullOrEmpty(chat)) 
+                            { 
+                                ack = protocolSI.Make(ProtocolSICmdType.USER_OPTION_2, chat);
+                                networkStream.Write(ack, 0, ack.Length);
+                            }
+                            break;
                     }
-                    if (protocolSI.GetCmdType() == ProtocolSICmdType.EOT)
-                        break;
                 }
                 catch (SocketException ex)
                 {
-                    logger.consoleLog(ex.Message, this.clientName);
-                    break;
+                    error = $"(Server): Error processing message.\n - Socket error\nGet in contact with administration";
+                    logger.consoleLog(ex.Message, this.client.Username);
+
                 }
                 catch (IOException ex) // Excepção de Socket
                 {
-                    logger.consoleLog("Socket error: " + ex.Message, this.clientName);
-                    break;
+                    error = $"(Server): Error processing message.\n - IOException\nGet in contact with administration";
+                    logger.consoleLog("Socket error: " + ex.Message, this.client.Username);
                 }
                 catch (Exception ex) // Excepção desconhecida 
                 {
-                    logger.consoleLog("Uncommon error: " + ex.Message, this.clientName);
+                    error = $"(Server): Error processing message.\n - Unknow error catch\nGet in contact with administration";
+                    logger.consoleLog("Uncommon error: " + ex.Message, this.client.Username);
+                }
+                //
+                if (!string.IsNullOrEmpty(error))
+                {
+                    broadCast(protocolSI.Make(ProtocolSICmdType.EOT, error));
                     break;
                 }
+                
             }
             //Termina a stream do client
             networkStream.Close();
             //Termina o TcpClient
-            client.Close();
+            tcpClient.Close();
             //Remove a ligação com o cliente da lista
-            ClientsDictionary.Remove(this.clientName);
+            ClientsDictionary.Remove(this.client);
+        }
+
+        private static string LoadChat()
+        {
+            LogController logger = new LogController();
+            logger.consoleLog("Loading chat", "Server");
+            using (ChatBDContainer chatBDContainer = new ChatBDContainer())
+            {
+                logger.consoleLog("Sorting chat by date time", "Server");
+                List<Mensagens> mensagens = chatBDContainer.MensagensSet.ToList();
+                mensagens.Sort((x, y) => x.dtCreation.CompareTo(y.dtCreation));
+                //TODO Upgrade this horrible way to fix a loop serialization
+                mensagens.ForEach(m => m.SetUser());
+                /*
+                 * NOTE: 
+                 * - Find way to compress or reduce the string
+                 * Temporal fix:
+                 * - Only load last 5 messages
+                 * */
+                mensagens = mensagens.Take(5).Reverse().ToList();
+                //
+                logger.consoleLog("Serializing chat to JSON", "Server");
+                try
+                {
+                    return JsonConvert.SerializeObject(mensagens);
+                }
+                catch (Exception ex)
+                {
+                    logger.consoleLog("Serializing error: \n" + ex.Message, "Server");
+                    return null;
+                }
+            } 
+            
+        }
+
+        private void saveMessage(string msg)
+        {
+            try
+            {
+                using (ChatBDContainer chatBDContainer = new ChatBDContainer())
+                {
+                    //Instancia uma nova mensagem
+                    Mensagens new_mensagen = new Mensagens();
+                    //Add the necessary info
+                    new_mensagen.IdUser = client.IdUser;
+                    new_mensagen.Text = msg;
+                    //Guarda aparit do cliente
+                    //chatBDContainer.UsersSet.Find(this.client.IdUser).Mensagens.Add(new_mensagen);
+                    //this.client.Mensagens.Add(new_mensagen);
+                    //Guarda diretamente a mensagem mensagem
+                    //WHY THE FUCK DON't YOU WORK
+                    chatBDContainer.MensagensSet.Add(new_mensagen);
+                    //Guarda as alterações efetuadas
+                    chatBDContainer.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                LogController logController = new LogController();
+                logController.consoleLog(ex.Message, "Server");
+            }
         }
 
         // Envia mensagem a todas a ligações
         private void broadCast(byte[] data)
         {
+            logger.consoleLog("Sending message", this.client.Username);
             // Loop por cada cliente
-            foreach (KeyValuePair<string, TcpClient> client in ClientsDictionary)
+            foreach (KeyValuePair<Users, TcpClient> client in ClientsDictionary) 
+            {
                 // Envia a mensagem ao cliente
-                client.Value.GetStream().Write(data, 0, data.Length);
-        }
-
-        // Envia mensagem a uma lista de clientes
-        private void multiCast(byte[] data, List<string> destenies)
-        {
-            // Itenera pelos nomes destino
-            foreach (string desteny in destenies)
-                // Valida se o nome destino existe no dicionario
-                if (ClientsDictionary.TryGetValue(desteny, out TcpClient client))
-                    // Envia a mensagem ao cliente especifico
-                    client.GetStream().Write(data, 0, data.Length);
-        }
-
-        // Envia mensagem a so um client
-        private void unicast(byte[] data, string desteny)
-        {
-            // Valida se o destino existe no dictionario
-            if (ClientsDictionary.TryGetValue(desteny, out TcpClient client))
-                // Envia ao destino se existir
-                client.GetStream().Write(data, 0, data.Length);
-        }
-        //TODO Get chat by ID
-        private Chats getChat(int idChat)
-        {
-            ChatBDContainer container = new ChatBDContainer();
-            Chats chat = container.ChatsSet.Find(idChat);
-            return chat; 
+                try
+                {
+                    client.Value.GetStream().Write(data, 0, data.Length);
+                }
+                catch (Exception ex)
+                {
+                    logger.consoleLog("Error sending message to " + client.Key.Username, this.client.Username);
+                }
+            }
         }
 
     }

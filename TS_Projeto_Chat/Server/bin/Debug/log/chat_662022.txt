@@ -1,0 +1,921 @@
+
+[06/06/2022 14:15:49](Server): Server Start
+[06/06/2022 14:15:55](Server): Connection try!
+[06/06/2022 14:15:55]admin join the chat
+[06/06/2022 14:16:27](Server): Server Start
+[06/06/2022 14:16:31](Server): Connection try!
+[06/06/2022 14:16:31]admin join the chat
+[06/06/2022 14:16:34](admin): hello
+[06/06/2022 14:16:42](admin): Server
+[06/06/2022 14:16:46]admin left the chat
+[06/06/2022 14:19:05](Server): Server Start
+[06/06/2022 14:19:10](Server): Connection try!
+[06/06/2022 14:19:10]admin join the chat
+[06/06/2022 14:19:16](admin): hello server
+[06/06/2022 14:19:18]admin left the chat
+[06/06/2022 14:29:37](Server): Server Start
+[06/06/2022 14:30:07](Server): Server Start
+[06/06/2022 14:38:19](Server): Server Start
+[06/06/2022 14:38:30](Server): Connection try!
+[06/06/2022 14:39:08](Server): An error occurred while updating the entries. See the inner exception for details.
+[06/06/2022 14:39:25](Server): Connection try!
+[06/06/2022 14:40:17](Server): Server Start
+[06/06/2022 14:40:26](Server): Connection try!
+[06/06/2022 14:40:35](Server): An error occurred while updating the entries. See the inner exception for details.
+[06/06/2022 14:41:28](Server): Server Start
+[06/06/2022 14:41:35](Server): Connection try!
+[06/06/2022 14:41:54](Server): Connection try!
+[06/06/2022 14:42:28](Server): System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: String or binary data would be truncated.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Server.Program.CreateUser(String dataFromClient) in C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\Program.cs:line 129
+[06/06/2022 14:45:16](Server): Connection try!
+[06/06/2022 14:52:03](Server): Server Start
+[06/06/2022 14:52:12](Server): Connection try!
+[06/06/2022 14:52:34](Server): System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: String or binary data would be truncated.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
+   at System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Server.Program.CreateUser(String dataFromClient) in C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\Program.cs:line 129
+[06/06/2022 14:52:45](Server): Server Start
+[06/06/2022 14:52:55](Server): Connection try!
+[06/06/2022 14:53:03](Server): Connection try!
+[06/06/2022 14:58:24](Server): Server Start
+[06/06/2022 14:58:34](Server): Connection try!
+[06/06/2022 14:58:34](Server): Exception has been thrown by the target of an invocation.
+[06/06/2022 14:58:38](Server): Connection try!
+[06/06/2022 14:59:16](Server): Connection try!
+[06/06/2022 14:59:16](Server): Exception has been thrown by the target of an invocation.
+[06/06/2022 14:59:24](Server): Connection try!
+[06/06/2022 15:00:12](Server): Connection try!
+[06/06/2022 15:01:18](Server): Exception has been thrown by the target of an invocation.
+[06/06/2022 15:01:33](Server): Connection try!
+[06/06/2022 15:02:07](Server): Server Start
+[06/06/2022 15:02:20](Server): Connection try!
+[06/06/2022 15:04:28](Server): Server Start
+[06/06/2022 15:04:34](Server): Connection try!
+[06/06/2022 15:04:49](Server): System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Server.Program.CreateUser(String dataFromClient) in C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\Program.cs:line 129
+[06/06/2022 15:05:09](Server): Connection try!
+[06/06/2022 15:21:53](Server): Server Start
+[06/06/2022 15:22:05](Server): Connection try!
+[06/06/2022 15:26:38](Server): Server Start
+[06/06/2022 15:26:47](Server): Connection try!
+[06/06/2022 15:26:56](Server): Connection try!
+[06/06/2022 15:27:05](Server): New user admin created
+[06/06/2022 15:29:01](Server): Server Start
+[06/06/2022 15:29:08](Server): Connection try!
+[06/06/2022 15:29:11](Server): New user user1 created
+[06/06/2022 15:38:03](Server): Server Start
+[06/06/2022 15:38:09](Server): Connection try!
+[06/06/2022 15:38:10](Server): Exception has been thrown by the target of an invocation.
+[06/06/2022 15:38:15](Server): Connection try!
+[06/06/2022 15:38:15](Server): Exception has been thrown by the target of an invocation.
+[06/06/2022 15:38:32](Server): Connection try!
+[06/06/2022 15:40:10](Server): Server Start
+[06/06/2022 15:40:16](Server): Connection try!
+[06/06/2022 15:40:49](Server): User not accepted
+[06/06/2022 15:41:49](Server): Server Start
+[06/06/2022 15:41:59](Server): Connection try!
+[06/06/2022 15:42:02](Server): New user admin created
+[06/06/2022 15:43:31](Server): Server Start
+[06/06/2022 15:45:11](Server): Server Start
+[06/06/2022 15:45:30](Server): Connection try!
+[06/06/2022 15:45:33](Server): New user admin created
+[06/06/2022 15:45:33](Server): User SaltHash: s{�U�P��_�X
+��Wk0f� 
+[06/06/2022 15:46:02](Server): Connection try!
+[06/06/2022 15:46:04]User hashSalt: s{�U�P��_�X
+��Wk0f�
+[06/06/2022 15:46:04]Login User HashSalt: �zS���Z��&Co�%����%AC�����
+[06/06/2022 15:48:07](Server): Server Start
+[06/06/2022 15:48:12](Server): Connection try!
+[06/06/2022 15:48:14]User hashSalt: s{�U�P��_�X
+��Wk0f�
+[06/06/2022 15:48:14]Login User HashSalt: �7���G�����@�rJ��0g@��0@t��
+[06/06/2022 15:48:19](Server): User not accepted
+[06/06/2022 15:48:41](Server): Server Start
+[06/06/2022 15:48:46](Server): Connection try!
+[06/06/2022 15:48:49]User hashSalt: s{�U�P��_�X
+��Wk0f�
+[06/06/2022 15:48:49]Login User HashSalt: �7���G�����@�rJ��0g@��0@t��
+[06/06/2022 15:50:27](Server): Server Start
+[06/06/2022 15:50:53](Server): Connection try!
+[06/06/2022 15:51:12](Server): New user user1 created
+[06/06/2022 15:51:12](Server): User SaltHash: &��0Ȧ 
+[06/06/2022 15:51:26](Server): Connection try!
+[06/06/2022 15:51:28]User: user1
+[06/06/2022 15:51:28]User hashSalt: &��0Ȧ
+[06/06/2022 15:51:28]Login User HashSalt: :�X�?տv��x��-{E�ֺ�P�_j"�
+[06/06/2022 15:53:09](Server): Server Start
+[06/06/2022 15:53:15](Server): Connection try!
+[06/06/2022 15:53:17]User: admin
+[06/06/2022 15:53:17]User hashSalt: G3N777+9FlXvv71Q77+977+9X++/vVgKG++/vQLvv71XazATZu+/vQg=
+[06/06/2022 15:53:17]Login User HashSalt: 2ze1FJvRR5GjHr/9nUAejnJKwe0wZ0D6DBWaMEB0wM0=
+[06/06/2022 15:58:06](Server): Server Start
+[06/06/2022 15:59:16](Server): Server Start
+[06/06/2022 15:59:44](Server): Connection try!
+[06/06/2022 15:59:47](Server): New user admin created
+[06/06/2022 15:59:47](Server): User SaltHash: yc8HgmZW4oo= 
+[06/06/2022 16:00:07](Server): Connection try!
+[06/06/2022 16:00:09]User: admin
+[06/06/2022 16:00:09]User hashSalt: eWM4SGdtWlc0b289
+[06/06/2022 16:00:09]Login User HashSalt: nzSkLxF1y3plCHK4FOMVcmgHxSxtBzul9qQnq78paTg=
+[06/06/2022 16:02:03](Server): Server Start
+[06/06/2022 16:02:12](Server): Connection try!
+[06/06/2022 16:02:15](Server): New user user1 created
+[06/06/2022 16:02:15](Server): User SaltHash: o5+ktoNTaZM= 
+[06/06/2022 16:02:25](Server): Connection try!
+[06/06/2022 16:02:28]User: user1
+[06/06/2022 16:02:28]User hashSalt: bzUra3RvTlRhWk09
+[06/06/2022 16:02:28]Login User HashSalt: 72iAqTL2SXTcFemMgQEINeSzYj6GmY2zb9kzWIXfABY=
+[06/06/2022 16:03:24](Server): Server Start
+[06/06/2022 16:03:40](Server): Connection try!
+[06/06/2022 16:03:41](Server): New user admin created
+[06/06/2022 16:03:41](Server): User SaltHash: 2I8DIVvS/lc= 
+[06/06/2022 16:03:47](Server): Connection try!
+[06/06/2022 16:03:47](Server): User: admin
+[06/06/2022 16:03:47](Server): User hashSalt: Mkk4RElWdlMvbGM9
+[06/06/2022 16:03:47](Server): Login User HashSalt: GK9MJDkmnaiYeyr8jTa1XpsyoyKxRxUhZSFtcptSI9w=
+[06/06/2022 16:04:49](Server): Server Start
+[06/06/2022 16:04:57](Server): Connection try!
+[06/06/2022 16:04:58](Server): New user user1 created
+[06/06/2022 16:04:58](Server): User Salt: SkRTYTVuQ2hIbXgzVVRBK0JQZ2JHRjlHaXV5QmpRMVhESWRSZ1YzaU9QST0= 
+[06/06/2022 16:04:58](Server): User SaltHash: WmRKZXlWTWlPMnc9 
+[06/06/2022 16:06:11](Server): Server Start
+[06/06/2022 16:06:31](Server): Connection try!
+[06/06/2022 16:06:31](Server): New user admin created
+[06/06/2022 16:06:31](Server): User Salt: ZWt4L0h1UVE5QzBXbm9salFpNDNxNlNwOXU5cGtsT2JLZnBRYnk2MjVnMD0= 
+[06/06/2022 16:06:31](Server): User SaltHash: RnBuYWtTdVBEeTA9 
+[06/06/2022 16:06:37](Server): Connection try!
+[06/06/2022 16:06:37](Server): User: admin
+[06/06/2022 16:06:37](Server): User hashSalt: RnBuYWtTdVBEeTA9
+[06/06/2022 16:06:37](Server): Login User HashSalt: 7SVn78P7FrfdF8WawYxTL9pKL6QYpvTKmzrbqinrjEA=
+[06/06/2022 16:07:27](Server): User not accepted
+[06/06/2022 16:07:52](Server): Server Start
+[06/06/2022 16:08:02](Server): Connection try!
+[06/06/2022 16:08:02](Server): New user admin created
+[06/06/2022 16:08:02](Server): User Salt: eGM4dkNwWVJkWUxvTzNCckp0cHVDUDhMbDd4d0xnNlQ4UWdHSVY3RU8vaz0= 
+[06/06/2022 16:08:02](Server): User SaltHash: bWViMlhOMzlrbjQ9 
+[06/06/2022 16:08:22](Server): Connection try!
+[06/06/2022 16:08:22](Server): User: admin
+[06/06/2022 16:08:22](Server): User Salt: eGM4dkNwWVJkWUxvTzNCckp0cHVDUDhMbDd4d0xnNlQ4UWdHSVY3RU8vaz0=
+[06/06/2022 16:08:22](Server): User hashSalt: bWViMlhOMzlrbjQ9
+[06/06/2022 16:08:22](Server): Login User HashSalt: xWgsq4yBjAjoPySoTjFvmJ0TWLUeq3uJGB5MTbBplpE=
+[06/06/2022 16:10:14](Server): User not accepted
+[06/06/2022 16:10:25](Server): Server Start
+[06/06/2022 16:10:56](Server): Connection try!
+[06/06/2022 16:10:57](Server): New user admin created
+[06/06/2022 16:10:57](Server): User Salt: NldERzBvK1A3a2ZNdW94MWYxTktUdzVPOFNBNXVjUVR3amI2NE5pUzh4Yz0= 
+[06/06/2022 16:10:57](Server): User SaltHash: QTJkN1pQOG5RaFk9 
+[06/06/2022 16:11:57](Server): Server Start
+[06/06/2022 16:12:09](Server): Connection try!
+[06/06/2022 16:12:09](Server): admin$QSs5wMV91Uk=$mGai/7XCqGpyCD4ncFAkLZ6xw6qdow2+j7QWCCOmfko=
+[06/06/2022 16:12:10](Server): New user admin created
+[06/06/2022 16:12:10](Server): User Salt: bUdhaS83WENxR3B5Q0Q0bmNGQWtMWjZ4dzZxZG93MitqN1FXQ0NPbWZrbz0= 
+[06/06/2022 16:12:10](Server): User SaltHash: UVNzNXdNVjkxVWs9 
+[06/06/2022 16:13:54](Server): Server Start
+[06/06/2022 16:14:03](Server): Connection try!
+[06/06/2022 16:14:03](Server): admin$Cnop6nS8mCM=$1JzSWFaPI4HnwNF8SUo1phuLGkW8upL8MCrPncHX7yQ=
+[06/06/2022 16:14:04](Server): New user admin created
+[06/06/2022 16:14:04](Server): User Salt: 1JzSWFaPI4HnwNF8SUo1phuLGkW8upL8MCrPncHX7yQ= 
+[06/06/2022 16:14:04](Server): User SaltHash: Cnop6nS8mCM= 
+[06/06/2022 16:15:06](Server): Connection try!
+[06/06/2022 16:15:06](Server): User: admin
+[06/06/2022 16:15:06](Server): User Salt: MUp6U1dGYVBJNEhud05GOFNVbzFwaHVMR2tXOHVwTDhNQ3JQbmNIWDd5UT0=
+[06/06/2022 16:15:06](Server): User hashSalt: Q25vcDZuUzhtQ009
+[06/06/2022 16:15:06](Server): Login User HashSalt: xgBJTSne8Lcwgt33S0bPrdc1s8PHR7NjGFNOQCrOCEo=
+[06/06/2022 16:15:53](Server): User not accepted
+[06/06/2022 16:16:05](Server): Server Start
+[06/06/2022 16:16:13](Server): Connection try!
+[06/06/2022 16:16:13](Server): admin$WPJnnx72ZSI=$GDiJn93aCudpBldYwO3d77GQYAkR/PnInkyLHV6fpRY=
+[06/06/2022 16:16:14](Server): New user admin created
+[06/06/2022 16:16:14](Server): User Salt: WPJnnx72ZSI= 
+[06/06/2022 16:16:14](Server): User SaltHash: GDiJn93aCudpBldYwO3d77GQYAkR/PnInkyLHV6fpRY= 
+[06/06/2022 16:16:22](Server): Connection try!
+[06/06/2022 16:16:22](Server): User: admin
+[06/06/2022 16:16:22](Server): User Salt: V1BKbm54NzJaU0k9
+[06/06/2022 16:16:22](Server): User hashSalt: R0RpSm45M2FDdWRwQmxkWXdPM2Q3N0dRWUFrUi9Qbklua3lMSFY2ZnBSWT0=
+[06/06/2022 16:16:22](Server): Login User HashSalt: yrMJKvVirKicfdBR/sxxtB2uYUrR8zzb5zni341ScY4=
+[06/06/2022 16:17:06](Server): Server Start
+[06/06/2022 16:17:23](Server): Connection try!
+[06/06/2022 16:17:23](Server): admin$Q7Bw6Fy54kM=$wn/DthEVO4dWny6rOwL5iZuX8uKi4InGMC6r979vgtw=
+[06/06/2022 16:17:24](Server): New user admin created
+[06/06/2022 16:17:24](Server): User Salt: Q7Bw6Fy54kM= 
+[06/06/2022 16:17:24](Server): User SaltHash: wn/DthEVO4dWny6rOwL5iZuX8uKi4InGMC6r979vgtw= 
+[06/06/2022 16:17:34](Server): Connection try!
+[06/06/2022 16:17:34](Server): User: admin
+[06/06/2022 16:17:34](Server): User Salt: Q7Bw6Fy54kM=
+[06/06/2022 16:17:34](Server): User hashSalt: wn/DthEVO4dWny6rOwL5iZuX8uKi4InGMC6r979vgtw=
+[06/06/2022 16:17:34](Server): Login User HashSalt: �\*��!���>��/���7���
+Z�°���
+[06/06/2022 16:19:10](Server): User not accepted
+[06/06/2022 16:19:19](Server): Server Start
+[06/06/2022 16:19:29](Server): Connection try!
+[06/06/2022 16:19:29](Server): admin$LbtMVKyi+q4=$qp+pVnAkcucxbftixgl6wYJXQAmPKZvepXB3eLbruDw=
+[06/06/2022 16:19:30](Server): New user admin created
+[06/06/2022 16:19:30](Server): User Salt: LbtMVKyi+q4= 
+[06/06/2022 16:19:30](Server): User SaltHash: qp+pVnAkcucxbftixgl6wYJXQAmPKZvepXB3eLbruDw= 
+[06/06/2022 16:19:36](Server): Connection try!
+[06/06/2022 16:19:36](Server): User: admin
+[06/06/2022 16:19:36](Server): User Salt: LbtMVKyi+q4=
+[06/06/2022 16:19:36](Server): User hashSalt: qp+pVnAkcucxbftixgl6wYJXQAmPKZvepXB3eLbruDw=
+[06/06/2022 16:19:36](Server): Login User HashSalt: Ok/qBu2zVjdBT15B87YbA6DvFwkTdpjCDFCLojBblUU=
+[06/06/2022 16:22:55](Server): Server Start
+[06/06/2022 16:23:01](Server): Connection try!
+[06/06/2022 16:23:01](Server): User: admin
+[06/06/2022 16:23:01](Server): User Salt: LbtMVKyi+q4=
+[06/06/2022 16:23:01](Server): User hashSalt: qp+pVnAkcucxbftixgl6wYJXQAmPKZvepXB3eLbruDw=
+[06/06/2022 16:23:01](Server): Login User HashSalt: Ok/qBu2zVjdBT15B87YbA6DvFwkTdpjCDFCLojBblUU=
+[06/06/2022 16:23:01]admin join the chat
+[06/06/2022 16:23:05](admin): hello server
+[06/06/2022 16:23:31]admin left the chat
+[06/06/2022 17:29:32](Server): Server Start
+[06/06/2022 17:29:37](Server): Connection try!
+[06/06/2022 17:29:40](Server): User: admin
+[06/06/2022 17:29:40](Server): User Salt: LbtMVKyi+q4=
+[06/06/2022 17:29:40](Server): User hashSalt: qp+pVnAkcucxbftixgl6wYJXQAmPKZvepXB3eLbruDw=
+[06/06/2022 17:29:40](Server): Login User HashSalt: Ok/qBu2zVjdBT15B87YbA6DvFwkTdpjCDFCLojBblUU=
+[06/06/2022 17:29:40](Server): User not accepted
+[06/06/2022 17:34:58](Server): Server Start
+[06/06/2022 17:35:08](Server): Connection try!
+[06/06/2022 17:35:08](Server): admin$mZG9OHMspH0=$RX6icUjsYFTpUSVtOQhnWc8Qv78kQ5EF+rPCPgszk+8=
+[06/06/2022 17:35:10](Server): New user admin created
+[06/06/2022 17:35:10](Server): User Salt: mZG9OHMspH0= 
+[06/06/2022 17:35:10](Server): User SaltHash: RX6icUjsYFTpUSVtOQhnWc8Qv78kQ5EF+rPCPgszk+8= 
+[06/06/2022 17:35:22](Server): Connection try!
+[06/06/2022 17:35:49](Server): Server Start
+[06/06/2022 17:35:56](Server): Connection try!
+[06/06/2022 17:35:56](Server): User: admin
+[06/06/2022 17:35:56](Server): User Salt: mZG9OHMspH0=
+[06/06/2022 17:35:56](Server): User hashSalt: RX6icUjsYFTpUSVtOQhnWc8Qv78kQ5EF+rPCPgszk+8=
+[06/06/2022 17:35:56](Server): Login User HashSalt: SKj3EZtieTZLLxiWBzRkXa+8bHrt3kkZCbP2ylZnUlk=
+[06/06/2022 17:35:56](Server): User not accepted
+[06/06/2022 17:37:24](Server): Connection try!
+[06/06/2022 17:40:35](Server): Server Start
+[06/06/2022 17:40:40](Server): Connection try!
+[06/06/2022 17:40:41](Server): Sequence contains no elements
+[06/06/2022 17:41:34](Server): Server Start
+[06/06/2022 17:41:38](Server): Connection try!
+[06/06/2022 17:41:39](Server): Sequence contains no elements
+[06/06/2022 17:42:28](Server): Server Start
+[06/06/2022 17:42:33](Server): Connection try!
+[06/06/2022 17:42:34](Server): Sequence contains no elements
+[06/06/2022 17:42:44](Server): Connection try!
+[06/06/2022 17:42:44](Server): admin$Szms1Bh+a/E=$a6XGxB9NFEHCYxYvyhC1/YuMPsgetsYxiGL5M8bEnl4=
+[06/06/2022 17:42:44](Server): New user admin created
+[06/06/2022 17:42:44](Server): User Salt: Szms1Bh+a/E= 
+[06/06/2022 17:42:44](Server): User SaltHash: a6XGxB9NFEHCYxYvyhC1/YuMPsgetsYxiGL5M8bEnl4= 
+[06/06/2022 17:42:51](Server): Connection try!
+[06/06/2022 17:42:51](Server): User: admin
+[06/06/2022 17:42:51](Server): User Salt: Szms1Bh+a/E=
+[06/06/2022 17:42:51](Server): User hashSalt: a6XGxB9NFEHCYxYvyhC1/YuMPsgetsYxiGL5M8bEnl4=
+[06/06/2022 17:42:51](Server): Login User HashSalt: Ey06D9Y7wQrCa9mAhWuvqhBsuWUlzO6Jlt0gomwS0Fk=
+[06/06/2022 17:42:51](Server): User not accepted
+[06/06/2022 17:47:15](Server): Server Start
+[06/06/2022 17:47:31](Server): Connection try!
+[06/06/2022 17:47:31](Server): user1$G91I1fEHaeA=$1smH7pEFhr7+Fcm2BmnIUCioWC2p/tVBkf9SmC55Lf0=
+[06/06/2022 17:51:40](Server): System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Server.Program.CreateUser(String dataFromClient)
+[06/06/2022 17:51:48](Server): Server Start
+[06/06/2022 17:52:06](Server): Connection try!
+[06/06/2022 17:52:06](Server): admin$1234
+[06/06/2022 17:52:19](Server): New user admin created
+[06/06/2022 17:52:19](Server): User Salt: ��8�-� 
+[06/06/2022 17:52:20](Server): User SaltHash: C����LaWy�-.:up�eG �,4�,up�u5 
+[06/06/2022 17:52:29](Server): Connection try!
+[06/06/2022 17:52:29](Server): User: admin
+[06/06/2022 17:52:29](Server): User Salt: ��8�-�
+[06/06/2022 17:52:29](Server): User hashSalt: C����LaWy�-.:up�eG �,4�,up�u5
+[06/06/2022 17:52:29](Server): Login User HashSalt: Q4oZi7brTGFXecgTBi0uOnVw4mVHAPksNLYsdXCHdTU=
+[06/06/2022 17:52:29]admin join the chat
+[06/06/2022 17:52:53]admin left the chat
+[06/06/2022 17:54:10](Server): Server Start
+[06/06/2022 17:54:26](Server): Connection try!
+[06/06/2022 17:54:26](Server): user1$4321
+[06/06/2022 17:54:27](Server): New user user1 created
+[06/06/2022 17:54:27](Server): User Salt: �E�:��� 
+[06/06/2022 17:54:27](Server): User SaltHash: �+�Jj�clQ;��q�&pa���n��T 
+[06/06/2022 17:54:34](Server): Connection try!
+[06/06/2022 17:54:34](Server): User: user1
+[06/06/2022 17:54:34](Server): User Salt: �E�:���
+[06/06/2022 17:54:34](Server): User hashSalt: �+�Jj�clQ;��q�&pa���n��T
+[06/06/2022 17:54:34](Server): Login User HashSalt: uiujAkpqlmNsFBBRO5LdAnHVASZwYfeBfxvMbqGQVAY=
+[06/06/2022 17:54:34]user1 join the chat
+[06/06/2022 17:54:36]user1 left the chat
+[06/06/2022 18:00:23](Server): Server Start
+[06/06/2022 18:00:27](Server): Connection try!
+[06/06/2022 18:00:28]admin join the chat
+[06/06/2022 18:00:44](Server): Connection try!
+[06/06/2022 18:00:44]user1 join the chat
+[06/06/2022 18:00:51](admin): Uncommon error: Input string was not in a correct format.
+[06/06/2022 18:03:05](Server): Server Start
+[06/06/2022 18:03:10](Server): Connection try!
+[06/06/2022 18:03:10]admin join the chat
+[06/06/2022 18:22:15](Server): Server Start
+[06/06/2022 18:22:24](Server): Connection try!
+[06/06/2022 18:22:27](Server): System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Server.Program.CreateUser(String dataFromClient) in C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\Program.cs:line 132
+[06/06/2022 18:23:18](Server): Connection try!
+[06/06/2022 18:23:38](Server): System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Server.Program.CreateUser(String dataFromClient)
+[06/06/2022 18:23:58](Server): Server Start
+[06/06/2022 18:24:08](Server): Connection try!
+[06/06/2022 18:24:11](Server): System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at Server.Program.CreateUser(String dataFromClient) in C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\Program.cs:line 132
+[06/06/2022 20:08:40](Server): Server Start
+[06/06/2022 20:09:22](Server): Connection try!
+[06/06/2022 20:09:25](Server): System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: String or binary data would be truncated in table 'ChatDB.dbo.UsersSet', column 'Salt'. Truncated value: ''.
+The statement has been terminated.
+   em System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   em System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   em System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   em System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   em System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   em System.Data.SqlClient.SqlDataReader.get_MetaData()
+   em System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   em System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   em System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   em System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   em System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   em System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   em System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   em System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   em System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   em System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   em System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   em System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   em System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
+   em System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   --- Fim do rastreio da pilha de excepção interna ---
+   em System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   em System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   em System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
+   em System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
+   em System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   em System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   em System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   em System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   em System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   em System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   em System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   em System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- Fim do rastreio da pilha de excepção interna ---
+   em System.Data.Entity.Internal.InternalContext.SaveChanges()
+   em System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   em System.Data.Entity.DbContext.SaveChanges()
+   em Server.Program.CreateUser(String dataFromClient) em C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\Program.cs:line 132
+[06/06/2022 20:11:28](Server): Server Start
+[06/06/2022 20:11:35](Server): Connection try!
+[06/06/2022 20:11:37](Server): System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The conversion of a datetime2 data type to a datetime data type resulted in an out-of-range value.
+The statement has been terminated.
+   em System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   em System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   em System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   em System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   em System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   em System.Data.SqlClient.SqlDataReader.get_MetaData()
+   em System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   em System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   em System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   em System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   em System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   em System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   em System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   em System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   em System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   em System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   em System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   em System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   em System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
+   em System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   --- Fim do rastreio da pilha de excepção interna ---
+   em System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   em System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   em System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
+   em System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
+   em System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   em System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   em System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   em System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   em System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   em System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   em System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   em System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- Fim do rastreio da pilha de excepção interna ---
+   em System.Data.Entity.Internal.InternalContext.SaveChanges()
+   em System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   em System.Data.Entity.DbContext.SaveChanges()
+   em Server.Program.CreateUser(String dataFromClient) em C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\Program.cs:line 133
+[06/06/2022 20:12:02](Server): Connection try!
+[06/06/2022 20:12:58](Server): Server Start
+[06/06/2022 20:13:07](Server): Connection try!
+[06/06/2022 20:13:24](Server): Connection try!
+[06/06/2022 20:13:25](Server): User not accepted
+[06/06/2022 20:13:30](Server): Connection try!
+[06/06/2022 20:13:30](Server): User not accepted
+[06/06/2022 20:13:43](Server): Connection try!
+[06/06/2022 20:13:49](Server): Connection try!
+[06/06/2022 20:13:49](Server): User not accepted
+[06/06/2022 20:14:21](Server): Server Start
+[06/06/2022 20:14:25](Server): Connection try!
+[06/06/2022 20:14:26](Server): User: admin
+[06/06/2022 20:14:26](Server): User Salt: 4ӯ�d#l�ޤ�b���y���]����t�9�M
+[06/06/2022 20:14:26](Server): User hashSalt: H0н`��
+[06/06/2022 20:14:26](Server): Login User HashSalt: vtdVZYu0GIAfvCNI0/uovbiQdjrqjBUmBx9RW5Er/8o=
+[06/06/2022 20:14:26](Server): User not accepted
+[06/06/2022 20:15:04](Server): Server Start
+[06/06/2022 20:15:07](Server): Connection try!
+[06/06/2022 20:15:09](Server): User: admin
+[06/06/2022 20:15:09](Server): User Salt: 4ӯ�d#l�ޤ�b���y���]����t�9�M
+[06/06/2022 20:15:09](Server): User hashSalt: H0н`��
+[06/06/2022 20:15:09](Server): Login User HashSalt: vtdVZYu0GIAfvCNI0/uovbiQdjrqjBUmBx9RW5Er/8o=
+[06/06/2022 20:15:09](Server): User not accepted
+[06/06/2022 20:17:55](Server): Server Start
+[06/06/2022 20:18:02](Server): Connection try!
+[06/06/2022 20:18:03](Server): System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The conversion of a datetime2 data type to a datetime data type resulted in an out-of-range value.
+The statement has been terminated.
+   em System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   em System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   em System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   em System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   em System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   em System.Data.SqlClient.SqlDataReader.get_MetaData()
+   em System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   em System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   em System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   em System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   em System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   em System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   em System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   em System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   em System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   em System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   em System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   em System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   em System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
+   em System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   --- Fim do rastreio da pilha de excepção interna ---
+   em System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   em System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   em System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
+   em System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
+   em System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   em System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   em System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   em System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   em System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   em System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   em System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   em System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- Fim do rastreio da pilha de excepção interna ---
+   em System.Data.Entity.Internal.InternalContext.SaveChanges()
+   em System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   em System.Data.Entity.DbContext.SaveChanges()
+   em Server.Program.CreateUser(String dataFromClient) em C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\Program.cs:line 133
+[06/06/2022 20:18:51](Server): Connection try!
+[06/06/2022 20:18:51](Server): System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The conversion of a datetime2 data type to a datetime data type resulted in an out-of-range value.
+The statement has been terminated.
+   em System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   em System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   em System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   em System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   em System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   em System.Data.SqlClient.SqlDataReader.get_MetaData()
+   em System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   em System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   em System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   em System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   em System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   em System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   em System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   em System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   em System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   em System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   em System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   em System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   em System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
+   em System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   --- Fim do rastreio da pilha de excepção interna ---
+   em System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   em System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.<Update>b__2(UpdateTranslator ut)
+   em System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update[T](T noChangesResult, Func`2 updateFunction)
+   em System.Data.Entity.Core.EntityClient.Internal.EntityAdapter.Update()
+   em System.Data.Entity.Core.Objects.ObjectContext.<SaveChangesToStore>b__35()
+   em System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   em System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   em System.Data.Entity.Core.Objects.ObjectContext.<>c__DisplayClass2a.<SaveChangesInternal>b__27()
+   em System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   em System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   em System.Data.Entity.Core.Objects.ObjectContext.SaveChanges(SaveOptions options)
+   em System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- Fim do rastreio da pilha de excepção interna ---
+   em System.Data.Entity.Internal.InternalContext.SaveChanges()
+   em System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   em System.Data.Entity.DbContext.SaveChanges()
+   em Server.Program.CreateUser(String dataFromClient) em C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\Program.cs:line 133
+[06/06/2022 20:19:01](Server): Connection try!
+[06/06/2022 20:20:16](Server): Server Start
+[06/06/2022 20:20:21](Server): Connection try!
+[06/06/2022 20:21:28](Server): Connection try!
+[06/06/2022 20:21:28](Server): User: admin
+[06/06/2022 20:21:28](Server): User Salt: aL���=
+[06/06/2022 20:21:28](Server): User hashSalt: �������m����� `���^
+EL
+[06/06/2022 20:21:28](Server): Login User HashSalt: gxvx9APhvf4GB460bYjwsAaQ+skgYM0Q+4UCFV4KRUw=
+[06/06/2022 20:21:28]admin join the chat
+[06/06/2022 20:21:47](admin): Uncommon error: Cadeia de caracteres de entrada com formato incorrecto.
+[06/06/2022 20:23:26](Server): Server Start
+[06/06/2022 20:23:29](Server): Connection try!
+[06/06/2022 20:23:30]admin join the chat
+[06/06/2022 20:23:37](admin): Uncommon error: Cadeia de caracteres de entrada com formato incorrecto.
+[06/06/2022 20:24:32](Server): Server Start
+[06/06/2022 20:24:35](Server): Connection try!
+[06/06/2022 20:24:37]admin join the chat
+[06/06/2022 20:24:41](admin): hello server
+[06/06/2022 20:24:51](Server): Connection try!
+[06/06/2022 20:24:51](Server): A sequência não contém elementos
+[06/06/2022 20:24:59](Server): Connection try!
+[06/06/2022 20:25:00](Server): New account user1 created with success!
+[06/06/2022 20:25:05](Server): Connection try!
+[06/06/2022 20:25:05]user1 join the chat
+[06/06/2022 20:25:12](user1): Hello admin
+[06/06/2022 20:25:15]admin left the chat
+[06/06/2022 20:25:15](user1): Hello admin
+[06/06/2022 20:25:15](user1): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[06/06/2022 20:40:41](Server): Server Start
+[06/06/2022 20:40:45](Server): Connection try!
+[06/06/2022 20:40:46]admin join the chat
+[06/06/2022 20:41:03](Server): Connection try!
+[06/06/2022 20:41:03]user1 join the chat
+[06/06/2022 20:41:13](Server): Connection try!
+[06/06/2022 20:41:13](Server): New account user2 created with success!
+[06/06/2022 20:41:25](Server): Connection try!
+[06/06/2022 20:41:25]user2 join the chat
+[06/06/2022 20:41:34](admin): Hello all
+[06/06/2022 20:41:41](user1): hello admin
+[06/06/2022 20:41:48](user2): How are you
+[06/06/2022 20:42:52](admin): I'm tired of this project
+[06/06/2022 20:43:04](user2): Yeah, me to
+[06/06/2022 20:43:13](user1): Same
+[06/06/2022 20:43:18](user1): bye
+[06/06/2022 20:43:21]user1 left the chat
+[06/06/2022 20:43:21](user2): Yeah, me to
+[06/06/2022 20:43:21](admin): I'm tired of this project
+[06/06/2022 20:43:21](admin): Socket error: Não é possível escrever dados na ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[06/06/2022 20:43:40](Server): Connection try!
+[06/06/2022 20:43:40]user2 join the chat
+[06/06/2022 20:44:26](user2): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação existente foi forçada a fechar pelo anfitrião remoto.
+[06/06/2022 21:33:24](Server): Server Start
+[06/06/2022 21:33:28](Server): Connection try!
+[06/06/2022 21:33:29]admin join the chat
+[06/06/2022 21:33:32](admin): hello
+[06/06/2022 21:33:32](Server): An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+[06/06/2022 21:33:46](admin): hello again
+[06/06/2022 21:34:49](Server): Server Start
+[06/06/2022 21:34:52](Server): Connection try!
+[06/06/2022 21:34:53]admin join the chat
+[06/06/2022 21:34:59](admin): hello
+[06/06/2022 21:35:43](Server): Server Start
+[06/06/2022 21:35:48](Server): Connection try!
+[06/06/2022 21:35:49]admin join the chat
+[06/06/2022 21:35:52](admin): hello
+[06/06/2022 21:36:15](Server): An entity object cannot be referenced by multiple instances of IEntityChangeTracker.
+[06/06/2022 21:39:06](admin): hello
+[06/06/2022 21:39:46](Server): Server Start
+[06/06/2022 21:39:50](Server): Connection try!
+[06/06/2022 21:39:51](Server): User not accepted
+[06/06/2022 21:39:56](Server): Connection try!
+[06/06/2022 21:39:56]admin join the chat
+[06/06/2022 21:39:58](admin): hello
+[06/06/2022 21:46:55](Server): Server Start
+[06/06/2022 21:46:58](Server): Connection try!
+[06/06/2022 21:46:59]admin join the chat
+[06/06/2022 21:47:03](admin): hello
+[06/06/2022 21:47:32](Server): Server Start
+[06/06/2022 21:47:35](Server): Connection try!
+[06/06/2022 21:47:36]admin join the chat
+[06/06/2022 21:47:39](admin): hello
+[06/06/2022 21:48:31](Server): Server Start
+[06/06/2022 21:48:34](Server): Connection try!
+[06/06/2022 21:48:35]admin join the chat
+[06/06/2022 21:48:38](admin): hello
+[06/06/2022 21:50:04](Server): Server Start
+[06/06/2022 21:50:08](Server): Connection try!
+[06/06/2022 21:50:09]admin join the chat
+[06/06/2022 21:50:12](admin): hello
+[06/06/2022 21:53:43](Server): Server Start
+[06/06/2022 21:53:47](Server): Connection try!
+[06/06/2022 21:53:48]admin join the chat
+[06/06/2022 21:53:51](admin): hello
+[06/06/2022 22:23:23](Server): Server Start
+[06/06/2022 22:23:30](Server): Connection try!
+[06/06/2022 22:23:32]admin join the chat
+[06/06/2022 22:23:40](admin): hello everyone
+[06/06/2022 22:36:59](Server): Server Start
+[06/06/2022 22:37:02](Server): Connection try!
+[06/06/2022 22:37:04]admin join the chat
+[06/06/2022 22:37:10]admin left the chat
+[06/06/2022 22:37:29](Server): Server Start
+[06/06/2022 22:37:33](Server): Connection try!
+[06/06/2022 22:37:34]admin join the chat
+[06/06/2022 22:38:07]admin left the chat
+[06/06/2022 22:38:10](Server): Connection try!
+[06/06/2022 22:38:10]admin join the chat
+[06/06/2022 22:39:48](Server): Server Start
+[06/06/2022 22:39:51](Server): Connection try!
+[06/06/2022 22:39:53]admin join the chat
+[06/06/2022 22:40:00](Server): Server Start
+[06/06/2022 22:40:03](Server): Connection try!
+[06/06/2022 22:40:04]admin join the chat
+[06/06/2022 22:41:51]admin left the chat
+[06/06/2022 22:43:48](Server): Server Start
+[06/06/2022 22:43:52](Server): Connection try!
+[06/06/2022 22:43:53]admin join the chat
+[06/06/2022 22:46:28](Server): Server Start
+[06/06/2022 22:46:33](Server): Connection try!
+[06/06/2022 22:46:34]admin join the chat
+[06/06/2022 22:49:36](Server): Server Start
+[06/06/2022 22:49:39](Server): Connection try!
+[06/06/2022 22:49:41]admin join the chat
+[06/06/2022 22:50:13](Server): Server Start
+[06/06/2022 22:50:16](Server): Connection try!
+[06/06/2022 22:50:17]admin join the chat
+[06/06/2022 22:50:30](Server): Server Start
+[06/06/2022 22:50:35](Server): Server Start
+[06/06/2022 22:50:40](Server): Connection try!
+[06/06/2022 22:50:41]admin join the chat
+[06/06/2022 22:51:26](Server): Server Start
+[06/06/2022 22:51:29](Server): Connection try!
+[06/06/2022 22:51:30]admin join the chat
+[06/06/2022 22:55:09](Server): Server Start
+[06/06/2022 22:55:12](Server): Connection try!
+[06/06/2022 22:55:14]admin join the chat
+[06/06/2022 22:55:14](Server): Loading chat
+[06/06/2022 22:55:14](Server): Sorting chat by date time
+[06/06/2022 22:55:14](Server): Serializing chat to JSON
+[06/06/2022 22:55:14](Server): Sending chat to request
+[06/06/2022 22:56:42](Server): Server Start
+[06/06/2022 22:56:45](Server): Connection try!
+[06/06/2022 22:56:46]admin join the chat
+[06/06/2022 22:56:46](Server): Loading chat
+[06/06/2022 22:56:46](Server): Sorting chat by date time
+[06/06/2022 22:56:46](Server): Serializing chat to JSON
+[06/06/2022 22:56:46](Server): Sending chat to request
+[06/06/2022 22:57:57](Server): Server Start
+[06/06/2022 22:58:01](Server): Connection try!
+[06/06/2022 22:58:02]admin join the chat
+[06/06/2022 22:58:02](Server): Loading chat
+[06/06/2022 22:58:02](Server): Sorting chat by date time
+[06/06/2022 22:58:02](Server): Serializing chat to JSON
+[06/06/2022 22:58:02](Server): Sending chat to request
+[06/06/2022 23:00:33](Server): Server Start
+[06/06/2022 23:00:39](Server): Connection try!
+[06/06/2022 23:00:40]admin join the chat
+[06/06/2022 23:00:40](Server): Loading chat
+[06/06/2022 23:00:40](Server): Sorting chat by date time
+[06/06/2022 23:00:40](Server): Serializing chat to JSON
+[06/06/2022 23:00:41](Server): Sending chat to request
+[06/06/2022 23:01:17](Server): Server Start
+[06/06/2022 23:01:21](Server): Connection try!
+[06/06/2022 23:01:22]admin join the chat
+[06/06/2022 23:01:22](Server): Loading chat
+[06/06/2022 23:01:22](Server): Sorting chat by date time
+[06/06/2022 23:01:22](Server): Serializing chat to JSON
+[06/06/2022 23:01:22](Server): Sending chat to request
+[06/06/2022 23:01:54]admin left the chat
+[06/06/2022 23:02:44](Server): Server Start
+[06/06/2022 23:02:47](Server): Connection try!
+[06/06/2022 23:02:48]admin join the chat
+[06/06/2022 23:02:48](Server): Loading chat
+[06/06/2022 23:02:48](Server): Sorting chat by date time
+[06/06/2022 23:02:48](Server): Serializing chat to JSON
+[06/06/2022 23:02:49](Server): Sending chat to request
+[06/06/2022 23:06:36](Server): Server Start
+[06/06/2022 23:06:43](Server): Connection try!
+[06/06/2022 23:06:44]admin join the chat
+[06/06/2022 23:06:44](Server): Loading chat
+[06/06/2022 23:06:44](Server): Sorting chat by date time
+[06/06/2022 23:07:47](Server): Server Start
+[06/06/2022 23:07:54](Server): Connection try!
+[06/06/2022 23:07:55]admin join the chat
+[06/06/2022 23:07:55](Server): Loading chat
+[06/06/2022 23:07:55](Server): Sorting chat by date time
+[06/06/2022 23:23:46](Server): Server Start
+[06/06/2022 23:23:53](Server): Connection try!
+[06/06/2022 23:23:55]admin join the chat
+[06/06/2022 23:23:55](Server): Loading chat
+[06/06/2022 23:23:55](Server): Sorting chat by date time
+[06/06/2022 23:24:39](Server): Server Start
+[06/06/2022 23:24:44](Server): Connection try!
+[06/06/2022 23:24:45]admin join the chat
+[06/06/2022 23:24:45](Server): Loading chat
+[06/06/2022 23:24:45](Server): Sorting chat by date time
+[06/06/2022 23:27:34](Server): Server Start
+[06/06/2022 23:27:37](Server): Connection try!
+[06/06/2022 23:27:39]admin join the chat
+[06/06/2022 23:27:39](Server): Loading chat
+[06/06/2022 23:27:39](Server): Sorting chat by date time
+[06/06/2022 23:28:40](Server): Server Start
+[06/06/2022 23:28:44](Server): Connection try!
+[06/06/2022 23:28:45]admin join the chat
+[06/06/2022 23:28:45](Server): Loading chat
+[06/06/2022 23:28:45](Server): Sorting chat by date time
+[06/06/2022 23:29:49](Server): Serializing chat to JSON
+[06/06/2022 23:29:49](admin): Uncommon error: Self referencing loop detected for property 'Users' with type 'System.Data.Entity.DynamicProxies.Users_FF0F0E7B948EE974C83DDED73B42D9812432A92F83CD060A38E21F9A6066F461'. Path '[0].Users.Mensagens[0]'.
+[06/06/2022 23:30:22](Server): Server Start
+[06/06/2022 23:30:25](Server): Connection try!
+[06/06/2022 23:30:26]admin join the chat
+[06/06/2022 23:30:26](Server): Loading chat
+[06/06/2022 23:30:26](Server): Sorting chat by date time
+[06/06/2022 23:30:46](Server): Serializing chat to JSON
+[06/06/2022 23:30:52](admin): Uncommon error: Self referencing loop detected for property 'Users' with type 'System.Data.Entity.DynamicProxies.Users_FF0F0E7B948EE974C83DDED73B42D9812432A92F83CD060A38E21F9A6066F461'. Path '[0].Users.Mensagens[0]'.
+[06/06/2022 23:30:54](Server): Server Start
+[06/06/2022 23:31:00](Server): Connection try!
+[06/06/2022 23:31:01]admin join the chat
+[06/06/2022 23:31:01](Server): Loading chat
+[06/06/2022 23:31:01](Server): Sorting chat by date time
+[06/06/2022 23:35:59](Server): Server Start
+[06/06/2022 23:36:03](Server): Connection try!
+[06/06/2022 23:36:04]admin join the chat
+[06/06/2022 23:36:04](Server): Loading chat
+[06/06/2022 23:36:04](Server): Sorting chat by date time
+[06/06/2022 23:37:18](Server): Server Start
+[06/06/2022 23:37:21](Server): Connection try!
+[06/06/2022 23:37:22]admin join the chat
+[06/06/2022 23:37:22](Server): Loading chat
+[06/06/2022 23:37:22](Server): Sorting chat by date time
+[06/06/2022 23:37:42](Server): Serializing chat to JSON
+[06/06/2022 23:38:31](Server): Server Start
+[06/06/2022 23:38:34](Server): Connection try!
+[06/06/2022 23:38:35]admin join the chat
+[06/06/2022 23:38:35](Server): Loading chat
+[06/06/2022 23:38:35](Server): Sorting chat by date time
+[06/06/2022 23:38:45](Server): Serializing chat to JSON
+[06/06/2022 23:38:47](Server): Sending chat to request
+[06/06/2022 23:39:08](admin): Hello again fuckerrrrs
+[06/06/2022 23:39:15](admin): I did it!
+[06/06/2022 23:39:16]admin left the chat
+[06/06/2022 23:39:29](Server): Connection try!
+[06/06/2022 23:39:29]user1 join the chat
+[06/06/2022 23:39:30](Server): Loading chat
+[06/06/2022 23:39:30](Server): Sorting chat by date time
+[06/06/2022 23:39:34](Server): Serializing chat to JSON
+[06/06/2022 23:39:34](Server): Sending chat to request
+[06/06/2022 23:40:09](user1): Hi admin
+[06/06/2022 23:40:10]user1 left the chat
+[06/06/2022 23:40:14](Server): Connection try!
+[06/06/2022 23:40:14]admin join the chat
+[06/06/2022 23:40:14](Server): Loading chat
+[06/06/2022 23:40:14](Server): Sorting chat by date time
+[06/06/2022 23:40:14](Server): Serializing chat to JSON
+[06/06/2022 23:40:14](Server): Sending chat to request
+[06/06/2022 23:40:31](admin): hello server
+[06/06/2022 23:40:52](admin): hello server
+[06/06/2022 23:41:02](admin): hello server
+[06/06/2022 23:45:05](Server): Server Start
+[06/06/2022 23:45:08](Server): Connection try!
+[06/06/2022 23:45:09]admin join the chat
+[06/06/2022 23:45:09](Server): Loading chat
+[06/06/2022 23:45:09](Server): Sorting chat by date time
+[06/06/2022 23:47:36](Server): Server Start
+[06/06/2022 23:47:41](Server): Connection try!
+[06/06/2022 23:47:42]admin join the chat
+[06/06/2022 23:47:42](Server): Loading chat
+[06/06/2022 23:47:42](Server): Sorting chat by date time
+[06/06/2022 23:47:54](Server): Serializing chat to JSON
+[06/06/2022 23:47:54](Server): Sending chat to request
+[06/06/2022 23:48:11](admin): hello im admin
+[06/06/2022 23:49:14](Server): Server Start
+[06/06/2022 23:49:18](Server): Connection try!
+[06/06/2022 23:49:19]admin join the chat
+[06/06/2022 23:49:19](Server): Loading chat
+[06/06/2022 23:49:19](Server): Sorting chat by date time
+[06/06/2022 23:49:43](Server): Serializing chat to JSON
+[06/06/2022 23:49:43](Server): Sending chat to request
+[06/06/2022 23:49:51](admin): hello again
+[06/06/2022 23:50:30](Server): Server Start
+[06/06/2022 23:50:35](Server): Connection try!
+[06/06/2022 23:50:36]admin join the chat
+[06/06/2022 23:50:36](Server): Loading chat
+[06/06/2022 23:50:36](Server): Sorting chat by date time
+[06/06/2022 23:50:37](Server): Serializing chat to JSON
+[06/06/2022 23:50:37](Server): Sending chat to request
+[06/06/2022 23:50:40](admin): hello
+[06/06/2022 23:50:48](Server): Server Start
+[06/06/2022 23:50:51](Server): Connection try!
+[06/06/2022 23:50:52]admin join the chat
+[06/06/2022 23:50:52](Server): Loading chat
+[06/06/2022 23:50:52](Server): Sorting chat by date time
+[06/06/2022 23:50:52](Server): Serializing chat to JSON
+[06/06/2022 23:50:52](Server): Sending chat to request
+[06/06/2022 23:50:56](admin): 1546
+[06/06/2022 23:51:44](Server): A referência de objecto não foi definida como uma instância de um objecto.
+[06/06/2022 23:51:51](admin): 1542
+[06/06/2022 23:57:21](Server): Server Start
+[06/06/2022 23:57:24](Server): Connection try!
+[06/06/2022 23:57:26]admin join the chat
+[06/06/2022 23:57:26](Server): Loading chat
+[06/06/2022 23:57:26](Server): Sorting chat by date time
+[06/06/2022 23:57:26](Server): Serializing chat to JSON
+[06/06/2022 23:57:27](admin): Uncommon error: Self referencing loop detected with type 'System.Data.Entity.DynamicProxies.Mensagens_4F70EFFD53EB340144F6017770B1CE8C241D310DD30CBA92FB1FDD46018D1A63'. Path '[0].Users.Mensagens'.
+[06/06/2022 23:57:48](Server): Server Start
+[06/06/2022 23:57:51](Server): Connection try!
+[06/06/2022 23:57:52]admin join the chat
+[06/06/2022 23:57:52](Server): Loading chat
+[06/06/2022 23:57:52](Server): Sorting chat by date time
+[06/06/2022 23:57:53](Server): Serializing chat to JSON
+[06/06/2022 23:57:53](admin): Uncommon error: Self referencing loop detected with type 'System.Data.Entity.DynamicProxies.Mensagens_4F70EFFD53EB340144F6017770B1CE8C241D310DD30CBA92FB1FDD46018D1A63'. Path '[0].Users.Mensagens'.
+[06/06/2022 23:58:44](Server): Server Start
+[06/06/2022 23:58:47](Server): Connection try!
+[06/06/2022 23:58:48]admin join the chat
+[06/06/2022 23:58:48](Server): Loading chat
+[06/06/2022 23:58:48](Server): Sorting chat by date time
+[06/06/2022 23:58:48](Server): Serializing chat to JSON
+[06/06/2022 23:58:48](admin): Uncommon error: Self referencing loop detected with type 'System.Data.Entity.DynamicProxies.Mensagens_4F70EFFD53EB340144F6017770B1CE8C241D310DD30CBA92FB1FDD46018D1A63'. Path '[0].Users.Mensagens'.

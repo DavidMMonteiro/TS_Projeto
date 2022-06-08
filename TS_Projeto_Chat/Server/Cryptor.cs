@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Security.Cryptography;
 
 namespace TS_Chat
 {
     internal class Cryptor
     {
-        private int SALT_SIZE = 25;
-        private int ITERATIONS = 10000;
+        private int SALT_SIZE = 8;
+        private int ITERATIONS = 1000;
+
         public byte[] GenerateSalt()
         {
             //Generate a cryptographic random number.

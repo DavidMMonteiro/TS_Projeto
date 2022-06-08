@@ -10,7 +10,7 @@ class LogController
         // Constroe a mensagem
         msg = DateTime.Now.ToString("[dd/MM/yyyy HH:mm:ss]") + msg;
         // Guarda a msg no ficheiro
-        this.logFile(msg);
+        //this.logFile(msg);
         // Escreve a msg na consola
         Console.WriteLine(msg);
     }
@@ -21,7 +21,7 @@ class LogController
         // Constroe a mensagem
         msg = DateTime.Now.ToString("[dd/MM/yyyy HH:mm:ss]") + "(" + owner + ")" + ": " + msg;
         // Guarda a msg no ficheiro
-        this.logFile(msg);
+        //this.logFile(msg);
         // Escreve a msg na consola
         Console.WriteLine(msg);
     }

@@ -10,14 +10,13 @@
     Student(s) number: 2211849
     Creator(s): David Machado Monteiro
 */
+using EI.SI;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using EI.SI;
 using TS_Chat;
-using System.Linq;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Server
 {
@@ -28,12 +27,11 @@ namespace Server
         {
             LogController logger = new LogController();
             string name = "Server";
-
             int PORT = 10000;
             //
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, PORT);
             TcpListener listener = new TcpListener(endPoint);
-            Dictionary<string, TcpClient> clientsDictionary = new Dictionary<string, TcpClient>();
+            Dictionary<Users, TcpClient> clientsDictionary = new Dictionary<Users, TcpClient>();
             //
             listener.Start();
             //
@@ -41,18 +39,18 @@ namespace Server
             //
             while (true)
             {
-                
-                    //Open client conexión
-                    TcpClient client = listener.AcceptTcpClient();
-                    //Get client data send
-                    NetworkStream networkStream = client.GetStream();
-                    ProtocolSI protocolSI = new ProtocolSI();
-                    //Gets the client data
-                    networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
-                    //Get the client data from the protocol
-                    string dataFromClient = protocolSI.GetStringFromData();
-                    byte[] ack;
-                    logger.consoleLog("Connection try!", name);
+
+                //Open client conexión
+                TcpClient client = listener.AcceptTcpClient();
+                //Get client data send
+                NetworkStream networkStream = client.GetStream();
+                ProtocolSI protocolSI = new ProtocolSI();
+                //Gets the client data
+                networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
+                //Get the client data from the protocol
+                string dataFromClient = protocolSI.GetStringFromData();
+                byte[] ack;
+                logger.consoleLog("Connection try!", name);
                 try
                 {
                     //Check if new user it's being created
@@ -68,20 +66,20 @@ namespace Server
                         {
                             ack = protocolSI.Make(ProtocolSICmdType.ACK, "False");
                             networkStream.Write(ack, 0, ack.Length);
-                        } 
+                        }
                     }
-                    else if(protocolSI.GetCmdType() == ProtocolSICmdType.ACK) 
-                    { 
-                        if (checkUser(dataFromClient))
+                    else if (protocolSI.GetCmdType() == ProtocolSICmdType.ACK)
+                    {
+                        Users new_user = CheckUser(dataFromClient);
+                        if (new_user != null)
                         {
                             //Console info
                             ack = protocolSI.Make(ProtocolSICmdType.ACK, "True");
                             networkStream.Write(ack, 0, ack.Length);
                             //Create Cliente Handler
-                            clientsDictionary.Add(dataFromClient.Split('$')[0], client);
-                            ClientHandler clientHandler = new ClientHandler(client, dataFromClient.Split('$')[0], clientsDictionary);
+                            clientsDictionary.Add(new_user, client);
+                            ClientHandler clientHandler = new ClientHandler(client, new_user, clientsDictionary);
                             clientHandler.Handle();
-
                         }
                         else
                         {
@@ -91,93 +89,98 @@ namespace Server
                             networkStream.Write(ack, 0, ack.Length);
                         }
                     }
-                }catch (Exception ex){
+                }
+                catch (Exception ex)
+                {
                     logger.consoleLog(ex.Message, name);
                     ack = protocolSI.Make(ProtocolSICmdType.ACK, "False");
                     networkStream.Write(ack, 0, ack.Length);
                 }
-                
+
             }
-        
+
         }
+
         //Create new user
         private static bool CreateUser(string dataFromClient)
         {
-            if (dataFromClient.Split('$').Length != 3)
+            LogController logController = new LogController();
+
+            if (dataFromClient.Split('$').Length != 2)
                 return false;
 
-            LogController logController = new LogController();
             //Get username from string
             string username = dataFromClient.Split('$')[0];
-            //Get salt size
-            int saltSize = Convert.ToInt32(dataFromClient.Split('$')[1]);
             //Get Salt from string 
-            byte[] salt = Encoding.UTF8.GetBytes(dataFromClient.Split('$')[2].Substring(0, saltSize));
-            //Get Hash from string
-            byte[] hash = Encoding.UTF8.GetBytes(dataFromClient.Split('$')[2]);
+            string password = dataFromClient.Split('$')[1];
 
             using (ChatBDContainer chatBDContainer = new ChatBDContainer())
             {
                 // Validate it doesn't exist
-                if (chatBDContainer.UsersSet.ToList().FindAll(u => u.Username == username).Count > 0)
+                if (chatBDContainer.UsersSet.Any(x => x.Username == username))
                     return false;
 
+                Cryptor cryptor = new Cryptor();
+                //
+                byte[] salt = cryptor.GenerateSalt();
+                //
+                byte[] hash = cryptor.GenerateSaltedHash(password, salt);
                 //Create new user
-                Users user = new Users(username, hash, salt);
+                Users user = new Users(username, salt, hash);
                 try
                 {
                     //Add new user to DataBase
                     chatBDContainer.UsersSet.Add(user);
                     chatBDContainer.SaveChanges();
+                    /*
                     logController.consoleLog($"New user {user.Username} created", "Server");
+                    logController.consoleLog($"User Salt: {Encoding.UTF8.GetString(user.Salt)} ", "Server");
+                    logController.consoleLog($"User SaltHash: {Encoding.UTF8.GetString(user.SaltedPasswordHash)} ", "Server");
+                    */
+                    logController.consoleLog($"New account {user.Username} created with success!", "Server");
                     return true;
                 }
                 catch (Exception ex)
                 {
-                    logController.consoleLog(ex.Message, "Server");
+                    logController.consoleLog(ex.ToString(), "Server");
                     return false;
                 }
-            }            
+            }
         }
 
-        private static bool checkUser(string user_info)
+        private static Users CheckUser(string user_info)
         {
+            LogController logController = new LogController();
             string check_Username = user_info.Split('$')[0];
-            byte[] check_SaltedPasswordHash = Encoding.UTF8.GetBytes(user_info.Split('$')[1]);
+            //TODO Encrypte before coming to server
+            string password = user_info.Split('$')[1];
 
-            return check_Username == "admin";
-
-            //TODO Login with encrypted password
             // Inicialização do chatContainer
             ChatBDContainer chatBDContainer = new ChatBDContainer();
-            //Get the user data list
-            List<Users> user_list = chatBDContainer.UsersSet.ToList();
+            //Get the user data 
+            Users user = chatBDContainer.UsersSet.ToList().Where(u => u.Username == check_Username).First();
+            //
+            //Valida se o utilizador esta no sistema
+            if (user == null)
+                return null;
+            //
+            Cryptor crypofer = new Cryptor();
+            //Cria a hash com a pase que foi enviada
+            byte[] chech_hash = crypofer.GenerateSaltedHash(password, user.Salt);
 
-            //Check if the list have some data, if not exit
-            if (user_list == null || user_list.Count == 0) 
-                return false; 
+            /*
+            logController.consoleLog("User: " + user.Username, "Server");
+            logController.consoleLog("User Salt: " + Encoding.UTF8.GetString(user.Salt), "Server");
+            logController.consoleLog("User hashSalt: " + Encoding.UTF8.GetString(user.SaltedPasswordHash), "Server");
+            logController.consoleLog("Login User HashSalt: " + Convert.ToBase64String(chech_hash), "Server");
+            */
 
-            Users user = user_list.Where(u => u.Username == check_Username).First();
-
-            //Get the user and check the salted hash
-            return user.checkedSaltPassword(check_SaltedPasswordHash);
+            //Valida que as hash seijam iguais
+            if (user.checkedSaltPassword(chech_hash))
+                return user;
+            else
+                return null;
         }
-
-        // Carrega a informação dos utilizadores
-        private static List<Users> LoadUsers()
-        {
-            LogController logger = new LogController();
-            // Inicialização do chatContainer
-            ChatBDContainer chatBDContainer = new ChatBDContainer();
-            // Cria a lista de utilizadores
-            var users = chatBDContainer.UsersSet;
-            logger.consoleLog("Get users from DataBase", "Server");
-            // Lee a informação do ficheiro e divide
-            foreach(Users user in users)
-                Console.Write("Hi! I'm user: " + user.Username);
-            //Retorna a lista de utilizadores
-            return null;
-        }
-    } 	
+    }
 }
 

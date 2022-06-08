@@ -7,24 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Server
+namespace Entities
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Chats
+
+    [Serializable]
+    public partial class Mensagens
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Chats()
+        public Mensagens()
         {
-            this.Mensagens = new HashSet<Mensagens>();
+
         }
-    
-        public int IdChat { get; set; }
+
+        public Mensagens(string text, Users user) : base()
+        {           
+            this.Text = text;
+            this.Users = user;
+            this.dtCreation = DateTime.Now;
+        }
+
+        public int IdMensagem { get; set; }
         public System.DateTime dtCreation { get; set; }
-        public string Name { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Mensagens> Mensagens { get; set; }
+        public string Text { get; set; }    
+        public virtual Users Users { get; set; }
     }
 }

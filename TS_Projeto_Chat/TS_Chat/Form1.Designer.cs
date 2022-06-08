@@ -30,7 +30,6 @@ namespace TS_Projeto_Chat
         /// </summary>
         private void InitializeComponent()
         {
-            this.chats_list = new System.Windows.Forms.ListBox();
             this.tb_chat = new System.Windows.Forms.TextBox();
             this.tb_message = new System.Windows.Forms.TextBox();
             this.bt_send = new System.Windows.Forms.Button();
@@ -39,31 +38,23 @@ namespace TS_Projeto_Chat
             this.bt_logout = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // chats_list
-            // 
-            this.chats_list.FormattingEnabled = true;
-            this.chats_list.Location = new System.Drawing.Point(10, 10);
-            this.chats_list.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.chats_list.Name = "chats_list";
-            this.chats_list.Size = new System.Drawing.Size(126, 368);
-            this.chats_list.TabIndex = 0;
-            // 
             // tb_chat
             // 
             this.tb_chat.Enabled = false;
-            this.tb_chat.Location = new System.Drawing.Point(140, 45);
+            this.tb_chat.Location = new System.Drawing.Point(10, 45);
             this.tb_chat.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_chat.Multiline = true;
             this.tb_chat.Name = "tb_chat";
-            this.tb_chat.Size = new System.Drawing.Size(536, 308);
+            this.tb_chat.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.tb_chat.Size = new System.Drawing.Size(665, 308);
             this.tb_chat.TabIndex = 1;
             // 
             // tb_message
             // 
-            this.tb_message.Location = new System.Drawing.Point(140, 358);
+            this.tb_message.Location = new System.Drawing.Point(11, 358);
             this.tb_message.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_message.Name = "tb_message";
-            this.tb_message.Size = new System.Drawing.Size(466, 20);
+            this.tb_message.Size = new System.Drawing.Size(595, 20);
             this.tb_message.TabIndex = 2;
             this.tb_message.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_message_KeyPress);
             // 
@@ -80,9 +71,10 @@ namespace TS_Projeto_Chat
             // 
             // lb_chat
             // 
+            this.lb_chat.AccessibleRole = System.Windows.Forms.AccessibleRole.IpAddress;
             this.lb_chat.AutoSize = true;
             this.lb_chat.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold);
-            this.lb_chat.Location = new System.Drawing.Point(140, 5);
+            this.lb_chat.Location = new System.Drawing.Point(11, 5);
             this.lb_chat.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_chat.Name = "lb_chat";
             this.lb_chat.Size = new System.Drawing.Size(155, 37);
@@ -116,26 +108,24 @@ namespace TS_Projeto_Chat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(686, 390);
+            this.ClientSize = new System.Drawing.Size(687, 386);
             this.Controls.Add(this.bt_logout);
             this.Controls.Add(this.bt_connect);
             this.Controls.Add(this.lb_chat);
             this.Controls.Add(this.bt_send);
             this.Controls.Add(this.tb_message);
             this.Controls.Add(this.tb_chat);
-            this.Controls.Add(this.chats_list);
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "Form1";
             this.Text = "Chats";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private ListBox chats_list;
         private TextBox tb_chat;
         private TextBox tb_message;
         private Button bt_send;

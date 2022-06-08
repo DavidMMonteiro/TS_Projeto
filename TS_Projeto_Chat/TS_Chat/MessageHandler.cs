@@ -1,5 +1,8 @@
 ﻿using EI.SI;
+using Entities;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net.Sockets;
 using System.Threading;
@@ -35,7 +38,6 @@ namespace TS_Chat
         {
             // Guarda a networkStream no cliente
             NetworkStream networkStream = this.client.GetStream();
-
             ProtocolSI protocolSI = new ProtocolSI();
             // Loop ate receber mensagem do servidor a fechar o ligação
             while (protocolSI.GetCmdType() != ProtocolSICmdType.EOT)
@@ -60,6 +62,14 @@ namespace TS_Chat
                             // Escreve a mensagem para o cliente
                             chatController.newMessage(output);
                             break;
+                        case ProtocolSICmdType.USER_OPTION_2:
+                            output = protocolSI.GetStringFromData();
+                            LoadChat(output);
+                            break;
+                        case ProtocolSICmdType.USER_OPTION_9:
+                            output = protocolSI.GetStringFromData();
+                            chatController.consoleLog(output);
+                            break;
                     }
                 }// Change Exception to show on Console on last version
                 catch (SocketException ex)
@@ -77,15 +87,22 @@ namespace TS_Chat
                     MessageBox.Show(ex.Message, "Error ObjectDisposed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 }
-                /*catch (Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Unknow Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
-                }*/
+                }
             }
             // Fecha a ligação
             networkStream.Close();
             client.Close();
+        }
+
+        private void LoadChat(string output)
+        {
+            List<Mensagens> mensagens = JsonConvert.DeserializeObject<List<Mensagens>>(output);
+            foreach(Mensagens mensangem in mensagens)
+                chatController.newMessage(mensangem.Users.Username, mensangem.Text);
         }
     }
 }

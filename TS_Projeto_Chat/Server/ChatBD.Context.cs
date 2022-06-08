@@ -26,7 +26,6 @@ namespace Server
         }
     
         public virtual DbSet<Users> UsersSet { get; set; }
-        public virtual DbSet<Chats> ChatsSet { get; set; }
         public virtual DbSet<Mensagens> MensagensSet { get; set; }
     }
 }

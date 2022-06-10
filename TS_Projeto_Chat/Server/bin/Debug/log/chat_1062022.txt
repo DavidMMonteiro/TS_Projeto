@@ -1,0 +1,9 @@
+
+[10/06/2022 16:57:23]admin join the chat
+[10/06/2022 16:57:23](admin): Sending message
+[10/06/2022 16:57:23](Server): Loading chat
+[10/06/2022 16:57:23](Server): Sorting chat by date time
+[10/06/2022 16:57:24](Server): Serializing chat to JSON
+[10/06/2022 16:57:24](Server): Sending chat to request
+[10/06/2022 16:57:28]admin left the chat
+[10/06/2022 16:57:28](admin): Sending message

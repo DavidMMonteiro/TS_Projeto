@@ -10,10 +10,12 @@ namespace TS_Projeto_Chat
     public partial class Form_Login : Form
     {
         // Atributos para conneção com  o Servidor 
-        private const int port = 10000;
-        private NetworkStream networkStream;
-        private ProtocolSI protocolSI;
-        private TcpClient client;
+        private const int PORT = 10000;
+        private NetworkStream NetworkStream;
+        private ProtocolSI ProtocolSI;
+        private TcpClient Client;
+        private string PrivateKey;
+        private string Vetor;
 
         public Form_Login()
         {
@@ -35,15 +37,15 @@ namespace TS_Projeto_Chat
             try
             {
                 // Cria a localização do servidor (IP local e porta)
-                IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, port);
+                IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, PORT);
                 // Inicializa o TCPclientes
-                client = new TcpClient();
+                Client = new TcpClient();
                 // Vas a ligação com o servição
-                client.Connect(endPoint);
+                Client.Connect(endPoint);
                 // Abre a ligação com o servidor
-                networkStream = client.GetStream();
+                NetworkStream = Client.GetStream();
                 // Inicializa a class ProtocolISI
-                protocolSI = new ProtocolSI();
+                ProtocolSI = new ProtocolSI();
                 return true;
             }
             catch (Exception ex)
@@ -69,19 +71,22 @@ namespace TS_Projeto_Chat
                 //Constroe a mensagem do cliente
                 //TODO  Encrypte password & message to server
                 string msg = username + "$" + password;
-                protocolSI = new ProtocolSI();
+                ProtocolSI = new ProtocolSI();
                 // Converte a mensagem para bytes para poder ser enviada
-                byte[] packet = protocolSI.Make(ProtocolSICmdType.ACK, msg);
+                byte[] packet = ProtocolSI.Make(ProtocolSICmdType.ACK, msg);
                 // Faz a transmição da mensagem
-                networkStream.Write(packet, 0, packet.Length);
+                NetworkStream.Write(packet, 0, packet.Length);
                 // Espera pela informação do servidor
                 do { 
-                    networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
-                } while (protocolSI.GetCmdType() != ProtocolSICmdType.ACK);
+                    NetworkStream.Read(ProtocolSI.Buffer, 0, ProtocolSI.Buffer.Length);
+                } while (ProtocolSI.GetCmdType() != ProtocolSICmdType.ACK);
                 // Lee a informação da mensagem returnada pelo servidor
-                string serermsg = protocolSI.GetStringFromData();
+                string serermsg = ProtocolSI.GetStringFromData();
+                bool loginState = bool.Parse(serermsg.Split('$')[0]);
+                this.PrivateKey = serermsg.Split('$')[1];
+                this.Vetor = serermsg.Split('$')[2];
                 // Converte para bool
-                return bool.Parse(serermsg);
+                return loginState;
             }
             catch (Exception ex)
             {
@@ -115,14 +120,14 @@ namespace TS_Projeto_Chat
             }
 
             // Se for bem sucedido, abré os chats ao cliente
-            Form1 chat = new Form1(port, networkStream, protocolSI, client, tb_user.Text);
+            Form1 chat = new Form1(PORT, NetworkStream, ProtocolSI, Client, tb_user.Text);
             chat.Show();
             this.Hide();
         }
 
         private void bt_singup_Click(object sender, EventArgs e)
         {
-            new FormSignUp(this, port, networkStream, protocolSI, client).ShowDialog();
+            new FormSignUp(this, PORT, NetworkStream, ProtocolSI, Client).ShowDialog();
         }
 
         private void Form_Login_FormClosing(object sender, FormClosingEventArgs e)

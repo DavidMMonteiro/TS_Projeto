@@ -55,6 +55,14 @@ namespace TS_Chat
                     int bytesRead = networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
                     byte[] ack;
                     string output;
+                    //Initialize the encryptor
+                    Cryptor cryptor = new Cryptor();
+                    //Generate Salt
+                    string salt = Convert.ToBase64String(cryptor.GenerateSalt());
+                    //Generate Private Key
+                    string key = cryptor.CreatePrivateKey(salt);
+                    //Generate Vetor
+                    string iv = cryptor.CreateIV(salt);
                     /* 
                     Filtra o tipo de mensagem recebida
                     A estrutura básica de cada mensagem consiste em:
@@ -69,12 +77,13 @@ namespace TS_Chat
                             output = protocolSI.GetStringFromData();
                             logger.consoleLog("Saving message", this.client.Username);
                             saveMessage(output);
-                            ack = protocolSI.Make(ProtocolSICmdType.DATA, $"({this.client.Username}): {output}");
+                            ack = protocolSI.Make(ProtocolSICmdType.DATA, output + '$' + this.client.Username);
                             broadCast(ack);
                             break;
                         case ProtocolSICmdType.EOT:
                             output = this.client.Username + " left the chat";
                             logger.consoleLog(output);
+                            output = key + "$" + iv + "$" + cryptor.EncryptText(key, iv, output);
                             ack = protocolSI.Make(ProtocolSICmdType.EOT, output);
                             broadCast(ack);
                             break;
@@ -82,7 +91,8 @@ namespace TS_Chat
                             string chat = LoadChat();
                             logger.consoleLog("Sending chat to request", "Server");
                             if (!string.IsNullOrEmpty(chat)) 
-                            { 
+                            {
+                                chat = key + "$" + iv + "$" + cryptor.EncryptText(key, iv, chat);
                                 ack = protocolSI.Make(ProtocolSICmdType.USER_OPTION_2, chat);
                                 networkStream.Write(ack, 0, ack.Length);
                             }

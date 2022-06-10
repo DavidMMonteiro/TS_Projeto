@@ -84,8 +84,16 @@ namespace TS_Projeto_Chat
             // Valida que existe uma mensagem
             if (tb_message.Text == "")
                 return;
+            //Initialize the Encryptor
+            Cryptor cryptopher = new Cryptor();
+            //Random Password
+            string saltPassword = Convert.ToBase64String(cryptopher.GenerateSalt());
+            //Private Key
+            string privatePassword = cryptopher.CreatePrivateKey(saltPassword);
+            //Vetor
+            string vetor = cryptopher.CreateIV(saltPassword);
             //TODO Encrypte message
-            string msg = tb_message.Text;
+            string msg = privatePassword + '$' + vetor + '$' + cryptopher.EncryptText(privatePassword, vetor, tb_message.Text) ;
             try
             {
                 // Preparar mensagem para o servidor
@@ -155,8 +163,8 @@ namespace TS_Projeto_Chat
         private void Form1_Load(object sender, EventArgs e)
         {
             //Envia um pedido de chat recoverd 
-            byte[] packet = this.protocolSI.Make(ProtocolSICmdType.USER_OPTION_2, "Load Chat");
-            this.networkStream.Write(packet, 0, packet.Length);
+            /*byte[] packet = this.protocolSI.Make(ProtocolSICmdType.USER_OPTION_2, "Load Chat");
+            this.networkStream.Write(packet, 0, packet.Length);*/
         }
     }
 

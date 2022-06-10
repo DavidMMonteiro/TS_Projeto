@@ -46,25 +46,29 @@ namespace TS_Chat
                 {
                     // Lee a mensagem envia pelo servidor
                     int bytesRead = networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
-                    string output;
+                    string output = protocolSI.GetStringFromData();
+                    //Get Key and IV decryptor
+                    string key = output.Split('$')[0];
+                    string iv = output.Split('$')[1];
+                    //Initialize Decryptor
+                    Cryptor cryptor = new Cryptor();
+                    //Decrypt message
+                    string message = cryptor.DesencryptText(key, iv, output.Split('$')[2]);
+                    //Get the message owner
+                    string owner = output.Split('$')[3];
                     // Filtra o tipo de mensagem
                     switch (protocolSI.GetCmdType())
                     {
                         case ProtocolSICmdType.DATA:
-                            // Lee a mensagem 
-                            output = protocolSI.GetStringFromData();
                             // Escreve a mensagem para o cliente
-                            chatController.newMessage(output);
+                            chatController.newMessage(owner,message);
                             break;
                         case ProtocolSICmdType.EOT:
-                            // Lee a mensagem 
-                            output = protocolSI.GetStringFromData();
                             // Escreve a mensagem para o cliente
-                            chatController.newMessage(output);
+                            chatController.newMessage(message);
                             break;
                         case ProtocolSICmdType.USER_OPTION_2:
-                            output = protocolSI.GetStringFromData();
-                            LoadChat(output);
+                            LoadChat(message);
                             break;
                         case ProtocolSICmdType.USER_OPTION_9:
                             output = protocolSI.GetStringFromData();
@@ -74,22 +78,22 @@ namespace TS_Chat
                 }// Change Exception to show on Console on last version
                 catch (SocketException ex)
                 {
-                    MessageBox.Show(ex.Message, "Error SocketExcpetion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message + '\n' + ex.ToString(), "Error SocketExcpetion", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 }
                 catch (IOException ex)
                 {
-                    MessageBox.Show(ex.Message, "Error IOException", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message + '\n' + ex.ToString(), "Error IOException", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 }
                 catch (ObjectDisposedException ex)
                 {
-                    MessageBox.Show(ex.Message, "Error ObjectDisposed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message + '\n' + ex.ToString(), "Error ObjectDisposed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Unknow Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message + '\n' + ex.ToString(), "Unknow Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 }
             }

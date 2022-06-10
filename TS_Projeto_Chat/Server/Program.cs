@@ -53,28 +53,38 @@ namespace Server
                 logger.consoleLog("Connection try!", name);
                 try
                 {
+                    //Initialize the encryptor
+                    Cryptor cryptor = new Cryptor();
+                    //Generate Salt
+                    string salt = Convert.ToBase64String(cryptor.GenerateSalt());
+                    //Generate Private Key
+                    string key = cryptor.CreatePrivateKey(salt);
+                    //Generate Vetor
+                    string iv = cryptor.CreateIV(salt);
                     //Check if new user it's being created
                     if (protocolSI.GetCmdType() == ProtocolSICmdType.USER_OPTION_1)
                     {
+                        
                         //Create new user
                         if (CreateUser(dataFromClient))
                         {
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, "True");
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, key + '$' + iv + '$' + cryptor.EncryptText(key, iv, "True"));
                             networkStream.Write(ack, 0, ack.Length);
                         }
                         else
                         {
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, "False");
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, key + '$' + iv + '$' + cryptor.EncryptText(key, iv, "False"));
                             networkStream.Write(ack, 0, ack.Length);
                         }
                     }
                     else if (protocolSI.GetCmdType() == ProtocolSICmdType.ACK)
                     {
                         Users new_user = CheckUser(dataFromClient);
+                        //
                         if (new_user != null)
                         {
                             //Console info
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, "True");
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, key + '$' + iv + '$' + cryptor.EncryptText(key, iv, "True"));
                             networkStream.Write(ack, 0, ack.Length);
                             //Create Cliente Handler
                             clientsDictionary.Add(new_user, client);
@@ -85,7 +95,7 @@ namespace Server
                         {
                             //Console info
                             logger.consoleLog("User not accepted", "Server");
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, "False");
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, key + '$' + iv + '$' + cryptor.EncryptText(key, iv, "True"));
                             networkStream.Write(ack, 0, ack.Length);
                         }
                     }
@@ -150,10 +160,18 @@ namespace Server
 
         private static Users CheckUser(string user_info)
         {
+            //Initialize Decryptor
+            Cryptor cryptor = new Cryptor();
+            //Split the message
+            string key = user_info.Split('$')[0];
+            string iv = user_info.Split('$')[1];
+            string message = cryptor.DesencryptText(key, iv , user_info.Split('$')[2]);
+            //
             LogController logController = new LogController();
-            string check_Username = user_info.Split('$')[0];
-            //TODO Encrypte before coming to server
-            string password = user_info.Split('$')[1];
+            //Get loggin data
+            string check_Username = message.Split('$')[0];
+            //
+            string password = message.Split('$')[1];
 
             // Inicialização do chatContainer
             ChatBDContainer chatBDContainer = new ChatBDContainer();

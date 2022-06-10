@@ -71,22 +71,36 @@ namespace TS_Projeto_Chat
                 //Constroe a mensagem do cliente
                 //TODO  Encrypte password & message to server
                 string msg = username + "$" + password;
+                //Initialize the encryptor
+                Cryptor cryptor = new Cryptor();
+                //Generate Salt
+                string salt = Convert.ToBase64String(cryptor.GenerateSalt());
+                //Generate Private Key
+                string key = cryptor.CreatePrivateKey(salt);
+                //Generate Vetor
+                string iv = cryptor.CreateIV(salt);
+                //
+                msg = key + "$" + iv + "$" + cryptor.EncryptText(key, iv, msg);
+                //
                 ProtocolSI = new ProtocolSI();
                 // Converte a mensagem para bytes para poder ser enviada
                 byte[] packet = ProtocolSI.Make(ProtocolSICmdType.ACK, msg);
                 // Faz a transmição da mensagem
                 NetworkStream.Write(packet, 0, packet.Length);
                 // Espera pela informação do servidor
-                do { 
+                do
+                {
                     NetworkStream.Read(ProtocolSI.Buffer, 0, ProtocolSI.Buffer.Length);
                 } while (ProtocolSI.GetCmdType() != ProtocolSICmdType.ACK);
                 // Lee a informação da mensagem returnada pelo servidor
                 string serermsg = ProtocolSI.GetStringFromData();
-                bool loginState = bool.Parse(serermsg.Split('$')[0]);
-                this.PrivateKey = serermsg.Split('$')[1];
-                this.Vetor = serermsg.Split('$')[2];
+                //Get Key
+                key = serermsg.Split('$')[0];
+                //Get IV
+                iv = serermsg.Split('$')[1];
+                //
                 // Converte para bool
-                return loginState;
+                return bool.Parse(cryptor.DesencryptText(key, iv, serermsg.Split('$')[2])); ;
             }
             catch (Exception ex)
             {

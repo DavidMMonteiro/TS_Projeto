@@ -14,8 +14,8 @@ namespace TS_Chat
         public Cryptor()
         {
             this.AES = new AesCryptoServiceProvider();
-            byte[] key = this.AES.Key;
-            byte[] iv = this.AES.IV;
+            byte[] = this.AES.key;
+            byte[] = this.AES.IV;
         }
 
         public byte[] GenerateSalt()

@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChatController.cs" />
+    <Compile Include="Cryptor.cs" />
     <Compile Include="Entities\Mensagens.cs" />
     <Compile Include="Entities\Users.cs" />
     <Compile Include="Form1.cs">

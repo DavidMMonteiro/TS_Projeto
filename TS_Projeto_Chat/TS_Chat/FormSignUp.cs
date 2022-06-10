@@ -91,9 +91,12 @@ namespace TS_Chat
 
             try
             {
+                Cryptor cryptor = new Cryptor();
                 //Constroe a mensagem do cliente
-                //TODO  Encrypte password & message to server
                 string msg = tb_username.Text + "$" + tb_password.Text;
+                //Encripta a mensagem
+                msg = cryptor.GerarMensagem(msg);
+                //
                 protocolSI = new ProtocolSI();
                 // Converte a mensagem para bytes para poder ser enviada
                 byte[] packet = protocolSI.Make(ProtocolSICmdType.USER_OPTION_1, msg);
@@ -105,7 +108,7 @@ namespace TS_Chat
                     networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
                 } while (protocolSI.GetCmdType() != ProtocolSICmdType.ACK);
                 // Lee a informação da mensagem returnada pelo servidor
-                string servermsg = protocolSI.GetStringFromData();
+                string servermsg = cryptor.DesencryptarMensagem(protocolSI.GetStringFromData());
                 // Converte para bool
                 if (bool.Parse(servermsg))
                 {

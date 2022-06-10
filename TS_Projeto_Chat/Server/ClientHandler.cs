@@ -26,9 +26,10 @@ namespace TS_Chat
             this.client = client;
             this.ClientsDictionary = clientsDictionary;
             ProtocolSI protocol = new ProtocolSI();
+            Cryptor cryptor = new Cryptor();
             string msg = $"{this.client.Username} join the chat";
-            byte[] ack = protocol.Make(ProtocolSICmdType.DATA, msg);
             logger.consoleLog(msg);
+            byte[] ack = protocol.Make(ProtocolSICmdType.DATA, cryptor.GerarMensagem(msg));
             this.broadCast(ack);
         }
 
@@ -57,12 +58,6 @@ namespace TS_Chat
                     string output;
                     //Initialize the encryptor
                     Cryptor cryptor = new Cryptor();
-                    //Generate Salt
-                    string salt = Convert.ToBase64String(cryptor.GenerateSalt());
-                    //Generate Private Key
-                    string key = cryptor.CreatePrivateKey(salt);
-                    //Generate Vetor
-                    string iv = cryptor.CreateIV(salt);
                     /* 
                     Filtra o tipo de mensagem recebida
                     A estrutura básica de cada mensagem consiste em:
@@ -77,13 +72,14 @@ namespace TS_Chat
                             output = protocolSI.GetStringFromData();
                             logger.consoleLog("Saving message", this.client.Username);
                             saveMessage(output);
-                            ack = protocolSI.Make(ProtocolSICmdType.DATA, output + '$' + this.client.Username);
+                            output = cryptor.GerarMensagem(cryptor.DesencryptarMensagem(output) + '$' + this.client.Username);
+                            ack = protocolSI.Make(ProtocolSICmdType.DATA, output);
                             broadCast(ack);
                             break;
                         case ProtocolSICmdType.EOT:
                             output = this.client.Username + " left the chat";
                             logger.consoleLog(output);
-                            output = key + "$" + iv + "$" + cryptor.EncryptText(key, iv, output);
+                            output = cryptor.GerarMensagem(output);
                             ack = protocolSI.Make(ProtocolSICmdType.EOT, output);
                             broadCast(ack);
                             break;
@@ -92,7 +88,7 @@ namespace TS_Chat
                             logger.consoleLog("Sending chat to request", "Server");
                             if (!string.IsNullOrEmpty(chat)) 
                             {
-                                chat = key + "$" + iv + "$" + cryptor.EncryptText(key, iv, chat);
+                                chat = cryptor.GerarMensagem(chat);
                                 ack = protocolSI.Make(ProtocolSICmdType.USER_OPTION_2, chat);
                                 networkStream.Write(ack, 0, ack.Length);
                             }
@@ -172,14 +168,13 @@ namespace TS_Chat
                 {
                     //Instancia uma nova mensagem
                     Mensagens new_mensagen = new Mensagens();
-                    //Add the necessary info
+                    //Message Owner
                     new_mensagen.IdUser = client.IdUser;
-                    new_mensagen.Text = msg;
-                    //Guarda aparit do cliente
-                    //chatBDContainer.UsersSet.Find(this.client.IdUser).Mensagens.Add(new_mensagen);
-                    //this.client.Mensagens.Add(new_mensagen);
-                    //Guarda diretamente a mensagem mensagem
-                    //WHY THE FUCK DON't YOU WORK
+                    //Split message
+                    new_mensagen.key = Convert.FromBase64String(msg.Split('$')[0]);
+                    new_mensagen.iv = Convert.FromBase64String(msg.Split('$')[1]);
+                    new_mensagen.Text = Convert.FromBase64String(msg.Split('$')[2]);
+                    //Save message
                     chatBDContainer.MensagensSet.Add(new_mensagen);
                     //Guarda as alterações efetuadas
                     chatBDContainer.SaveChanges();

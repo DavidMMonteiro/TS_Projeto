@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/07/2022 16:19:59
+-- Date Created: 06/10/2022 20:03:21
 -- Generated from EDMX file: C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\ChatBD.edmx
 -- --------------------------------------------------
 
@@ -17,8 +17,8 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_MensagensUsers]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[MensagensSet] DROP CONSTRAINT [FK_MensagensUsers];
+IF OBJECT_ID(N'[dbo].[FK_UsersMensagens]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MensagensSet] DROP CONSTRAINT [FK_UsersMensagens];
 GO
 
 -- --------------------------------------------------
@@ -50,8 +50,10 @@ GO
 CREATE TABLE [dbo].[MensagensSet] (
     [IdMensagem] int IDENTITY(1,1) NOT NULL,
     [dtCreation] datetime  NOT NULL,
-    [Text] nvarchar(max)  NOT NULL,
-    [IdUser] int  NOT NULL
+    [Text] varbinary(max)  NOT NULL,
+    [IdUser] int  NOT NULL,
+    [key] varbinary(max)  NOT NULL,
+    [iv] varbinary(max)  NOT NULL
 );
 GO
 

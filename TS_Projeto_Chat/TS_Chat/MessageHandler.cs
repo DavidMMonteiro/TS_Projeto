@@ -46,22 +46,22 @@ namespace TS_Chat
                 {
                     // Lee a mensagem envia pelo servidor
                     int bytesRead = networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
+                    //Get message
                     string output = protocolSI.GetStringFromData();
-                    //Get Key and IV decryptor
-                    string key = output.Split('$')[0];
-                    string iv = output.Split('$')[1];
                     //Initialize Decryptor
                     Cryptor cryptor = new Cryptor();
                     //Decrypt message
-                    string message = cryptor.DesencryptText(key, iv, output.Split('$')[2]);
-                    //Get the message owner
-                    string owner = output.Split('$')[3];
+                    string message = cryptor.DesencryptarMensagem(output);
+                    //Get the message
+                    message = message.Split('$')[0];
                     // Filtra o tipo de mensagem
                     switch (protocolSI.GetCmdType())
                     {
                         case ProtocolSICmdType.DATA:
-                            // Escreve a mensagem para o cliente
-                            chatController.newMessage(owner,message);
+                            if(message.Split('$').Length == 1)
+                                chatController.newMessage(message);
+                            else if (message.Split('$').Length == 2)
+                                chatController.newMessage(message.Split('$')[1], message);
                             break;
                         case ProtocolSICmdType.EOT:
                             // Escreve a mensagem para o cliente

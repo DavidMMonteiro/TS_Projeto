@@ -14,8 +14,8 @@ namespace TS_Chat
         public Cryptor()
         {
             this.AES = new AesCryptoServiceProvider();
-            byte[] = this.AES.key;
-            byte[] = this.AES.IV;
+            byte[] key = this.AES.Key;
+            byte[] iv = this.AES.IV;
         }
 
         public byte[] GenerateSalt()
@@ -96,5 +96,26 @@ namespace TS_Chat
             return Encoding.UTF8.GetString(desencrypted_text, 0, readBytes);
         }
 
+        public string GerarMensagem(string msg)
+        {
+            //Create Salt
+            string salt = Convert.ToBase64String(GenerateSalt());
+            //Get key
+            string key = CreatePrivateKey(salt);
+            //Get IV
+            string iv = CreateIV(salt);
+            //Encripta a mensagem
+            return key + '$' + iv + '$' + EncryptText(key, iv, msg);
+        }
+
+        public string DesencryptarMensagem(string msg)
+        {
+            //Get key
+            string key = msg.Split('$')[0];
+            //Get IV
+            string iv = msg.Split('$')[1];
+            //Get Msg
+            return DesencryptText(key, iv, msg.Split('$')[2]);
+        }
     }
 }

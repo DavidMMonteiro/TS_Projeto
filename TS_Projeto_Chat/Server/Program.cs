@@ -55,12 +55,6 @@ namespace Server
                 {
                     //Initialize the encryptor
                     Cryptor cryptor = new Cryptor();
-                    //Generate Salt
-                    string salt = Convert.ToBase64String(cryptor.GenerateSalt());
-                    //Generate Private Key
-                    string key = cryptor.CreatePrivateKey(salt);
-                    //Generate Vetor
-                    string iv = cryptor.CreateIV(salt);
                     //Check if new user it's being created
                     if (protocolSI.GetCmdType() == ProtocolSICmdType.USER_OPTION_1)
                     {
@@ -68,12 +62,12 @@ namespace Server
                         //Create new user
                         if (CreateUser(dataFromClient))
                         {
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, key + '$' + iv + '$' + cryptor.EncryptText(key, iv, "True"));
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("True"));
                             networkStream.Write(ack, 0, ack.Length);
                         }
                         else
                         {
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, key + '$' + iv + '$' + cryptor.EncryptText(key, iv, "False"));
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("False"));
                             networkStream.Write(ack, 0, ack.Length);
                         }
                     }
@@ -84,7 +78,7 @@ namespace Server
                         if (new_user != null)
                         {
                             //Console info
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, key + '$' + iv + '$' + cryptor.EncryptText(key, iv, "True"));
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("True"));
                             networkStream.Write(ack, 0, ack.Length);
                             //Create Cliente Handler
                             clientsDictionary.Add(new_user, client);
@@ -95,7 +89,7 @@ namespace Server
                         {
                             //Console info
                             logger.consoleLog("User not accepted", "Server");
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, key + '$' + iv + '$' + cryptor.EncryptText(key, iv, "True"));
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("False"));
                             networkStream.Write(ack, 0, ack.Length);
                         }
                     }
@@ -114,23 +108,26 @@ namespace Server
         //Create new user
         private static bool CreateUser(string dataFromClient)
         {
+            //Initialize Decryptor
+            Cryptor cryptor = new Cryptor();
+            //Desencripta a mensagem
+            string message = cryptor.DesencryptarMensagem(dataFromClient);
+            //
             LogController logController = new LogController();
 
-            if (dataFromClient.Split('$').Length != 2)
+            if (message.Split('$').Length != 2)
                 return false;
 
             //Get username from string
-            string username = dataFromClient.Split('$')[0];
+            string username = message.Split('$')[0];
             //Get Salt from string 
-            string password = dataFromClient.Split('$')[1];
+            string password = message.Split('$')[1];
 
             using (ChatBDContainer chatBDContainer = new ChatBDContainer())
             {
                 // Validate it doesn't exist
                 if (chatBDContainer.UsersSet.Any(x => x.Username == username))
                     return false;
-
-                Cryptor cryptor = new Cryptor();
                 //
                 byte[] salt = cryptor.GenerateSalt();
                 //
@@ -162,10 +159,8 @@ namespace Server
         {
             //Initialize Decryptor
             Cryptor cryptor = new Cryptor();
-            //Split the message
-            string key = user_info.Split('$')[0];
-            string iv = user_info.Split('$')[1];
-            string message = cryptor.DesencryptText(key, iv , user_info.Split('$')[2]);
+            //Desencripta a mensage
+            string message = cryptor.DesencryptarMensagem(user_info);
             //
             LogController logController = new LogController();
             //Get loggin data

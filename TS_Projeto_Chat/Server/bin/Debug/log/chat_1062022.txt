@@ -94,3 +94,53 @@
 [10/06/2022 19:20:43](admin): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação existente foi forçada a fechar pelo anfitrião remoto.
 [10/06/2022 19:20:43](admin): Sending message
 [10/06/2022 19:20:43](admin): Error sending message to admin
+[10/06/2022 19:21:18](Server): Server Start
+[10/06/2022 19:42:08](Server): Server Start
+[10/06/2022 19:43:26](Server): Server Start
+[10/06/2022 19:43:47](Server): Connection try!
+[10/06/2022 19:45:03](Server): Server Start
+[10/06/2022 19:45:10](Server): Connection try!
+[10/06/2022 19:46:13](Server): Server Start
+[10/06/2022 19:46:25](Server): Connection try!
+[10/06/2022 19:46:45]admin join the chat
+[10/06/2022 19:46:45](admin): Sending message
+[10/06/2022 19:46:56]admin left the chat
+[10/06/2022 19:46:56](admin): Sending message
+[10/06/2022 19:47:04](Server): Server Start
+[10/06/2022 19:47:19](Server): Connection try!
+[10/06/2022 19:47:57](Server): Server Start
+[10/06/2022 19:48:06](Server): Connection try!
+[10/06/2022 19:48:26](Server): New account user1 created with success!
+[10/06/2022 19:48:38](Server): Connection try!
+[10/06/2022 19:48:38]admin join the chat
+[10/06/2022 19:48:38](admin): Sending message
+[10/06/2022 19:49:20](Server): Server Start
+[10/06/2022 19:49:28](Server): Connection try!
+[10/06/2022 19:49:30]admin join the chat
+[10/06/2022 19:49:30](admin): Sending message
+[10/06/2022 19:49:42](Server): Server Start
+[10/06/2022 19:49:49](Server): Connection try!
+[10/06/2022 19:49:50]admin join the chat
+[10/06/2022 19:49:50](admin): Sending message
+[10/06/2022 19:51:04](Server): Server Start
+[10/06/2022 19:51:07](Server): Connection try!
+[10/06/2022 19:51:08]admin join the chat
+[10/06/2022 19:51:08](admin): Sending message
+[10/06/2022 19:54:49](Server): Server Start
+[10/06/2022 19:54:53](Server): Connection try!
+[10/06/2022 19:54:54]admin join the chat
+[10/06/2022 19:54:54](admin): Sending message
+[10/06/2022 19:55:29](Server): Connection try!
+[10/06/2022 19:55:29]user1 join the chat
+[10/06/2022 19:55:29](user1): Sending message
+[10/06/2022 19:55:41](user1): Saving message
+[10/06/2022 19:55:41](user1): Sending message
+[10/06/2022 19:55:52](admin): Saving message
+[10/06/2022 19:55:52](admin): Sending message
+[10/06/2022 19:55:58]user1 left the chat
+[10/06/2022 19:55:58](user1): Sending message
+[10/06/2022 19:55:58](admin): Saving message
+[10/06/2022 19:55:58](admin): Sending message
+[10/06/2022 19:55:58](admin): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[10/06/2022 19:55:58](admin): Sending message
+[10/06/2022 19:55:58](admin): Error sending message to admin

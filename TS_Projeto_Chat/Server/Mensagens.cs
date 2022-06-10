@@ -16,8 +16,10 @@ namespace Server
     {
         public int IdMensagem { get; set; }
         public System.DateTime dtCreation { get; set; }
-        public string Text { get; set; }
+        public byte[] Text { get; set; }
         public int IdUser { get; set; }
+        public byte[] key { get; set; }
+        public byte[] iv { get; set; }
     
         public virtual Users Users { get; set; }
     }

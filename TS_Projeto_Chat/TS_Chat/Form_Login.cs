@@ -69,18 +69,11 @@ namespace TS_Projeto_Chat
             try
             {
                 //Constroe a mensagem do cliente
-                //TODO  Encrypte password & message to server
                 string msg = username + "$" + password;
                 //Initialize the encryptor
                 Cryptor cryptor = new Cryptor();
-                //Generate Salt
-                string salt = Convert.ToBase64String(cryptor.GenerateSalt());
-                //Generate Private Key
-                string key = cryptor.CreatePrivateKey(salt);
-                //Generate Vetor
-                string iv = cryptor.CreateIV(salt);
                 //
-                msg = key + "$" + iv + "$" + cryptor.EncryptText(key, iv, msg);
+                msg = cryptor.GerarMensagem(msg);
                 //
                 ProtocolSI = new ProtocolSI();
                 // Converte a mensagem para bytes para poder ser enviada
@@ -92,15 +85,10 @@ namespace TS_Projeto_Chat
                 {
                     NetworkStream.Read(ProtocolSI.Buffer, 0, ProtocolSI.Buffer.Length);
                 } while (ProtocolSI.GetCmdType() != ProtocolSICmdType.ACK);
-                // Lee a informação da mensagem returnada pelo servidor
-                string serermsg = ProtocolSI.GetStringFromData();
-                //Get Key
-                key = serermsg.Split('$')[0];
-                //Get IV
-                iv = serermsg.Split('$')[1];
-                //
+                // Lee e desenvripta a informação da mensagem returnada pelo servidor
+                msg = cryptor.DesencryptarMensagem(ProtocolSI.GetStringFromData());
                 // Converte para bool
-                return bool.Parse(cryptor.DesencryptText(key, iv, serermsg.Split('$')[2])); ;
+                return bool.Parse(msg); ;
             }
             catch (Exception ex)
             {

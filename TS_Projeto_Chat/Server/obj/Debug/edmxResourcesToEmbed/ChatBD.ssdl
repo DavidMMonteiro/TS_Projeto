@@ -3,9 +3,9 @@
   <EntityContainer Name="ChatBDStoreContainer">
     <EntitySet Name="UsersSet" EntityType="ChatBD.Store.UsersSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="MensagensSet" EntityType="ChatBD.Store.MensagensSet" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="MensagensUsers" Association="ChatBD.Store.MensagensUsers">
-      <End Role="Mensagens" EntitySet="MensagensSet" />
+    <AssociationSet Name="UsersMensagens" Association="ChatBD.Store.UsersMensagens">
       <End Role="Users" EntitySet="UsersSet" />
+      <End Role="Mensagens" EntitySet="MensagensSet" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="UsersSet">
@@ -25,17 +25,17 @@
     <Property Name="IdMensagem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="dtCreation" Type="datetime" Nullable="false" />
     <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Users_IdUser" Type="int" Nullable="false" />
+    <Property Name="IdUser" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="MensagensUsers">
-    <End Role="Mensagens" Type="ChatBD.Store.MensagensSet" Multiplicity="*" />
+  <Association Name="UsersMensagens">
     <End Role="Users" Type="ChatBD.Store.UsersSet" Multiplicity="1" />
+    <End Role="Mensagens" Type="ChatBD.Store.MensagensSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Users">
         <PropertyRef Name="IdUser" />
       </Principal>
       <Dependent Role="Mensagens">
-        <PropertyRef Name="Users_IdUser" />
+        <PropertyRef Name="IdUser" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

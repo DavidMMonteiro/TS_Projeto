@@ -18,16 +18,9 @@
           <ScalarProperty Name="IdMensagem" ColumnName="IdMensagem" />
           <ScalarProperty Name="dtCreation" ColumnName="dtCreation" />
           <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="MensagensUsers" TypeName="ChatBD.MensagensUsers" StoreEntitySet="MensagensSet">
-      <EndProperty Name="Users">
-        <ScalarProperty Name="IdUser" ColumnName="Users_IdUser" />
-      </EndProperty>
-      <EndProperty Name="Mensagens">
-        <ScalarProperty Name="IdMensagem" ColumnName="IdMensagem" />
-      </EndProperty>
-    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

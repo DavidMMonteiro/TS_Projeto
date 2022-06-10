@@ -8,9 +8,9 @@
   <EntityContainer Name="ChatBDStoreContainer">
     <EntitySet Name="UsersSet" EntityType="ChatBD.Store.UsersSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="MensagensSet" EntityType="ChatBD.Store.MensagensSet" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="MensagensUsers" Association="ChatBD.Store.MensagensUsers">
-      <End Role="Mensagens" EntitySet="MensagensSet" />
+    <AssociationSet Name="UsersMensagens" Association="ChatBD.Store.UsersMensagens">
       <End Role="Users" EntitySet="UsersSet" />
+      <End Role="Mensagens" EntitySet="MensagensSet" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="UsersSet">
@@ -30,17 +30,17 @@
     <Property Name="IdMensagem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="dtCreation" Type="datetime" Nullable="false" />
     <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Users_IdUser" Type="int" Nullable="false" />
+    <Property Name="IdUser" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="MensagensUsers">
-    <End Role="Mensagens" Type="ChatBD.Store.MensagensSet" Multiplicity="*" />
+  <Association Name="UsersMensagens">
     <End Role="Users" Type="ChatBD.Store.UsersSet" Multiplicity="1" />
+    <End Role="Mensagens" Type="ChatBD.Store.MensagensSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Users">
         <PropertyRef Name="IdUser" />
       </Principal>
       <Dependent Role="Mensagens">
-        <PropertyRef Name="Users_IdUser" />
+        <PropertyRef Name="IdUser" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -51,9 +51,9 @@
         <EntityContainer Name="ChatBDContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="UsersSet" EntityType="ChatBD.Users" />
           <EntitySet Name="MensagensSet" EntityType="ChatBD.Mensagens" />
-          <AssociationSet Name="MensagensUsers" Association="ChatBD.MensagensUsers">
-            <End Role="Mensagens" EntitySet="MensagensSet" />
+          <AssociationSet Name="UsersMensagens" Association="ChatBD.UsersMensagens">
             <End Role="Users" EntitySet="UsersSet" />
+            <End Role="Mensagens" EntitySet="MensagensSet" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Users">
@@ -65,20 +65,29 @@
           <Property Name="SaltedPasswordHash" Type="Binary" Nullable="false" MaxLength="Max" />
           <Property Name="Salt" Type="Binary" Nullable="false" MaxLength="Max" />
           <Property Name="dtCreation" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Mensagens" Relationship="ChatBD.MensagensUsers" FromRole="Users" ToRole="Mensagens" />
+          <NavigationProperty Name="Mensagens" Relationship="ChatBD.UsersMensagens" FromRole="Users" ToRole="Mensagens" />
         </EntityType>
         <EntityType Name="Mensagens">
           <Key>
             <PropertyRef Name="IdMensagem" />
           </Key>
           <Property Name="IdMensagem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Users" Relationship="ChatBD.MensagensUsers" FromRole="Mensagens" ToRole="Users" />
           <Property Name="dtCreation" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Users" Relationship="ChatBD.UsersMensagens" FromRole="Mensagens" ToRole="Users" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
         </EntityType>
-        <Association Name="MensagensUsers">
-          <End Type="ChatBD.Mensagens" Role="Mensagens" Multiplicity="*" />
+        <Association Name="UsersMensagens">
           <End Type="ChatBD.Users" Role="Users" Multiplicity="1" />
+          <End Type="ChatBD.Mensagens" Role="Mensagens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Mensagens">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -103,17 +112,10 @@
           <ScalarProperty Name="IdMensagem" ColumnName="IdMensagem" />
           <ScalarProperty Name="dtCreation" ColumnName="dtCreation" />
           <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="MensagensUsers" TypeName="ChatBD.MensagensUsers" StoreEntitySet="MensagensSet">
-      <EndProperty Name="Users">
-        <ScalarProperty Name="IdUser" ColumnName="Users_IdUser" />
-      </EndProperty>
-      <EndProperty Name="Mensagens">
-        <ScalarProperty Name="IdMensagem" ColumnName="IdMensagem" />
-      </EndProperty>
-    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

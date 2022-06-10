@@ -1,0 +1,17 @@
+
+[30/05/2022 16:11:19]admin join the chat
+[30/05/2022 16:11:49]admin left the chat
+[30/05/2022 16:11:49](admin): Fechar client... bye :-)
+[30/05/2022 16:11:49](error): Cannot access a disposed object.
+Object name: 'System.Net.Sockets.NetworkStream'.
+[30/05/2022 16:12:58]admin join the chat
+[30/05/2022 16:13:01]admin left the chat
+[30/05/2022 16:13:01](admin): Fechar client... bye :-)
+[30/05/2022 16:13:01](error): Cannot access a disposed object.
+Object name: 'System.Net.Sockets.NetworkStream'.
+[30/05/2022 16:14:35]admin join the chat
+[30/05/2022 16:14:37]admin left the chat
+[30/05/2022 16:14:37](admin): Fechar client... bye :-)
+[30/05/2022 16:14:37](error): Cannot access a disposed object.
+Object name: 'System.Net.Sockets.NetworkStream'.
+[30/05/2022 16:14:38]An error occurred invoking the method.  The destination thread no longer exists.

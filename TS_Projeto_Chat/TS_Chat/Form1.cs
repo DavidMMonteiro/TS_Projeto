@@ -16,11 +16,6 @@ namespace TS_Projeto_Chat
         private string name;
         private ChatController chatController;
         private MessageHandler messageHandler;
-        /* TODO 
-         * Get Chat List
-         * Make Classes General
-        */
-        //private List<Chats> chats_list;
 
     	/* 
         Quando e construido o form, recebe a informação da ligaçã establecida 
@@ -36,8 +31,6 @@ namespace TS_Projeto_Chat
             this.name = name;
             this.Text = "Chatting as: " + name;
             lb_chat.Text = name;
-            //TODO Create get chats from server
-            //TODO Load chats
             this.chatController = new ChatController(tb_chat);
             this.messageHandler = new MessageHandler(this.client, this.chatController);
         }
@@ -157,6 +150,13 @@ namespace TS_Projeto_Chat
             Form_Login form_login = new Form_Login();
             form_login.Show();
             this.Hide();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //Envia um pedido de chat recoverd 
+            byte[] packet = this.protocolSI.Make(ProtocolSICmdType.USER_OPTION_2, "Load Chat");
+            this.networkStream.Write(packet, 0, packet.Length);
         }
     }
 

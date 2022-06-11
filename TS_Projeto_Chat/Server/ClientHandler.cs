@@ -13,7 +13,7 @@ namespace TS_Chat
     // Thread para do client
     public class ClientHandler
     {
-        private LogController logger = new LogController();
+        private LogController logger;
         private TcpClient tcpClient;
         private Users client;
         private Dictionary<Users, TcpClient> ClientsDictionary;
@@ -28,6 +28,7 @@ namespace TS_Chat
             ProtocolSI protocol = new ProtocolSI();
             Cryptor cryptor = new Cryptor();
             string msg = $"{this.client.Username} join the chat";
+            logger = new LogController(this.client.Username);
             logger.consoleLog(msg);
             byte[] ack = protocol.Make(ProtocolSICmdType.DATA, cryptor.GerarMensagem(msg));
             this.broadCast(ack);
@@ -87,15 +88,16 @@ namespace TS_Chat
                             List<Mensagens> chats = LoadChat();
                             if (chats.Count > 0)
                             {
+                                logger.consoleLog("Serializing chat message to JSON", "Server");
                                 foreach (Mensagens chat in chats) 
                                 {
-                                    logger.consoleLog("Serializing chat to JSON", "Server");
                                     try
                                     {
                                         string msg = JsonConvert.SerializeObject(chat);
                                         msg = cryptor.GerarMensagem(msg);
                                         ack = protocolSI.Make(ProtocolSICmdType.USER_OPTION_2, msg);
                                         networkStream.Write(ack, 0, ack.Length);
+                                        unicast(ack);
                                     }
                                     catch (Exception ex)
                                     {
@@ -195,7 +197,7 @@ namespace TS_Chat
         // Envia mensagem a todas a ligações
         private void broadCast(byte[] data)
         {
-            logger.consoleLog("Sending message", this.client.Username);
+            logger.consoleLog("Sending broadcast message", this.client.Username);
             // Loop por cada cliente
             foreach (KeyValuePair<Users, TcpClient> client in ClientsDictionary) 
             {
@@ -206,11 +208,25 @@ namespace TS_Chat
                 }
                 catch (Exception ex)
                 {
-                    logger.consoleLog("Error sending message to " + client.Key.Username, this.client.Username);
+                    logger.consoleLog("Error sending broadcast message to " + client.Key.Username, this.client.Username);
                 }
             }
         }
 
+        private void unicast(byte[] data)
+        {
+            logger.consoleLog("Sending unicast message", this.client.Username);
+            // Loop por cada cliente
+            TcpClient client = this.ClientsDictionary.First(c => c.Key.IdUser == this.client.IdUser).Value;
+            // Envia a mensagem ao cliente
+            try
+            {
+                client.GetStream().Write(data, 0, data.Length);
+            }
+            catch (Exception ex)
+            {
+                logger.consoleLog("Error sending unicast message to " + this.client.Username, this.client.Username);
+            }
+        }
     }
-
 }

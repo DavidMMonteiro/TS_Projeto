@@ -74,3 +74,622 @@
 [11/06/2022 15:05:16](admin): Sending message
 [11/06/2022 15:05:24](Server): Connection try!
 [11/06/2022 15:05:32](Server): Client logged right now
+[11/06/2022 15:07:04](Server): Server Start
+[11/06/2022 15:07:18](Server): Connection try!
+[11/06/2022 15:07:19]admin join the chat
+[11/06/2022 15:07:19](admin): Sending message
+[11/06/2022 15:07:25](admin): Saving message
+[11/06/2022 15:07:25](admin): Sending message
+[11/06/2022 15:07:36](Server): Connection try!
+[11/06/2022 15:07:36](Server): Client logged right now
+Close another open session to open this one...
+[11/06/2022 15:11:53](Server): Server Start
+[11/06/2022 15:11:59](Server): Connection try!
+[11/06/2022 15:12:00]admin join the chat
+[11/06/2022 15:12:00](admin): Sending message
+[11/06/2022 15:13:01](Server): Server Start
+[11/06/2022 15:13:08](Server): Connection try!
+[11/06/2022 15:13:09]admin join the chat
+[11/06/2022 15:13:09](admin): Sending message
+[11/06/2022 15:14:36](Server): Server Start
+[11/06/2022 15:14:40](Server): Connection try!
+[11/06/2022 15:14:41]admin join the chat
+[11/06/2022 15:14:41](admin): Sending message
+[11/06/2022 15:17:35](Server): Server Start
+[11/06/2022 15:17:38](Server): Connection try!
+[11/06/2022 15:17:39]admin join the chat
+[11/06/2022 15:17:39](admin): Sending message
+[11/06/2022 15:21:49](Server): Server Start
+[11/06/2022 15:21:57](Server): Connection try!
+[11/06/2022 15:23:34](Server): Server Start
+[11/06/2022 15:23:38](Server): Connection try!
+[11/06/2022 15:24:35](Server): Server Start
+[11/06/2022 15:24:39](Server): Connection try!
+[11/06/2022 15:24:40]admin join the chat
+[11/06/2022 15:24:40](admin): Sending message
+[11/06/2022 15:24:59](admin): Saving message
+[11/06/2022 15:25:47](admin): Sending message
+[11/06/2022 15:26:18](Server): Connection try!
+[11/06/2022 15:26:18]user1 join the chat
+[11/06/2022 15:26:18](user1): Sending message
+[11/06/2022 15:26:24](user1): Saving message
+[11/06/2022 15:26:24](user1): Sending message
+[11/06/2022 15:26:37]admin left the chat
+[11/06/2022 15:26:37](admin): Sending message
+[11/06/2022 15:26:54](Server): Server Start
+[11/06/2022 15:26:59](Server): Connection try!
+[11/06/2022 15:27:00]admin join the chat
+[11/06/2022 15:27:00](admin): Sending message
+[11/06/2022 15:27:20](admin): Saving message
+[11/06/2022 15:27:20](admin): Sending message
+[11/06/2022 15:28:26](Server): Server Start
+[11/06/2022 15:28:29](Server): Connection try!
+[11/06/2022 15:28:30]admin join the chat
+[11/06/2022 15:28:30](admin): Sending message
+[11/06/2022 15:28:52](admin): Saving message
+[11/06/2022 15:28:52](admin): Sending message
+[11/06/2022 15:29:05](Server): Server Start
+[11/06/2022 15:29:10](Server): Connection try!
+[11/06/2022 15:29:11]admin join the chat
+[11/06/2022 15:29:11](admin): Sending message
+[11/06/2022 15:29:21](admin): Saving message
+[11/06/2022 15:29:21](admin): Sending message
+[11/06/2022 15:30:33](Server): Server Start
+[11/06/2022 15:30:36](Server): Connection try!
+[11/06/2022 15:30:37]admin join the chat
+[11/06/2022 15:30:37](admin): Sending message
+[11/06/2022 15:30:47](admin): Saving message
+[11/06/2022 15:30:47](admin): Sending message
+[11/06/2022 15:31:25](Server): Server Start
+[11/06/2022 15:31:28](Server): Connection try!
+[11/06/2022 15:31:29]admin join the chat
+[11/06/2022 15:31:29](admin): Sending message
+[11/06/2022 15:31:38](admin): Saving message
+[11/06/2022 15:31:38](admin): Sending message
+[11/06/2022 15:31:49](Server): Connection try!
+[11/06/2022 15:31:49]user1 join the chat
+[11/06/2022 15:31:49](user1): Sending message
+[11/06/2022 15:31:56](user1): Saving message
+[11/06/2022 15:31:56](user1): Sending message
+[11/06/2022 15:42:05](Server): Server Start
+[11/06/2022 15:42:09](Server): Connection try!
+[11/06/2022 15:42:11]admin join the chat
+[11/06/2022 15:42:11](admin): Sending message
+[11/06/2022 15:42:11](Server): Sending chat to request
+[11/06/2022 15:42:19](Server): Loading chat
+[11/06/2022 15:42:19](Server): Sorting chat by date time
+[11/06/2022 15:42:26](Server): Serializing chat to JSON
+[11/06/2022 15:47:31](Server): Server Start
+[11/06/2022 15:47:34](Server): Connection try!
+[11/06/2022 15:47:35]admin join the chat
+[11/06/2022 15:47:35](admin): Sending broadcast message
+[11/06/2022 15:47:35](Server): Sending chat to request
+[11/06/2022 15:47:39](Server): Loading chat
+[11/06/2022 15:47:39](Server): Sorting chat by date time
+[11/06/2022 15:47:41](Server): Serializing chat message to JSON
+[11/06/2022 15:47:51](admin): Sending unicast message
+[11/06/2022 15:48:03](admin): Sending unicast message
+[11/06/2022 15:48:03](admin): Sending unicast message
+[11/06/2022 15:48:03](admin): Sending unicast message
+[11/06/2022 15:48:03](admin): Sending unicast message
+[11/06/2022 15:48:03](admin): Sending unicast message
+[11/06/2022 15:48:03](admin): Sending unicast message
+[11/06/2022 15:48:03](admin): Sending unicast message
+[11/06/2022 15:48:03](admin): Sending unicast message
+[11/06/2022 15:48:03](admin): Sending unicast message
+[11/06/2022 15:48:03](admin): Sending unicast message
+[11/06/2022 15:48:11](admin): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação existente foi forçada a fechar pelo anfitrião remoto.
+[11/06/2022 15:48:11](admin): Sending broadcast message
+[11/06/2022 15:48:11](admin): Error sending broadcast message to admin
+[11/06/2022 15:49:25](Server): Server Start
+[11/06/2022 15:49:29](Server): Connection try!
+[11/06/2022 15:49:30]admin join the chat
+[11/06/2022 15:49:30](admin): Sending broadcast message
+[11/06/2022 15:49:30](Server): Sending chat to request
+[11/06/2022 15:49:33](Server): Loading chat
+[11/06/2022 15:49:33](Server): Sorting chat by date time
+[11/06/2022 15:49:34](Server): Serializing chat message to JSON
+[11/06/2022 15:50:03](admin): Sending unicast message
+[11/06/2022 15:50:09](admin): Sending unicast message
+[11/06/2022 15:50:09](admin): Sending unicast message
+[11/06/2022 15:50:12](admin): Sending unicast message
+[11/06/2022 15:50:12](admin): Sending unicast message
+[11/06/2022 15:50:13](admin): Sending unicast message
+[11/06/2022 15:50:13](admin): Sending unicast message
+[11/06/2022 15:50:13](admin): Sending unicast message
+[11/06/2022 15:50:13](admin): Sending unicast message
+[11/06/2022 15:50:13](admin): Sending unicast message
+[11/06/2022 15:50:13](admin): Sending unicast message
+[11/06/2022 15:51:04](Server): Server Start
+[11/06/2022 15:51:07](Server): Connection try!
+[11/06/2022 15:51:08]admin join the chat
+[11/06/2022 15:51:08](admin): Sending broadcast message
+[11/06/2022 15:51:08](Server): Sending chat to request
+[11/06/2022 15:51:11](Server): Loading chat
+[11/06/2022 15:51:11](Server): Sorting chat by date time
+[11/06/2022 15:51:11](Server): Serializing chat message to JSON
+[11/06/2022 15:51:11](admin): Sending unicast message
+[11/06/2022 15:51:15](admin): Sending unicast message
+[11/06/2022 15:51:15](admin): Sending unicast message
+[11/06/2022 15:51:15](admin): Sending unicast message
+[11/06/2022 15:51:15](admin): Sending unicast message
+[11/06/2022 15:51:15](admin): Sending unicast message
+[11/06/2022 15:51:15](admin): Sending unicast message
+[11/06/2022 15:51:15](admin): Sending unicast message
+[11/06/2022 15:51:15](admin): Sending unicast message
+[11/06/2022 15:51:15](admin): Sending unicast message
+[11/06/2022 15:51:15](admin): Sending unicast message
+[11/06/2022 15:51:27](admin): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação existente foi forçada a fechar pelo anfitrião remoto.
+[11/06/2022 15:51:27](admin): Sending broadcast message
+[11/06/2022 15:51:27](admin): Error sending broadcast message to admin
+[11/06/2022 15:52:29](Server): Connection try!
+[11/06/2022 15:52:29]admin join the chat
+[11/06/2022 15:52:29](admin): Sending broadcast message
+[11/06/2022 15:52:29](Server): Sending chat to request
+[11/06/2022 15:52:34](Server): Loading chat
+[11/06/2022 15:52:34](Server): Sorting chat by date time
+[11/06/2022 15:52:51](Server): Serializing chat message to JSON
+[11/06/2022 15:53:01](admin): Sending unicast message
+[11/06/2022 15:53:03](admin): Sending unicast message
+[11/06/2022 15:53:06](admin): Sending unicast message
+[11/06/2022 15:53:08](admin): Sending unicast message
+[11/06/2022 15:53:11](admin): Sending unicast message
+[11/06/2022 15:53:14](admin): Sending unicast message
+[11/06/2022 15:53:23](admin): Sending unicast message
+[11/06/2022 15:53:28](admin): Sending unicast message
+[11/06/2022 15:53:29](admin): Sending unicast message
+[11/06/2022 15:53:30](admin): Sending unicast message
+[11/06/2022 15:53:30](admin): Sending unicast message
+[11/06/2022 15:53:55]admin left the chat
+[11/06/2022 15:53:55](admin): Sending broadcast message
+[11/06/2022 15:54:16](Server): Server Start
+[11/06/2022 15:54:20](Server): Connection try!
+[11/06/2022 15:54:21]admin join the chat
+[11/06/2022 15:54:21](admin): Sending broadcast message
+[11/06/2022 15:54:21](Server): Sending chat to request
+[11/06/2022 15:54:21](Server): Loading chat
+[11/06/2022 15:54:21](Server): Sorting chat by date time
+[11/06/2022 15:54:21](Server): Serializing chat message to JSON
+[11/06/2022 15:54:24](admin): Sending unicast message
+[11/06/2022 15:54:24](admin): Sending unicast message
+[11/06/2022 15:54:24](admin): Sending unicast message
+[11/06/2022 15:54:24](admin): Sending unicast message
+[11/06/2022 15:54:24](admin): Sending unicast message
+[11/06/2022 15:54:24](admin): Sending unicast message
+[11/06/2022 15:54:24](admin): Sending unicast message
+[11/06/2022 15:54:24](admin): Sending unicast message
+[11/06/2022 15:54:24](admin): Sending unicast message
+[11/06/2022 15:54:24](admin): Sending unicast message
+[11/06/2022 15:54:24](admin): Sending unicast message
+[11/06/2022 15:54:26](admin): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação existente foi forçada a fechar pelo anfitrião remoto.
+[11/06/2022 15:54:26](admin): Sending broadcast message
+[11/06/2022 15:54:26](admin): Error sending broadcast message to admin
+[11/06/2022 15:54:36](Server): Connection try!
+[11/06/2022 15:54:36]admin join the chat
+[11/06/2022 15:54:36](admin): Sending broadcast message
+[11/06/2022 15:54:36](Server): Sending chat to request
+[11/06/2022 15:54:36](Server): Loading chat
+[11/06/2022 15:54:36](Server): Sorting chat by date time
+[11/06/2022 15:54:36](Server): Serializing chat message to JSON
+[11/06/2022 15:54:36](admin): Sending unicast message
+[11/06/2022 15:54:36](admin): Sending unicast message
+[11/06/2022 15:54:36](admin): Sending unicast message
+[11/06/2022 15:54:36](admin): Sending unicast message
+[11/06/2022 15:54:36](admin): Sending unicast message
+[11/06/2022 15:54:36](admin): Sending unicast message
+[11/06/2022 15:54:36](admin): Sending unicast message
+[11/06/2022 15:54:36](admin): Sending unicast message
+[11/06/2022 15:54:36](admin): Sending unicast message
+[11/06/2022 15:54:36](admin): Sending unicast message
+[11/06/2022 15:54:36](admin): Sending unicast message
+[11/06/2022 15:54:47](admin): Saving message
+[11/06/2022 15:57:07](Server): Server Start
+[11/06/2022 15:57:20](Server): Server Start
+[11/06/2022 15:57:23](Server): Connection try!
+[11/06/2022 15:57:24]admin join the chat
+[11/06/2022 15:57:24](admin): Sending broadcast message
+[11/06/2022 15:57:24](Server): Sending chat to request
+[11/06/2022 15:57:24](Server): Loading chat
+[11/06/2022 15:57:24](Server): Sorting chat by date time
+[11/06/2022 15:57:25](Server): Serializing chat message to JSON
+[11/06/2022 15:57:25](admin): Sending unicast message
+[11/06/2022 15:57:25](admin): Sending unicast message
+[11/06/2022 15:57:25](admin): Sending unicast message
+[11/06/2022 15:57:25](admin): Sending unicast message
+[11/06/2022 15:57:25](admin): Sending unicast message
+[11/06/2022 15:57:25](admin): Sending unicast message
+[11/06/2022 15:57:25](admin): Sending unicast message
+[11/06/2022 15:57:25](admin): Sending unicast message
+[11/06/2022 15:57:25](admin): Sending unicast message
+[11/06/2022 15:57:25](admin): Sending unicast message
+[11/06/2022 15:57:25](admin): Sending unicast message
+[11/06/2022 15:57:27](admin): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação existente foi forçada a fechar pelo anfitrião remoto.
+[11/06/2022 15:57:27](admin): Sending broadcast message
+[11/06/2022 15:57:27](admin): Error sending broadcast message to admin
+[11/06/2022 15:57:48](Server): Connection try!
+[11/06/2022 15:58:07](Server): Server Start
+[11/06/2022 15:58:11](Server): Connection try!
+[11/06/2022 15:58:12]admin join the chat
+[11/06/2022 15:58:12](admin): Sending broadcast message
+[11/06/2022 15:58:12](Server): Sending chat to request
+[11/06/2022 15:58:12](Server): Loading chat
+[11/06/2022 15:58:12](Server): Sorting chat by date time
+[11/06/2022 15:58:12](Server): Serializing chat message to JSON
+[11/06/2022 15:58:13](admin): Sending unicast message
+[11/06/2022 15:58:13](admin): Sending unicast message
+[11/06/2022 15:58:13](admin): Sending unicast message
+[11/06/2022 15:58:13](admin): Sending unicast message
+[11/06/2022 15:58:13](admin): Sending unicast message
+[11/06/2022 15:58:13](admin): Sending unicast message
+[11/06/2022 15:58:13](admin): Sending unicast message
+[11/06/2022 15:58:13](admin): Sending unicast message
+[11/06/2022 15:58:13](admin): Sending unicast message
+[11/06/2022 15:58:13](admin): Sending unicast message
+[11/06/2022 15:58:13](admin): Sending unicast message
+[11/06/2022 15:58:14](admin): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação existente foi forçada a fechar pelo anfitrião remoto.
+[11/06/2022 15:58:14](admin): Sending broadcast message
+[11/06/2022 15:58:14](admin): Error sending broadcast message to admin
+[11/06/2022 15:59:17](Server): Server Start
+[11/06/2022 15:59:20](Server): Connection try!
+[11/06/2022 15:59:21]admin join the chat
+[11/06/2022 15:59:21](admin): Sending broadcast message
+[11/06/2022 15:59:21](Server): Sending chat to request
+[11/06/2022 15:59:21](Server): Loading chat
+[11/06/2022 15:59:21](Server): Sorting chat by date time
+[11/06/2022 15:59:21](Server): No chat found
+[11/06/2022 15:59:25](admin): Saving message
+[11/06/2022 15:59:25](admin): Sending broadcast message
+[11/06/2022 15:59:35](admin): Saving message
+[11/06/2022 15:59:35](admin): Sending broadcast message
+[11/06/2022 15:59:37]admin left the chat
+[11/06/2022 15:59:37](admin): Sending broadcast message
+[11/06/2022 15:59:40](Server): Connection try!
+[11/06/2022 15:59:40]admin join the chat
+[11/06/2022 15:59:40](admin): Sending broadcast message
+[11/06/2022 15:59:40](Server): Sending chat to request
+[11/06/2022 15:59:40](Server): Loading chat
+[11/06/2022 15:59:40](Server): Sorting chat by date time
+[11/06/2022 15:59:40](Server): Serializing chat message to JSON
+[11/06/2022 15:59:40](admin): Sending unicast message
+[11/06/2022 15:59:40](admin): Sending unicast message
+[11/06/2022 15:59:45](Server): Sending chat to request
+[11/06/2022 15:59:45](Server): Loading chat
+[11/06/2022 15:59:45](Server): Sorting chat by date time
+[11/06/2022 15:59:45](Server): Serializing chat message to JSON
+[11/06/2022 15:59:45](admin): Sending unicast message
+[11/06/2022 15:59:45](admin): Error sending unicast message to admin
+[11/06/2022 15:59:45](Server): Serializing error: 
+- Error Serializing message:1003
+Não é possível escrever dados na ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[11/06/2022 15:59:45](admin): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[11/06/2022 15:59:45](admin): Sending broadcast message
+[11/06/2022 15:59:45](admin): Error sending broadcast message to admin
+[11/06/2022 16:00:03](Server): Connection try!
+[11/06/2022 16:00:03]admin join the chat
+[11/06/2022 16:00:03](admin): Sending broadcast message
+[11/06/2022 16:00:03](Server): Sending chat to request
+[11/06/2022 16:00:03](Server): Loading chat
+[11/06/2022 16:00:03](Server): Sorting chat by date time
+[11/06/2022 16:00:03](Server): Serializing chat message to JSON
+[11/06/2022 16:00:03](admin): Sending unicast message
+[11/06/2022 16:00:03](admin): Sending unicast message
+[11/06/2022 16:01:04](Server): Server Start
+[11/06/2022 16:01:07](Server): Connection try!
+[11/06/2022 16:01:08]admin join the chat
+[11/06/2022 16:01:08](admin): Sending broadcast message
+[11/06/2022 16:01:08](Server): Sending chat to request
+[11/06/2022 16:01:08](Server): Loading chat
+[11/06/2022 16:01:08](Server): Sorting chat by date time
+[11/06/2022 16:01:08](Server): Serializing chat message to JSON
+[11/06/2022 16:01:29](admin): Sending unicast message
+[11/06/2022 16:01:29](admin): Sending unicast message
+[11/06/2022 16:10:39](Server): Server Start
+[11/06/2022 16:10:42](Server): Connection try!
+[11/06/2022 16:10:43]admin join the chat
+[11/06/2022 16:10:43](admin): Sending broadcast message
+[11/06/2022 16:10:43](Server): Sending chat to request
+[11/06/2022 16:10:43](Server): Loading chat
+[11/06/2022 16:10:43](Server): Sorting chat by date time
+[11/06/2022 16:10:43](Server): Serializing chat message to JSON
+[11/06/2022 16:10:48](admin): Sending unicast message
+[11/06/2022 16:10:48](admin): Sending unicast message
+[11/06/2022 16:10:54](admin): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação existente foi forçada a fechar pelo anfitrião remoto.
+[11/06/2022 16:10:54](admin): Sending broadcast message
+[11/06/2022 16:10:54](admin): Error sending broadcast message to admin
+[11/06/2022 16:11:49](Server): Server Start
+[11/06/2022 16:11:52](Server): Connection try!
+[11/06/2022 16:11:54]admin join the chat
+[11/06/2022 16:11:54](admin): Sending broadcast message
+[11/06/2022 16:11:54](Server): Sending chat to request
+[11/06/2022 16:11:54](Server): Loading chat
+[11/06/2022 16:11:54](Server): Sorting chat by date time
+[11/06/2022 16:11:54](Server): Serializing chat message to JSON
+[11/06/2022 16:11:54](admin): Sending unicast message
+[11/06/2022 16:11:54](admin): Sending unicast message
+[11/06/2022 16:12:06](admin): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação existente foi forçada a fechar pelo anfitrião remoto.
+[11/06/2022 16:12:06](admin): Sending broadcast message
+[11/06/2022 16:12:06](admin): Error sending broadcast message to admin
+[11/06/2022 16:12:52](Server): Connection try!
+[11/06/2022 16:12:52]admin join the chat
+[11/06/2022 16:12:52](admin): Sending broadcast message
+[11/06/2022 16:12:52](Server): Sending chat to request
+[11/06/2022 16:12:52](Server): Loading chat
+[11/06/2022 16:12:52](Server): Sorting chat by date time
+[11/06/2022 16:12:52](Server): Serializing chat message to JSON
+[11/06/2022 16:12:52](admin): Sending unicast message
+[11/06/2022 16:12:52](admin): Sending unicast message
+[11/06/2022 16:12:58](admin): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação existente foi forçada a fechar pelo anfitrião remoto.
+[11/06/2022 16:12:58](admin): Sending broadcast message
+[11/06/2022 16:12:58](admin): Error sending broadcast message to admin
+[11/06/2022 16:14:34](Server): Server Start
+[11/06/2022 16:14:37](Server): Connection try!
+[11/06/2022 16:14:38]admin join the chat
+[11/06/2022 16:14:38](admin): Sending broadcast message
+[11/06/2022 16:14:38](Server): Sending chat to request
+[11/06/2022 16:14:38](Server): Loading chat
+[11/06/2022 16:14:38](Server): Sorting chat by date time
+[11/06/2022 16:14:38](Server): Serializing chat message to JSON
+[11/06/2022 16:14:38](admin): Sending unicast message
+[11/06/2022 16:14:38](admin): Sending unicast message
+[11/06/2022 16:14:48](Server): Sending chat to request
+[11/06/2022 16:14:48](Server): Loading chat
+[11/06/2022 16:14:48](Server): Sorting chat by date time
+[11/06/2022 16:14:48](Server): Serializing chat message to JSON
+[11/06/2022 16:14:48](admin): Sending unicast message
+[11/06/2022 16:14:48](admin): Error sending unicast message to admin
+[11/06/2022 16:14:48](Server): Serializing error: 
+- Error Serializing message:1003
+Não é possível escrever dados na ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[11/06/2022 16:14:48](admin): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[11/06/2022 16:14:48](admin): Sending broadcast message
+[11/06/2022 16:14:48](admin): Error sending broadcast message to admin
+[11/06/2022 16:15:05](Server): Connection try!
+[11/06/2022 16:15:05]admin join the chat
+[11/06/2022 16:15:05](admin): Sending broadcast message
+[11/06/2022 16:15:05](Server): Sending chat to request
+[11/06/2022 16:15:05](Server): Loading chat
+[11/06/2022 16:15:05](Server): Sorting chat by date time
+[11/06/2022 16:15:05](Server): Serializing chat message to JSON
+[11/06/2022 16:15:05](admin): Sending unicast message
+[11/06/2022 16:15:05](admin): Sending unicast message
+[11/06/2022 16:15:22](Server): Sending chat to request
+[11/06/2022 16:15:22](Server): Loading chat
+[11/06/2022 16:15:22](Server): Sorting chat by date time
+[11/06/2022 16:15:22](Server): Serializing chat message to JSON
+[11/06/2022 16:15:22](admin): Sending unicast message
+[11/06/2022 16:15:22](admin): Error sending unicast message to admin
+[11/06/2022 16:15:22](Server): Serializing error: 
+- Error Serializing message:1003
+Não é possível escrever dados na ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[11/06/2022 16:15:22](admin): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[11/06/2022 16:15:22](admin): Sending broadcast message
+[11/06/2022 16:15:22](admin): Error sending broadcast message to admin
+[11/06/2022 16:16:08](Server): Server Start
+[11/06/2022 16:16:11](Server): Connection try!
+[11/06/2022 16:16:13]admin join the chat
+[11/06/2022 16:16:13](admin): Sending broadcast message
+[11/06/2022 16:16:13](Server): Sending chat to request
+[11/06/2022 16:16:13](Server): Loading chat
+[11/06/2022 16:16:13](Server): Sorting chat by date time
+[11/06/2022 16:16:13](Server): Serializing chat message to JSON
+[11/06/2022 16:16:28](admin): Sending unicast message
+[11/06/2022 16:16:41](admin): Sending unicast message
+[11/06/2022 16:17:57](Server): Server Start
+[11/06/2022 16:18:00](Server): Connection try!
+[11/06/2022 16:18:02]admin join the chat
+[11/06/2022 16:18:02](admin): Sending broadcast message
+[11/06/2022 16:18:02](Server): Sending chat to request
+[11/06/2022 16:18:02](Server): Loading chat
+[11/06/2022 16:18:02](Server): Sorting chat by date time
+[11/06/2022 16:18:02](Server): Serializing chat message to JSON
+[11/06/2022 16:18:15](admin): Sending unicast message
+[11/06/2022 16:18:20](admin): Sending unicast message
+[11/06/2022 16:19:09](Server): Sending chat to request
+[11/06/2022 16:19:09](Server): Loading chat
+[11/06/2022 16:19:09](Server): Sorting chat by date time
+[11/06/2022 16:19:09](Server): Serializing chat message to JSON
+[11/06/2022 16:19:17](admin): Sending unicast message
+[11/06/2022 16:19:17](admin): Error sending unicast message to admin
+[11/06/2022 16:19:28](Server): Serializing error: 
+- Error Serializing message:1003
+Não é possível escrever dados na ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[11/06/2022 16:19:29](admin): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[11/06/2022 16:19:29](admin): Sending broadcast message
+[11/06/2022 16:19:29](admin): Error sending broadcast message to admin
+[11/06/2022 16:19:38](Server): Server Start
+[11/06/2022 16:19:42](Server): Connection try!
+[11/06/2022 16:19:43]admin join the chat
+[11/06/2022 16:19:43](admin): Sending broadcast message
+[11/06/2022 16:19:43](Server): Sending chat to request
+[11/06/2022 16:19:43](Server): Loading chat
+[11/06/2022 16:19:43](Server): Sorting chat by date time
+[11/06/2022 16:19:43](Server): Serializing chat message to JSON
+[11/06/2022 16:19:54](admin): Sending unicast message
+[11/06/2022 16:20:02](admin): Sending unicast message
+[11/06/2022 16:21:24](Server): Server Start
+[11/06/2022 16:21:27](Server): Connection try!
+[11/06/2022 16:21:28]admin join the chat
+[11/06/2022 16:21:28](admin): Sending broadcast message
+[11/06/2022 16:21:29](Server): Sending chat to request
+[11/06/2022 16:21:29](Server): Loading chat
+[11/06/2022 16:21:29](Server): Sorting chat by date time
+[11/06/2022 16:21:29](Server): Serializing chat message to JSON
+[11/06/2022 16:21:31](admin): Sending unicast message
+[11/06/2022 16:21:36](admin): Sending unicast message
+[11/06/2022 16:22:23](Server): Server Start
+[11/06/2022 16:22:27](Server): Connection try!
+[11/06/2022 16:22:28]admin join the chat
+[11/06/2022 16:22:28](admin): Sending broadcast message
+[11/06/2022 16:22:28](Server): Sending chat to request
+[11/06/2022 16:22:28](Server): Loading chat
+[11/06/2022 16:22:28](Server): Sorting chat by date time
+[11/06/2022 16:22:28](Server): Serializing chat message to JSON
+[11/06/2022 16:22:33](admin): Sending unicast message
+[11/06/2022 16:22:37](admin): Sending unicast message
+[11/06/2022 16:23:05](Server): Sending chat to request
+[11/06/2022 16:23:05](Server): Loading chat
+[11/06/2022 16:23:05](Server): Sorting chat by date time
+[11/06/2022 16:23:05](Server): Serializing chat message to JSON
+[11/06/2022 16:23:08](Server): Server Start
+[11/06/2022 16:23:12](Server): Connection try!
+[11/06/2022 16:23:13]admin join the chat
+[11/06/2022 16:23:13](admin): Sending broadcast message
+[11/06/2022 16:23:13](Server): Sending chat to request
+[11/06/2022 16:23:13](Server): Loading chat
+[11/06/2022 16:23:13](Server): Sorting chat by date time
+[11/06/2022 16:23:13](Server): Serializing chat message to JSON
+[11/06/2022 16:23:16](admin): Sending unicast message
+[11/06/2022 16:23:18](admin): Sending unicast message
+[11/06/2022 16:23:37](Server): Sending chat to request
+[11/06/2022 16:23:37](Server): Loading chat
+[11/06/2022 16:23:37](Server): Sorting chat by date time
+[11/06/2022 16:23:37](Server): Serializing chat message to JSON
+[11/06/2022 16:23:39](Server): Server Start
+[11/06/2022 16:23:43](Server): Connection try!
+[11/06/2022 16:23:44]admin join the chat
+[11/06/2022 16:23:44](admin): Sending broadcast message
+[11/06/2022 16:23:44](Server): Sending chat to request
+[11/06/2022 16:23:44](Server): Loading chat
+[11/06/2022 16:23:44](Server): Sorting chat by date time
+[11/06/2022 16:23:44](Server): Serializing chat message to JSON
+[11/06/2022 16:23:46](admin): Sending unicast message
+[11/06/2022 16:23:51](admin): Sending unicast message
+[11/06/2022 16:24:17](Server): Sending chat to request
+[11/06/2022 16:24:17](Server): Loading chat
+[11/06/2022 16:24:17](Server): Sorting chat by date time
+[11/06/2022 16:24:17](Server): Serializing chat message to JSON
+[11/06/2022 16:24:22](Server): Server Start
+[11/06/2022 16:24:27](Server): Connection try!
+[11/06/2022 16:24:28]admin join the chat
+[11/06/2022 16:24:28](admin): Sending broadcast message
+[11/06/2022 16:24:28](Server): Sending chat to request
+[11/06/2022 16:24:28](Server): Loading chat
+[11/06/2022 16:24:28](Server): Sorting chat by date time
+[11/06/2022 16:24:28](Server): Serializing chat message to JSON
+[11/06/2022 16:24:30](admin): Sending unicast message
+[11/06/2022 16:24:33](admin): Sending unicast message
+[11/06/2022 16:26:20](Server): Server Start
+[11/06/2022 16:26:28](Server): Connection try!
+[11/06/2022 16:26:29]admin join the chat
+[11/06/2022 16:26:29](admin): Sending broadcast message
+[11/06/2022 16:26:29](Server): Sending chat to request
+[11/06/2022 16:26:29](Server): Loading chat
+[11/06/2022 16:26:29](Server): Sorting chat by date time
+[11/06/2022 16:26:30](Server): Serializing chat message to JSON
+[11/06/2022 16:27:51](admin): Sending unicast message
+[11/06/2022 16:28:02](admin): Sending unicast message
+[11/06/2022 16:29:55](Server): Sending chat to request
+[11/06/2022 16:29:55](Server): Loading chat
+[11/06/2022 16:29:55](Server): Sorting chat by date time
+[11/06/2022 16:29:55](Server): Serializing chat message to JSON
+[11/06/2022 16:30:02](admin): Sending unicast message
+[11/06/2022 16:30:02](admin): Error sending unicast message to admin
+[11/06/2022 16:30:06](Server): Serializing error: 
+- Error Serializing message:1003
+Não é possível escrever dados na ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[11/06/2022 16:30:06](admin): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[11/06/2022 16:30:06](admin): Sending broadcast message
+[11/06/2022 16:30:06](admin): Error sending broadcast message to admin
+[11/06/2022 16:30:56](Server): Server Start
+[11/06/2022 16:31:00](Server): Connection try!
+[11/06/2022 16:31:01]admin join the chat
+[11/06/2022 16:31:01](admin): Sending broadcast message
+[11/06/2022 16:31:04](admin): Saving message
+[11/06/2022 16:31:04](admin): Sending broadcast message
+[11/06/2022 16:31:54](Server): Connection try!
+[11/06/2022 16:31:54]user1 join the chat
+[11/06/2022 16:31:54](user1): Sending broadcast message
+[11/06/2022 16:32:01](user1): Saving message
+[11/06/2022 16:32:01](user1): Sending broadcast message
+[11/06/2022 16:32:19](admin): Saving message
+[11/06/2022 16:32:19](admin): Sending broadcast message
+[11/06/2022 16:32:29](user1): Saving message
+[11/06/2022 16:32:29](user1): Sending broadcast message
+[11/06/2022 16:32:35](admin): Saving message
+[11/06/2022 16:32:35](admin): Sending broadcast message
+[11/06/2022 16:32:42]admin left the chat
+[11/06/2022 16:32:42](admin): Sending broadcast message
+[11/06/2022 16:32:42](user1): Saving message
+[11/06/2022 16:32:42](user1): Sending broadcast message
+[11/06/2022 16:32:42](user1): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[11/06/2022 16:32:42](user1): Sending broadcast message
+[11/06/2022 16:32:42](user1): Error sending broadcast message to user1
+[11/06/2022 16:32:47](Server): Connection try!
+[11/06/2022 16:32:47]user1 join the chat
+[11/06/2022 16:32:47](user1): Sending broadcast message
+[11/06/2022 16:32:55](user1): Saving message
+[11/06/2022 16:32:55](user1): Sending broadcast message
+[11/06/2022 16:33:50]user1 left the chat
+[11/06/2022 16:33:50](user1): Sending broadcast message
+[11/06/2022 16:33:54](Server): Connection try!
+[11/06/2022 16:33:54]admin join the chat
+[11/06/2022 16:33:54](admin): Sending broadcast message
+[11/06/2022 16:34:03](admin): Saving message
+[11/06/2022 16:34:03](admin): Sending broadcast message
+[11/06/2022 16:34:14]admin left the chat
+[11/06/2022 16:34:14](admin): Sending broadcast message
+[11/06/2022 16:34:18](Server): Connection try!
+[11/06/2022 16:34:18]user1 join the chat
+[11/06/2022 16:34:18](user1): Sending broadcast message
+[11/06/2022 16:34:22](user1): Saving message
+[11/06/2022 16:34:22](user1): Sending broadcast message
+[11/06/2022 16:34:28](Server): Connection try!
+[11/06/2022 16:34:45]admin join the chat
+[11/06/2022 16:34:45](admin): Sending broadcast message
+[11/06/2022 16:34:54](Server): Connection try!
+[11/06/2022 16:35:06](Server): Two same accounts logging try
+[11/06/2022 16:35:22](admin): Saving message
+[11/06/2022 16:35:22](admin): Sending broadcast message
+[11/06/2022 16:35:36](admin): Saving message
+[11/06/2022 16:35:36](admin): Sending broadcast message
+[11/06/2022 16:35:44](user1): Saving message
+[11/06/2022 16:35:44](user1): Sending broadcast message
+[11/06/2022 16:35:47]user1 left the chat
+[11/06/2022 16:35:47](user1): Sending broadcast message
+[11/06/2022 16:35:47](admin): Saving message
+[11/06/2022 16:35:47](admin): Sending broadcast message
+[11/06/2022 16:35:47](admin): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[11/06/2022 16:35:47](admin): Sending broadcast message
+[11/06/2022 16:35:47](admin): Error sending broadcast message to admin
+[11/06/2022 16:35:52](Server): Connection try!
+[11/06/2022 16:35:52]user1 join the chat
+[11/06/2022 16:35:52](user1): Sending broadcast message
+[11/06/2022 16:36:00](Server): Connection try!
+[11/06/2022 16:36:52](Server): Two same accounts logging try
+[11/06/2022 16:37:11](Server): Connection try!
+[11/06/2022 16:37:11](Server): New account user2 created with success!
+[11/06/2022 16:37:30](Server): Connection try!
+[11/06/2022 16:37:32]user2 join the chat
+[11/06/2022 16:37:32](user2): Sending broadcast message
+[11/06/2022 16:38:02](Server): Connection try!
+[11/06/2022 16:38:04]admin join the chat
+[11/06/2022 16:38:04](admin): Sending broadcast message
+[11/06/2022 16:38:16](admin): Saving message
+[11/06/2022 16:38:16](admin): Sending broadcast message
+[11/06/2022 16:38:32](user2): Saving message
+[11/06/2022 16:38:32](user2): Sending broadcast message
+[11/06/2022 16:38:46](user1): Saving message
+[11/06/2022 16:38:46](user1): Sending broadcast message
+[11/06/2022 16:38:59]user2 left the chat
+[11/06/2022 16:38:59](user2): Sending broadcast message
+[11/06/2022 16:38:59](admin): Saving message
+[11/06/2022 16:38:59](user1): Saving message
+[11/06/2022 16:38:59](admin): Sending broadcast message
+[11/06/2022 16:38:59](admin): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[11/06/2022 16:38:59](admin): Sending broadcast message
+[11/06/2022 16:38:59](user1): Sending broadcast message
+[11/06/2022 16:38:59](admin): Error sending broadcast message to user1
+[11/06/2022 16:38:59](admin): Error sending broadcast message to admin
+[11/06/2022 16:38:59](user1): Uncommon error: A colecção foi modificada; a operação de enumeração poderá não ser executada.
+[11/06/2022 16:38:59](user1): Sending broadcast message
+[11/06/2022 16:38:59](user1): Error sending broadcast message to user1
+[11/06/2022 16:41:40](Server): Server Start
+[11/06/2022 16:41:47](Server): Connection try!
+[11/06/2022 16:41:48](Server): New account user3 created with success!
+[11/06/2022 16:41:56](Server): Connection try!
+[11/06/2022 16:41:56]user3 join the chat
+[11/06/2022 16:41:56](user3): Sending broadcast message
+[11/06/2022 16:42:05](user3): Saving message
+[11/06/2022 16:42:05](user3): Sending broadcast message
+[11/06/2022 16:42:07]user3 left the chat
+[11/06/2022 16:42:07](user3): Sending broadcast message

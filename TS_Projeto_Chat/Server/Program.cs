@@ -95,7 +95,7 @@ namespace Server
                         }
                         catch (ArgumentException ex)
                         {
-                            logger.consoleLog(ex.Message, name);
+                            logger.consoleLog("Two same accounts logging try", name);
                             ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("False$" + ex.Message));
                             networkStream.Write(ack, 0, ack.Length);
                         }
@@ -208,7 +208,7 @@ namespace Server
                     return user;
                 else
                 {
-                    throw new ArgumentException("Client logged right now");
+                    throw new ArgumentException("Client logged right now\nClose another open session to open this one...");
                 }
             }
             else

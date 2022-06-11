@@ -41,9 +41,9 @@ namespace Entities
             //Get key string 
             string key = Convert.ToBase64String(this.key);
             //Get IV string
-            string iv = Convert.ToBase64String(this.key);
+            string iv = Convert.ToBase64String(this.iv);
             //Get Message Text string
-            string text = Convert.ToBase64String(this.key);
+            string text = Convert.ToBase64String(this.Text);
             //Decript message
             return cryptor.DesencryptText(key, iv, text);
         }

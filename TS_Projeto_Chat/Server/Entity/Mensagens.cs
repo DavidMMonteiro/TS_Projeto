@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TS_Chat;
 
 namespace Server
 {
@@ -28,5 +29,6 @@ namespace Server
             this.Users.IdUser = users.IdUser;
             this.Users.Username = users.Username;
         }
+
     }
 }

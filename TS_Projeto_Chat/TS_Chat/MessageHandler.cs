@@ -39,6 +39,8 @@ namespace TS_Chat
             // Guarda a networkStream no cliente
             NetworkStream networkStream = this.client.GetStream();
             ProtocolSI protocolSI = new ProtocolSI();
+            //
+            Mensagens old_mensagem = new Mensagens();
             // Loop ate receber mensagem do servidor a fechar o ligação
             while (protocolSI.GetCmdType() != ProtocolSICmdType.EOT)
             {
@@ -52,8 +54,6 @@ namespace TS_Chat
                     Cryptor cryptor = new Cryptor();
                     //Decrypt message
                     string message = cryptor.DesencryptarMensagem(output);
-                    //Get the message
-                    message = message.Split('$')[0];
                     // Filtra o tipo de mensagem
                     switch (protocolSI.GetCmdType())
                     {
@@ -61,14 +61,25 @@ namespace TS_Chat
                             if(message.Split('$').Length == 1)
                                 chatController.newMessage(message);
                             else if (message.Split('$').Length == 2)
-                                chatController.newMessage(message.Split('$')[1], message);
+                                chatController.newMessage(message.Split('$')[1], message.Split('$')[0]);
                             break;
                         case ProtocolSICmdType.EOT:
                             // Escreve a mensagem para o cliente
                             chatController.newMessage(message);
                             break;
                         case ProtocolSICmdType.USER_OPTION_2:
-                            LoadChat(message);
+                            try
+                            {                                
+                                Mensagens new_mensagem = JsonConvert.DeserializeObject<Mensagens>(cryptor.DesencryptarMensagem(output));
+                                if (old_mensagem.IdMensagem != new_mensagem.IdMensagem)
+                                {
+                                    old_mensagem = new_mensagem;
+                                    chatController.newMessage(new_mensagem.GetMessage().Split('$')[1], new_mensagem.GetMessage().Split('$')[0]);
+                                }
+                            }catch (Exception ex)
+                            {
+                                MessageBox.Show("Loading messages error: \n" + ex.Message + "\nIf keeps happening contact Administrator", "Unknow Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                             break;
                         case ProtocolSICmdType.USER_OPTION_9:
                             output = protocolSI.GetStringFromData();
@@ -78,22 +89,22 @@ namespace TS_Chat
                 }// Change Exception to show on Console on last version
                 catch (SocketException ex)
                 {
-                    MessageBox.Show(ex.Message + '\n' + ex.ToString(), "Error SocketExcpetion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error connecting with server: \n" + ex.Message + "\nContact Administrator", "Error SocketExcpetion", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 }
                 catch (IOException ex)
                 {
-                    MessageBox.Show(ex.Message + '\n' + ex.ToString(), "Error IOException", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error connecting with server: \n" + ex.Message + "\nContact Administrator", "Error IOException", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 }
                 catch (ObjectDisposedException ex)
                 {
-                    MessageBox.Show(ex.Message + '\n' + ex.ToString(), "Error ObjectDisposed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error connecting with server: \n" + ex.Message + "\nContact Administrator", "Error ObjectDisposed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message + '\n' + ex.ToString(), "Unknow Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error connecting with server: \n" + ex.Message + "\nContact Administrator", "Unknow Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 }
             }
@@ -102,10 +113,5 @@ namespace TS_Chat
             client.Close();
         }
 
-        private void LoadChat(string output)
-        {
-            Mensagens mensagem = JsonConvert.DeserializeObject<Mensagens>(output);
-            chatController.newMessage(mensagem.Users.Username, mensagem.GetMessage());
-        }
     }
 }

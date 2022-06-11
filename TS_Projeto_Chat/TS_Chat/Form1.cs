@@ -16,6 +16,7 @@ namespace TS_Projeto_Chat
         private string name;
         private ChatController chatController;
         private MessageHandler messageHandler;
+        bool connection;
 
     	/* 
         Quando e construido o form, recebe a informação da ligaçã establecida 
@@ -33,6 +34,7 @@ namespace TS_Projeto_Chat
             lb_chat.Text = name;
             this.chatController = new ChatController(tb_chat);
             this.messageHandler = new MessageHandler(this.client, this.chatController);
+            this.connection = true;
         }
 
         // Fecha o ligação do cliente com o servidor-
@@ -68,13 +70,13 @@ namespace TS_Projeto_Chat
                 // Envia a mensagem ao servidor
                 networkStream.Write(packet, 0, packet.Length);
                 chatController.newMessage(this.name, "Connected to server");
-                bt_send.Enabled = false;
+                bt_send.Enabled = true;
             }
             catch (Exception ex)
             {
 				// Caso a ligação fallar, informa ao utilizador
                 chatController.newMessage(this.name, "Connection to server fail... Try later...");
-                bt_send.Enabled = true;
+                bt_send.Enabled = false;
             }
         }
 
@@ -93,7 +95,7 @@ namespace TS_Projeto_Chat
             //Vetor
             string vetor = cryptopher.CreateIV(saltPassword);
             //TODO Encrypte message
-            string msg = privatePassword + '$' + vetor + '$' + cryptopher.EncryptText(privatePassword, vetor, tb_message.Text) + '$' + this.name;
+            string msg = privatePassword + '$' + vetor + '$' + cryptopher.EncryptText(privatePassword, vetor, tb_message.Text + '$' + this.name) ;
             try
             {
                 // Preparar mensagem para o servidor
@@ -163,6 +165,7 @@ namespace TS_Projeto_Chat
         private void Form1_Load(object sender, EventArgs e)
         {
             //Envia um pedido de chat recoverd 
+            //TODO Extenção ProtocolSI Max_Leght bug doesn't it load messages
             /*byte[] packet = this.protocolSI.Make(ProtocolSICmdType.USER_OPTION_2, "Load Chat");
             this.networkStream.Write(packet, 0, packet.Length);*/
         }

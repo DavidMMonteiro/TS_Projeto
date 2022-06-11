@@ -24,8 +24,10 @@
     </Key>
     <Property Name="IdMensagem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="dtCreation" Type="datetime" Nullable="false" />
-    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Text" Type="varbinary(max)" Nullable="false" />
     <Property Name="IdUser" Type="int" Nullable="false" />
+    <Property Name="key" Type="varbinary(max)" Nullable="false" />
+    <Property Name="iv" Type="varbinary(max)" Nullable="false" />
   </EntityType>
   <Association Name="UsersMensagens">
     <End Role="Users" Type="ChatBD.Store.UsersSet" Multiplicity="1" />

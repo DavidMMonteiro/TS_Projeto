@@ -104,9 +104,8 @@ namespace TS_Chat
 
         private void LoadChat(string output)
         {
-            List<Mensagens> mensagens = JsonConvert.DeserializeObject<List<Mensagens>>(output);
-            foreach(Mensagens mensangem in mensagens)
-                chatController.newMessage(mensangem.Users.Username, mensangem.Text);
+            Mensagens mensagem = JsonConvert.DeserializeObject<Mensagens>(output);
+            chatController.newMessage(mensagem.Users.Username, mensagem.GetMessage());
         }
     }
 }

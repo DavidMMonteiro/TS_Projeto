@@ -25,9 +25,11 @@
     </Key>
     <Property Name="IdMensagem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="dtCreation" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Text" Type="Binary" Nullable="false" />
     <NavigationProperty Name="Users" Relationship="ChatBD.UsersMensagens" FromRole="Mensagens" ToRole="Users" />
     <Property Name="IdUser" Type="Int32" Nullable="false" />
+    <Property Name="key" Type="Binary" Nullable="false" />
+    <Property Name="iv" Type="Binary" Nullable="false" />
   </EntityType>
   <Association Name="UsersMensagens">
     <End Type="ChatBD.Users" Role="Users" Multiplicity="1" />

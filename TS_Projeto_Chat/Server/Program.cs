@@ -45,16 +45,14 @@ namespace Server
                 //Get client data send
                 NetworkStream networkStream = client.GetStream();
                 ProtocolSI protocolSI = new ProtocolSI();
+                //Initialize the encryptor
+                Cryptor cryptor = new Cryptor();
                 //Gets the client data
                 networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
                 //Get the client data from the protocol
                 string dataFromClient = protocolSI.GetStringFromData();
                 byte[] ack;
                 logger.consoleLog("Connection try!", name);
-                try
-                {
-                    //Initialize the encryptor
-                    Cryptor cryptor = new Cryptor();
                     //Check if new user it's being created
                     if (protocolSI.GetCmdType() == ProtocolSICmdType.USER_OPTION_1)
                     {
@@ -62,44 +60,58 @@ namespace Server
                         //Create new user
                         if (CreateUser(dataFromClient))
                         {
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("True"));
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("True$"));
                             networkStream.Write(ack, 0, ack.Length);
                         }
                         else
                         {
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("False"));
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("False$Erro na criação da conta\nValide os seus dados e tente novamente."));
                             networkStream.Write(ack, 0, ack.Length);
                         }
                     }
                     else if (protocolSI.GetCmdType() == ProtocolSICmdType.ACK)
                     {
-                        Users new_user = CheckUser(dataFromClient);
-                        //
-                        if (new_user != null)
+                        try
                         {
-                            //Console info
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("True"));
-                            networkStream.Write(ack, 0, ack.Length);
-                            //Create Cliente Handler
-                            clientsDictionary.Add(new_user, client);
-                            ClientHandler clientHandler = new ClientHandler(client, new_user, clientsDictionary);
-                            clientHandler.Handle();
+                            Users new_user = CheckUser(dataFromClient, clientsDictionary);
+                            //
+                            if (new_user != null)
+                            {
+                                //Console info
+                                ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("True$"));
+                                networkStream.Write(ack, 0, ack.Length);
+                                //Create Cliente Handler
+                                clientsDictionary.Add(new_user, client);
+                                ClientHandler clientHandler = new ClientHandler(client, new_user, clientsDictionary);
+                                clientHandler.Handle();
+                            }
+                            else
+                            {
+                                //Console info
+                                logger.consoleLog("User not accepted", "Server");
+                                ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("False$Username ou Password erradas\nVerifique os seus dados"));
+                                networkStream.Write(ack, 0, ack.Length);
+                            }
                         }
-                        else
+                        catch (ArgumentException ex)
                         {
-                            //Console info
-                            logger.consoleLog("User not accepted", "Server");
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("False"));
+                            logger.consoleLog(ex.Message, name);
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("False$" + ex.Message));
+                            networkStream.Write(ack, 0, ack.Length);
+                        }
+                        catch (InvalidOperationException ex)
+                        {
+                            logger.consoleLog(ex.Message, name);
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("False$Username not found."));
+                            networkStream.Write(ack, 0, ack.Length);
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.consoleLog(ex.Message, name);
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("False$Unknow logging problem from the server. Sorry...\nTry again later..."));
                             networkStream.Write(ack, 0, ack.Length);
                         }
                     }
-                }
-                catch (Exception ex)
-                {
-                    logger.consoleLog(ex.Message, name);
-                    ack = protocolSI.Make(ProtocolSICmdType.ACK, "False");
-                    networkStream.Write(ack, 0, ack.Length);
-                }
 
             }
 
@@ -155,7 +167,7 @@ namespace Server
             }
         }
 
-        private static Users CheckUser(string user_info)
+        private static Users CheckUser(string user_info, Dictionary<Users, TcpClient> clientsDictionary)
         {
             //Initialize Decryptor
             Cryptor cryptor = new Cryptor();
@@ -187,10 +199,18 @@ namespace Server
             logController.consoleLog("User hashSalt: " + Encoding.UTF8.GetString(user.SaltedPasswordHash), "Server");
             logController.consoleLog("Login User HashSalt: " + Convert.ToBase64String(chech_hash), "Server");
             */
-
             //Valida que as hash seijam iguais
             if (user.checkedSaltPassword(chech_hash))
-                return user;
+            {
+                if (clientsDictionary.Count == 0)
+                    return user;
+                else if (!clientsDictionary.Keys.Any(c => c.IdUser == user.IdUser))
+                    return user;
+                else
+                {
+                    throw new ArgumentException("Client logged right now");
+                }
+            }
             else
                 return null;
         }

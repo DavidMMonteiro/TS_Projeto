@@ -93,7 +93,7 @@ namespace TS_Projeto_Chat
             //Vetor
             string vetor = cryptopher.CreateIV(saltPassword);
             //TODO Encrypte message
-            string msg = privatePassword + '$' + vetor + '$' + cryptopher.EncryptText(privatePassword, vetor, tb_message.Text) ;
+            string msg = privatePassword + '$' + vetor + '$' + cryptopher.EncryptText(privatePassword, vetor, tb_message.Text) + '$' + this.name;
             try
             {
                 // Preparar mensagem para o servidor

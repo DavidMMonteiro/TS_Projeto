@@ -12,7 +12,7 @@ namespace Server
         }
         public Mensagens(string text, Users user) : base()
         {
-            this.Text = text;
+            this.Text = Convert.FromBase64String(text);
             this.Users = user;
             this.dtCreation = DateTime.Now;
         }

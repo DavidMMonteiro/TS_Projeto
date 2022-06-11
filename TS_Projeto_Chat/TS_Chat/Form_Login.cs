@@ -87,12 +87,18 @@ namespace TS_Projeto_Chat
                 } while (ProtocolSI.GetCmdType() != ProtocolSICmdType.ACK);
                 // Lee e desenvripta a informação da mensagem returnada pelo servidor
                 msg = cryptor.DesencryptarMensagem(ProtocolSI.GetStringFromData());
+                bool login = bool.Parse(msg.Split('$')[0]);
+                string errorMsg = msg.Split('$')[1];
+                if (!login)
+                {
+                    MessageBox.Show(errorMsg, "Login fail", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
                 // Converte para bool
-                return bool.Parse(msg); ;
+                return login; ;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Connection fail", "Connection to server fail... Try later...");
+                MessageBox.Show("Logging error found client side\nContact with administrator", "Client Logging error");
                 consoleLog(ex.Message);
                 return false;
             }
@@ -117,7 +123,6 @@ namespace TS_Projeto_Chat
             // Valida os dados do cliente e se consegue efetuar o login com po servidor
             if (!login_Server(tb_user.Text, tb_password.Text)) {
                 tb_password.Text = null;
-                MessageBox.Show("Erro no login...\nExpirimente novamente!", "Login fail", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return; 
             }
 

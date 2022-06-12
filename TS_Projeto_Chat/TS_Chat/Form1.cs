@@ -16,7 +16,6 @@ namespace TS_Projeto_Chat
         private string name;
         private ChatController chatController;
         private MessageHandler messageHandler;
-        bool connection;
 
     	/* 
         Quando e construido o form, recebe a informação da ligaçã establecida 
@@ -34,7 +33,6 @@ namespace TS_Projeto_Chat
             lb_chat.Text = name;
             this.chatController = new ChatController(tb_chat);
             this.messageHandler = new MessageHandler(this.client, this.chatController);
-            this.connection = true;
         }
 
         // Fecha o ligação do cliente com o servidor-

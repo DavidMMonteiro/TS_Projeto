@@ -92,7 +92,7 @@ namespace TS_Chat
                 //Constroe a mensagem do cliente
                 string msg = tb_username.Text + "$" + tb_password.Text;
                 //Encripta a mensagem
-                msg = cryptor.GerarMensagem(msg);
+                msg = cryptor.SingData(msg);
                 //
                 protocolSI = new ProtocolSI();
                 // Converte a mensagem para bytes para poder ser enviada
@@ -105,7 +105,7 @@ namespace TS_Chat
                     networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
                 } while (protocolSI.GetCmdType() != ProtocolSICmdType.ACK);
                 // Lee a informação da mensagem returnada pelo servidor
-                string servermsg = cryptor.DesencryptarMensagem(protocolSI.GetStringFromData());
+                string servermsg = cryptor.VerifyData(protocolSI.GetStringFromData());
                 bool signUp = bool.Parse(servermsg.Split('$')[0]);
                 string errorText = servermsg.Split('$')[1];
                 // Converte para bool

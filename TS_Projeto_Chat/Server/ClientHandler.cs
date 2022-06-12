@@ -30,7 +30,7 @@ namespace TS_Chat
             string msg = $"{this.client.Username} join the chat";
             logger = new LogController(this.client.Username);
             logger.consoleLog(msg);
-            byte[] ack = protocol.Make(ProtocolSICmdType.DATA, cryptor.GerarMensagem(msg));
+            byte[] ack = protocol.Make(ProtocolSICmdType.DATA, cryptor.SingData(msg));
             this.broadCast(ack);
         }
 
@@ -79,7 +79,7 @@ namespace TS_Chat
                         case ProtocolSICmdType.EOT:
                             output = this.client.Username + " left the chat";
                             logger.consoleLog(output);
-                            output = cryptor.GerarMensagem(output);
+                            output = cryptor.SingData(output);
                             ack = protocolSI.Make(ProtocolSICmdType.EOT, output);
                             broadCast(ack);
                             break;
@@ -94,7 +94,7 @@ namespace TS_Chat
                                     try
                                     {
                                         string msg = JsonConvert.SerializeObject(chat);
-                                        msg = cryptor.GerarMensagem(msg);
+                                        msg = cryptor.SingData(msg);
                                         ack = protocolSI.Make(ProtocolSICmdType.USER_OPTION_2, msg);
                                         networkStream.Write(ack, 0, ack.Length);
                                         unicast(ack);

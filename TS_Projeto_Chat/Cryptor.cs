@@ -10,12 +10,23 @@ namespace TS_Chat
         private int SALT_SIZE = 8;
         private int ITERATIONS = 1000;
         private AesCryptoServiceProvider AES;
+        private RSACryptoServiceProvider rsaSing;
+        private RSACryptoServiceProvider rsaVerify;
+        public string publicKey;
 
         public Cryptor()
         {
+            //Message Encryptor
             this.AES = new AesCryptoServiceProvider();
             byte[] key = this.AES.Key;
             byte[] iv = this.AES.IV;
+
+            //Verification 
+            rsaSing = new RSACryptoServiceProvider();
+            publicKey = rsaSing.ToXmlString(false);
+
+            rsaVerify = new RSACryptoServiceProvider();
+            rsaVerify.FromXmlString(publicKey);
         }
 
         public byte[] GenerateSalt()
@@ -76,7 +87,7 @@ namespace TS_Chat
             return Convert.ToBase64String(encrypted_text);
         }
 
-        //Desencrypt string
+        //Desencrypt string with AES
         public string DesencryptText(string key, string iv, string text_encrypted)
         {
             AES.Key = Convert.FromBase64String(key);
@@ -96,6 +107,7 @@ namespace TS_Chat
             return Encoding.UTF8.GetString(desencrypted_text, 0, readBytes);
         }
 
+        //Encrypta e cria o pacote que vai ser enviado
         public string GerarMensagem(string msg)
         {
             //Create Salt
@@ -108,6 +120,7 @@ namespace TS_Chat
             return key + '$' + iv + '$' + EncryptText(key, iv, msg);
         }
 
+        //Desencrypta o pacote recebido
         public string DesencryptarMensagem(string msg)
         {
             //Get key
@@ -117,5 +130,28 @@ namespace TS_Chat
             //Get Msg
             return DesencryptText(key, iv, msg.Split('$')[2]);
         }
+
+        public string SingData(string msg)
+        {
+            byte[] dados = Encoding.UTF8.GetBytes(GerarMensagem());
+            using (SHA256 sh1 = SHA256.Create())
+            {
+                byte[] signature = rsaSing.SignData(dados, sh1);
+                return Convert.ToBase64String(signature);
+            }
+        }
+
+        public string VerifyData()
+        {
+            using (SHA256 sh1 = SHA256.Create())
+            {
+                byte[] signatura = Convert.FromBase64String(tbSignature.Text);
+                byte[] dados = Encoding.UTF8.GetBytes(tbDataToSign.Text);
+                bool verify = rsaVerify.VerifyData(dados, sh1, signatura);
+                tbIsVerified.Text = verify.ToString();
+            }
+        }
+
+
     }
 }

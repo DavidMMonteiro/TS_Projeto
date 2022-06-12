@@ -10,12 +10,24 @@ namespace TS_Chat
         private int SALT_SIZE = 8;
         private int ITERATIONS = 1000;
         private AesCryptoServiceProvider AES;
+        private RSACryptoServiceProvider rsaSing;
+        private RSACryptoServiceProvider rsaVerify;
+        private string publicKey;
+        private LogController log = new LogController();
 
         public Cryptor()
         {
+            //Message Encryptor
             this.AES = new AesCryptoServiceProvider();
             byte[] key = this.AES.Key;
             byte[] iv = this.AES.IV;
+
+            //Verification 
+            rsaSing = new RSACryptoServiceProvider();
+            publicKey = rsaSing.ToXmlString(false);
+
+            rsaVerify = new RSACryptoServiceProvider();
+            rsaVerify.FromXmlString(publicKey);
         }
 
         public byte[] GenerateSalt()
@@ -76,7 +88,7 @@ namespace TS_Chat
             return Convert.ToBase64String(encrypted_text);
         }
 
-        //Desencrypt string
+        //Desencrypt string with AES
         public string DesencryptText(string key, string iv, string text_encrypted)
         {
             AES.Key = Convert.FromBase64String(key);
@@ -96,7 +108,8 @@ namespace TS_Chat
             return Encoding.UTF8.GetString(desencrypted_text, 0, readBytes);
         }
 
-        public string GerarMensagem(string msg)
+        //Encrypta e cria o pacote que vai ser enviado
+        private string GerarMensagem(string msg)
         {
             //Create Salt
             string salt = Convert.ToBase64String(GenerateSalt());
@@ -108,7 +121,8 @@ namespace TS_Chat
             return key + '$' + iv + '$' + EncryptText(key, iv, msg);
         }
 
-        public string DesencryptarMensagem(string msg)
+        //Desencrypta o pacote recebido
+        private string DesencryptarMensagem(string msg)
         {
             //Get key
             string key = msg.Split('$')[0];
@@ -117,5 +131,37 @@ namespace TS_Chat
             //Get Msg
             return DesencryptText(key, iv, msg.Split('$')[2]);
         }
+
+        //Encrypta os dados e cria a asinatura
+        public string SingData(string msg)
+        {
+            string msgEncrypted = GerarMensagem(msg);
+            byte[] dados = Encoding.UTF8.GetBytes(msgEncrypted);
+            using (SHA256 sh1 = SHA256.Create())
+            {
+                byte[] signature = rsaSing.SignData(dados, sh1);
+                return Convert.ToBase64String(signature) + '$' + Encoding.UTF8.GetString(dados);
+            }
+        }
+
+        //Valida a asinatura e desencrypta os dados
+        public string VerifyData(string msg)
+        {
+            using (SHA256 sh1 = SHA256.Create())
+            {
+                //log.consoleLog(msg, "Server");
+                byte[] signatura = Convert.FromBase64String(msg.Split('$')[0]);
+                //log.consoleLog(msg.Split('$')[0], "Server");
+                byte[] dados = Encoding.UTF8.GetBytes(msg.Substring(msg.LastIndexOf('$') + 1));
+                //log.consoleLog(msg.Substring(msg.IndexOf('$') + 1), "Server");
+                bool verify = rsaVerify.VerifyData(dados, sh1, signatura);
+                if (verify)
+                    return DesencryptarMensagem(msg.Substring(msg.LastIndexOf('$') + 1));
+                else
+                    return null;
+            }
+        }
+
+
     }
 }

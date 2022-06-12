@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "classes", "classes", "{903241D0-7E21-4395-931F-ABE814536311}"
 	ProjectSection(SolutionItems) = preProject
 		Cryptor.cs = Cryptor.cs
+		TS_Chat\Cryptor.cs = TS_Chat\Cryptor.cs
 		LogController.cs = LogController.cs
 	EndProjectSection
 EndProject

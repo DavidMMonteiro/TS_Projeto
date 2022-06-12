@@ -14,8 +14,6 @@ namespace TS_Projeto_Chat
         private NetworkStream NetworkStream;
         private ProtocolSI ProtocolSI;
         private TcpClient Client;
-        private string PrivateKey;
-        private string Vetor;
 
         public Form_Login()
         {
@@ -73,7 +71,7 @@ namespace TS_Projeto_Chat
                 //Initialize the encryptor
                 Cryptor cryptor = new Cryptor();
                 //
-                msg = cryptor.GerarMensagem(msg);
+                msg = cryptor.SingData(msg);
                 //
                 ProtocolSI = new ProtocolSI();
                 // Converte a mensagem para bytes para poder ser enviada
@@ -86,7 +84,7 @@ namespace TS_Projeto_Chat
                     NetworkStream.Read(ProtocolSI.Buffer, 0, ProtocolSI.Buffer.Length);
                 } while (ProtocolSI.GetCmdType() != ProtocolSICmdType.ACK);
                 // Lee e desenvripta a informação da mensagem returnada pelo servidor
-                msg = cryptor.DesencryptarMensagem(ProtocolSI.GetStringFromData());
+                msg = cryptor.VerifyData(ProtocolSI.GetStringFromData());
                 bool login = bool.Parse(msg.Split('$')[0]);
                 string errorMsg = msg.Split('$')[1];
                 if (!login)

@@ -60,12 +60,12 @@ namespace Server
                         //Create new user
                         if (CreateUser(dataFromClient))
                         {
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("True$"));
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("True$"));
                             networkStream.Write(ack, 0, ack.Length);
                         }
                         else
                         {
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("False$Erro na criação da conta\nValide os seus dados e tente novamente."));
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("False$Erro na criação da conta\nValide os seus dados e tente novamente."));
                             networkStream.Write(ack, 0, ack.Length);
                         }
                     }
@@ -78,7 +78,7 @@ namespace Server
                             if (new_user != null)
                             {
                                 //Console info
-                                ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("True$"));
+                                ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("True$"));
                                 networkStream.Write(ack, 0, ack.Length);
                                 //Create Cliente Handler
                                 clientsDictionary.Add(new_user, client);
@@ -89,26 +89,26 @@ namespace Server
                             {
                                 //Console info
                                 logger.consoleLog("User not accepted", "Server");
-                                ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("False$Username ou Password erradas\nVerifique os seus dados"));
+                                ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("False$Username ou Password erradas\nVerifique os seus dados"));
                                 networkStream.Write(ack, 0, ack.Length);
                             }
                         }
                         catch (ArgumentException ex)
                         {
                             logger.consoleLog("Two same accounts logging try", name);
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("False$" + ex.Message));
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("False$" + ex.Message));
                             networkStream.Write(ack, 0, ack.Length);
                         }
                         catch (InvalidOperationException ex)
                         {
                             logger.consoleLog(ex.Message, name);
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("False$Username not found."));
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("False$Username not found."));
                             networkStream.Write(ack, 0, ack.Length);
                         }
                         catch (Exception ex)
                         {
                             logger.consoleLog(ex.Message, name);
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.GerarMensagem("False$Unknow logging problem from the server. Sorry...\nTry again later..."));
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("False$Unknow logging problem from the server. Sorry...\nTry again later..."));
                             networkStream.Write(ack, 0, ack.Length);
                         }
                     }
@@ -123,7 +123,7 @@ namespace Server
             //Initialize Decryptor
             Cryptor cryptor = new Cryptor();
             //Desencripta a mensagem
-            string message = cryptor.DesencryptarMensagem(dataFromClient);
+            string message = cryptor.VerifyData(dataFromClient);
             //
             LogController logController = new LogController();
 
@@ -172,7 +172,10 @@ namespace Server
             //Initialize Decryptor
             Cryptor cryptor = new Cryptor();
             //Desencripta a mensage
-            string message = cryptor.DesencryptarMensagem(user_info);
+            string message = cryptor.VerifyData(user_info);
+            //
+            if (message == null)
+                return null;
             //
             LogController logController = new LogController();
             //Get loggin data

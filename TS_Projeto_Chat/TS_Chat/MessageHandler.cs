@@ -53,7 +53,7 @@ namespace TS_Chat
                     //Initialize Decryptor
                     Cryptor cryptor = new Cryptor();
                     //Decrypt message
-                    string message = cryptor.DesencryptarMensagem(output);
+                    string message = cryptor.VerifyData(output);
                     // Filtra o tipo de mensagem
                     switch (protocolSI.GetCmdType())
                     {
@@ -70,7 +70,7 @@ namespace TS_Chat
                         case ProtocolSICmdType.USER_OPTION_2:
                             try
                             {                                
-                                Mensagens new_mensagem = JsonConvert.DeserializeObject<Mensagens>(cryptor.DesencryptarMensagem(output));
+                                Mensagens new_mensagem = JsonConvert.DeserializeObject<Mensagens>(cryptor.VerifyData(output));
                                 if (old_mensagem.IdMensagem != new_mensagem.IdMensagem)
                                 {
                                     old_mensagem = new_mensagem;

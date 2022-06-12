@@ -58,8 +58,13 @@ namespace TS_Chat
                     switch (protocolSI.GetCmdType())
                     {
                         case ProtocolSICmdType.DATA:
+                            //Check if message it's subencrypted
+                            if(message.Split('$').Length > 1)
+                                message = cryptor.DesencryptText(message);
+                            //Validate if it's a server message 
                             if(message.Split('$').Length == 1)
                                 chatController.newMessage(message);
+                            //Validate if it's a client message
                             else if (message.Split('$').Length == 2)
                                 chatController.newMessage(message.Split('$')[1], message.Split('$')[0]);
                             break;

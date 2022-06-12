@@ -99,7 +99,7 @@ namespace TS_Projeto_Chat
                 // Preparar mensagem para o servidor
                 //newMessage(this.name, tb_message.Text);
                 tb_message.Clear();
-                byte[] packet = protocolSI.Make(ProtocolSICmdType.DATA, msg);
+                byte[] packet = protocolSI.Make(ProtocolSICmdType.DATA, cryptopher.SingData(msg));
                 // Manda a mensagem ao servidor
                 networkStream.Write(packet, 0, packet.Length);
                 // Espera informação do servidor

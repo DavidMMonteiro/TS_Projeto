@@ -46,3 +46,332 @@
 [12/06/2022 13:46:38](Server): Connection try!
 [12/06/2022 13:48:56]admin join the chat
 [12/06/2022 13:48:57](admin): Sending broadcast message
+[12/06/2022 13:54:45](Server): Server Start
+[12/06/2022 13:54:52](Server): Connection try!
+[12/06/2022 13:55:08]admin join the chat
+[12/06/2022 13:55:11](admin): Sending broadcast message
+[12/06/2022 13:55:20](admin): Saving message
+[12/06/2022 13:55:20](admin): Sending broadcast message
+[12/06/2022 13:55:29](admin): Saving message
+[12/06/2022 13:55:29](admin): Sending broadcast message
+[12/06/2022 13:55:29](admin): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[12/06/2022 13:55:29](admin): Sending broadcast message
+[12/06/2022 13:55:29](admin): Error sending broadcast message to admin
+[12/06/2022 13:57:29](Server): Server Start
+[12/06/2022 13:57:32](Server): Connection try!
+[12/06/2022 13:57:40]admin join the chat
+[12/06/2022 13:57:40](admin): Sending broadcast message
+[12/06/2022 13:59:16](admin): Saving message
+[12/06/2022 14:15:53](Server): Server Start
+[12/06/2022 14:16:01](Server): Server Start
+[12/06/2022 14:16:05](Server): Connection try!
+[12/06/2022 14:16:07]admin join the chat
+[12/06/2022 14:16:07](admin): Sending broadcast message
+[12/06/2022 14:16:52](admin): Saving message
+[12/06/2022 14:18:31](Server): Server Start
+[12/06/2022 14:18:34](Server): Connection try!
+[12/06/2022 14:18:35]admin join the chat
+[12/06/2022 14:18:35](admin): Sending broadcast message
+[12/06/2022 14:18:45](admin): Saving message
+[12/06/2022 14:18:47](admin): Sending broadcast message
+[12/06/2022 14:19:44](Server): Server Start
+[12/06/2022 14:19:47](Server): Connection try!
+[12/06/2022 14:19:48]admin join the chat
+[12/06/2022 14:19:48](admin): Sending broadcast message
+[12/06/2022 14:19:57](admin): Saving message
+[12/06/2022 14:19:59](admin): Sending broadcast message
+[12/06/2022 14:21:43](admin): Saving message
+[12/06/2022 14:21:43](admin): Sending broadcast message
+[12/06/2022 14:23:20](Server): Server Start
+[12/06/2022 14:23:24](Server): Connection try!
+[12/06/2022 14:23:25]admin join the chat
+[12/06/2022 14:23:25](admin): Sending broadcast message
+[12/06/2022 14:28:55](Server): Server Start
+[12/06/2022 14:30:51](Server): Server Start
+[12/06/2022 14:30:54](Server): Connection try!
+[12/06/2022 14:30:55]admin join the chat
+[12/06/2022 14:30:55](admin): Sending broadcast message
+[12/06/2022 14:31:15](Server): Server Start
+[12/06/2022 14:31:18](Server): Connection try!
+[12/06/2022 14:31:20]admin join the chat
+[12/06/2022 14:31:20](admin): Sending broadcast message
+[12/06/2022 14:31:41](admin): Saving message
+[12/06/2022 14:31:42](admin): Sending broadcast message
+[12/06/2022 14:32:08](admin): Saving message
+[12/06/2022 14:32:08](admin): Sending broadcast message
+[12/06/2022 14:32:32](Server): Connection try!
+[12/06/2022 14:32:39]user1 join the chat
+[12/06/2022 14:32:39](user1): Sending broadcast message
+[12/06/2022 14:32:52](user1): Saving message
+[12/06/2022 14:32:52](user1): Sending broadcast message
+[12/06/2022 14:33:03](admin): Saving message
+[12/06/2022 14:33:03](admin): Sending broadcast message
+[12/06/2022 14:33:15](user1): Saving message
+[12/06/2022 14:33:15](user1): Sending broadcast message
+[12/06/2022 14:33:42](admin): Saving message
+[12/06/2022 14:33:42](admin): Sending broadcast message
+[12/06/2022 14:33:43](admin): Saving message
+[12/06/2022 14:33:44](admin): Sending broadcast message
+[12/06/2022 14:33:44](admin): Saving message
+[12/06/2022 14:33:44](admin): Sending broadcast message
+[12/06/2022 14:33:44](admin): Saving message
+[12/06/2022 14:33:44](admin): Sending broadcast message
+[12/06/2022 14:33:44](admin): Saving message
+[12/06/2022 14:33:44](admin): Sending broadcast message
+[12/06/2022 14:33:45](admin): Saving message
+[12/06/2022 14:33:45](admin): Sending broadcast message
+[12/06/2022 14:33:45](admin): Saving message
+[12/06/2022 14:33:45](admin): Sending broadcast message
+[12/06/2022 14:33:45](admin): Saving message
+[12/06/2022 14:33:45](admin): Sending broadcast message
+[12/06/2022 14:33:45](admin): Saving message
+[12/06/2022 14:33:45](admin): Sending broadcast message
+[12/06/2022 14:33:45](admin): Saving message
+[12/06/2022 14:33:45](admin): Sending broadcast message
+[12/06/2022 14:33:46](admin): Saving message
+[12/06/2022 14:33:46](admin): Sending broadcast message
+[12/06/2022 14:33:46](admin): Saving message
+[12/06/2022 14:33:46](admin): Sending broadcast message
+[12/06/2022 14:33:46](admin): Saving message
+[12/06/2022 14:33:46](admin): Sending broadcast message
+[12/06/2022 14:33:46](admin): Saving message
+[12/06/2022 14:33:46](admin): Sending broadcast message
+[12/06/2022 14:33:46](admin): Saving message
+[12/06/2022 14:33:46](admin): Sending broadcast message
+[12/06/2022 14:33:46](admin): Saving message
+[12/06/2022 14:33:46](admin): Sending broadcast message
+[12/06/2022 14:33:47](admin): Saving message
+[12/06/2022 14:33:47](admin): Sending broadcast message
+[12/06/2022 14:33:47](admin): Saving message
+[12/06/2022 14:33:47](admin): Sending broadcast message
+[12/06/2022 14:33:47](admin): Saving message
+[12/06/2022 14:33:47](admin): Sending broadcast message
+[12/06/2022 14:33:47](admin): Saving message
+[12/06/2022 14:33:47](admin): Sending broadcast message
+[12/06/2022 14:33:47](admin): Saving message
+[12/06/2022 14:33:47](admin): Sending broadcast message
+[12/06/2022 14:33:48](admin): Saving message
+[12/06/2022 14:33:48](admin): Sending broadcast message
+[12/06/2022 14:33:48](admin): Saving message
+[12/06/2022 14:33:48](admin): Sending broadcast message
+[12/06/2022 14:33:50]admin left the chat
+[12/06/2022 14:33:50](admin): Sending broadcast message
+[12/06/2022 14:33:50](user1): Saving message
+[12/06/2022 14:33:50](user1): Sending broadcast message
+[12/06/2022 14:33:50](user1): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[12/06/2022 14:33:50](user1): Sending broadcast message
+[12/06/2022 14:33:50](user1): Error sending broadcast message to user1
+[12/06/2022 14:34:11](Server): Server Start
+[12/06/2022 14:34:15](Server): Connection try!
+[12/06/2022 14:34:16]admin join the chat
+[12/06/2022 14:34:16](admin): Sending broadcast message
+[12/06/2022 14:34:18](admin): Saving message
+[12/06/2022 14:34:18](admin): Sending broadcast message
+[12/06/2022 14:34:18](admin): Saving message
+[12/06/2022 14:34:18](admin): Sending broadcast message
+[12/06/2022 14:34:18](admin): Saving message
+[12/06/2022 14:34:18](admin): Sending broadcast message
+[12/06/2022 14:34:18](admin): Saving message
+[12/06/2022 14:34:18](admin): Sending broadcast message
+[12/06/2022 14:34:19](admin): Saving message
+[12/06/2022 14:34:19](admin): Sending broadcast message
+[12/06/2022 14:34:19](admin): Saving message
+[12/06/2022 14:34:19](admin): Sending broadcast message
+[12/06/2022 14:34:19](admin): Saving message
+[12/06/2022 14:34:19](admin): Sending broadcast message
+[12/06/2022 14:34:19](admin): Saving message
+[12/06/2022 14:34:19](admin): Sending broadcast message
+[12/06/2022 14:34:19](admin): Saving message
+[12/06/2022 14:34:20](admin): Sending broadcast message
+[12/06/2022 14:34:20](admin): Saving message
+[12/06/2022 14:34:20](admin): Sending broadcast message
+[12/06/2022 14:34:20](admin): Saving message
+[12/06/2022 14:34:20](admin): Sending broadcast message
+[12/06/2022 14:34:20](admin): Saving message
+[12/06/2022 14:34:20](admin): Sending broadcast message
+[12/06/2022 14:34:20](admin): Saving message
+[12/06/2022 14:34:20](admin): Sending broadcast message
+[12/06/2022 14:34:20](admin): Saving message
+[12/06/2022 14:34:20](admin): Sending broadcast message
+[12/06/2022 14:34:20](admin): Saving message
+[12/06/2022 14:34:20](admin): Sending broadcast message
+[12/06/2022 14:34:21](admin): Saving message
+[12/06/2022 14:34:21](admin): Sending broadcast message
+[12/06/2022 14:34:21](admin): Saving message
+[12/06/2022 14:34:21](admin): Sending broadcast message
+[12/06/2022 14:34:21](admin): Saving message
+[12/06/2022 14:34:21](admin): Sending broadcast message
+[12/06/2022 14:34:21](admin): Saving message
+[12/06/2022 14:34:21](admin): Sending broadcast message
+[12/06/2022 14:34:21](admin): Saving message
+[12/06/2022 14:34:21](admin): Sending broadcast message
+[12/06/2022 14:34:21](admin): Saving message
+[12/06/2022 14:34:21](admin): Sending broadcast message
+[12/06/2022 14:34:22](admin): Saving message
+[12/06/2022 14:34:22](admin): Sending broadcast message
+[12/06/2022 14:34:22](admin): Saving message
+[12/06/2022 14:34:22](admin): Sending broadcast message
+[12/06/2022 14:34:22](admin): Saving message
+[12/06/2022 14:34:22](admin): Sending broadcast message
+[12/06/2022 14:34:22](admin): Saving message
+[12/06/2022 14:34:22](admin): Sending broadcast message
+[12/06/2022 14:34:22](admin): Saving message
+[12/06/2022 14:34:22](admin): Sending broadcast message
+[12/06/2022 14:34:22](admin): Saving message
+[12/06/2022 14:34:22](admin): Sending broadcast message
+[12/06/2022 14:34:23](admin): Saving message
+[12/06/2022 14:34:23](admin): Sending broadcast message
+[12/06/2022 14:34:23](admin): Saving message
+[12/06/2022 14:34:23](admin): Sending broadcast message
+[12/06/2022 14:34:23](admin): Saving message
+[12/06/2022 14:34:23](admin): Sending broadcast message
+[12/06/2022 14:34:45](Server): Server Start
+[12/06/2022 14:34:49](Server): Connection try!
+[12/06/2022 14:34:50]admin join the chat
+[12/06/2022 14:34:50](admin): Sending broadcast message
+[12/06/2022 14:34:56](admin): Saving message
+[12/06/2022 14:34:56](admin): Sending broadcast message
+[12/06/2022 14:34:56](admin): Saving message
+[12/06/2022 14:34:56](admin): Sending broadcast message
+[12/06/2022 14:34:57](admin): Saving message
+[12/06/2022 14:34:57](admin): Sending broadcast message
+[12/06/2022 14:34:57](admin): Saving message
+[12/06/2022 14:34:57](admin): Sending broadcast message
+[12/06/2022 14:34:57](admin): Saving message
+[12/06/2022 14:34:57](admin): Sending broadcast message
+[12/06/2022 14:34:58](admin): Saving message
+[12/06/2022 14:34:58](admin): Sending broadcast message
+[12/06/2022 14:34:58](admin): Saving message
+[12/06/2022 14:34:58](admin): Sending broadcast message
+[12/06/2022 14:34:58](admin): Saving message
+[12/06/2022 14:34:58](admin): Sending broadcast message
+[12/06/2022 14:34:58](admin): Saving message
+[12/06/2022 14:34:58](admin): Sending broadcast message
+[12/06/2022 14:34:58](admin): Saving message
+[12/06/2022 14:34:58](admin): Sending broadcast message
+[12/06/2022 14:34:58](admin): Saving message
+[12/06/2022 14:34:58](admin): Sending broadcast message
+[12/06/2022 14:34:59](admin): Saving message
+[12/06/2022 14:34:59](admin): Sending broadcast message
+[12/06/2022 14:34:59](admin): Saving message
+[12/06/2022 14:34:59](admin): Sending broadcast message
+[12/06/2022 14:34:59](admin): Saving message
+[12/06/2022 14:34:59](admin): Sending broadcast message
+[12/06/2022 14:34:59](admin): Saving message
+[12/06/2022 14:34:59](admin): Sending broadcast message
+[12/06/2022 14:34:59](admin): Saving message
+[12/06/2022 14:34:59](admin): Sending broadcast message
+[12/06/2022 14:34:59](admin): Saving message
+[12/06/2022 14:34:59](admin): Sending broadcast message
+[12/06/2022 14:35:00](admin): Saving message
+[12/06/2022 14:35:00](admin): Sending broadcast message
+[12/06/2022 14:35:00](admin): Saving message
+[12/06/2022 14:35:00](admin): Sending broadcast message
+[12/06/2022 14:35:00](admin): Saving message
+[12/06/2022 14:35:00](admin): Sending broadcast message
+[12/06/2022 14:35:00](admin): Saving message
+[12/06/2022 14:35:00](admin): Sending broadcast message
+[12/06/2022 14:35:00](admin): Saving message
+[12/06/2022 14:35:00](admin): Sending broadcast message
+[12/06/2022 14:35:00](admin): Saving message
+[12/06/2022 14:35:00](admin): Sending broadcast message
+[12/06/2022 14:35:00](admin): Saving message
+[12/06/2022 14:35:00](admin): Sending broadcast message
+[12/06/2022 14:35:01](admin): Saving message
+[12/06/2022 14:35:01](admin): Sending broadcast message
+[12/06/2022 14:35:01](admin): Saving message
+[12/06/2022 14:35:01](admin): Sending broadcast message
+[12/06/2022 14:35:01](admin): Saving message
+[12/06/2022 14:35:01](admin): Sending broadcast message
+[12/06/2022 14:35:01](admin): Saving message
+[12/06/2022 14:35:01](admin): Sending broadcast message
+[12/06/2022 14:35:01](admin): Saving message
+[12/06/2022 14:35:01](admin): Sending broadcast message
+[12/06/2022 14:35:01](admin): Saving message
+[12/06/2022 14:35:01](admin): Sending broadcast message
+[12/06/2022 14:35:02](admin): Saving message
+[12/06/2022 14:35:02](admin): Sending broadcast message
+[12/06/2022 14:35:02](admin): Saving message
+[12/06/2022 14:35:02](admin): Sending broadcast message
+[12/06/2022 14:35:16](Server): Connection try!
+[12/06/2022 14:35:16]user1 join the chat
+[12/06/2022 14:35:16](user1): Sending broadcast message
+[12/06/2022 14:35:23](user1): Saving message
+[12/06/2022 14:35:23](user1): Sending broadcast message
+[12/06/2022 14:35:23](user1): Saving message
+[12/06/2022 14:35:23](user1): Sending broadcast message
+[12/06/2022 14:35:23](user1): Saving message
+[12/06/2022 14:35:24](user1): Sending broadcast message
+[12/06/2022 14:35:24](user1): Saving message
+[12/06/2022 14:35:24](user1): Sending broadcast message
+[12/06/2022 14:35:24](user1): Saving message
+[12/06/2022 14:35:24](user1): Sending broadcast message
+[12/06/2022 14:35:24](user1): Saving message
+[12/06/2022 14:35:24](user1): Sending broadcast message
+[12/06/2022 14:35:24](user1): Saving message
+[12/06/2022 14:35:24](user1): Sending broadcast message
+[12/06/2022 14:35:24](user1): Saving message
+[12/06/2022 14:35:24](user1): Sending broadcast message
+[12/06/2022 14:35:25](user1): Saving message
+[12/06/2022 14:35:25](user1): Sending broadcast message
+[12/06/2022 14:35:25](user1): Saving message
+[12/06/2022 14:35:25](user1): Sending broadcast message
+[12/06/2022 14:35:25](user1): Saving message
+[12/06/2022 14:35:25](user1): Sending broadcast message
+[12/06/2022 14:35:25](user1): Saving message
+[12/06/2022 14:35:25](user1): Sending broadcast message
+[12/06/2022 14:35:25](user1): Saving message
+[12/06/2022 14:35:25](user1): Sending broadcast message
+[12/06/2022 14:35:25](user1): Saving message
+[12/06/2022 14:35:25](user1): Sending broadcast message
+[12/06/2022 14:35:26](user1): Saving message
+[12/06/2022 14:35:26](user1): Sending broadcast message
+[12/06/2022 14:35:26](user1): Saving message
+[12/06/2022 14:35:26](user1): Sending broadcast message
+[12/06/2022 14:35:26](user1): Saving message
+[12/06/2022 14:35:26](user1): Sending broadcast message
+[12/06/2022 14:35:26](user1): Saving message
+[12/06/2022 14:35:26](user1): Sending broadcast message
+[12/06/2022 14:35:26](user1): Saving message
+[12/06/2022 14:35:26](user1): Sending broadcast message
+[12/06/2022 14:35:26](user1): Saving message
+[12/06/2022 14:35:26](user1): Sending broadcast message
+[12/06/2022 14:35:27](user1): Saving message
+[12/06/2022 14:35:27](user1): Sending broadcast message
+[12/06/2022 14:35:27](user1): Saving message
+[12/06/2022 14:35:27](user1): Sending broadcast message
+[12/06/2022 14:35:27](user1): Saving message
+[12/06/2022 14:35:27](user1): Sending broadcast message
+[12/06/2022 14:35:27](user1): Saving message
+[12/06/2022 14:35:27](user1): Sending broadcast message
+[12/06/2022 14:35:27](user1): Saving message
+[12/06/2022 14:35:27](user1): Sending broadcast message
+[12/06/2022 14:35:27](user1): Saving message
+[12/06/2022 14:35:27](user1): Sending broadcast message
+[12/06/2022 14:35:28](user1): Saving message
+[12/06/2022 14:35:28](user1): Sending broadcast message
+[12/06/2022 14:35:28](user1): Saving message
+[12/06/2022 14:35:28](user1): Sending broadcast message
+[12/06/2022 14:35:28](user1): Saving message
+[12/06/2022 14:35:28](user1): Sending broadcast message
+[12/06/2022 14:35:28](user1): Saving message
+[12/06/2022 14:35:28](user1): Sending broadcast message
+[12/06/2022 14:35:28](user1): Saving message
+[12/06/2022 14:35:28](user1): Sending broadcast message
+[12/06/2022 14:35:28](user1): Saving message
+[12/06/2022 14:35:28](user1): Sending broadcast message
+[12/06/2022 14:35:29](user1): Saving message
+[12/06/2022 14:35:29](user1): Sending broadcast message
+[12/06/2022 14:35:29](user1): Saving message
+[12/06/2022 14:35:29](user1): Sending broadcast message
+[12/06/2022 14:35:29](user1): Saving message
+[12/06/2022 14:35:29](user1): Sending broadcast message
+[12/06/2022 14:35:29](user1): Saving message
+[12/06/2022 14:35:29](user1): Sending broadcast message
+[12/06/2022 14:35:35]admin left the chat
+[12/06/2022 14:35:35](admin): Sending broadcast message
+[12/06/2022 14:35:35](user1): Saving message
+[12/06/2022 14:35:36](user1): Sending broadcast message
+[12/06/2022 14:35:36](user1): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[12/06/2022 14:35:36](user1): Sending broadcast message
+[12/06/2022 14:35:36](user1): Error sending broadcast message to user1

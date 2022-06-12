@@ -173,14 +173,16 @@ namespace TS_Chat
             {
                 using (ChatBDContainer chatBDContainer = new ChatBDContainer())
                 {
-                    //Instancia uma nova mensagem
-                    Mensagens new_mensagen = new Mensagens();
+                    
+                    //Initialize Decryptor
+                    Cryptor cryptor = new Cryptor();
+                    //Get info message
+                    Mensagens new_mensagen = cryptor.GetVerifyMessage(msg);
+                    //Validate new message
+                    if (new_mensagen == null)
+                        return;
                     //Message Owner
                     new_mensagen.IdUser = client.IdUser;
-                    //Split message
-                    new_mensagen.key = Convert.FromBase64String(msg.Split('$')[0]);
-                    new_mensagen.iv = Convert.FromBase64String(msg.Split('$')[1]);
-                    new_mensagen.Text = Convert.FromBase64String(msg.Split('$')[2]);
                     //Save message
                     chatBDContainer.MensagensSet.Add(new_mensagen);
                     //Guarda as alterações efetuadas

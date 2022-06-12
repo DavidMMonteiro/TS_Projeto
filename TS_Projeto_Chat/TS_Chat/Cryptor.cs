@@ -85,6 +85,18 @@ namespace TS_Chat
             return Convert.ToBase64String(encrypted_text);
         }
 
+        public string DesencryptText(string row_text)
+        {
+            //Get key
+            string key = row_text.Split('$')[0];
+            //Get Vector
+            string iv = row_text.Split('$')[1];
+            //Get message
+            string message_encrypted = row_text.Split('$')[2];
+            //Decrypt message
+            return DesencryptText(key, iv, message_encrypted);
+        }
+
         //Desencrypt string with AES
         public string DesencryptText(string key, string iv, string text_encrypted)
         {

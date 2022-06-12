@@ -40,12 +40,12 @@ namespace TS_Projeto_Chat
             // 
             // tb_chat
             // 
-            this.tb_chat.Enabled = false;
             this.tb_chat.Location = new System.Drawing.Point(10, 45);
             this.tb_chat.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_chat.Multiline = true;
             this.tb_chat.Name = "tb_chat";
-            this.tb_chat.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.tb_chat.ReadOnly = true;
+            this.tb_chat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tb_chat.Size = new System.Drawing.Size(665, 308);
             this.tb_chat.TabIndex = 1;
             // 

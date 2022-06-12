@@ -42,3 +42,7 @@
 [12/06/2022 12:36:53](Server): Connection try!
 [12/06/2022 12:37:48](Server): User not accepted
 [12/06/2022 12:50:23](Server): Server Start
+[12/06/2022 13:44:40](Server): Server Start
+[12/06/2022 13:46:38](Server): Connection try!
+[12/06/2022 13:48:56]admin join the chat
+[12/06/2022 13:48:57](admin): Sending broadcast message

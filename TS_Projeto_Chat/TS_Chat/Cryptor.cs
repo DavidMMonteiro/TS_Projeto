@@ -25,9 +25,6 @@ namespace TS_Chat
             //Verification 
             rsaSing = new RSACryptoServiceProvider();
             publicKey = rsaSing.ToXmlString(false);
-
-            rsaVerify = new RSACryptoServiceProvider();
-            rsaVerify.FromXmlString(publicKey);
         }
 
         public byte[] GenerateSalt()
@@ -140,7 +137,7 @@ namespace TS_Chat
             using (SHA256 sh1 = SHA256.Create())
             {
                 byte[] signature = rsaSing.SignData(dados, sh1);
-                return Convert.ToBase64String(signature) + '$' + Encoding.UTF8.GetString(dados);
+                return this.publicKey + '$' + Convert.ToBase64String(signature) + '$' + Encoding.UTF8.GetString(dados);
             }
         }
 
@@ -149,14 +146,19 @@ namespace TS_Chat
         {
             using (SHA256 sh1 = SHA256.Create())
             {
+
+                rsaVerify = new RSACryptoServiceProvider();
+                rsaVerify.FromXmlString(msg.Split('$')[0]);
                 //log.consoleLog(msg, "Server");
-                byte[] signatura = Convert.FromBase64String(msg.Split('$')[0]);
+                byte[] signatura = Convert.FromBase64String(msg.Split('$')[1]);
                 //log.consoleLog(msg.Split('$')[0], "Server");
-                byte[] dados = Encoding.UTF8.GetBytes(msg.Substring(msg.LastIndexOf('$') + 1));
+                string data = msg.Replace(msg.Split('$')[0] + "$", "").Replace(msg.Split('$')[1] + "$", "");
+                byte[] dados = Encoding.UTF8.GetBytes(data);
                 //log.consoleLog(msg.Substring(msg.IndexOf('$') + 1), "Server");
+                //TODO Verification always also, check why can't validate data
                 bool verify = rsaVerify.VerifyData(dados, sh1, signatura);
                 if (verify)
-                    return DesencryptarMensagem(msg.Substring(msg.LastIndexOf('$') + 1));
+                    return DesencryptarMensagem(data);
                 else
                     return null;
             }

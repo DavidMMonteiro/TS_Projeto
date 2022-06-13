@@ -1,0 +1,3 @@
+
+[23/05/2022 20:50:03](Server): User not accepted
+[23/05/2022 20:50:33](Server): Connection try!

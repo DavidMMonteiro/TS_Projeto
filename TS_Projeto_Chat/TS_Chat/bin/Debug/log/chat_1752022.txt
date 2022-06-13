@@ -1,0 +1,58 @@
+
+[17/05/2022 16:52:57](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[17/05/2022 16:52:57](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[17/05/2022 16:53:01]admin join the chat
+[17/05/2022 16:53:02]admin left the chat
+[17/05/2022 16:53:02](admin): Fechar client... bye :-)
+[17/05/2022 16:55:13]admin join the chat
+[17/05/2022 16:55:14]admin left the chat
+[17/05/2022 16:55:14](admin): Fechar client... bye :-)
+[17/05/2022 16:55:19](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[17/05/2022 16:55:47]admin join the chat
+[17/05/2022 16:55:50]admin left the chat
+[17/05/2022 16:55:50](admin): Fechar client... bye :-)
+[17/05/2022 16:55:50](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[17/05/2022 17:07:31]admin join the chat
+[17/05/2022 17:07:33](admin): hello
+[17/05/2022 17:07:41]user1 join the chat
+[17/05/2022 17:07:41]user1 join the chat
+[17/05/2022 17:07:48](user1): hello everyone
+[17/05/2022 17:07:50]admin left the chat
+[17/05/2022 17:07:50](admin): Fechar client... bye :-)
+[17/05/2022 17:07:52](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[17/05/2022 17:07:53](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[17/05/2022 17:07:55](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[17/05/2022 20:12:23]admin join the chat
+[17/05/2022 20:12:28]admin left the chat
+[17/05/2022 20:12:28](admin): Fechar client... bye :-)
+[17/05/2022 20:12:29](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[17/05/2022 21:16:12](admin): hello chat
+[17/05/2022 21:17:56]admin join the chat
+[17/05/2022 21:17:59](admin): hello
+[17/05/2022 21:23:58]admin join the chat
+[17/05/2022 21:24:26]admin join the chat
+[17/05/2022 21:25:12]admin join the chat
+[17/05/2022 21:26:02]admin join the chat
+[17/05/2022 21:26:05](admin): hello
+[17/05/2022 21:26:20](admin): hello again
+[17/05/2022 21:26:36](admin): Hello one more time
+[17/05/2022 21:27:46]admin join the chat
+[17/05/2022 21:27:49](admin): hello
+[17/05/2022 21:28:00](admin): hello again
+[17/05/2022 21:28:14](admin): hello one more time 
+[17/05/2022 21:28:28](admin): don't get why it bug
+[17/05/2022 21:28:49](admin): Do i keep working?
+[17/05/2022 21:44:59]admin join the chat
+[17/05/2022 21:45:14](admin): hello
+[17/05/2022 21:45:15]admin left the chat
+[17/05/2022 21:45:15](admin): Fechar client... bye :-)
+[17/05/2022 21:45:24]user1 join the chat
+[17/05/2022 21:45:30](user1): hello again

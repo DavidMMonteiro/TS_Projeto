@@ -2,6 +2,7 @@ using System;
 using System.Net.Sockets;
 using System.Windows.Forms;
 using EI.SI;
+using TS_Chat;
 
 namespace TS_Projeto_Chat
 {
@@ -13,6 +14,8 @@ namespace TS_Projeto_Chat
         private ProtocolSI protocolSI;
         private TcpClient client;
         private string name;
+        private ChatController chatController;
+        private MessageHandler messageHandler;
 
     	/* 
         Quando e construido o form, recebe a informação da ligaçã establecida 
@@ -24,22 +27,13 @@ namespace TS_Projeto_Chat
             this.port = port;
             this.networkStream = network;
             this.protocolSI = protocol;
-            this.client = client;  
+            this.client = client;
             this.name = name;
+            this.Text = "Chatting as: " + name;
             lb_chat.Text = name;
-        }
-
-        // Escreve na consola a mensagem recebida com a data de emissão
-        private void consoleLog(string msg)
-        {
-            Console.WriteLine(DateTime.Now.ToString("(dd/MM/yyyy HH:mm:ss)") + this.name +": " + msg);
-        }
-
-        // Constroe uma nova mensagem para o chat e envia para a consola
-        private void newMessage(string owner, string msg)
-        {
-            tb_chat.AppendText("\r\n(" + owner + "): " + msg);
-            consoleLog(msg);
+            this.chatController = new ChatController(tb_chat);
+            this.messageHandler = new MessageHandler(this.client, this.chatController);
+            bt_connect.Enabled = !this.messageHandler.active;
         }
 
         // Fecha o ligação do cliente com o servidor-
@@ -55,13 +49,13 @@ namespace TS_Projeto_Chat
                 networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
                 // Fecha o canal
                 networkStream.Close();
-                newMessage(this.name, "Fechar client... bye :-)");
+                chatController.newMessage(this.name, "Fechar client... bye :-)");
                 client.Close();
             }
             catch (Exception ex)
             {
-                consoleLog(ex.Message);
-                //newMessage(this.name , "Error ao sair do servidor\r\n\t" + ex.Message);
+                string msg = "(error): " + ex.Message;
+                chatController.consoleLog(msg);
             }
         }
 
@@ -74,14 +68,13 @@ namespace TS_Projeto_Chat
                 byte[] packet = protocolSI.Make(ProtocolSICmdType.DATA, this.name + "$");
                 // Envia a mensagem ao servidor
                 networkStream.Write(packet, 0, packet.Length);
-                newMessage(this.name , "Connected to server");
+                chatController.newMessage(this.name, "Connected to server");
                 bt_send.Enabled = true;
             }
             catch (Exception ex)
             {
-                // Caso a ligação fallar, informa ao utilizador
-                newMessage(this.name , "Connection to server fail... Try later...");
-                consoleLog(ex.Message);
+				// Caso a ligação fallar, informa ao utilizador
+                chatController.newMessage(this.name, "Connection to server fail... Try later...");
                 bt_send.Enabled = false;
             }
         }
@@ -92,13 +85,22 @@ namespace TS_Projeto_Chat
             // Valida que existe uma mensagem
             if (tb_message.Text == "")
                 return;
-            string msg = tb_message.Text;
+            //Initialize the Encryptor
+            Cryptor cryptopher = new Cryptor();
+            //Random Password
+            string saltPassword = Convert.ToBase64String(cryptopher.GenerateSalt());
+            //Private Key
+            string privatePassword = cryptopher.CreatePrivateKey(saltPassword);
+            //Vetor
+            string vetor = cryptopher.CreateIV(saltPassword);
+            //TODO Encrypte message
+            string msg = privatePassword + '$' + vetor + '$' + cryptopher.EncryptText(privatePassword, vetor, tb_message.Text + '$' + this.name) ;
             try
             {
                 // Preparar mensagem para o servidor
-                newMessage(this.name, tb_message.Text);
+                //newMessage(this.name, tb_message.Text);
                 tb_message.Clear();
-                byte[] packet = protocolSI.Make(ProtocolSICmdType.DATA, msg);
+                byte[] packet = protocolSI.Make(ProtocolSICmdType.DATA, cryptopher.SingData(msg));
                 // Manda a mensagem ao servidor
                 networkStream.Write(packet, 0, packet.Length);
                 // Espera informação do servidor
@@ -108,9 +110,10 @@ namespace TS_Projeto_Chat
             }
             catch (Exception ex)
             {
-                // Caso a mensagem sofrer erro ao ser enviada
-                newMessage(this.name, "Erro ao comunicar com o servidor.\r\n" + ex.Message);
+				// Caso a mensagem sofrer erro ao ser enviada
+                chatController.newMessage(this.name, "Erro ao comunicar com o servidor.\r\n" + ex.Message);
                 bt_send.Enabled = false;
+                logout();
             }
         }
 
@@ -142,14 +145,29 @@ namespace TS_Projeto_Chat
             Application.Exit();
         }
 
+        // Chama a funçºão de logout
+        private void bt_logout_Click(object sender, EventArgs e) 
+        {
+            logout();
+        }
+
         // Efetua o logout do cliente, fechado a ligação já establecido 
         // e abre o form de login para o utilizador 
-        private void bt_logout_Click(object sender, EventArgs e)
+        private void logout()
         {
             CloseClient();
             Form_Login form_login = new Form_Login();
             form_login.Show();
             this.Hide();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //Envia um pedido de chat recoverd 
+            //TODO Extenção ProtocolSI Max_Leght bug doesn't it load messages
+            /*byte[] packet = this.protocolSI.Make(ProtocolSICmdType.USER_OPTION_2, "Load Chat");
+            this.networkStream.Write(packet, 0, packet.Length);*/
+        }
     }
+
 }

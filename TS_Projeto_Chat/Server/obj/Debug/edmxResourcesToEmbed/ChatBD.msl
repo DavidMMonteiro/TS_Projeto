@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ChatBDStoreContainer" CdmEntityContainer="ChatBDContainer">
+    <EntitySetMapping Name="UsersSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ChatBD.Users)">
+        <MappingFragment StoreEntitySet="UsersSet">
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="SaltedPasswordHash" ColumnName="SaltedPasswordHash" />
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
+          <ScalarProperty Name="dtCreation" ColumnName="dtCreation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MensagensSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ChatBD.Mensagens)">
+        <MappingFragment StoreEntitySet="MensagensSet">
+          <ScalarProperty Name="IdMensagem" ColumnName="IdMensagem" />
+          <ScalarProperty Name="dtCreation" ColumnName="dtCreation" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="key" ColumnName="key" />
+          <ScalarProperty Name="iv" ColumnName="iv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

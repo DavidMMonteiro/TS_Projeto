@@ -1,0 +1,22 @@
+
+[18/05/2022 08:38:22](Server): Server Start
+[18/05/2022 08:38:27](Server): Connection try!
+[18/05/2022 08:38:27]admin join the chat
+[18/05/2022 08:39:40](admin): hello chat
+[18/05/2022 08:39:51](admin): I'm chatting a lot 
+[18/05/2022 08:40:39](Server): Connection try!
+[18/05/2022 08:40:39]user1 join the chat
+[18/05/2022 08:40:44](user1): Hello chat
+[18/05/2022 08:41:07]user1 left the chat
+[18/05/2022 08:41:07](admin): I'm chatting a lot 
+[18/05/2022 08:41:07](admin): Socket error: Unable to read data from the transport connection: An established connection was aborted by the software in your host machine.
+[18/05/2022 08:44:10](Server): Server Start
+[18/05/2022 08:44:19](Server): Connection try!
+[18/05/2022 08:44:19]admin join the chat
+[18/05/2022 08:44:32](admin): hello everyone
+[18/05/2022 08:45:04](Server): Connection try!
+[18/05/2022 08:45:04]user1 join the chat
+[18/05/2022 08:45:08](user1): hello there
+[18/05/2022 08:48:32](Server): Server Start
+[18/05/2022 08:48:41](Server): Connection try!
+[18/05/2022 08:48:41]admin join the chat

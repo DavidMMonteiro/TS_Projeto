@@ -10,13 +10,13 @@
     Student(s) number: 2211849
     Creator(s): David Machado Monteiro
 */
+using EI.SI;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using EI.SI;
-using System.Threading;
-using System.Collections.Generic;
-using System.IO;
+using TS_Chat;
 
 namespace Server
 {
@@ -25,204 +25,197 @@ namespace Server
 
         static void Main(string[] args)
         {
-            Helper helper = new Helper();
+            LogController logger = new LogController();
             string name = "Server";
-
             int PORT = 10000;
             //
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Loopback, PORT);
             TcpListener listener = new TcpListener(endPoint);
+            Dictionary<Users, TcpClient> clientsDictionary = new Dictionary<Users, TcpClient>();
+            //
             listener.Start();
             //
-            helper.consoleLog("Server Start", name);
+            logger.consoleLog("Server Start", name);
             //
             while (true)
             {
-                try
-                {
-                    //Open client conexión
-                    TcpClient client = listener.AcceptTcpClient();
-                    //Get client data send
-                    NetworkStream networkStream = client.GetStream();
-                    ProtocolSI protocolSI = new ProtocolSI();
-                    //Gets the client data
-                    networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
-                    //Get the client data from the protocol
-                    string dataFromClient = protocolSI.GetStringFromData();
-                    byte[] ack;
-                    helper.consoleLog("Connection try!", name);
-                    if (!checkUser(dataFromClient))
+
+                //Open client conexión
+                TcpClient client = listener.AcceptTcpClient();
+                //Get client data send
+                NetworkStream networkStream = client.GetStream();
+                ProtocolSI protocolSI = new ProtocolSI();
+                //Initialize the encryptor
+                Cryptor cryptor = new Cryptor();
+                //Gets the client data
+                networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
+                //Get the client data from the protocol
+                string dataFromClient = protocolSI.GetStringFromData();
+                byte[] ack;
+                logger.consoleLog("Connection try!", name);
+                    //Check if new user it's being created
+                    if (protocolSI.GetCmdType() == ProtocolSICmdType.USER_OPTION_1)
                     {
-                        helper.consoleLog("User not accepted", "Server");
-                        ack = protocolSI.Make(ProtocolSICmdType.ACK, "False");
-                        networkStream.Write(ack, 0, ack.Length);
+                        
+                        //Create new user
+                        if (CreateUser(dataFromClient))
+                        {
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("True$"));
+                            networkStream.Write(ack, 0, ack.Length);
+                        }
+                        else
+                        {
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("False$Erro na criação da conta\nValide os seus dados e tente novamente."));
+                            networkStream.Write(ack, 0, ack.Length);
+                        }
                     }
-                    else
+                    else if (protocolSI.GetCmdType() == ProtocolSICmdType.ACK)
                     {
-                        //Console info
-                        helper.consoleLog(dataFromClient.Split('$')[0] + " connected", name);
-                        ack = protocolSI.Make(ProtocolSICmdType.ACK, "True");
-                        networkStream.Write(ack, 0, ack.Length);
-                        //Create Cliente Handler
-                        ClientHandler clientHandler = new ClientHandler(client, dataFromClient.Split('$')[0]);
-                        clientHandler.Handle();
+                        try
+                        {
+                            Users new_user = CheckUser(dataFromClient, clientsDictionary);
+                            //
+                            if (new_user != null)
+                            {
+                                //Console info
+                                ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("True$"));
+                                networkStream.Write(ack, 0, ack.Length);
+                                //Create Cliente Handler
+                                clientsDictionary.Add(new_user, client);
+                                ClientHandler clientHandler = new ClientHandler(client, new_user, clientsDictionary);
+                                clientHandler.Handle();
+                            }
+                            else
+                            {
+                                //Console info
+                                logger.consoleLog("User not accepted", "Server");
+                                ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("False$Username ou Password erradas\nVerifique os seus dados"));
+                                networkStream.Write(ack, 0, ack.Length);
+                            }
+                        }
+                        catch (ArgumentException ex)
+                        {
+                            logger.consoleLog("Two same accounts logging try", name);
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("False$" + ex.Message));
+                            networkStream.Write(ack, 0, ack.Length);
+                        }
+                        catch (InvalidOperationException ex)
+                        {
+                            logger.consoleLog(ex.Message, name);
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("False$Username not found."));
+                            networkStream.Write(ack, 0, ack.Length);
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.consoleLog(ex.Message, name);
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("False$Unknow logging problem from the server. Sorry...\nTry again later..."));
+                            networkStream.Write(ack, 0, ack.Length);
+                        }
                     }
-                }catch (Exception ex){
-                    helper.consoleLog(ex.Message, name);
-                }
-                
+
             }
-        
+
         }
 
-        private static bool checkUser(string user_info)
+        //Create new user
+        private static bool CreateUser(string dataFromClient)
         {
-            //Get the user data list
-            List<User> user_list = LoadUsersFiles();
-            //Check if the list have some data, if not exit
-            if (user_list == null || user_list.Count == 0)
+            //Initialize Decryptor
+            Cryptor cryptor = new Cryptor();
+            //Desencripta a mensagem
+            string message = cryptor.VerifyData(dataFromClient);
+            //
+            LogController logController = new LogController();
+
+            if (message.Split('$').Length != 2)
                 return false;
 
-            //Check for the user name and password 
-            foreach (User user in user_list)
-                if (user.Username == user_info.Split('$')[0] && user.checkPassword(user_info.Split('$')[1]))
-                    return true;
+            //Get username from string
+            string username = message.Split('$')[0];
+            //Get Salt from string 
+            string password = message.Split('$')[1];
 
-            return false;
-        }
-
-        // Carrega a informação dos utilizadores a partir de ficheiros txt
-        // (sustituir por base de dados)
-        private static List<User> LoadUsersFiles()
-        {
-            // Cria a lista de utilizadores
-            List<User> users = new List<User>();
-            // Lee a informação do ficheiro e divide
-            foreach(string user in File.ReadAllText("users.txt").Split(';'))
-                // Cria um novo utilizador por linha
-                users.Add(new User(user.Split('$')[0], user.Split('$')[1]));
-            //Retorna a lista de utilizadores
-            return users;
-        }
-    } 
-    
-    // Thread para do client
-    class ClientHandler
-    {
-        Helper helper = new Helper();
-        private TcpClient client;
-        private string clientName;
-
-        // Construtor do ClientHandler
-        public ClientHandler(TcpClient client, string clientName)
-        {
-            this.client = client;
-            this.clientName = clientName;
-        }
-
-        // Inizializa a nova Therad
-        public void Handle()
-        {
-            Thread thread = new Thread(threadHandler);
-            thread.Start();
-        }
-
-        // Função que vai comprir a nova thread
-        private void threadHandler()
-        {
-            // Vai establecer a ligação do cliente
-            NetworkStream networkStream = this.client.GetStream();
-            ProtocolSI protocolSI = new ProtocolSI();
-            // Enquando a mensagem do cliente não for EOT
-            while(protocolSI.GetCmdType() != ProtocolSICmdType.EOT)
+            using (ChatBDContainer chatBDContainer = new ChatBDContainer())
             {
+                // Validate it doesn't exist
+                if (chatBDContainer.UsersSet.Any(x => x.Username == username))
+                    return false;
+                //
+                byte[] salt = cryptor.GenerateSalt();
+                //
+                byte[] hash = cryptor.GenerateSaltedHash(password, salt);
+                //Create new user
+                Users user = new Users(username, salt, hash);
                 try
                 {
-                    // Vai ler a mensagem do cliente
-                    int bytesRead = networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
-                    byte[] ack;
-                    string output;
-                    /* 
-                    Filtra o tipo de mensagem recebida
-                    A estrutura básica de cada mensagem consiste em:
-                    - Lee a mensagem
-                    - Escreve na consola do servidor
-                    - Envia mensagem ao cliente a confirmar que recebeu a mensagem
+                    //Add new user to DataBase
+                    chatBDContainer.UsersSet.Add(user);
+                    chatBDContainer.SaveChanges();
+                    /*
+                    logController.consoleLog($"New user {user.Username} created", "Server");
+                    logController.consoleLog($"User Salt: {Encoding.UTF8.GetString(user.Salt)} ", "Server");
+                    logController.consoleLog($"User SaltHash: {Encoding.UTF8.GetString(user.SaltedPasswordHash)} ", "Server");
                     */
-                    switch (protocolSI.GetCmdType())
-                    {
-                        // Se for do tipo DATA
-                        case ProtocolSICmdType.DATA:
-                            output = protocolSI.GetStringFromData();
-                            helper.consoleLog(output, this.clientName);
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK);
-                            networkStream.Write(ack, 0, ack.Length);
-                            break;
-                        case ProtocolSICmdType.EOT:
-                            output = this.clientName + " exit chat";
-                            helper.consoleLog(output, this.clientName);
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK);
-                            networkStream.Write(ack, 0, ack.Length);
-                            break;
-                        // Caso o tipo de mensagem enviada não for reconhecida
-                        default:
-                            output = "Protocol Type not know";
-                            helper.consoleLog(output, this.clientName);
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK);
-                            networkStream.Write(ack, 0, ack.Length);
-                            break;
-                    }
+                    logController.consoleLog($"New account {user.Username} created with success!", "Server");
+                    return true;
                 }
-                catch (SocketException ex)
+                catch (Exception ex)
                 {
-                    helper.consoleLog(ex.Message, this.clientName);
-                    break;
-                }
-                catch (IOException ex) // Excepção de Socket
-                {
-                    helper.consoleLog("Socket error: \r\n\t" + ex.Message, this.clientName);
-                    break;
-                }
-                catch (Exception ex) // Excepção desconhecida 
-                {
-                    helper.consoleLog("Uncommon error\r\n" + ex.Message, this.clientName);
-                    break;
+                    logController.consoleLog(ex.ToString(), "Server");
+                    return false;
                 }
             }
-
-            networkStream.Close();
-            client.Close();
-        }
-    }
-
-    // Class User para guardar a informação do utilizador
-    class User
-    {
-
-        public String Username { get; set; }
-        private String Password;
-
-        //User constructor
-        public User(String user, String password)
-        {
-            this.Username = user;
-            this.Password = password;
         }
 
-        //Valida a password do utilizador
-        public bool checkPassword(string tmpPassword)
+        private static Users CheckUser(string user_info, Dictionary<Users, TcpClient> clientsDictionary)
         {
-            return (tmpPassword != null && tmpPassword == this.Password);
-            
-        }
-    }
+            //Initialize Decryptor
+            Cryptor cryptor = new Cryptor();
+            //Desencripta a mensage
+            string message = cryptor.VerifyData(user_info);
+            //
+            if (message == null)
+                return null;
+            //
+            LogController logController = new LogController();
+            //Get loggin data
+            string check_Username = message.Split('$')[0];
+            //
+            string password = message.Split('$')[1];
 
-    // Class helper para enviar mensagens a consola
-    class Helper
-    {
-        public void consoleLog(string msg, string owner)
-        {
-            Console.WriteLine(DateTime.Now.ToString("(dd/MM/yyyy HH:mm:ss)") + owner + ": " + msg);
+            // Inicialização do chatContainer
+            ChatBDContainer chatBDContainer = new ChatBDContainer();
+            //Get the user data 
+            Users user = chatBDContainer.UsersSet.ToList().Where(u => u.Username == check_Username).First();
+            //
+            //Valida se o utilizador esta no sistema
+            if (user == null)
+                return null;
+            //
+            Cryptor crypofer = new Cryptor();
+            //Cria a hash com a pase que foi enviada
+            byte[] chech_hash = crypofer.GenerateSaltedHash(password, user.Salt);
+
+            /*
+            logController.consoleLog("User: " + user.Username, "Server");
+            logController.consoleLog("User Salt: " + Encoding.UTF8.GetString(user.Salt), "Server");
+            logController.consoleLog("User hashSalt: " + Encoding.UTF8.GetString(user.SaltedPasswordHash), "Server");
+            logController.consoleLog("Login User HashSalt: " + Convert.ToBase64String(chech_hash), "Server");
+            */
+            //Valida que as hash seijam iguais
+            if (user.checkedSaltPassword(chech_hash))
+            {
+                if (clientsDictionary.Count == 0)
+                    return user;
+                else if (!clientsDictionary.Keys.Any(c => c.IdUser == user.IdUser))
+                    return user;
+                else
+                {
+                    throw new ArgumentException("Client logged right now\nClose another open session to open this one...");
+                }
+            }
+            else
+                return null;
         }
     }
 }

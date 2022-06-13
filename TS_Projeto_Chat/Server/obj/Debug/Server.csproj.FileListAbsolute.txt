@@ -8,3 +8,38 @@ C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\Server\ob
 C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\Server\obj\Debug\Server.csproj.CopyComplete
 C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\Server\obj\Debug\Server.exe
 C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Chat\Server\obj\Debug\Server.pdb
+C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\Server.exe.config
+C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\Server.exe
+C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\Server.pdb
+C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\ProtocolSI.dll
+C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.csproj.AssemblyReference.cache
+C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.csproj.CopyComplete
+C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.exe
+C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.pdb
+C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\TS_Chat.exe
+C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\TS_Chat.pdb
+C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\TS_Chat.exe.config
+C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\EntityFramework.dll
+C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\EntityFramework.xml
+C:\Users\2211849\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\Server.exe.config
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\Server.exe
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\Server.pdb
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\EntityFramework.dll
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\Newtonsoft.Json.dll
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\ProtocolSI.dll
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\TS_Chat.exe
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\TS_Chat.pdb
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\TS_Chat.exe.config
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\EntityFramework.xml
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\bin\Debug\Newtonsoft.Json.xml
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.csproj.AssemblyReference.cache
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.csproj.SuggestedBindingRedirects.cache
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.csproj.CopyComplete
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.exe
+C:\Users\david\OneDrive - IPLeiria\Documents\GitHub\TS_Projeto\TS_Projeto_Chat\Server\obj\Debug\Server.pdb

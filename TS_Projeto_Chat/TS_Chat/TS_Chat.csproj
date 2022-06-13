@@ -33,8 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="ProtocolSI">
-      <HintPath>..\..\..\..\..\..\Downloads\ProtocolSI_alunos\ProtocolSI.dll</HintPath>
+      <HintPath>..\ProtocolSI\ProtocolSI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,11 +52,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChatController.cs" />
+    <Compile Include="Cryptor.cs" />
+    <Compile Include="Entities\Mensagens.cs" />
+    <Compile Include="Entities\Users.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSignUp.Designer.cs">
+      <DependentUpon>FormSignUp.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_Login.cs">
       <SubType>Form</SubType>
@@ -61,10 +74,15 @@
     <Compile Include="Form_Login.Designer.cs">
       <DependentUpon>Form_Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="LogController.cs" />
+    <Compile Include="MessageHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSignUp.resx">
+      <DependentUpon>FormSignUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Login.resx">
       <DependentUpon>Form_Login.cs</DependentUpon>
@@ -77,7 +95,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -90,6 +110,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controller\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon-256x256.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

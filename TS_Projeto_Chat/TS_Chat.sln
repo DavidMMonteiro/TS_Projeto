@@ -7,6 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TS_Chat", "TS_Chat\TS_Chat.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{620B37CA-8086-46E3-83CC-1B8B826C091F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "classes", "classes", "{903241D0-7E21-4395-931F-ABE814536311}"
+	ProjectSection(SolutionItems) = preProject
+		Cryptor.cs = Cryptor.cs
+		TS_Chat\Cryptor.cs = TS_Chat\Cryptor.cs
+		LogController.cs = LogController.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

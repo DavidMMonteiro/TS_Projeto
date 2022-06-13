@@ -1,0 +1,53 @@
+
+[06/06/2022 14:19:18](error): Cannot access a disposed object.
+Object name: 'System.Net.Sockets.NetworkStream'.
+[06/06/2022 14:19:19]Unexpected error:
+An error occurred invoking the method.  The destination thread no longer exists.
+[06/06/2022 16:23:32](error): Cannot access a disposed object.
+Object name: 'System.Net.Sockets.NetworkStream'.
+[06/06/2022 16:23:33]Unexpected error:
+An error occurred invoking the method.  The destination thread no longer exists.
+[06/06/2022 17:52:53](error): Cannot access a disposed object.
+Object name: 'System.Net.Sockets.NetworkStream'.
+[06/06/2022 17:52:54]Unexpected error:
+An error occurred invoking the method.  The destination thread no longer exists.
+[06/06/2022 17:54:36](error): Cannot access a disposed object.
+Object name: 'System.Net.Sockets.NetworkStream'.
+[06/06/2022 17:54:37]Unexpected error:
+An error occurred invoking the method.  The destination thread no longer exists.
+[06/06/2022 18:01:07](error): Cannot access a disposed object.
+Object name: 'System.Net.Sockets.NetworkStream'.
+[06/06/2022 18:01:07](error): Cannot access a disposed object.
+Object name: 'System.Net.Sockets.NetworkStream'.
+[06/06/2022 20:25:15](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[06/06/2022 20:25:16](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[06/06/2022 20:25:16](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[06/06/2022 20:25:17]Unexpected error:
+Ocorreu um erro ao invocar o método. O thread de destino já não existe.
+[06/06/2022 20:43:21](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[06/06/2022 20:43:22]Unexpected error:
+Ocorreu um erro ao invocar o método. O thread de destino já não existe.
+[06/06/2022 20:43:26](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[06/06/2022 20:44:08](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[06/06/2022 20:44:20](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[06/06/2022 22:37:10](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[06/06/2022 22:37:11]Unexpected error:
+Ocorreu um erro ao invocar o método. O thread de destino já não existe.
+[06/06/2022 22:41:51](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[06/06/2022 22:41:52]Unexpected error:
+Ocorreu um erro ao invocar o método. O thread de destino já não existe.
+[06/06/2022 23:01:54](error): Não é possível aceder a um objecto eliminado.
+Nome do objecto: 'System.Net.Sockets.NetworkStream'.
+[06/06/2022 23:01:55]Unexpected error:
+Ocorreu um erro ao invocar o método. O thread de destino já não existe.
+[06/06/2022 23:39:30]Unexpected error:
+A operação entre threads não é válida: controlo 'Form1' acedido a partir de um thread diferente do thread onde foi criado.

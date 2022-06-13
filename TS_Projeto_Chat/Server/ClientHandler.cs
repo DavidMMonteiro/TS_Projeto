@@ -13,7 +13,7 @@ namespace TS_Chat
     // Thread para do client
     public class ClientHandler
     {
-        private LogController logger = new LogController();
+        private LogController logger;
         private TcpClient tcpClient;
         private Users client;
         private Dictionary<Users, TcpClient> ClientsDictionary;
@@ -26,9 +26,11 @@ namespace TS_Chat
             this.client = client;
             this.ClientsDictionary = clientsDictionary;
             ProtocolSI protocol = new ProtocolSI();
+            Cryptor cryptor = new Cryptor();
             string msg = $"{this.client.Username} join the chat";
-            byte[] ack = protocol.Make(ProtocolSICmdType.DATA, msg);
+            logger = new LogController(this.client.Username);
             logger.consoleLog(msg);
+            byte[] ack = protocol.Make(ProtocolSICmdType.DATA, cryptor.SingData(msg));
             this.broadCast(ack);
         }
 
@@ -55,6 +57,8 @@ namespace TS_Chat
                     int bytesRead = networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
                     byte[] ack;
                     string output;
+                    //Initialize the encryptor
+                    Cryptor cryptor = new Cryptor();
                     /* 
                     Filtra o tipo de mensagem recebida
                     A estrutura básica de cada mensagem consiste em:
@@ -69,22 +73,41 @@ namespace TS_Chat
                             output = protocolSI.GetStringFromData();
                             logger.consoleLog("Saving message", this.client.Username);
                             saveMessage(output);
-                            ack = protocolSI.Make(ProtocolSICmdType.DATA, $"({this.client.Username}): {output}");
+                            ack = protocolSI.Make(ProtocolSICmdType.DATA, output);
                             broadCast(ack);
                             break;
                         case ProtocolSICmdType.EOT:
                             output = this.client.Username + " left the chat";
                             logger.consoleLog(output);
+                            output = cryptor.SingData(output);
                             ack = protocolSI.Make(ProtocolSICmdType.EOT, output);
                             broadCast(ack);
                             break;
                         case ProtocolSICmdType.USER_OPTION_2:
-                            string chat = LoadChat();
                             logger.consoleLog("Sending chat to request", "Server");
-                            if (!string.IsNullOrEmpty(chat)) 
-                            { 
-                                ack = protocolSI.Make(ProtocolSICmdType.USER_OPTION_2, chat);
-                                networkStream.Write(ack, 0, ack.Length);
+                            List<Mensagens> chats = LoadChat();
+                            if (chats.Count > 0)
+                            {
+                                logger.consoleLog("Serializing chat message to JSON", "Server");
+                                foreach (Mensagens chat in chats) 
+                                {
+                                    try
+                                    {
+                                        string msg = JsonConvert.SerializeObject(chat);
+                                        msg = cryptor.SingData(msg);
+                                        ack = protocolSI.Make(ProtocolSICmdType.USER_OPTION_2, msg);
+                                        networkStream.Write(ack, 0, ack.Length);
+                                        unicast(ack);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        logger.consoleLog($"Serializing error: \n- Error Serializing message:{chat.IdMensagem}\n" + ex.Message, "Server");
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                logger.consoleLog("No chat found", "Server");
                             }
                             break;
                     }
@@ -121,7 +144,7 @@ namespace TS_Chat
             ClientsDictionary.Remove(this.client);
         }
 
-        private static string LoadChat()
+        private static List<Mensagens> LoadChat()
         {
             LogController logger = new LogController();
             logger.consoleLog("Loading chat", "Server");
@@ -138,18 +161,8 @@ namespace TS_Chat
                  * Temporal fix:
                  * - Only load last 5 messages
                  * */
-                mensagens = mensagens.Take(5).Reverse().ToList();
                 //
-                logger.consoleLog("Serializing chat to JSON", "Server");
-                try
-                {
-                    return JsonConvert.SerializeObject(mensagens);
-                }
-                catch (Exception ex)
-                {
-                    logger.consoleLog("Serializing error: \n" + ex.Message, "Server");
-                    return null;
-                }
+                return mensagens;
             } 
             
         }
@@ -160,16 +173,17 @@ namespace TS_Chat
             {
                 using (ChatBDContainer chatBDContainer = new ChatBDContainer())
                 {
-                    //Instancia uma nova mensagem
-                    Mensagens new_mensagen = new Mensagens();
-                    //Add the necessary info
+                    
+                    //Initialize Decryptor
+                    Cryptor cryptor = new Cryptor();
+                    //Get info message
+                    Mensagens new_mensagen = cryptor.GetVerifyMessage(msg);
+                    //Validate new message
+                    if (new_mensagen == null)
+                        return;
+                    //Message Owner
                     new_mensagen.IdUser = client.IdUser;
-                    new_mensagen.Text = msg;
-                    //Guarda aparit do cliente
-                    //chatBDContainer.UsersSet.Find(this.client.IdUser).Mensagens.Add(new_mensagen);
-                    //this.client.Mensagens.Add(new_mensagen);
-                    //Guarda diretamente a mensagem mensagem
-                    //WHY THE FUCK DON't YOU WORK
+                    //Save message
                     chatBDContainer.MensagensSet.Add(new_mensagen);
                     //Guarda as alterações efetuadas
                     chatBDContainer.SaveChanges();
@@ -185,7 +199,7 @@ namespace TS_Chat
         // Envia mensagem a todas a ligações
         private void broadCast(byte[] data)
         {
-            logger.consoleLog("Sending message", this.client.Username);
+            logger.consoleLog("Sending broadcast message", this.client.Username);
             // Loop por cada cliente
             foreach (KeyValuePair<Users, TcpClient> client in ClientsDictionary) 
             {
@@ -196,11 +210,25 @@ namespace TS_Chat
                 }
                 catch (Exception ex)
                 {
-                    logger.consoleLog("Error sending message to " + client.Key.Username, this.client.Username);
+                    logger.consoleLog("Error sending broadcast message to " + client.Key.Username, this.client.Username);
                 }
             }
         }
 
+        private void unicast(byte[] data)
+        {
+            logger.consoleLog("Sending unicast message", this.client.Username);
+            // Loop por cada cliente
+            TcpClient client = this.ClientsDictionary.First(c => c.Key.IdUser == this.client.IdUser).Value;
+            // Envia a mensagem ao cliente
+            try
+            {
+                client.GetStream().Write(data, 0, data.Length);
+            }
+            catch (Exception ex)
+            {
+                logger.consoleLog("Error sending unicast message to " + this.client.Username, this.client.Username);
+            }
+        }
     }
-
 }

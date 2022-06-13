@@ -45,57 +45,73 @@ namespace Server
                 //Get client data send
                 NetworkStream networkStream = client.GetStream();
                 ProtocolSI protocolSI = new ProtocolSI();
+                //Initialize the encryptor
+                Cryptor cryptor = new Cryptor();
                 //Gets the client data
                 networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
                 //Get the client data from the protocol
                 string dataFromClient = protocolSI.GetStringFromData();
                 byte[] ack;
                 logger.consoleLog("Connection try!", name);
-                try
-                {
                     //Check if new user it's being created
                     if (protocolSI.GetCmdType() == ProtocolSICmdType.USER_OPTION_1)
                     {
+                        
                         //Create new user
                         if (CreateUser(dataFromClient))
                         {
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, "True");
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("True$"));
                             networkStream.Write(ack, 0, ack.Length);
                         }
                         else
                         {
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, "False");
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("False$Erro na criação da conta\nValide os seus dados e tente novamente."));
                             networkStream.Write(ack, 0, ack.Length);
                         }
                     }
                     else if (protocolSI.GetCmdType() == ProtocolSICmdType.ACK)
                     {
-                        Users new_user = CheckUser(dataFromClient);
-                        if (new_user != null)
+                        try
                         {
-                            //Console info
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, "True");
-                            networkStream.Write(ack, 0, ack.Length);
-                            //Create Cliente Handler
-                            clientsDictionary.Add(new_user, client);
-                            ClientHandler clientHandler = new ClientHandler(client, new_user, clientsDictionary);
-                            clientHandler.Handle();
+                            Users new_user = CheckUser(dataFromClient, clientsDictionary);
+                            //
+                            if (new_user != null)
+                            {
+                                //Console info
+                                ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("True$"));
+                                networkStream.Write(ack, 0, ack.Length);
+                                //Create Cliente Handler
+                                clientsDictionary.Add(new_user, client);
+                                ClientHandler clientHandler = new ClientHandler(client, new_user, clientsDictionary);
+                                clientHandler.Handle();
+                            }
+                            else
+                            {
+                                //Console info
+                                logger.consoleLog("User not accepted", "Server");
+                                ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("False$Username ou Password erradas\nVerifique os seus dados"));
+                                networkStream.Write(ack, 0, ack.Length);
+                            }
                         }
-                        else
+                        catch (ArgumentException ex)
                         {
-                            //Console info
-                            logger.consoleLog("User not accepted", "Server");
-                            ack = protocolSI.Make(ProtocolSICmdType.ACK, "False");
+                            logger.consoleLog("Two same accounts logging try", name);
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("False$" + ex.Message));
+                            networkStream.Write(ack, 0, ack.Length);
+                        }
+                        catch (InvalidOperationException ex)
+                        {
+                            logger.consoleLog(ex.Message, name);
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("False$Username not found."));
+                            networkStream.Write(ack, 0, ack.Length);
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.consoleLog(ex.Message, name);
+                            ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("False$Unknow logging problem from the server. Sorry...\nTry again later..."));
                             networkStream.Write(ack, 0, ack.Length);
                         }
                     }
-                }
-                catch (Exception ex)
-                {
-                    logger.consoleLog(ex.Message, name);
-                    ack = protocolSI.Make(ProtocolSICmdType.ACK, "False");
-                    networkStream.Write(ack, 0, ack.Length);
-                }
 
             }
 
@@ -104,23 +120,26 @@ namespace Server
         //Create new user
         private static bool CreateUser(string dataFromClient)
         {
+            //Initialize Decryptor
+            Cryptor cryptor = new Cryptor();
+            //Desencripta a mensagem
+            string message = cryptor.VerifyData(dataFromClient);
+            //
             LogController logController = new LogController();
 
-            if (dataFromClient.Split('$').Length != 2)
+            if (message.Split('$').Length != 2)
                 return false;
 
             //Get username from string
-            string username = dataFromClient.Split('$')[0];
+            string username = message.Split('$')[0];
             //Get Salt from string 
-            string password = dataFromClient.Split('$')[1];
+            string password = message.Split('$')[1];
 
             using (ChatBDContainer chatBDContainer = new ChatBDContainer())
             {
                 // Validate it doesn't exist
                 if (chatBDContainer.UsersSet.Any(x => x.Username == username))
                     return false;
-
-                Cryptor cryptor = new Cryptor();
                 //
                 byte[] salt = cryptor.GenerateSalt();
                 //
@@ -148,12 +167,21 @@ namespace Server
             }
         }
 
-        private static Users CheckUser(string user_info)
+        private static Users CheckUser(string user_info, Dictionary<Users, TcpClient> clientsDictionary)
         {
+            //Initialize Decryptor
+            Cryptor cryptor = new Cryptor();
+            //Desencripta a mensage
+            string message = cryptor.VerifyData(user_info);
+            //
+            if (message == null)
+                return null;
+            //
             LogController logController = new LogController();
-            string check_Username = user_info.Split('$')[0];
-            //TODO Encrypte before coming to server
-            string password = user_info.Split('$')[1];
+            //Get loggin data
+            string check_Username = message.Split('$')[0];
+            //
+            string password = message.Split('$')[1];
 
             // Inicialização do chatContainer
             ChatBDContainer chatBDContainer = new ChatBDContainer();
@@ -174,10 +202,18 @@ namespace Server
             logController.consoleLog("User hashSalt: " + Encoding.UTF8.GetString(user.SaltedPasswordHash), "Server");
             logController.consoleLog("Login User HashSalt: " + Convert.ToBase64String(chech_hash), "Server");
             */
-
             //Valida que as hash seijam iguais
             if (user.checkedSaltPassword(chech_hash))
-                return user;
+            {
+                if (clientsDictionary.Count == 0)
+                    return user;
+                else if (!clientsDictionary.Keys.Any(c => c.IdUser == user.IdUser))
+                    return user;
+                else
+                {
+                    throw new ArgumentException("Client logged right now\nClose another open session to open this one...");
+                }
+            }
             else
                 return null;
         }

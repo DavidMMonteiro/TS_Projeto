@@ -4,6 +4,17 @@ using System.IO;
 // Class LogController para enviar mensagens a consola
 class LogController
 {
+    private string owner;
+
+    public LogController()
+    {
+    }
+
+    public LogController(string owner)
+    {
+        this.owner = owner;
+    }
+
     //Mensagem simple para a consola
     public void consoleLog(string msg)
     {

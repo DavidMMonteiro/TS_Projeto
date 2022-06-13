@@ -83,17 +83,17 @@ namespace TS_Chat
                 return;
             }
 
-            
-            //TODO Encryptar mensagem para o servidor
-
             if (!open_connection())
                 return;
 
             try
             {
+                Cryptor cryptor = new Cryptor();
                 //Constroe a mensagem do cliente
-                //TODO  Encrypte password & message to server
                 string msg = tb_username.Text + "$" + tb_password.Text;
+                //Encripta a mensagem
+                msg = cryptor.SingData(msg);
+                //
                 protocolSI = new ProtocolSI();
                 // Converte a mensagem para bytes para poder ser enviada
                 byte[] packet = protocolSI.Make(ProtocolSICmdType.USER_OPTION_1, msg);
@@ -105,16 +105,18 @@ namespace TS_Chat
                     networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
                 } while (protocolSI.GetCmdType() != ProtocolSICmdType.ACK);
                 // Lee a informação da mensagem returnada pelo servidor
-                string servermsg = protocolSI.GetStringFromData();
+                string servermsg = cryptor.VerifyData(protocolSI.GetStringFromData());
+                bool signUp = bool.Parse(servermsg.Split('$')[0]);
+                string errorText = servermsg.Split('$')[1];
                 // Converte para bool
-                if (bool.Parse(servermsg))
+                if (signUp)
                 {
                     MessageBox.Show("Conta criada com sucesso!", "Criar conta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.FormBack.Show();
                     this.Close();
                 }
                 else
-                    MessageBox.Show("Não se conseguio criar a conta!", "Criar conta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(errorText, "Criar conta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
             catch (Exception ex)

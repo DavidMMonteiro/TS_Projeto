@@ -29,6 +29,7 @@ namespace TS_Chat
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSignUp));
             this.tb_username = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,6 +44,7 @@ namespace TS_Chat
             // tb_username
             // 
             this.tb_username.Location = new System.Drawing.Point(140, 87);
+            this.tb_username.MaxLength = 255;
             this.tb_username.Name = "tb_username";
             this.tb_username.Size = new System.Drawing.Size(134, 20);
             this.tb_username.TabIndex = 0;
@@ -139,6 +141,9 @@ namespace TS_Chat
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tb_username);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(331, 276);
+            this.MinimumSize = new System.Drawing.Size(331, 276);
             this.Name = "FormSignUp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sign Up";

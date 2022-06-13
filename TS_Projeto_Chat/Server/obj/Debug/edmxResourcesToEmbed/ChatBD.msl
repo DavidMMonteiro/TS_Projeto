@@ -19,6 +19,8 @@
           <ScalarProperty Name="dtCreation" ColumnName="dtCreation" />
           <ScalarProperty Name="Text" ColumnName="Text" />
           <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="key" ColumnName="key" />
+          <ScalarProperty Name="iv" ColumnName="iv" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

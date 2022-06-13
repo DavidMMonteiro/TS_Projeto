@@ -29,8 +29,10 @@
     </Key>
     <Property Name="IdMensagem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="dtCreation" Type="datetime" Nullable="false" />
-    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Text" Type="varbinary(max)" Nullable="false" />
     <Property Name="IdUser" Type="int" Nullable="false" />
+    <Property Name="key" Type="varbinary(max)" Nullable="false" />
+    <Property Name="iv" Type="varbinary(max)" Nullable="false" />
   </EntityType>
   <Association Name="UsersMensagens">
     <End Role="Users" Type="ChatBD.Store.UsersSet" Multiplicity="1" />
@@ -73,9 +75,11 @@
           </Key>
           <Property Name="IdMensagem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="dtCreation" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Text" Type="Binary" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="ChatBD.UsersMensagens" FromRole="Mensagens" ToRole="Users" />
           <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="key" Type="Binary" Nullable="false" />
+          <Property Name="iv" Type="Binary" Nullable="false" />
         </EntityType>
         <Association Name="UsersMensagens">
           <End Type="ChatBD.Users" Role="Users" Multiplicity="1" />
@@ -113,6 +117,8 @@
           <ScalarProperty Name="dtCreation" ColumnName="dtCreation" />
           <ScalarProperty Name="Text" ColumnName="Text" />
           <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="key" ColumnName="key" />
+          <ScalarProperty Name="iv" ColumnName="iv" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

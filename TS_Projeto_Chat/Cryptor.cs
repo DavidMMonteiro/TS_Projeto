@@ -1,5 +1,4 @@
-﻿using Server;
-using System;
+﻿using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -13,8 +12,7 @@ namespace TS_Chat
         private AesCryptoServiceProvider AES;
         private RSACryptoServiceProvider rsaSing;
         private RSACryptoServiceProvider rsaVerify;
-        private string publicKey;
-        private LogController log = new LogController();
+        public string publicKey;
 
         public Cryptor()
         {
@@ -26,6 +24,9 @@ namespace TS_Chat
             //Verification 
             rsaSing = new RSACryptoServiceProvider();
             publicKey = rsaSing.ToXmlString(false);
+
+            rsaVerify = new RSACryptoServiceProvider();
+            rsaVerify.FromXmlString(publicKey);
         }
 
         public byte[] GenerateSalt()
@@ -107,7 +108,7 @@ namespace TS_Chat
         }
 
         //Encrypta e cria o pacote que vai ser enviado
-        private string GerarMensagem(string msg)
+        public string GerarMensagem(string msg)
         {
             //Create Salt
             string salt = Convert.ToBase64String(GenerateSalt());
@@ -120,7 +121,7 @@ namespace TS_Chat
         }
 
         //Desencrypta o pacote recebido
-        private string DesencryptarMensagem(string msg)
+        public string DesencryptarMensagem(string msg)
         {
             //Get key
             string key = msg.Split('$')[0];
@@ -130,74 +131,27 @@ namespace TS_Chat
             return DesencryptText(key, iv, msg.Split('$')[2]);
         }
 
-        //Encrypta os dados e cria a asinatura
         public string SingData(string msg)
         {
-            string msgEncrypted = GerarMensagem(msg);
-            byte[] dados = Encoding.UTF8.GetBytes(msgEncrypted);
+            byte[] dados = Encoding.UTF8.GetBytes(GerarMensagem());
             using (SHA256 sh1 = SHA256.Create())
             {
                 byte[] signature = rsaSing.SignData(dados, sh1);
-                return this.publicKey + '$' + Convert.ToBase64String(signature) + '$' + Encoding.UTF8.GetString(dados);
+                return Convert.ToBase64String(signature);
             }
         }
 
-        //Valida a asinatura e desencrypta os dados
-        public string VerifyData(string msg)
+        public string VerifyData()
         {
             using (SHA256 sh1 = SHA256.Create())
             {
-
-                rsaVerify = new RSACryptoServiceProvider();
-                rsaVerify.FromXmlString(msg.Split('$')[0]);
-                //log.consoleLog(msg, "Server");
-                byte[] signatura = Convert.FromBase64String(msg.Split('$')[1]);
-                //log.consoleLog(msg.Split('$')[0], "Server");
-                string data = msg.Replace(msg.Split('$')[0] + "$", "").Replace(msg.Split('$')[1] + "$", "");
-                byte[] dados = Encoding.UTF8.GetBytes(data);
-                //log.consoleLog(msg.Substring(msg.IndexOf('$') + 1), "Server");
-                //TODO Verification always also, check why can't validate data
+                byte[] signatura = Convert.FromBase64String(tbSignature.Text);
+                byte[] dados = Encoding.UTF8.GetBytes(tbDataToSign.Text);
                 bool verify = rsaVerify.VerifyData(dados, sh1, signatura);
-                if (verify)
-                    return DesencryptarMensagem(data);
-                else
-                    return null;
+                tbIsVerified.Text = verify.ToString();
             }
         }
 
-        public Mensagens GetVerifyMessage(string msg)
-        {
-            using (SHA256 sh1 = SHA256.Create())
-            {
 
-                rsaVerify = new RSACryptoServiceProvider();
-                rsaVerify.FromXmlString(msg.Split('$')[0]);
-                //log.consoleLog(msg, "Server");
-                byte[] signatura = Convert.FromBase64String(msg.Split('$')[1]);
-                //log.consoleLog(msg.Split('$')[0], "Server");
-                string data = msg.Replace(msg.Split('$')[0] + "$", "").Replace(msg.Split('$')[1] + "$", "");
-                byte[] dados = Encoding.UTF8.GetBytes(data);
-                //log.consoleLog(msg.Substring(msg.IndexOf('$') + 1), "Server");
-                //TODO Verification always also, check why can't validate data
-                bool verify = rsaVerify.VerifyData(dados, sh1, signatura);
-                if (verify)
-                    return GetDesencryptarMensagem(data);
-                else
-                    return null;
-            }
-        }
-
-        private Mensagens GetDesencryptarMensagem(string data)
-        {
-            Mensagens new_message = new Mensagens();
-            // Get Key
-            new_message.key = Convert.FromBase64String(data.Split('$')[0]);
-            //Get Vetor
-            new_message.iv = Convert.FromBase64String(data.Split('$')[1]);
-            //Get message
-            new_message.Text = Convert.FromBase64String(data.Split('$')[2]);
-            //Return builded message
-            return new_message;
-        }
     }
 }

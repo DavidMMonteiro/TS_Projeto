@@ -16,6 +16,7 @@ namespace TS_Chat
         private TcpClient client;
         private ChatController chatController;
         private Thread messageThread;
+        public bool active;
 
         // MessageHandler constructor
         public MessageHandler(TcpClient client, ChatController chatController)
@@ -23,6 +24,7 @@ namespace TS_Chat
             this.client = client;
             this.chatController = chatController;
             this.messageThread = Handle();
+            this.active = true;
         }
 
         // Handler para iniciar a nova Thread
@@ -39,32 +41,54 @@ namespace TS_Chat
             // Guarda a networkStream no cliente
             NetworkStream networkStream = this.client.GetStream();
             ProtocolSI protocolSI = new ProtocolSI();
+            //
+            Mensagens old_mensagem = new Mensagens();
             // Loop ate receber mensagem do servidor a fechar o ligação
             while (protocolSI.GetCmdType() != ProtocolSICmdType.EOT)
             {
                 try
                 {
+                    if (networkStream.CanRead == null)
+                        return;
                     // Lee a mensagem envia pelo servidor
                     int bytesRead = networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
-                    string output;
+                    //Get message
+                    string output = protocolSI.GetStringFromData();
+                    //Initialize Decryptor
+                    Cryptor cryptor = new Cryptor();
+                    //Decrypt message
+                    string message = cryptor.VerifyData(output);
                     // Filtra o tipo de mensagem
                     switch (protocolSI.GetCmdType())
                     {
                         case ProtocolSICmdType.DATA:
-                            // Lee a mensagem 
-                            output = protocolSI.GetStringFromData();
-                            // Escreve a mensagem para o cliente
-                            chatController.newMessage(output);
+                            //Check if message it's subencrypted
+                            if(message.Split('$').Length > 1)
+                                message = cryptor.DesencryptText(message);
+                            //Validate if it's a server message 
+                            if(message.Split('$').Length == 1)
+                                chatController.newMessage(message);
+                            //Validate if it's a client message
+                            else if (message.Split('$').Length == 2)
+                                chatController.newMessage(message.Split('$')[1], message.Split('$')[0]);
                             break;
                         case ProtocolSICmdType.EOT:
-                            // Lee a mensagem 
-                            output = protocolSI.GetStringFromData();
                             // Escreve a mensagem para o cliente
-                            chatController.newMessage(output);
+                            chatController.newMessage(message);
                             break;
                         case ProtocolSICmdType.USER_OPTION_2:
-                            output = protocolSI.GetStringFromData();
-                            LoadChat(output);
+                            try
+                            {                                
+                                Mensagens new_mensagem = JsonConvert.DeserializeObject<Mensagens>(cryptor.VerifyData(output));
+                                if (old_mensagem.IdMensagem != new_mensagem.IdMensagem)
+                                {
+                                    old_mensagem = new_mensagem;
+                                    chatController.newMessage(new_mensagem.GetMessage().Split('$')[1], new_mensagem.GetMessage().Split('$')[0]);
+                                }
+                            }catch (Exception ex)
+                            {
+                                MessageBox.Show("Loading messages error: \n" + ex.Message + "\nIf keeps happening contact Administrator", "Unknow Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                             break;
                         case ProtocolSICmdType.USER_OPTION_9:
                             output = protocolSI.GetStringFromData();
@@ -74,35 +98,30 @@ namespace TS_Chat
                 }// Change Exception to show on Console on last version
                 catch (SocketException ex)
                 {
-                    MessageBox.Show(ex.Message, "Error SocketExcpetion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error connecting with server: \n" + ex.Message + "\nContact Administrator", "Error SocketExcpetion", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 }
                 catch (IOException ex)
                 {
-                    MessageBox.Show(ex.Message, "Error IOException", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error connecting with server: \n" + ex.Message + "\nContact Administrator", "Error IOException", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 }
                 catch (ObjectDisposedException ex)
                 {
-                    MessageBox.Show(ex.Message, "Error ObjectDisposed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error connecting with server: \n" + ex.Message + "\nContact Administrator", "Error ObjectDisposed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Unknow Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error connecting with server: \n" + ex.Message + "\nContact Administrator", "Unknow Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
                 }
             }
             // Fecha a ligação
             networkStream.Close();
             client.Close();
+            this.active = false;
         }
 
-        private void LoadChat(string output)
-        {
-            List<Mensagens> mensagens = JsonConvert.DeserializeObject<List<Mensagens>>(output);
-            foreach(Mensagens mensangem in mensagens)
-                chatController.newMessage(mensangem.Users.Username, mensangem.Text);
-        }
     }
 }

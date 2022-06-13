@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TS_Chat;
 
 namespace Server
 {
@@ -12,7 +13,7 @@ namespace Server
         }
         public Mensagens(string text, Users user) : base()
         {
-            this.Text = text;
+            this.Text = Convert.FromBase64String(text);
             this.Users = user;
             this.dtCreation = DateTime.Now;
         }
@@ -28,5 +29,6 @@ namespace Server
             this.Users.IdUser = users.IdUser;
             this.Users.Username = users.Username;
         }
+
     }
 }

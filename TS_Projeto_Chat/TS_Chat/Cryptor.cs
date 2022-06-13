@@ -1,5 +1,4 @@
-﻿using Server;
-using System;
+﻿using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -86,6 +85,18 @@ namespace TS_Chat
             return Convert.ToBase64String(encrypted_text);
         }
 
+        public string DesencryptText(string row_text)
+        {
+            //Get key
+            string key = row_text.Split('$')[0];
+            //Get Vector
+            string iv = row_text.Split('$')[1];
+            //Get message
+            string message_encrypted = row_text.Split('$')[2];
+            //Decrypt message
+            return DesencryptText(key, iv, message_encrypted);
+        }
+
         //Desencrypt string with AES
         public string DesencryptText(string key, string iv, string text_encrypted)
         {
@@ -165,39 +176,6 @@ namespace TS_Chat
             }
         }
 
-        public Mensagens GetVerifyMessage(string msg)
-        {
-            using (SHA256 sh1 = SHA256.Create())
-            {
 
-                rsaVerify = new RSACryptoServiceProvider();
-                rsaVerify.FromXmlString(msg.Split('$')[0]);
-                //log.consoleLog(msg, "Server");
-                byte[] signatura = Convert.FromBase64String(msg.Split('$')[1]);
-                //log.consoleLog(msg.Split('$')[0], "Server");
-                string data = msg.Replace(msg.Split('$')[0] + "$", "").Replace(msg.Split('$')[1] + "$", "");
-                byte[] dados = Encoding.UTF8.GetBytes(data);
-                //log.consoleLog(msg.Substring(msg.IndexOf('$') + 1), "Server");
-                //TODO Verification always also, check why can't validate data
-                bool verify = rsaVerify.VerifyData(dados, sh1, signatura);
-                if (verify)
-                    return GetDesencryptarMensagem(data);
-                else
-                    return null;
-            }
-        }
-
-        private Mensagens GetDesencryptarMensagem(string data)
-        {
-            Mensagens new_message = new Mensagens();
-            // Get Key
-            new_message.key = Convert.FromBase64String(data.Split('$')[0]);
-            //Get Vetor
-            new_message.iv = Convert.FromBase64String(data.Split('$')[1]);
-            //Get message
-            new_message.Text = Convert.FromBase64String(data.Split('$')[2]);
-            //Return builded message
-            return new_message;
-        }
     }
 }

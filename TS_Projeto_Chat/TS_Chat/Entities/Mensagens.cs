@@ -9,27 +9,43 @@
 
 namespace Entities
 {
+    using Entities;
     using System;
     using System.Collections.Generic;
+    using TS_Chat;
 
-    [Serializable]
     public partial class Mensagens
     {
+        public int IdMensagem { get; set; }
+        public System.DateTime dtCreation { get; set; }
+        public byte[] Text { get; set; }
+        public int IdUser { get; set; }
+        public byte[] key { get; set; }
+        public byte[] iv { get; set; }    
+        public virtual Users Users { get; set; }
         public Mensagens()
         {
-
+            this.dtCreation = DateTime.Now;
         }
-
         public Mensagens(string text, Users user) : base()
-        {           
-            this.Text = text;
+        {
+            this.Text = Convert.FromBase64String(text);
             this.Users = user;
             this.dtCreation = DateTime.Now;
         }
 
-        public int IdMensagem { get; set; }
-        public System.DateTime dtCreation { get; set; }
-        public string Text { get; set; }    
-        public virtual Users Users { get; set; }
+        public string GetMessage()
+        {
+            //Initialize Decryptor
+            Cryptor cryptor = new Cryptor();
+            //Get key string 
+            string key = Convert.ToBase64String(this.key);
+            //Get IV string
+            string iv = Convert.ToBase64String(this.iv);
+            //Get Message Text string
+            string text = Convert.ToBase64String(this.Text);
+            //Decript message
+            return cryptor.DesencryptText(key, iv, text);
+        }
     }
 }

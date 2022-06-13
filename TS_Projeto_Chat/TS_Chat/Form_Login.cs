@@ -140,5 +140,9 @@ namespace TS_Projeto_Chat
             Application.Exit();
         }
 
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -33,6 +33,7 @@ namespace TS_Projeto_Chat
             lb_chat.Text = name;
             this.chatController = new ChatController(tb_chat);
             this.messageHandler = new MessageHandler(this.client, this.chatController);
+            bt_connect.Enabled = !this.messageHandler.active;
         }
 
         // Fecha o ligação do cliente com o servidor-
@@ -68,13 +69,13 @@ namespace TS_Projeto_Chat
                 // Envia a mensagem ao servidor
                 networkStream.Write(packet, 0, packet.Length);
                 chatController.newMessage(this.name, "Connected to server");
-                bt_send.Enabled = false;
+                bt_send.Enabled = true;
             }
             catch (Exception ex)
             {
 				// Caso a ligação fallar, informa ao utilizador
                 chatController.newMessage(this.name, "Connection to server fail... Try later...");
-                bt_send.Enabled = true;
+                bt_send.Enabled = false;
             }
         }
 
@@ -84,14 +85,22 @@ namespace TS_Projeto_Chat
             // Valida que existe uma mensagem
             if (tb_message.Text == "")
                 return;
+            //Initialize the Encryptor
+            Cryptor cryptopher = new Cryptor();
+            //Random Password
+            string saltPassword = Convert.ToBase64String(cryptopher.GenerateSalt());
+            //Private Key
+            string privatePassword = cryptopher.CreatePrivateKey(saltPassword);
+            //Vetor
+            string vetor = cryptopher.CreateIV(saltPassword);
             //TODO Encrypte message
-            string msg = tb_message.Text;
+            string msg = privatePassword + '$' + vetor + '$' + cryptopher.EncryptText(privatePassword, vetor, tb_message.Text + '$' + this.name) ;
             try
             {
                 // Preparar mensagem para o servidor
                 //newMessage(this.name, tb_message.Text);
                 tb_message.Clear();
-                byte[] packet = protocolSI.Make(ProtocolSICmdType.DATA, msg);
+                byte[] packet = protocolSI.Make(ProtocolSICmdType.DATA, cryptopher.SingData(msg));
                 // Manda a mensagem ao servidor
                 networkStream.Write(packet, 0, packet.Length);
                 // Espera informação do servidor
@@ -155,8 +164,9 @@ namespace TS_Projeto_Chat
         private void Form1_Load(object sender, EventArgs e)
         {
             //Envia um pedido de chat recoverd 
-            byte[] packet = this.protocolSI.Make(ProtocolSICmdType.USER_OPTION_2, "Load Chat");
-            this.networkStream.Write(packet, 0, packet.Length);
+            //TODO Extenção ProtocolSI Max_Leght bug doesn't it load messages
+            /*byte[] packet = this.protocolSI.Make(ProtocolSICmdType.USER_OPTION_2, "Load Chat");
+            this.networkStream.Write(packet, 0, packet.Length);*/
         }
     }
 

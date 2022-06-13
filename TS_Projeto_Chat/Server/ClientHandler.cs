@@ -14,7 +14,7 @@ using System.Threading;
  * - LogController: class utilizada para controlar os logs do servidor
  * - TcpClient: stream do cliente
  * - User: Utilizador do cliente
- * - ClientsDictionary: Dicionario com todos os clientes e ligação dos clientes ativas no servidor
+ * - ClientsDictionary: Dicionario com todos os clientes e ligação dos clientes ativas no servidor 
  */
 
 namespace TS_Chat

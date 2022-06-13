@@ -218,3 +218,139 @@
 [13/06/2022 22:05:26](admin): Sending broadcast message
 [13/06/2022 22:05:31]admin left the chat
 [13/06/2022 22:05:31](admin): Sending broadcast message
+[13/06/2022 22:37:40](Server): Server Start
+[13/06/2022 22:37:45](Server): Connection try!
+[13/06/2022 22:37:47]admin join the chat
+[13/06/2022 22:37:47](admin): Sending broadcast message
+[13/06/2022 22:37:50](admin): Saving message
+[13/06/2022 22:37:50](admin): Sending broadcast message
+[13/06/2022 22:37:56](admin): Saving message
+[13/06/2022 22:37:56](admin): Sending broadcast message
+[13/06/2022 22:37:58](admin): Saving message
+[13/06/2022 22:37:58](admin): Sending broadcast message
+[13/06/2022 22:37:59](admin): Saving message
+[13/06/2022 22:37:59](admin): Sending broadcast message
+[13/06/2022 22:38:00](admin): Saving message
+[13/06/2022 22:38:00](admin): Sending broadcast message
+[13/06/2022 22:38:01](admin): Saving message
+[13/06/2022 22:38:01](admin): Sending broadcast message
+[13/06/2022 22:38:01](admin): Saving message
+[13/06/2022 22:38:01](admin): Sending broadcast message
+[13/06/2022 22:38:02](admin): Saving message
+[13/06/2022 22:38:02](admin): Sending broadcast message
+[13/06/2022 22:38:02](admin): Saving message
+[13/06/2022 22:38:02](admin): Sending broadcast message
+[13/06/2022 22:38:02](admin): Saving message
+[13/06/2022 22:38:02](admin): Sending broadcast message
+[13/06/2022 22:38:02](admin): Saving message
+[13/06/2022 22:38:02](admin): Sending broadcast message
+[13/06/2022 22:38:03](admin): Saving message
+[13/06/2022 22:38:03](admin): Sending broadcast message
+[13/06/2022 22:38:03](admin): Saving message
+[13/06/2022 22:38:03](admin): Sending broadcast message
+[13/06/2022 22:38:03](admin): Saving message
+[13/06/2022 22:38:03](admin): Sending broadcast message
+[13/06/2022 22:38:03](admin): Saving message
+[13/06/2022 22:38:03](admin): Sending broadcast message
+[13/06/2022 22:38:03](admin): Saving message
+[13/06/2022 22:38:03](admin): Sending broadcast message
+[13/06/2022 22:38:04](admin): Saving message
+[13/06/2022 22:38:04](admin): Sending broadcast message
+[13/06/2022 22:38:04](admin): Saving message
+[13/06/2022 22:38:04](admin): Sending broadcast message
+[13/06/2022 22:38:04](admin): Saving message
+[13/06/2022 22:38:04](admin): Sending broadcast message
+[13/06/2022 22:38:05](admin): Saving message
+[13/06/2022 22:38:05](admin): Sending broadcast message
+[13/06/2022 22:38:05](admin): Saving message
+[13/06/2022 22:38:05](admin): Sending broadcast message
+[13/06/2022 22:38:05](admin): Saving message
+[13/06/2022 22:38:05](admin): Sending broadcast message
+[13/06/2022 22:38:05](admin): Saving message
+[13/06/2022 22:38:05](admin): Sending broadcast message
+[13/06/2022 22:38:05](admin): Saving message
+[13/06/2022 22:38:06](admin): Sending broadcast message
+[13/06/2022 22:38:06](admin): Saving message
+[13/06/2022 22:38:06](admin): Sending broadcast message
+[13/06/2022 22:38:06](admin): Saving message
+[13/06/2022 22:38:06](admin): Sending broadcast message
+[13/06/2022 22:38:06](admin): Saving message
+[13/06/2022 22:38:06](admin): Sending broadcast message
+[13/06/2022 22:38:06](admin): Saving message
+[13/06/2022 22:38:06](admin): Sending broadcast message
+[13/06/2022 22:38:07](admin): Saving message
+[13/06/2022 22:38:07](admin): Sending broadcast message
+[13/06/2022 22:38:07](admin): Saving message
+[13/06/2022 22:38:07](admin): Sending broadcast message
+[13/06/2022 22:38:07](admin): Saving message
+[13/06/2022 22:38:07](admin): Sending broadcast message
+[13/06/2022 22:38:07](admin): Saving message
+[13/06/2022 22:38:07](admin): Sending broadcast message
+[13/06/2022 22:38:08](admin): Saving message
+[13/06/2022 22:38:08](admin): Sending broadcast message
+[13/06/2022 22:38:08](admin): Saving message
+[13/06/2022 22:38:08](admin): Sending broadcast message
+[13/06/2022 22:38:08](admin): Saving message
+[13/06/2022 22:38:08](admin): Sending broadcast message
+[13/06/2022 22:38:08](admin): Saving message
+[13/06/2022 22:38:08](admin): Sending broadcast message
+[13/06/2022 22:38:09](admin): Saving message
+[13/06/2022 22:38:09](admin): Sending broadcast message
+[13/06/2022 22:38:09](admin): Saving message
+[13/06/2022 22:38:09](admin): Sending broadcast message
+[13/06/2022 22:38:10](admin): Saving message
+[13/06/2022 22:38:10](admin): Sending broadcast message
+[13/06/2022 22:38:10](admin): Saving message
+[13/06/2022 22:38:10](admin): Sending broadcast message
+[13/06/2022 22:38:10](admin): Saving message
+[13/06/2022 22:38:10](admin): Sending broadcast message
+[13/06/2022 22:38:10](admin): Saving message
+[13/06/2022 22:38:11](admin): Sending broadcast message
+[13/06/2022 22:38:11](admin): Saving message
+[13/06/2022 22:38:11](admin): Sending broadcast message
+[13/06/2022 22:38:11](admin): Saving message
+[13/06/2022 22:38:11](admin): Sending broadcast message
+[13/06/2022 22:38:11](admin): Saving message
+[13/06/2022 22:38:11](admin): Sending broadcast message
+[13/06/2022 22:38:12](admin): Saving message
+[13/06/2022 22:38:12](admin): Sending broadcast message
+[13/06/2022 22:38:12](admin): Saving message
+[13/06/2022 22:38:12](admin): Sending broadcast message
+[13/06/2022 22:38:12](admin): Saving message
+[13/06/2022 22:38:12](admin): Sending broadcast message
+[13/06/2022 22:38:12](admin): Saving message
+[13/06/2022 22:38:13](admin): Sending broadcast message
+[13/06/2022 22:38:13](admin): Saving message
+[13/06/2022 22:38:13](admin): Sending broadcast message
+[13/06/2022 22:38:13](admin): Saving message
+[13/06/2022 22:38:13](admin): Sending broadcast message
+[13/06/2022 22:38:13](admin): Saving message
+[13/06/2022 22:38:14](admin): Sending broadcast message
+[13/06/2022 22:38:14](admin): Saving message
+[13/06/2022 22:38:14](admin): Sending broadcast message
+[13/06/2022 22:38:14](admin): Saving message
+[13/06/2022 22:38:14](admin): Sending broadcast message
+[13/06/2022 22:38:14](admin): Saving message
+[13/06/2022 22:38:14](admin): Sending broadcast message
+[13/06/2022 22:38:15](admin): Saving message
+[13/06/2022 22:38:15](admin): Sending broadcast message
+[13/06/2022 22:38:15](admin): Saving message
+[13/06/2022 22:38:15](admin): Sending broadcast message
+[13/06/2022 22:38:15](admin): Saving message
+[13/06/2022 22:38:15](admin): Sending broadcast message
+[13/06/2022 22:38:16](admin): Saving message
+[13/06/2022 22:38:16](admin): Sending broadcast message
+[13/06/2022 22:38:16](admin): Saving message
+[13/06/2022 22:38:16](admin): Sending broadcast message
+[13/06/2022 22:38:16](admin): Saving message
+[13/06/2022 22:38:16](admin): Sending broadcast message
+[13/06/2022 22:38:17](admin): Saving message
+[13/06/2022 22:38:17](admin): Sending broadcast message
+[13/06/2022 22:38:17](admin): Saving message
+[13/06/2022 22:38:17](admin): Sending broadcast message
+[13/06/2022 22:38:17](admin): Saving message
+[13/06/2022 22:38:17](admin): Sending broadcast message
+[13/06/2022 22:38:23](admin): Saving message
+[13/06/2022 22:38:23](admin): Sending broadcast message
+[13/06/2022 22:38:24]admin left the chat
+[13/06/2022 22:38:24](admin): Sending broadcast message

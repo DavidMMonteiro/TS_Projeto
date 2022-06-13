@@ -33,6 +33,7 @@ namespace TS_Projeto_Chat
             lb_chat.Text = name;
             this.chatController = new ChatController(tb_chat);
             this.messageHandler = new MessageHandler(this.client, this.chatController);
+            bt_connect.Enabled = !this.messageHandler.active;
         }
 
         // Fecha o ligação do cliente com o servidor-

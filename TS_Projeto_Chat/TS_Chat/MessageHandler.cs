@@ -16,6 +16,7 @@ namespace TS_Chat
         private TcpClient client;
         private ChatController chatController;
         private Thread messageThread;
+        public bool active;
 
         // MessageHandler constructor
         public MessageHandler(TcpClient client, ChatController chatController)
@@ -23,6 +24,7 @@ namespace TS_Chat
             this.client = client;
             this.chatController = chatController;
             this.messageThread = Handle();
+            this.active = true;
         }
 
         // Handler para iniciar a nova Thread
@@ -46,6 +48,8 @@ namespace TS_Chat
             {
                 try
                 {
+                    if (networkStream.CanRead == null)
+                        return;
                     // Lee a mensagem envia pelo servidor
                     int bytesRead = networkStream.Read(protocolSI.Buffer, 0, protocolSI.Buffer.Length);
                     //Get message
@@ -116,6 +120,7 @@ namespace TS_Chat
             // Fecha a ligação
             networkStream.Close();
             client.Close();
+            this.active = false;
         }
 
     }

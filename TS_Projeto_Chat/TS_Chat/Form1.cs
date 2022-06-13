@@ -21,7 +21,7 @@ namespace TS_Projeto_Chat
         Quando e construido o form, recebe a informação da ligaçã establecida 
         com o servidor no form anterior
         */ 
-        public Form1(int port, NetworkStream network, ProtocolSI protocol, TcpClient client, string name)
+        public Form1( int port, NetworkStream network, ProtocolSI protocol, TcpClient client, string name)
         {
             InitializeComponent();
             this.port = port;
@@ -155,16 +155,21 @@ namespace TS_Projeto_Chat
         // e abre o form de login para o utilizador 
         private void logout()
         {
+            //Fecha a ligação com o cliente           
             CloseClient();
-            Form_Login form_login = new Form_Login();
-            form_login.Show();
+            //
+            Form_Login Form_Login = new Form_Login();
+            Form_Login.Show();
             this.Hide();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             //Envia um pedido de chat recoverd 
-            //TODO Extenção ProtocolSI Max_Leght bug doesn't it load messages
+
+            //TODO Extenção ProtocolSI Max_Leght not able to handle long data
+            //Para efetuar teste descomentar a secção inferior
+
             /*byte[] packet = this.protocolSI.Make(ProtocolSICmdType.USER_OPTION_2, "Load Chat");
             this.networkStream.Write(packet, 0, packet.Length);*/
         }

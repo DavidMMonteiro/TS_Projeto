@@ -97,7 +97,7 @@ namespace TS_Chat
             return DesencryptText(key, iv, message_encrypted);
         }
 
-        //Desencrypt string with AES
+        //Desencrypt message text with AES
         public string DesencryptText(string key, string iv, string text_encrypted)
         {
             AES.Key = Convert.FromBase64String(key);
@@ -167,7 +167,6 @@ namespace TS_Chat
                 string data = msg.Replace(msg.Split('$')[0] + "$", "").Replace(msg.Split('$')[1] + "$", "");
                 byte[] dados = Encoding.UTF8.GetBytes(data);
                 //log.consoleLog(msg.Substring(msg.IndexOf('$') + 1), "Server");
-                //TODO Verification always also, check why can't validate data
                 bool verify = rsaVerify.VerifyData(dados, sh1, signatura);
                 if (verify)
                     return DesencryptarMensagem(data);

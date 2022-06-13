@@ -26,7 +26,7 @@ class LogController
         Console.WriteLine(msg);
     }
 
-    //Cria e guarda os logs do servidor
+    //Cria e guarda os logs em ficheiros
     private void logFile(string msg)
     {
         try

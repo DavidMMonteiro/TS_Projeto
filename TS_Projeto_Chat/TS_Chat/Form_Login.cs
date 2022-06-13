@@ -112,6 +112,7 @@ namespace TS_Projeto_Chat
                 MessageBox.Show("Preencha o cambo do username!", "Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            //Validação de password
             else if (string.IsNullOrEmpty(tb_password.Text))
             {
                 MessageBox.Show("Preencha o cambo da password!", "Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -125,24 +126,21 @@ namespace TS_Projeto_Chat
             }
 
             // Se for bem sucedido, abré os chats ao cliente
-            Form1 chat = new Form1(PORT, NetworkStream, ProtocolSI, Client, tb_user.Text);
+            Form1 chat = new Form1( PORT, NetworkStream, ProtocolSI, Client, tb_user.Text);
             chat.Show();
             this.Hide();
         }
 
+        //Acceso ao signup form
         private void bt_singup_Click(object sender, EventArgs e)
         {
             new FormSignUp(this, PORT, NetworkStream, ProtocolSI, Client).ShowDialog();
         }
 
+        //Feicha o software quando for fechado
         private void Form_Login_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

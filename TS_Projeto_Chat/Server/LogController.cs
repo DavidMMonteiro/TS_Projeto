@@ -6,10 +6,12 @@ class LogController
 {
     private string owner;
 
+    //Contructor empty
     public LogController()
     {
     }
 
+    //Consttuctor to set owner
     public LogController(string owner)
     {
         this.owner = owner;

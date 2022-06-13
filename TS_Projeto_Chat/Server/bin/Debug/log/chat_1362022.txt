@@ -158,3 +158,63 @@
 [13/06/2022 21:29:29](admin): Sending broadcast message
 [13/06/2022 21:29:35]admin left the chat
 [13/06/2022 21:29:35](admin): Sending broadcast message
+[13/06/2022 21:30:14](Server): Server Start
+[13/06/2022 21:30:18](Server): Connection try!
+[13/06/2022 21:30:19]admin join the chat
+[13/06/2022 21:30:19](admin): Sending broadcast message
+[13/06/2022 21:30:24](admin): Saving message
+[13/06/2022 21:30:24](admin): Sending broadcast message
+[13/06/2022 21:30:26](admin): Saving message
+[13/06/2022 21:30:26](admin): Sending broadcast message
+[13/06/2022 21:30:32](Server): Connection try!
+[13/06/2022 21:30:32]user1 join the chat
+[13/06/2022 21:30:32](user1): Sending broadcast message
+[13/06/2022 21:30:35](user1): Saving message
+[13/06/2022 21:30:35](user1): Sending broadcast message
+[13/06/2022 21:30:42]admin left the chat
+[13/06/2022 21:30:42](admin): Sending broadcast message
+[13/06/2022 21:30:43](user1): Saving message
+[13/06/2022 21:30:43](user1): Sending broadcast message
+[13/06/2022 21:30:43](user1): Socket error: Não é possível ler dados a partir da ligação de transporte: Uma ligação estabelecida foi anulada pelo software no computador anfitrião.
+[13/06/2022 21:30:43](user1): Sending broadcast message
+[13/06/2022 21:30:43](user1): Error sending broadcast message to user1
+[13/06/2022 22:01:39](Server): Server Start
+[13/06/2022 22:01:42](Server): Connection try!
+[13/06/2022 22:01:44]admin join the chat
+[13/06/2022 22:01:44](admin): Sending broadcast message
+[13/06/2022 22:01:45]admin left the chat
+[13/06/2022 22:01:45](admin): Sending broadcast message
+[13/06/2022 22:02:51](Server): Server Start
+[13/06/2022 22:02:54](Server): Connection try!
+[13/06/2022 22:02:55]admin join the chat
+[13/06/2022 22:02:55](admin): Sending broadcast message
+[13/06/2022 22:02:57]admin left the chat
+[13/06/2022 22:02:57](admin): Sending broadcast message
+[13/06/2022 22:04:02](Server): Server Start
+[13/06/2022 22:04:12](Server): Server Start
+[13/06/2022 22:04:17](Server): Connection try!
+[13/06/2022 22:04:18]admin join the chat
+[13/06/2022 22:04:18](admin): Sending broadcast message
+[13/06/2022 22:04:20]admin left the chat
+[13/06/2022 22:04:20](admin): Sending broadcast message
+[13/06/2022 22:04:44](Server): Server Start
+[13/06/2022 22:04:48](Server): Connection try!
+[13/06/2022 22:04:49]admin join the chat
+[13/06/2022 22:04:49](admin): Sending broadcast message
+[13/06/2022 22:04:51]admin left the chat
+[13/06/2022 22:04:51](admin): Sending broadcast message
+[13/06/2022 22:05:07](Server): Server Start
+[13/06/2022 22:05:10](Server): Connection try!
+[13/06/2022 22:05:11]admin join the chat
+[13/06/2022 22:05:11](admin): Sending broadcast message
+[13/06/2022 22:05:14](admin): Saving message
+[13/06/2022 22:05:15](admin): Sending broadcast message
+[13/06/2022 22:05:15]admin left the chat
+[13/06/2022 22:05:15](admin): Sending broadcast message
+[13/06/2022 22:05:23](Server): Connection try!
+[13/06/2022 22:05:23]admin join the chat
+[13/06/2022 22:05:23](admin): Sending broadcast message
+[13/06/2022 22:05:26](admin): Saving message
+[13/06/2022 22:05:26](admin): Sending broadcast message
+[13/06/2022 22:05:31]admin left the chat
+[13/06/2022 22:05:31](admin): Sending broadcast message

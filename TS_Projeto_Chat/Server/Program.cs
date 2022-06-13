@@ -57,14 +57,16 @@ namespace Server
                     if (protocolSI.GetCmdType() == ProtocolSICmdType.USER_OPTION_1)
                     {
                         
-                        //Create new user
+                        //Crea um novo utilizador e valida se foi efetuado com sucesso
                         if (CreateUser(dataFromClient))
                         {
+                            //Returna como sucesso ao cliente
                             ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("True$"));
                             networkStream.Write(ack, 0, ack.Length);
                         }
                         else
                         {
+                            //Returna como fallo ao cliente e o tipo de fallo
                             ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("False$Erro na criação da conta\nValide os seus dados e tente novamente."));
                             networkStream.Write(ack, 0, ack.Length);
                         }
@@ -73,6 +75,11 @@ namespace Server
                     {
                         try
                         {
+                            /*
+                             * Valida que a password do utilizador esta certa 
+                             * Caso estiver correto, retorna a informação do cliente
+                             * caso contrario return como null e devolve a informação ao cliente
+                             */
                             Users new_user = CheckUser(dataFromClient, clientsDictionary);
                             //
                             if (new_user != null)
@@ -82,6 +89,7 @@ namespace Server
                                 networkStream.Write(ack, 0, ack.Length);
                                 //Create Cliente Handler
                                 clientsDictionary.Add(new_user, client);
+                                //Criar uma nova thread para o cliente
                                 ClientHandler clientHandler = new ClientHandler(client, new_user, clientsDictionary);
                                 clientHandler.Handle();
                             }
@@ -95,18 +103,21 @@ namespace Server
                         }
                         catch (ArgumentException ex)
                         {
+                            //Caso um utilizador tentar fazer loggin com a conta já iniciada
                             logger.consoleLog("Two same accounts logging try", name);
                             ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("False$" + ex.Message));
                             networkStream.Write(ack, 0, ack.Length);
                         }
                         catch (InvalidOperationException ex)
                         {
+                            //Caso não encontrar ao utilizador inserido
                             logger.consoleLog(ex.Message, name);
                             ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("False$Username not found."));
                             networkStream.Write(ack, 0, ack.Length);
                         }
                         catch (Exception ex)
                         {
+                            //Caso acontecer um erro unknow no loggin manda essa informação ao utilizador
                             logger.consoleLog(ex.Message, name);
                             ack = protocolSI.Make(ProtocolSICmdType.ACK, cryptor.SingData("False$Unknow logging problem from the server. Sorry...\nTry again later..."));
                             networkStream.Write(ack, 0, ack.Length);
@@ -140,9 +151,9 @@ namespace Server
                 // Validate it doesn't exist
                 if (chatBDContainer.UsersSet.Any(x => x.Username == username))
                     return false;
-                //
+                //Genera um salt aleatorio
                 byte[] salt = cryptor.GenerateSalt();
-                //
+                //Genera o salted hash
                 byte[] hash = cryptor.GenerateSaltedHash(password, salt);
                 //Create new user
                 Users user = new Users(username, salt, hash);
@@ -151,11 +162,6 @@ namespace Server
                     //Add new user to DataBase
                     chatBDContainer.UsersSet.Add(user);
                     chatBDContainer.SaveChanges();
-                    /*
-                    logController.consoleLog($"New user {user.Username} created", "Server");
-                    logController.consoleLog($"User Salt: {Encoding.UTF8.GetString(user.Salt)} ", "Server");
-                    logController.consoleLog($"User SaltHash: {Encoding.UTF8.GetString(user.SaltedPasswordHash)} ", "Server");
-                    */
                     logController.consoleLog($"New account {user.Username} created with success!", "Server");
                     return true;
                 }
@@ -195,24 +201,23 @@ namespace Server
             Cryptor crypofer = new Cryptor();
             //Cria a hash com a pase que foi enviada
             byte[] chech_hash = crypofer.GenerateSaltedHash(password, user.Salt);
+            
+            //TESTE LOGS
+            //logController.consoleLog("Client message: " + message, "Server");
+            //logController.consoleLog("Server User data: " + "\n- " + user.Username + "\n- " + user.Salt + "\n- " + user.SaltedPasswordHash, "Server");
 
-            /*
-            logController.consoleLog("User: " + user.Username, "Server");
-            logController.consoleLog("User Salt: " + Encoding.UTF8.GetString(user.Salt), "Server");
-            logController.consoleLog("User hashSalt: " + Encoding.UTF8.GetString(user.SaltedPasswordHash), "Server");
-            logController.consoleLog("Login User HashSalt: " + Convert.ToBase64String(chech_hash), "Server");
-            */
             //Valida que as hash seijam iguais
             if (user.checkedSaltPassword(chech_hash))
             {
+                //Valida se existem clientes ativos
                 if (clientsDictionary.Count == 0)
                     return user;
+                //Valida se o novo cliente já esta loggado
                 else if (!clientsDictionary.Keys.Any(c => c.IdUser == user.IdUser))
                     return user;
+                //Caso contrario, mando erro ao cliente
                 else
-                {
                     throw new ArgumentException("Client logged right now\nClose another open session to open this one...");
-                }
             }
             else
                 return null;

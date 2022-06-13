@@ -9,12 +9,13 @@ namespace TS_Chat
 {
     public partial class FormSignUp : Form
     {
-        private Form FormBack;
-        private int port;
-        private NetworkStream networkStream;
-        private ProtocolSI protocolSI;
-        private TcpClient client;
+        private Form FormBack; //Form para voltar
+        private int port; //Port de ligação com o servidor
+        private NetworkStream networkStream; //Stream de ligação
+        private ProtocolSI protocolSI; //
+        private TcpClient client; //Ligação establecida com o cliente
 
+        //Recebe os dados do login
         public FormSignUp(Form formBack, int port, NetworkStream networkStream, ProtocolSI protocolSI, TcpClient client)
         {
             InitializeComponent();
@@ -25,10 +26,7 @@ namespace TS_Chat
             this.protocolSI = protocolSI;
             this.client = client;
         }
-        private void consoleLog(string msg)
-        {
-            Console.WriteLine(DateTime.Now.ToString("(dd/MM/yyyy HH:mm:ss)") + "SignUp: " + msg);
-        }
+        //Establece a ligação com o servidor
         private bool open_connection()
         {
             try
@@ -53,8 +51,10 @@ namespace TS_Chat
             }
         }
 
+        //Evento para sair do form Registo
         private void bt_cancel_Click(object sender, EventArgs e)
         {
+            //Valida se o utilizador quere sair
             if (MessageBox.Show("Quere sair do SigUp?", "Exit Signup", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 this.FormBack.Show();
@@ -63,18 +63,22 @@ namespace TS_Chat
 
         }
 
+        //Evento para efetura o registo do utilizador
         private void bt_registar_Click(object sender, EventArgs e)
         {
+            //Valida o username prenchida 
             if (string.IsNullOrEmpty(tb_username.Text))
             {
                 MessageBox.Show("Insira os dados no cambo username", "Sign Up", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            else if(string.IsNullOrEmpty(tb_password.Text) || string.IsNullOrEmpty(tb_re_password.Text))
+            //Valida a password prenchida
+            else if (string.IsNullOrEmpty(tb_password.Text) || string.IsNullOrEmpty(tb_re_password.Text))
             {
                 MessageBox.Show("Insira os dados nos campos de password", "Sign Up", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            //Valida que as password iguais
             else if (tb_password.Text != tb_re_password.Text)
             {
                 MessageBox.Show("As password tem de ser iguais!","Sign Up", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -83,6 +87,7 @@ namespace TS_Chat
                 return;
             }
 
+            //Estable a ligação
             if (!open_connection())
                 return;
 
@@ -106,12 +111,16 @@ namespace TS_Chat
                 } while (protocolSI.GetCmdType() != ProtocolSICmdType.ACK);
                 // Lee a informação da mensagem returnada pelo servidor
                 string servermsg = cryptor.VerifyData(protocolSI.GetStringFromData());
+                //Lee a primeira parte da mensagem, sendo o resultado o registo
                 bool signUp = bool.Parse(servermsg.Split('$')[0]);
+                //Lee a 2º parte da mensagem, contendo esta o erro de parte do servidor
                 string errorText = servermsg.Split('$')[1];
-                // Converte para bool
+                //Valida que o registo foi criado
                 if (signUp)
                 {
+                    //Output to user
                     MessageBox.Show("Conta criada com sucesso!", "Criar conta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //Return to login form
                     this.FormBack.Show();
                     this.Close();
                 }
@@ -122,7 +131,6 @@ namespace TS_Chat
             catch (Exception ex)
             {
                 MessageBox.Show("Erro inesperado ao criar a conta!", "Criar conta", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                consoleLog(ex.Message);
             }
 
         }

@@ -119,3 +119,42 @@
 [13/06/2022 21:15:59](admin): Sending broadcast message
 [13/06/2022 21:16:33]admin left the chat
 [13/06/2022 21:16:33](admin): Sending broadcast message
+[13/06/2022 21:24:55](Server): Server Start
+[13/06/2022 21:24:58](Server): Connection try!
+[13/06/2022 21:25:01]admin join the chat
+[13/06/2022 21:25:01](admin): Sending broadcast message
+[13/06/2022 21:25:03](admin): Saving message
+[13/06/2022 21:25:04](admin): Sending broadcast message
+[13/06/2022 21:25:07](admin): Saving message
+[13/06/2022 21:25:07](admin): Sending broadcast message
+[13/06/2022 21:25:11](admin): Saving message
+[13/06/2022 21:25:11](admin): Sending broadcast message
+[13/06/2022 21:25:21](admin): Saving message
+[13/06/2022 21:25:21](admin): Sending broadcast message
+[13/06/2022 21:27:38](Server): Server Start
+[13/06/2022 21:27:41](Server): Connection try!
+[13/06/2022 21:27:42]admin join the chat
+[13/06/2022 21:27:42](admin): Sending broadcast message
+[13/06/2022 21:27:51](Server): Server Start
+[13/06/2022 21:27:54](Server): Connection try!
+[13/06/2022 21:27:56]admin join the chat
+[13/06/2022 21:27:56](admin): Sending broadcast message
+[13/06/2022 21:27:59](admin): Saving message
+[13/06/2022 21:27:59](admin): Sending broadcast message
+[13/06/2022 21:28:04](admin): Saving message
+[13/06/2022 21:28:04](admin): Sending broadcast message
+[13/06/2022 21:28:11](admin): Saving message
+[13/06/2022 21:28:11](admin): Sending broadcast message
+[13/06/2022 21:29:18]admin left the chat
+[13/06/2022 21:29:18](admin): Sending broadcast message
+[13/06/2022 21:29:21](Server): Connection try!
+[13/06/2022 21:29:22]admin join the chat
+[13/06/2022 21:29:22](admin): Sending broadcast message
+[13/06/2022 21:29:24](admin): Saving message
+[13/06/2022 21:29:24](admin): Sending broadcast message
+[13/06/2022 21:29:27](admin): Saving message
+[13/06/2022 21:29:27](admin): Sending broadcast message
+[13/06/2022 21:29:29](admin): Saving message
+[13/06/2022 21:29:29](admin): Sending broadcast message
+[13/06/2022 21:29:35]admin left the chat
+[13/06/2022 21:29:35](admin): Sending broadcast message
